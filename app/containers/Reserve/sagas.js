@@ -4,6 +4,7 @@ import { makeSelectClient, makeSelectLoadClient } from './selectors'
 import { SET_CAR_RESERVE } from './constants'
 import { browserHistory } from 'react-router'
 import request from 'utils/request'
+import { LOCATION_CHANGE } from 'react-router-redux';
 
 // Individual exports for testing
 export function* getAPIReserve(){
@@ -43,8 +44,6 @@ export function* getAPIReserve(){
       alert('Problema al guardar la reserva, favor de comunicarse con el administrador')
     }
 
-
-
  }catch(err){
    console.log(err);
  }
@@ -53,6 +52,8 @@ export function* getAPIReserve(){
 
 export function* setReserveData(){
   const watcher = yield takeLatest(SET_CAR_RESERVE, getAPIReserve)
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
 }
 
 export default [

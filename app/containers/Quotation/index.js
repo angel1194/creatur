@@ -49,7 +49,6 @@ export class Quotation extends React.PureComponent { // eslint-disable-line reac
 
 
   render() {
-    // console.log(this.props.Quotation.selected);
     const dataInitial = this.props.Quotation.selected;
 
     return (

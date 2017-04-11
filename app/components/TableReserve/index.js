@@ -23,7 +23,6 @@ function TableReserve(props) {
          props.deleteReserve(props.data.idPrebooking)
       }
     }
-
   }
   function setButton(data)
 
@@ -75,7 +74,7 @@ function TableReserve(props) {
       <Table.Cell>{props.data.email}</Table.Cell>
       <Table.Cell>{props.data.car_name}</Table.Cell>
       <Table.Cell>{formatDate(props.data.pick_date)}</Table.Cell>
-      <Table.Cell>$ {props.data.price}</Table.Cell>
+      <Table.Cell>$ {props.data.price} USD</Table.Cell>
       <Table.Cell><img width='80' src={`https://s3-us-west-2.amazonaws.com/projuv-data/static/ico/${props.data.vendor}.png`} alt="Nombre del proveedor"/></Table.Cell>
       <Table.Cell className={ cls }>{props.data.status}</Table.Cell>
       {setButton(props.data.status)}

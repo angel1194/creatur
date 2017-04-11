@@ -15,7 +15,6 @@ import {
   LOAD_COMMENTS_SUCCESS,
   SAVE_LOCATION,
   SAVE_DATE,
-  RESET_STATE,
 
 } from './constants';
 
@@ -54,8 +53,6 @@ function homePageReducer(state = initialState, action)
       return state.setIn(['values', action.data[1]], action.data[0])
     case SAVE_LOCATION:
       return state.setIn(['values', action.location[1]], action.location[0])
-    case RESET_STATE:
-      return state.setIn(['values',action.data],"")
     default:
       return state;
   }

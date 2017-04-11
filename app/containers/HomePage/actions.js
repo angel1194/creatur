@@ -12,7 +12,6 @@ import {
   SAVE_LOCATION,
   SAVE_DATE,
   SET_LOADING_FALSE,
-  RESET_STATE,
 } from './constants';
 
 export function loadingTrue(){
@@ -55,12 +54,5 @@ export function saveDate(data, input){
     type: SAVE_DATE,
     data,
     input,
-  }
-}
-
-export function resetState(data){
-  return{
-    type: RESET_STATE,
-    data,
   }
 }

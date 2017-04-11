@@ -32,6 +32,7 @@ export function* getAPICancelReserve(){
          "Id":getData.cancelID,
        })
      },)
+
      if (getCancel.CancelStatus) {
        yield put(loadReserveList())
      }
@@ -44,7 +45,7 @@ export function* getAPIAuthorizationReserve(){
 
   const requestURL = `http://localhost:8000/autorization/booking`
   const getData = yield select(makeSelectRequest())
-
+  console.log(getData);
    try {
      const getAuthorization = yield call(request, requestURL, {
        method:'POST',
@@ -55,6 +56,7 @@ export function* getAPIAuthorizationReserve(){
          "Id":getData.AprovedID,
        })
      },)
+
      if (getAuthorization.status == '200') {
          yield put(loadReserveList())
      }
@@ -77,7 +79,7 @@ export function* getAPIDeleteReserve(){
          "Id":getData.DeleteID,
        })
      },)
-     console.log(getDelete);
+
      if (getDelete.status=='200') {
        yield put(loadReserveList())
      }
@@ -99,7 +101,7 @@ export function* getAPIPrintReserve(){
         "Id":getData.AprovedID,
       })
     },)
-    console.log(getVoucher);
+
  }catch(err){
    console.log(err);
  }
@@ -108,7 +110,6 @@ export function* getAPIPrintReserve(){
 export function* getList(){
   const watcher = yield takeLatest(LOAD_LIST, getAPIReserveList)
   yield take(SET_RESERVE_LIST)
-  yield cancel(watcher)
 }
 export function* getCancelReserve(){
   const watcher = yield takeLatest(CANCEL_RESERVE, getAPICancelReserve)

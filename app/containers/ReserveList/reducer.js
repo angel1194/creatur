@@ -30,7 +30,7 @@ function reserveListReducer(state = initialState, action) {
     case LOAD_LIST:
       return state;
     case SET_RESERVE_LIST:
-      return state.setIn(['preReserve'],action.data.PreBookings)
+      return state.set('preReserve',action.data.PreBookings)
     case CANCEL_RESERVE:
       return state.setIn(['request','cancelID'],action.data)
     case AUTHORIZATION_RESERVE:

@@ -74,16 +74,10 @@ export function* getAPI(){
         })
       },)
       if(getcar.source){
+        var validation = document.getElementById('error').innerHTML = getcar.source
         yield put(loadingFalse())
       }
       else{
-        try{
-          var datos=Object.keys(cars)
-          datos.map((item)=>{ put(resetState(item)) })
-          }
-        catch(error){
-          console.log(error);
-        }
         yield put(carsLoaded(getcar))
         browserHistory.push('/available')
       }

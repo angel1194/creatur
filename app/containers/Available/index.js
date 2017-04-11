@@ -18,6 +18,7 @@ import NewSearch from '../../components/NewSearch'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export class Available extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   componentDidMount(){
       this.props.loadCar()
   }

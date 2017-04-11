@@ -114,10 +114,7 @@ class FormCarReserveClient extends React.PureComponent { // eslint-disable-line 
             </div>
             <div className='select'>
               <span className="input-group-addon"><i className="fa fa-globe"></i></span>
-              <select id='cityName' className="form-control selectCity" >
-                <option value="hola">Hola</option>
-                <option value="mundo">Mundo</option>
-              </select>
+              <Input id='city' className="inputFormSize"/>
             </div>
             <div className='spanFormData'>
               <span>Codigo Postal</span>
