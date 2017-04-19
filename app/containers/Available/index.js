@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectAvailable from './selectors';
 import { selectHomePageState } from '../HomePage/selectors'
-import { loadCar, addCarChecked } from './actions'
+import { loadCar, addCarChecked, resetCarChecked } from './actions'
 import { loadingTrue, saveDate, saveLocation } from '../HomePage/actions'
 import { Icon,Image, Grid, Container, Header, Card, Button,Segment } from 'semantic-ui-react'
 import CardCar from '../../components/CardCar'
@@ -20,7 +20,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 export class Available extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount(){
-      this.props.loadCar()
+    this.props.loadCar()
+  }
+  componentWillMount(){
+    this.props.resetCarChecked()
   }
   createCardCar(car,i,array){
     return (
@@ -99,6 +102,9 @@ function mapDispatchToProps(dispatch) {
     },
     addCarChecked:(type, state)=>{
       dispatch(addCarChecked(type, state))
+    },
+    resetCarChecked:(type,state)=>{
+      dispatch(resetCarChecked(type,state))
     },
     dispatch,
   };

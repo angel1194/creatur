@@ -7,7 +7,8 @@
 import {
   LOAD_ACTION,
   LOAD_LOCATION,
-  SELECTED_CARS
+  SELECTED_CARS,
+  RESET_CAR_SELECTED,
 } from './constants';
 
 export function loadAction() {
@@ -25,5 +26,11 @@ export function selectedCars(cars){
   return{
     type:SELECTED_CARS,
     cars,
+  }
+}
+
+export function resetCarSelected(){
+  return{
+    type:RESET_CAR_SELECTED,
   }
 }

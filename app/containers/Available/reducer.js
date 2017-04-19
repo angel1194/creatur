@@ -1,12 +1,12 @@
 import { fromJS } from 'immutable';
 import {
   LOAD_CARS,
-  ADD_CAR_CHECKED
+  ADD_CAR_CHECKED,
+  RESET_CAR_CHECKED
 } from './constants';
 
 const initialState = fromJS({
   'car':{},
-
 });
 
 function availableReducer(state = initialState, action){
@@ -15,6 +15,9 @@ function availableReducer(state = initialState, action){
       return state
     case ADD_CAR_CHECKED:
       return state.setIn(['car', action.id], action.state)
+    case RESET_CAR_CHECKED:
+      console.log('reductor reset car checked');
+      return state.set('car',fromJS({}))
     default:
       return state
 

@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import { selectedCars, loadAction } from './actions'
+import { selectedCars, loadAction,resetCarSelected } from './actions'
 import makeSelectQuotation from './selectors';
 import selectAvailableState from '../Available/selectors'
 import selectHomePageState from '../HomePage/selectors'
@@ -22,6 +22,7 @@ var carData=''
 export class Quotation extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
  componentWillMount(){
+   this.props.resetCarSelected()
    this.props.loadAction()
    const objectKeys = Object.keys(this.props.HomePage.cars);
    objectKeys.map( (item,i) => { return this.findCars(item,i) })
@@ -91,6 +92,9 @@ function mapDispatchToProps(dispatch) {
     },
     selectedCars:(type) => {
       dispatch(selectedCars(type))
+    },
+    resetCarSelected:() => {
+      dispatch(resetCarSelected(type))
     },
     dispatch,
   };

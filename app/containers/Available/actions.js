@@ -7,6 +7,7 @@
 import {
   LOAD_CARS,
   ADD_CAR_CHECKED,
+  RESET_CAR_CHECKED,
 } from './constants';
 
 export function loadCar() {
@@ -19,5 +20,11 @@ export function addCarChecked(id, state){
     type: ADD_CAR_CHECKED,
     id,
     state,
+  }
+}
+
+export function resetCarChecked(){
+  return {
+    type:RESET_CAR_CHECKED,
   }
 }

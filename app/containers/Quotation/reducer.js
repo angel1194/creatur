@@ -24,6 +24,8 @@ function quotationReducer(state = initialState, action) {
       return state;
     case SELECTED_CARS:
       return state.set('selected',action.cars)
+    case RESET_CAR_SELECTED:
+      return state.set('selected',[])
     default:
       return state;
   }
