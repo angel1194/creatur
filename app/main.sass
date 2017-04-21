@@ -1,0 +1,1828 @@
+
+body
+  margin: 0
+  padding: 0
+  font-family: helvetica !important
+  color: black !important
+
+#app
+  background: #FFF !important
+/*semantic css OVERWRITE
+/* Validations */
+
+.out
+  display: none
+.validation
+  display:inherit
+  position: relative
+  z-index: 2
+  top: 4px
+  right: 30px
+  color: #87b672
+  text-shadow: 1px 1px 1px black
+  animation: fadein 2s
+  font-size: 1em
+
+.validationTime
+  display:block
+  position: relative
+  z-index: 2
+  top: 30px
+  right: 5px
+  color: #87b672
+  text-shadow: 1px 1px 1px black
+  animation: fadein 2s
+  font-size: 0.8em
+/* ANIMATIONS */
+.activeReturn
+  display: none !important
+
+@keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1
+@keyframes fadeSearchOpen
+    0%
+      height: 0px
+
+    100%
+      height: 505px
+
+.fadeSearchOpen
+  height: 505px !important
+  animation: 500ms fadeSearchOpen
+  h1
+    display: none
+@keyframes fadeSearchClose
+    0%
+      height: 505px
+
+    100%
+      height: 0px
+
+.fadeSearchClose
+  height: 0px
+  animation: 500ms fadeSearchClose
+  h1
+    display: none
+
+.fade-appear
+  opacity: 0.01
+
+.fade-appear.fade-appear-active
+  opacity: 1
+  transition: opacity 500ms ease-out
+
+.form-appear
+   opacity: 0.01
+
+.form-appear.form-appear-active
+   opacity: 1
+   transition: opacity 500ms ease-in
+
+/****** NAVIGATION ************/
+.navBar
+  min-width: 100%
+
+.logo
+  background-color: #E84545
+  border-radius: 50px
+  display: inline-block
+  height: 45px
+  width: 45px
+
+nav
+  ul
+    display: flex
+    justify-content: space-between
+    list-style-type: none
+    width: 50%
+    a
+      color: #E84545
+      text-decoration: none
+      transition: all .5s ease
+
+
+  li
+    display: inline-block
+    padding: 10px  20px
+    &:hover
+      color: #FFF !important
+      background-color: #87b672
+  #menu-toggle, .label-toggle
+    display: none
+  .wrapper
+    align-items: center
+    display: flex
+    justify-content: space-between
+
+@media screen and (max-width: 768px)
+  header
+    .ui.container
+      margin-left: 0 !important
+
+  nav
+    .aLogo
+      display: flex
+      justify-content: center
+    ul
+      display: block
+      height: 0
+      list-style-type: none
+      opacity: 0
+      text-align: center
+      transition: all 1s ease
+      width: 100%
+      visibility: hidden
+
+    li
+      border-bottom: 2px solid #53354A
+      color: #53354A
+      display: block
+      font-size: 1.5em
+      padding: 2em 0
+    #menu-toggle:checked ~ ul
+      opacity: 1
+      height: 40vh
+      visibility: visible
+      padding-left: 0
+    .label-toggle
+      background: linear-gradient(to bottom, #b2b2b2 0%, #b2b2b2 20%, transparent 20%, transparent 40%, #b2b2b2 40%, #b2b2b2 60%, transparent 60%, transparent 80%, #b2b2b2 80%, #b2b2b2 100%)
+      cursor: pointer
+      display: block
+      float: left
+      height: 35px
+      margin-top: -3em
+      width: 35px
+      margin-left: 1em
+    .wrapper
+      display: block
+
+
+/******* End Navigation ********/
+
+.singleCarContainer
+  border: 1px solid #E9F0F4
+
+button, .button
+  font-family: 'Montserrat' !important
+  font-size: 1.2em !important
+  font-weight: 400 !important
+  border-radius: 0 !important
+
+.primary
+  background: #2b5bac !important
+
+.secundary
+  background: #87b672 !important
+  color: white !important
+.statusPen
+  background-color: rgba(255, 255, 0, .2) !important
+  color: #CBB300
+.statusApr
+  background-color: #CAFFCE !important
+  color: #2C662D
+.statusCan
+  background-color: #FFCACA !important
+  color: #FF0000
+.buttonPen
+  background-color: #2b5bac !important
+  color: white !important
+  margin-right: 5px !important
+  padding: 2px 5px !important
+  &:hover
+    box-shadow: 2px 2px 5px black !important
+.errorsValidation
+  position: absolute
+  width: 100%
+  top: 80%
+  left: 7%
+  label
+    color: white
+    font-size: 10px
+    font-family: Arial
+
+.printButton
+  margin: 0 !important
+  padding: 3.5px 5px !important
+  height: 20px !important
+  margin-right: 5px !important
+  margin-bottom: 5px !important
+  background-color: #2b5bac
+  color: white !important
+  &:hover
+    box-shadow: 2px 2px 5px black !important
+.underline
+  text-decoration: underline !important
+
+h1 span
+  color: black !important
+
+.colorGreen
+  color: #87b672 !important
+
+.colorBlue
+  color: #2b5bad !important
+
+.grid
+  margin-top: 0 !important
+
+.input
+  *
+    border-radius: 0 !important
+  button
+    background: #87b672 !important
+
+.title
+  text-decoration: none
+
+.selection
+  border-radius: 0 !important
+  line-height: 10px !important
+  min-height: 0 !important
+
+.divHora
+  max-height: 20px
+
+a
+  color: #b2b2b2 !important
+
+.logoVerde
+  color: #87b672
+  font-size: 27px
+  padding-right: 20px
+
+.logoAzul
+  color: #2b5bad
+  font-size: 27px
+
+.logoBlanco
+  color: #FFF
+  font-size: 27px
+
+.login
+  font-size: 10px
+  padding-right: 3px !important
+  padding-left: 5em !important
+
+
+
+/********* DatePicker and Form ************/
+
+h1.ui.header
+  font-size: 3em !important
+  text-align: center
+
+.form
+  margin-top: 10px
+  background-color: rgba(45, 72, 192, 0.8)
+  margin-bottom: 15px
+  width: 366px !important
+
+.titleForm
+  padding-top: 23px !important
+  margin-bottom: 0px !important
+
+.DatePickerForm
+  border-radius: 0 !important
+  height: 34px
+  position: relative
+  top: -10px
+  left: -4px
+  width: 143px !important
+
+.columnPaddingzero
+  padding: 0 0 18px 0 !important
+
+.dividerForm
+  width: 100%
+  margin: 0px 10% auto !important
+  border-top: 2px solid #70a0ec !important
+  border-bottom: 1px solid #70a0ec !important
+
+.topDatePicker
+  padding-top: 24px !important
+
+.checkboxForm
+  left: 32px
+  bottom: 13px
+  padding-left: 2em !important
+  &:before
+    background: rgba(255, 255, 255, 0) !important
+    border: .2em solid #87b672 !important
+    width: 20px !important
+    height: 20px !important
+    top: -5px !important
+  &:after
+    color: #87b672 !important
+    width: 30px !important
+    font-size: 20px !important
+    top: -7px !important
+
+.selectFormSearchWhen
+  width: 100%
+  overflow: hidden
+  display: flex
+  justify-content: space-around
+  flex-direction: row
+  height: 30px
+  input
+    border-radius: 0 !important
+    text-align: center
+    padding-top: .400em !important
+
+.gridAutocomplete
+  margin: 0 auto !important
+  width: 90%
+
+.selectFormSearch
+  height: 37px
+  width: 93%
+  overflow: hidden
+  display: flex
+  justify-content: flex-start
+  flex-direction: row
+
+.Select
+  width: 73%
+  left: 50px
+  position: absolute !important
+  .Select-menu-outer>div
+    text-align: left
+  .Select-control
+    background-color: #fff
+    border: none
+    border-radius: 0 !important
+    color: #333
+    cursor: default
+    display: table
+    height: 37px
+    outline: none
+    overflow: hidden
+    position: relative
+    width: 100%
+    .Select-multi-value-wrapper
+      width: 100%
+      display: inline-block
+      .Select-value, .Select-placeholder,
+        text-align: left !important
+      .Select-placeholder
+        bottom: 0
+        color: #aaa
+        left: 0
+        line-height: 34px
+        padding-left: 10px
+        padding-right: 10px
+        position: absolute
+        right: 0
+        top: 0
+        max-width: 100%
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+      .Select-input
+        font-size: 1em
+        background: #FFF
+        border: none
+        border-radius: none !important
+        width: 100%
+        vertical-align: middle
+        margin-left: 10px
+        padding: 0
+        input
+          width: 100% !important
+          background: none transparent
+          border: none
+          box-shadow: none
+          cursor: default
+          display: inline-block
+          font-family: inherit
+          font-size: inherit
+          margin: 0
+          outline: none
+          line-height: 14px
+          padding: 8px 0 12px
+          -webkit-appearance: none
+
+.gridAutocomplete, .divWhen
+  .selectFormSearchWhen
+    .input-group-addon-standar
+      padding: .35em 1.1em !important
+      font-size: .95em  !important
+
+.input-group-addon-standar
+  width: 40px
+  vertical-align: middle
+  padding: .5em 1em
+  font-size: 1em
+  font-weight: normal
+  line-height: 1
+  color: #555
+  text-align: center
+  background-color: #87b672
+  i
+    text-align: center
+    width: 1.4em
+    margin-left: -0.5em
+    color: #FFF
+    font-weight: 500
+    font-size: 1.5em
+
+
+.buttonGreen
+  background-color: #87b672 !important
+  color: white !important
+  border-radius: 0 !important
+  height: 50px !important
+
+
+.inputCenter
+  margin: 5px auto 0 auto !important
+
+.textYellow
+  color: yellow !important
+
+.containerBottom
+  position: relative
+  bottom: -100px
+
+h1, #spanWhite, h4, .spanWhite
+  color: #fff !important
+
+.divLabelDate
+  padding-bottom: 12px !important
+  display: flex
+  justify-content: flex-start
+  width: 76%
+
+.divWhen
+  width: 72%
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  .Select-control
+    height: 30px
+    .Select-multi-value-wrapper
+      height: 30px
+
+.columnPaddingzero
+  flex: 2
+  margin-right: 5px
+
+.selectDivHour
+  height: 30px
+  background: #fff
+  flex: 1
+  .selectHour
+    width: 94.33px !important
+    border-radius: 0!important
+    border: none!important
+    background: transparent!important
+    padding: 0
+    left: 244px !important
+  .Select-menu-outer
+    position: inherit
+  span
+    .Select-placeholder
+      left: 9% !important
+      line-height: 2em !important
+
+
+i
+  &.green.icon
+    color: #87b672 !important
+  &.inverted
+    &.bordered.green.icon, &.circular.green.icon
+      background: #87b672 !important
+  &.bordered.icon
+    box-shadow: 0 0 0 0.1em #fff inset
+
+.ui.basic.button
+  color: #fff !important
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset !important
+
+/********* End DatePicker and Form ************
+/*PROMO
+
+.titlePromo
+  margin-bottom: 0 !important
+
+.buttonReservar
+  margin-top: 22px !important
+  margin-bottom: 15px !important
+
+.whiteIco
+  color: white !important
+
+.spaceComillas
+  padding-top: 20px !important
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1) inset !important
+
+/*flex styles
+
+.one
+  flex: 1
+
+.two
+  flex: 2
+
+.three
+  flex: 3
+
+.four
+  flex: 4
+
+/***********RESERVE******************
+
+.containerReserve
+  display: flex !important
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-around
+  .contentFormReserves
+    flex: 1
+    max-width: 365px
+    .dataClient, .dataCard
+      margin: 1em 0
+  .contentReserveSingleCar
+    flex: 1
+    .formSingleCarReserve
+      margin-top: 1em
+      display: flex
+      .containerPlaceReserve
+        display: flex
+        flex-direction: row
+        flex-basis: 85%
+        .placeRentReserve, .placeReturnReserve
+          display: flex
+          flex: 1.1
+          padding: 1em 2em 0.5em 1em
+          flex-direction: column
+          border: 1px solid #ccc
+          h3
+            margin-bottom: 6px
+          .textUbication
+            color: #6d6d6d !important
+            margin-bottom: 2em
+            line-height: 1.2em
+          span
+            font-size: 12px
+            color: #b2b1b1
+            i
+              padding-right: 5px
+              font-size: 1.5em
+        .selectedRateReserve
+          display: flex
+          flex: 1
+          padding: 1em 2em 0.5em 1em
+          flex-direction: column
+          .textUbication
+            color: #6d6d6d !important
+            margin-bottom: 2em
+            line-height: 1.2em
+            margin-bottom: 5px
+            padding-right: 19px
+          .listText
+            margin-top: 0
+            font-size: 12px
+        .backReserve
+          background: #ebebeb
+
+
+.dividerFormReserve
+  width: 80% !important
+  margin: 0px auto !important
+  border-top: 2px solid #70a0ec !important
+  border-bottom: 1px solid #70a0ec !important
+
+.formDataClient
+  border: 1px solid #ccc
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: .8em 0
+  .Select
+    width: 70% !important
+    border: 1px solid #dedede
+    position: inherit !important
+  .Select-menu-outer
+    position: inherit !important
+
+.spanFormData
+  width: 70%
+  display: flex
+  justify-content: flex-start
+
+.formDataClient .ui
+  &.input
+    position: inherit
+    margin-bottom: 10px
+    width: 70%
+
+.formDataCard
+  border: 1px solid #ccc
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: .8em 0
+
+.spanDataCard
+  width: 70%
+  display: flex
+  justify-content: flex-start
+  color: #ccc
+  margin-top: -10px
+  margin-bottom: 10px
+  font-size: 11px
+
+.formDataCard
+  .ui.input
+    position: inherit
+    margin-bottom: 10px
+    width: 70%
+  .sizeInput
+    width: 30% !important
+
+.input-group-addon
+  width: 1%
+  vertical-align: middle
+  padding: .5em 1em
+  font-size: 1em
+  font-weight: normal
+  line-height: 1
+  color: #555
+  text-align: center
+  background-color: #87b672
+  border: 1px solid #ccc
+  i
+    text-align: center
+    width: 1.1em
+    margin-left: -0.5em
+    color: #FFF
+    font-weight: 500
+    font-size: 1.3em
+
+.select
+  // border: 1px solid #ccc
+  height: 35px
+  width: 70%
+  overflow: hidden
+  display: flex
+  // justify-content: space-around
+  flex-direction: row
+  .inputFormSize
+    height: 100%
+    width: 100% !important
+    border: none !important
+
+.selectCity
+  height: 2.47em
+  width: 100%
+  border: none
+  box-shadow: none
+  background-color: transparent
+
+
+/*form-single car
+
+.containerReserve
+  .divSearchAvailable
+    order: 1
+    flex-basis: 100%
+  .contentReserveSingleCar
+    order: 2
+    flex: 1
+  .contentFormReserves
+    order: 3
+    flex: 4
+
+.containerQuotation,
+  display: flex !important
+  flex-wrap: wrap
+  .divSearchAvailable
+    order: 1
+    flex-basis: 100%
+  .contentSingleCar
+    order: 2
+    flex: 1
+  .formSingleCar
+    order: 3
+    flex: 4
+.contentSingleCar
+  flex: 2
+  /*height: 624px
+
+
+.formSingleCar
+  flex: 1
+  max-width: 365px
+
+.newSearch>div:first-child
+  width: 100%
+  height: 45px
+  padding-top: 1em
+
+.newSearch
+  display: flex
+  justify-content: center
+  flex-direction: column
+  background: #2b5bac
+  color: #fff
+  font-size: 16px
+  text-align: center
+  min-height: 45px
+  align-items: center
+  i
+    margin-left: 10px
+    color: #c2c9e5
+    font-size: 1em
+
+.divSearchAvailable
+  height: 40px
+  z-index: 102
+.divSearchAvailable .newSearch
+  width: 365px
+  position: absolute
+  z-index: 102
+
+// SLIDE
+.containerFormSearch
+  height: 540px
+  .is-open
+    z-index: 105
+.containerFormSearch .slick-list
+  height: 540px
+
+.containerForm
+  position: relative
+  bottom: 520px
+
+.ui .container .slider
+  height: 540px
+
+.slider #inputSearchDisplay
+  position: relative
+
+.slideImg img
+  width: 100%
+  height: 540px
+
+// ENDSLIDE
+.divSearch, .divSearchAvailable
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  .form
+    background: transparent
+  #inputSearchDisplay
+    height: 0
+    overflow: hidden
+    transition: 0.2s
+  .input-group-addon-standar
+    width: 40px
+    vertical-align: middle
+    padding: .5em 1em
+    font-size: 1em
+    font-weight: normal
+    line-height: 1
+    color: #555
+    text-align: center
+    background-color: #87b672
+    border: none
+    i
+      text-align: center
+      width: 1.4em
+      margin-left: -0.5em
+      color: #FFF
+      font-weight: 500
+      font-size: 1.5em
+
+
+.containerPlace
+  display: flex
+  flex-direction: column
+
+.placeRent, .placeReturn
+  display: flex
+  padding: 2em 1em 1.5em 3.2em
+  flex-direction: column
+  border: 1px solid #ccc
+
+.placeRent h3, .placeReturn h3
+  margin-bottom: 6px
+
+.placeRent, .placeReturn
+  span i
+    padding-right: 5px
+    font-size: 1.5em
+  div > span
+    font-size: 12px
+    margin-right: 10px
+    color: #b2b1b1
+
+.placeRent div, .placeReturn div
+  margin-left: 17px
+
+.selectedRate
+  display: flex
+  padding: 2em 1em 0.5em 3.2em
+  flex-direction: column
+  background: #ebebeb
+  border-top: 1px solid #ccc
+  span
+    color: #909090
+    font-weight: 15px
+    i
+      padding-right: 5px
+      font-size: 1.6em
+
+.formQuotation
+  margin-top: 15px
+  display: flex
+  padding: 1em 1em 2em 3.2em
+  flex-direction: column
+  background: #ebebeb
+  .ui
+    &.small.input
+      margin-top: -10px
+      width: 90%
+    &.button
+      margin-top: 15px
+      max-width: 90%
+      margin-right: 0 !important
+
+.cri-seguro:before
+  max-height: 18px
+
+.textUbication
+  color: #6d6d6d
+  max-height: 18px
+
+.listText
+  margin-top: 10px
+  margin-left: -10px
+  color: #909090
+  list-style: none
+  li:before
+    content: '\2014\a0'
+    font-size: 10px
+
+/***********Single car css****************
+
+.creatur-row
+  display: flex
+
+.ct-price
+  font-family: 'Roboto', sans-serif
+  font-size: 1.8em
+  font-weight: 500
+  color: #2b5bac
+  word-spacing: -0.2em
+
+.ct-usd
+  font-family: 'Roboto', sans-serif
+  color: #6d6d6d
+  font-size: 1.3em
+  font-weight: 400
+
+.icon-km
+  color: #2b5bac
+
+.contentSingleCar
+  display: flex
+  flex-direction: column
+
+.singleCarContainer
+  border: 1px solid #E9F0F4
+  display: flex
+  flex-flow: column
+  margin: 2em
+  flex: 3
+  max-height: 252px
+  width: 572px
+
+.singleCarContainer-carImage > img
+  border: 1px solid #E9F0F4
+  width: 215px
+  height: 140px
+  margin: 1em 1em 1em 0
+
+.singleCarContainer
+  .diasRenta
+    font-family: 'Monserrat', sans-serif
+    font-size: .8em
+    color: #363636
+    font-weight: 700
+  .rentDesc
+    font-family: 'Roboto', sans-serif
+    font-size: .8em
+    color: #989898
+  .km
+    font-family: 'Roboto', sans-serif
+    font-size: .7em
+    color: #989898
+  .centralData
+    margin: 2em 0
+    width: 225px
+
+.singleCarContainer-title
+  max-height: 37px
+  flex: 1
+  h2
+    display: inline-block
+    padding-left: .5em
+    font-family: 'Roboto', sans-serif
+    font-weight: 400
+  img
+    float: right
+
+.singleCarContainer-data
+  flex: 3
+  margin: 1.2em 0 1.2em 1.2em
+  padding-left: 1em
+
+.ct-row
+  display: flex
+
+.singleCarContainer-carImage
+  flex: 1
+
+.singleCarContainer-title
+  border-bottom: 1px solid #E9F0F4
+
+.contentIconSingleCar
+  display: flex
+  justify-content: space-around
+  width: 225px
+  flex-wrap: wrap
+  word-spacing: 1em
+  i
+    font-size: 1.3em
+    &.icon
+      width: -20px
+  .letterCarFeatures
+    font-size: 12px !important
+    font-weight: 600
+    font-family: 'Montserrat'
+    word-spacing: 1em
+    padding-left: 5px
+
+.cri-kilometraje:before, .cri-paloma:before, .cri-puerta:before, .cri-seguro:before, .cri-transmision:before
+  display: inline
+
+.buttonCotizar
+  z-index: 100
+.singleCarContainer .buttonCotizar
+  margin: 0
+
+/*single car css
+
+/*CARDS
+
+.backgroundCar
+  background: url('https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/comillas.png') no-repeat !important
+
+.ui
+  &.cards > .extra, &.card > .content, &.cards > .card > .extra
+    border-top: none !important
+.spaceComillas
+  width: 250px !important
+  margin-left: 40px
+  margin-right: -40px
+
+/* COMMENTS
+
+.containerComments
+  h2
+    margin-top: 1em !important
+    margin-bottom: 0 !important
+    font-stretch: condensed
+  span
+    color: #b2b2b2 !important
+    font-size: 13px
+    font-style: italic
+  .description
+    font-size: 12px
+    color: #b2b2b2 !important
+  a
+    position: relative
+    top: 0.6em
+    margin-left: 0
+    color: #000 !important
+  p
+    position: relative
+    top: 0.8em
+    margin-left: 65px !important
+    color: #000 !important
+    font-size: 12px
+
+.ui.mini.image
+  width: 55px !important
+/*FOOTER
+
+footer
+  background: #2b5bac
+  margin-top: 20px
+  > .container
+    padding-top: 27px
+
+.containerComments
+  padding-top: 27px
+
+.menuFooter a
+  margin-right: 10%
+  color: #fff !important
+  position: relative
+  left: 10px
+  border-bottom: 1px solid #fff
+  padding-bottom: .6em
+
+.trianguloDer
+  content: ' '
+  width: 0
+  height: 0
+  border-left: 5px solid #87b672
+  border-top: 5px solid transparent
+  border-bottom: 5px solid transparent
+  position: absolute
+  top: 4px
+
+.dividerGreen
+  border-top: 0px solid #87b672 !important
+  border-bottom: 1px solid #87b672 !important
+  margin: 0 0 5px 0 !important
+
+.aviso
+  font-size: 10px
+  color: white
+  margin-right: 10px
+  position: relative
+  bottom: 10px
+
+.gridPaddingTop
+  padding-top: 0px !important
+
+.footerPrivacidad
+  text-align: right !important
+  padding-top: 5px !important
+  a
+    color: white !important
+    font-size: 10px !important
+
+
+
+/********* Main Available ************
+
+.contentCardCar
+  width: 220px !important
+  padding-right: 0px !important
+  /*height: 218.38px !important
+
+#rowAvailable
+  margin-left: 3em
+  .column
+    padding-bottom: 14px
+
+.titleCar
+  border-left: 4px solid #87b672 !important
+  padding-left: 10px !important
+  font-style: italic
+  padding-top: 15px !important
+  font-weight: 500 !important
+
+.imgMarca
+  width: 50px
+  height: 25px
+
+.imgCar
+  width: 85.88px
+  // width: 100px
+  /*height: 81.86px
+  /*width: 100%
+  margin: 0 !important
+
+.contentReserve
+  padding-bottom: 0 !important
+
+.contentCarPrice
+  display: flex
+  width: 100%
+  flex-direction: row
+  /*flex-wrap: nowrap
+  flex-wrap: wrap
+  justify-content: space-around
+
+.contentImgCar
+  flex: 1
+  align-self: flex-end
+
+.contentPrice
+  flex: 1
+  h2
+    margin: 0 !important
+    line-height: 1em !important
+  h4
+    margin: 0 0 20px 0 !important
+    color: #b2b2b2 !important
+    text-align: right
+
+.checkboxAvail
+  display: flex !important
+  justify-content: flex-end
+  label
+    font-size: 10px !important
+    color: #2b5bac !important
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important
+    &:before
+      background: rgba(255, 255, 255, 0) !important
+      border: .1em solid #87b672 !important
+      width: 14px !important
+      height: 14px !important
+    &:after
+      color: #87b672 !important
+      width: 20px !important
+      font-size: 14px !important
+      top: -2px !important
+
+.contentIcon
+  display: flex
+  margin-top: 20px
+  justify-content: space-around
+  width: 175px
+  flex-wrap: wrap
+  i:nth-child(-n+3)
+    font-size: 17px
+  i
+    font-size: 15px
+    position: relative
+    right: 3%
+    &.icon
+      width: -20px
+  .letterCarFeatures
+    font-size: 12px !important
+    font-weight: 600
+    font-family: 'Montserrat'
+    word-spacing: 1em
+    padding-left: 5px
+
+.cardCar
+  border: 1px solid #b2b2b2 inset !important
+  width: 206px !important
+  height: 218.38px !important
+
+.buttonCotizar span
+  border-bottom: 1px solid #fff
+  padding-bottom: .2em
+
+.cardCar >
+  div div
+    &:first-child
+      padding-bottom: 0px !important
+    &:last-child
+      padding-bottom: 0px !important
+      padding-top: 0px !important
+      > div span
+        padding-right: 11px !important
+  .grid
+    margin: 0 !important
+
+.letterCarFeatures
+  font-size: 10px
+
+/**********Single car reserve ****************/
+
+.icon-km
+  color: #2b5bac
+
+.contentReserveSingleCar
+  display: flex
+  flex-direction: column
+  .singleCarContainer
+    margin: 0 !important
+    width: 85%
+
+.singleCarReserveContainer
+  border: 1px solid #E9F0F4
+  display: flex
+  flex-flow: column
+  flex: 2
+  width: 78%
+  max-height: 255px
+
+.singleCarReserveContainer-carImage>img
+  border: 1px solid #E9F0F4
+  width: 215px
+  height: 140px
+  margin: 1em 1em 1em 0
+
+
+.singleCarReserveContainer .diasRenta
+  font-family: 'Monserrat', sans-serif
+  font-size: .8em
+  color:#363636
+  font-weight: 700
+
+.singleCarReserveContainer .rentDesc
+  font-family: 'Roboto', sans-serif
+  font-size: .8em
+  color:#989898
+
+
+.singleCarReserveContainer .km
+  font-family: 'Roboto', sans-serif
+  font-size: .7em
+
+  color:#989898
+
+.singleCarReserveContainer .centralData
+  margin: 2em 0
+  width: 225px
+
+.singleCarReserveContainer-title
+  height: 37px
+  flex: 1
+
+.singleCarReserveContainer-title h2
+  display: inline-block
+  padding-left: .5em
+  font-family: 'Roboto', sans-serif
+  font-weight: 400
+
+.singleCarReserveContainer-title img
+  float: right
+
+.singleCarReserveContainer-data
+  flex: 3
+  margin: 1.2em 0 1.2em 1.2em
+  padding-left: 1em
+
+.singleCarReserveContainer-carImage
+  flex: 1
+
+.singleCarReserveContainer-title
+  border-bottom: 1px solid #E9F0F4
+
+.contentIconSingleCarReserve
+  display: flex
+  justify-content: space-around
+  width: 225px
+  flex-wrap: wrap
+  word-spacing: 1em
+
+.contentIconSingleCarReserve i
+  font-size: 1.3em
+
+.contentIconSingleCarReserve i.icon
+  width: -20px
+
+.contentIconSingleCarReserve .letterCarFeatures
+  font-size: 12px !important
+  font-weight: 600
+  font-family: 'Montserrat'
+  word-spacing: 1em
+  padding-left: 5px
+
+.cri-kilometraje:before, .cri-paloma:before, .cri-puerta:before, .cri-seguro:before, .cri-transmision:before
+  display: inline
+
+.singleCarReserveContainer .buttonCotizar
+  margin: 0
+
+
+.divSpin
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  height: 505px
+  width: 366px
+  position: absolute
+  z-index: 100
+  top: -70px
+  i
+    font-size: 13em
+    color: #87b672
+    text-shadow: 2px 2px 2px #2b5bad, 2px 2px 12px white
+    text-shadow:
+    //2b5bad
+    //87b672
+
+
+
+
+// @MEDIAS
+
+
+@media only screen and (max-width: 1199px) and (min-width: 320px)
+  .containerPlaceReserve
+    flex-basis: 95% !important
+  .contentReserveSingleCar
+    .singleCarContainer
+      margin: 0 !important
+      width: 95% !important
+  .containerPlaceReserve, .contentReserveSingleCar
+    flex-direction: column
+
+@media only screen and (max-width: 1024px) and (min-width: 320px)
+
+  .content
+    margin: 0 auto
+    width: 100%
+
+
+
+@media only screen and (max-width: 767px) and (min-width: 500px)
+  //Nav
+  .form
+    width: 100% !important
+
+@media only screen and (max-width: 600px) and (min-width: 320px)
+  .topDatePicker
+    flex-direction: column !important
+    align-items: center !important
+
+/***********QUOTATION******************
+
+
+@media only screen and (max-width: 560px) and (min-width: 320px)
+  .singleCarContainer .centralData
+    margin: 1em 0 1em 0 !important
+  .singleCarContainer-data
+    /*max-width: 50%
+  .singleCarContainer-carImage > img
+    border: none !important
+  .singleCarContainer
+    height: 100% !important
+  .singleCarContainer-title
+    /*max-width: 50%
+  .creatur-row
+    flex-direction: column-reverse
+
+
+@media only screen and (max-width: 991px) and (min-width: 320px)
+  .menuFooter
+    display: flex !important
+    flex-direction: column
+    a
+      border-bottom: none
+  .trianguloDer
+    position: relative
+    top: 14px
+
+  .ui .form
+    width: 100% !important
+
+// Medias Generales
+
+// Large Monitor
+// @media only screen and (min-width: 1200px)
+
+// Small Monitor
+@media only screen and (min-width: 992px) and (max-width: 1199px)
+  .containerQuotation
+    .divSearchAvailable
+      order: 1
+    .divSearchAvailable .newSearch
+      width: 365px !important
+
+  .singleCarReserveContainer
+    width: 98.3%
+  .containerPlaceReserve
+    margin-right: 10px
+
+
+  .divSearchAvailable
+    width: 100%
+    .newSearch
+      width: 365px !important
+      .fadeSearchOpen
+        height: 450px
+    .Select
+      width: 76.3%
+      left: 15.4%
+// Tablets
+@media only screen and (min-width: 768px) and (max-width: 991px)
+  .containerQuotation
+    .divSearchAvailable
+      order: 1
+
+  .Select-menu-outer
+    position: absolute
+    width: 82.8%
+    top: 80%
+
+  .ui.container
+    margin-right: 0 !important
+    margin-left: 0 !important
+    width: 100% !important
+
+  .ui.container.containerForm
+    margin-left: auto !important
+    margin-right: auto !important
+    width: 723px !important
+
+  .divAvailable
+    margin-left: 3em
+    margin-right: auto
+
+  .divTitleCar
+    padding-top: 25px
+
+  .contentReserveSingleCar
+    height: 718px
+
+  .contentFormReserves
+    margin-top: 15px !important
+    width: 100%
+    max-width: none !important
+  .select
+    width: 70% !important
+
+  .containerForm
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+
+  .divSearch
+    .gridAutocomplete
+      padding-left: 0 !important
+      padding-right: 0  !important
+      position: relative
+      right: 1.3%
+
+  .inner_toggle
+    display: none
+
+  .selectFormSearch
+    width: 90%
+    .Select
+      width: 82%
+      left: 10.4%
+
+
+  .selectFormSearchWhen
+    justify-content: flex-start
+    width: 96%
+  .divWhen
+    width: 76%
+  .selectDivHour .selectHour
+    width: 25% !important
+    left: 63% !important
+  .react-datepicker__input-container
+    width: 100%
+
+  .divSearchAvailable
+    width: 100%
+    .newSearch
+      width: 100% !important
+      z-index: 101
+      .fadeSearchOpen
+        height: 450px
+      .gridAutocomplete
+        justify-content: flex-start
+        .selectFormSearch
+          .input-group-addon-standar
+            position: inherit
+          .Select
+            position: inherit
+            width: 92%
+
+
+
+  .contentReserveSingleCar
+    margin-left: 1em
+    margin-right: 1em
+    .singleCarContainer
+      // width: 100% !important
+      margin: 0 0 0 0 !important
+      max-height: none
+  .contentFormReserves
+    margin-right: 1em
+    margin-top: 0 !important
+    .formSingleCar
+      max-width: 100% !important
+    .contentSingleCar
+      padding-right: .5em
+      padding-top: 1em
+    .singleCarContainer-title
+      max-height: 40px
+    .singleCarContainer-data
+      margin: 0 0 1.2em 0 !important
+      padding-left: .8em !important
+    .singleCarContainer-carImage > img
+      width: 190px !important
+      height: 120px !important
+    .price-row
+      margin-top: 1.5em
+    .km, .icon-km
+      visibility: hidden
+
+  @keyframes fadeSearchOpen
+      0%
+        height: 0px
+
+      100%
+        height: 450px
+
+  .fadeSearchOpen
+    height: 450px !important
+    animation: 500ms fadeSearchOpen
+    h1
+      display: none
+  @keyframes fadeSearchClose
+      0%
+        height: 450px
+
+      100%
+        height: 0px
+
+  .fadeSearchClose
+    height: 0px
+    animation: 500ms fadeSearchClose
+    h1
+      display: none
+
+
+
+// Mobile
+@media only screen and (max-width: 767px)
+  .ui.container
+    margin-right: 0 !important
+
+  .ui.fluid.container.slider
+    width: 100% !important
+    margin-left: 0 !important
+    margin-right: 0 !important
+  .ui.fluid.container.containerFormSearch
+    width: 100% !important
+    margin-left: 0 !important
+    margin-right: 0 !important
+    .ui.container
+      margin-left: 0 !important
+      margin-right: 0 !important
+
+
+  .select
+    width: 70% !important
+  .ui.container.containerReserve
+    flex-direction: column !important
+
+  .contentFormReserves
+    width: 100%
+    max-width: none !important
+    .formReserveRight
+      margin-left: 1em
+      margin-right: 1em
+
+
+  .contentReserveSingleCar
+    margin-right: 1em
+
+  .inner_toggle
+    display: none
+
+  .slick-slider
+    display: none
+
+  .dividerForm
+    width: 100%
+
+  .containerForm
+    bottom: 0
+
+  .form
+    background-color: #2b5bac
+
+  .gridAutocomplete
+    justify-content: space-around
+    left: 30px
+    position: relative
+    width: 95.5%
+    .selectFormSearch
+      width: 95%
+      .Select
+        position: inherit
+        width: 80%
+  .Select-menu-outer
+    position: absolute
+    width: 75.8%
+    top: 80%
+
+
+  .divWhen
+    width: 76%
+  .selectDivHour .selectHour
+    width: 25% !important
+    left: 63% !important
+  .react-datepicker__input-container
+    width: 100%
+  .divButtonGreeen
+    padding: 0 !important
+    .buttonGreen
+      width: 100%
+
+  .ui.container.containerComments
+    margin-left: 3em !important
+
+  .divSearchAvailable
+    margin-bottom: 50px
+  .divSearch
+    .newSearch
+      position: relative !important
+  .divSearchAvailable, .divSearch
+    width: 100%
+    .input-group-addon-standar
+      border: none
+    .newSearch
+      width: 100% !important
+      position: absolute
+      background-color: #2b5bac
+      z-index: 101
+      .fadeSearchOpen
+        height: 400px
+    .selectFormSearchWhen
+      .input-group-addon-standar
+        i
+          width: 1.6em
+
+  .contentAvailable
+    #rowAvailable
+      margin-left: 1.4em
+      margin-right: auto
+      .contentCardCar
+        .ui.card.cardCar
+          border-radius: 0 !important
+        .buttonCotizar
+          border-radius: 0 !important
+
+  .containerReserve
+    .singleCarContainer
+      width: 100%
+
+  .divTitleCar
+    border: 1px solid #ccc
+    height: 50px
+    margin-right: 15px
+    margin-left: 5px
+    h3
+      margin-left: 5px !important
+      margin-top: 5px !important
+      padding: 8px !important
+
+  @keyframes fadeSearchOpen
+      0%
+        height: 0px
+
+      100%
+        height: 400px
+
+  .fadeSearchOpen
+    height: 400px !important
+    animation: 500ms fadeSearchOpen
+    h1
+      display: none
+  @keyframes fadeSearchClose
+      0%
+        height: 400px
+
+      100%
+        height: 0px
+
+  .fadeSearchClose
+    height: 0px
+    animation: 500ms fadeSearchClose
+    h1
+      display: none
+
+  .contentReserveSingleCar
+    margin-left: 1em
+    margin-right: 1em
+    .singleCarContainer
+      width: 100% !important
+      margin: 0 0 0 0 !important
+      max-height: none
+  .contentFormReserves
+    margin-right: 1em
+    margin-top: 0 !important
+
+  .price-row
+    margin-bottom: .6em
+    order: 1
+    flex-basis: 100%
+    .km
+      flex-basis: 11%
+    .icon-km
+      flex-basis: 2%
+    .three
+      flex-grow: 6
+
+@media only screen and (max-width: 991px)
+  .ui.container.containerQuotation
+    flex-direction: column
+    .divSearchAvailable
+      order: 1
+    .contentSingleCar
+      align-items: center
+      order: 2
+      margin-right: 1em
+    .formSingleCar
+      order: 3
+      margin: 0 auto
+
+  .containerReserve
+    flex-direction: column
+@media only screen and (max-width: 560px)
+  .containerQuotation
+    flex-wrap: column
+    .formSingleCar
+      order: 3
+    .contentSingleCar
+      order: 2
+      .singleCarContainer
+        margin: 0
+        width: 100
+        max-height: none
+        .singleCarContainer-title
+          display: flex
+          justify-content: space-between
+    .formSingleCar
+      max-width: none
+      margin-right: 1em
+
+  .contentReserveSingleCar, .containerQuotation
+    margin-left: 1em
+    margin-right: 1em
+    .singleCarContainer-title
+      display: flex
+      flex-wrap: wrap
+      max-height: none
+      h2
+        margin-bottom: 0
+      img
+        height: 36px
+        margin-bottom: .7em
+    .singleCarContainer
+      width: 100% !important
+      .creatur-row
+        .singleCarContainer-carImage
+          justify-content: center
+          display: flex
+          order: 1
+        .singleCarContainer-data
+          order: 2
+          display: flex
+          flex-flow: wrap
+          margin: 1em 1em .8em 1em
+          padding-left: 0
+          .price-row
+            margin-bottom: .6em
+            order: 1
+            flex-basis: 100%
+            .km
+              flex-grow: 1
+            .icon-km
+              flex-grow: 1.5
+            .three
+              flex-grow: 9
+          .centralData
+            margin-top: 0 !important
+            order: 2
+            flex-basis: 55%
+          .contentIconSingleCar
+            order: 3
+            align-self: flex-end
+            flex-basis: 100%
+            justify-content: space-around
+
+@media only screen and (max-width: 500px)
+  .contentAvailable
+    #rowAvailable
+      margin-left: 1.4em
+      margin-right: 2.2em
+      flex-direction: column
+      .contentCardCar
+        width: 100% !important
+        .ui.card.cardCar
+          width: 100% !important
+          border-radius: 0 !important
+          height: 250px !important
+          .contentReserve
+            .contentCarPrice
+              .contentImgCar
+                flex: 5
+                .imgCar
+                  width: 220px
+            .contentIcon
+              margin-top: 5px
+              width: 100%
+
+  .containerQuotation
+    .formSingleCar
+      margin-right: 1em !important
+
+  nav
+    .aLogo
+      img
+       width: 70%
+       height: 80%
