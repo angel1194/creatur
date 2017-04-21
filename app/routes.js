@@ -38,6 +38,86 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/available',
+      name: 'available',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/RentCar/Available/reducer'),
+          import('containers/RentCar/Available/sagas'),
+          import('containers/RentCar/Available'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('available', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/quotation',
+      name: 'quotation',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/RentCar/Quotation/reducer'),
+          import('containers/RentCar/Quotation/sagas'),
+          import('containers/RentCar/Quotation'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('quotation', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/reserve/:carId',
+      name: 'reserve',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/RentCar/Reserve/reducer'),
+          import('containers/RentCar/Reserve/sagas'),
+          import('containers/RentCar/Reserve'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('reserve', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/reserve-list',
+      name: 'reserveList',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/RentCar/ReserveList/reducer'),
+          import('containers/RentCar/ReserveList/sagas'),
+          import('containers/RentCar/ReserveList'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('reserveList', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
