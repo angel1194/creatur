@@ -18,7 +18,7 @@ import Title from './StyledRowH/Title';
 import ImgD from './defaultHotel.jpg';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import TripAdvisor from '../../../components/ReserHotel/TripAdvisor';
-
+import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 function generateRowHotel(num) {
 
   let ArrElm = []
@@ -30,9 +30,12 @@ function generateRowHotel(num) {
           <Title>Hotel Maldivas Luxury</Title>
           <StarRating />
           <TripAdvisor />
+          <LocationLabel />
         </Column>
       </Row>
-      <Row>Others</Row>
+      <Row>Others
+        
+      </Row>
 
     </Wrapper>);
   }

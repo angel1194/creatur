@@ -7,13 +7,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
+
+import Text from './StyledLL/Text';
+
 
 function LocationLabel() {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+     <Text>CD. México</Text>
+    
     </div>
   );
 }

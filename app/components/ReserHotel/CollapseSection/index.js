@@ -15,7 +15,7 @@ import CheckBoxCS from './StyledCS/CheckBoxCS';
 import Container from './StyledCS/Container';
 import SubTitle from './StyledCS/SubTitle';
 import H3 from '../../../components/ReserHotel/H3';
-import '../../../fonts/FontAwesome.otf';
+
 import styled, {css} from 'styled-components';
 
 
