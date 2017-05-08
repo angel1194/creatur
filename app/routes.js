@@ -25,92 +25,112 @@ export default function createRoutes(store) {
           import('containers/RentCar/HomePage/reducer'),
           import('containers/RentCar/HomePage/sagas'),
           import('containers/RentCar/HomePage'),
-        ]);
+  ]);
 
-        const renderRoute = loadModule(cb);
+  const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('homePage', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
+  importModules.then(([reducer, sagas, component]) => {
+    injectReducer('homePage', reducer.default);
+    injectSagas(sagas.default);
+    renderRoute(component);
+  });
 
-        importModules.catch(errorLoading);
-      },
+  importModules.catch(errorLoading);
+},
     }, {
-      path: '/available',
-      name: 'available',
+  path: '/available',
+    name: 'available',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
+    const importModules = Promise.all([
           import('containers/RentCar/Available/reducer'),
           import('containers/RentCar/Available/sagas'),
           import('containers/RentCar/Available'),
         ]);
 
-        const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('available', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
+    importModules.then(([reducer, sagas, component]) => {
+      injectReducer('available', reducer.default);
+      injectSagas(sagas.default);
+      renderRoute(component);
+    });
 
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/quotation',
-      name: 'quotation',
+    importModules.catch(errorLoading);
+  },
+}, {
+  path: '/quotation',
+    name: 'quotation',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
+    const importModules = Promise.all([
           import('containers/RentCar/Quotation/reducer'),
           import('containers/RentCar/Quotation/sagas'),
           import('containers/RentCar/Quotation'),
         ]);
 
-        const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('quotation', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
+    importModules.then(([reducer, sagas, component]) => {
+      injectReducer('quotation', reducer.default);
+      injectSagas(sagas.default);
+      renderRoute(component);
+    });
 
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/reserve/:carId',
-      name: 'reserve',
+    importModules.catch(errorLoading);
+  },
+}, {
+  path: '/reserve/:carId',
+    name: 'reserve',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
+    const importModules = Promise.all([
           import('containers/RentCar/Reserve/reducer'),
           import('containers/RentCar/Reserve/sagas'),
           import('containers/RentCar/Reserve'),
         ]);
 
-        const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('reserve', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
+    importModules.then(([reducer, sagas, component]) => {
+      injectReducer('reserve', reducer.default);
+      injectSagas(sagas.default);
+      renderRoute(component);
+    });
 
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/reserve-list',
-      name: 'reserveList',
+    importModules.catch(errorLoading);
+  },
+}, {
+  path: '/reserve-list',
+    name: 'reserveList',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
+    const importModules = Promise.all([
           import('containers/RentCar/ReserveList/reducer'),
           import('containers/RentCar/ReserveList/sagas'),
           import('containers/RentCar/ReserveList'),
         ]);
 
+    const renderRoute = loadModule(cb);
+
+    importModules.then(([reducer, sagas, component]) => {
+      injectReducer('reserveList', reducer.default);
+      injectSagas(sagas.default);
+      renderRoute(component);
+    });
+
+    importModules.catch(errorLoading);
+  },
+},  {
+      path: '/hotel',
+      name: 'hotelHome',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReserHotel/HotelHome/reducer'),
+          import('containers/ReserHotel/HotelHome/sagas'),
+          import('containers/ReserHotel/HotelHome'),
+        ]);
+
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('reserveList', reducer.default);
+          injectReducer('hotelHome', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });
@@ -118,13 +138,34 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '*',
-      name: 'notfound',
+      path: '/results',
+      name: 'hotelResult',
       getComponent(nextState, cb) {
-        import('containers/NotFoundPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+        const importModules = Promise.all([
+          import('containers/ReserHotel/HotelResult/reducer'),
+          import('containers/ReserHotel/HotelResult/sagas'),
+          import('containers/ReserHotel/HotelResult'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('hotelResult', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     },
+{
+  path: '*',
+    name: 'notfound',
+      getComponent(nextState, cb) {
+        import('containers/NotFoundPage')
+      .then(loadModule(cb))
+      .catch(errorLoading);
+  },
+},
   ];
 }
