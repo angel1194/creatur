@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Form, Grid, Input, Button, Header, Checkbox, Divider} from 'semantic-ui-react'
 import FormAutocomplete from '../../../components/FormAutocomplete'
+import { Link } from 'react-router'
 // const Body = styled.div`
 //   background: black;
 //   width: 400px;
@@ -80,7 +81,7 @@ function FormSearchHotel(props) {
               <a href="#"><i className="fa fa-plus-circle" aria-hidden="true"></i>Anadir otra habitacion</a>
             </div>
             <Grid.Row centered className='divButtonGreeen'>
-              <Button className="buttonGreen" onClick={props.loadingTrue}>BUSCAR EL MEJOR PRECIO!</Button>
+              <Button className="buttonGreen" onClick={props.loadingTrue}><Link to='/results'>BUSCAR EL MEJOR PRECIO!</Link></Button>
             </Grid.Row>
         </div>
         </Grid>
