@@ -1,10 +1,10 @@
 import { PropTypes } from 'react';
 import styled from 'styled-components';
-import '../../../../fonts/RobotoRegular.ttf';
+
 
 const Currency = styled.p`
 
-     font-family: Roboto Regular;
+     font-family: Roboto;
      font-size: 17px;
      color: #5e5e5e;
      margin-left:5px;
@@ -14,7 +14,7 @@ const Currency = styled.p`
 
 const Total = styled.p`
 
-     font-family: Roboto Regular;
+     font-family: Roboto;
      font-size: 20px;
      color: #5e5e5e;
      margin-left:5px;

@@ -6,7 +6,7 @@
 
 
 import styled from 'styled-components';
-import '../../../fonts/RobotoRegular.ttf';
+
 
 const FlexItem = styled.li`
 
@@ -17,7 +17,7 @@ const FlexItem = styled.li`
   margin: 0;
   color: #6d6d6d;
   text-align: center;
-  font-family: "Roboto Regular";
+  font-family: "Roboto";
   font-size: 20px;
 `; 
 

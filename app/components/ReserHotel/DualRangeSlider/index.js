@@ -21,14 +21,14 @@ import InputStyled from './StyledsRange/InputStyled';
 
 import FlexContainer from '../FlexContainer';
 import FlexItem from '../FlexItem';
-import '../../../fonts/RobotoRegular.ttf';
+
 
 const Lh4 = styled.p`
 
   text-align: left;
   margin : 0;
   color: #6d6d6d;
-  font-family: Roboto Regular;
+  font-family: Roboto;
 `;
 
 const LhC = styled.p`
@@ -36,14 +36,14 @@ const LhC = styled.p`
   text-align: center;
   margin : 0;
   color: #6d6d6d;
-  font-family: Roboto Regular;
+  font-family: Roboto;
 `;
 
 const Rh4 = styled.p`
   color: #6d6d6d;
   text-align: right;
   margin : 0;
-   font-family: Roboto Regular;
+   font-family: Roboto;
 `;
 
 const Mlh4 = styled.p`
@@ -53,7 +53,7 @@ const Mlh4 = styled.p`
   margin-top: 0;
   margin-bottom : 0;
   color: #6d6d6d;
- font-family: Roboto Regular;
+ font-family: Roboto;
 `;
 
 const Mrh4 = styled.p`
@@ -63,7 +63,7 @@ const Mrh4 = styled.p`
   margin-top: 0;
   margin-bottom : 0;
   color: #6d6d6d;
- font-family: Roboto Regular;
+ font-family: Roboto;
 
 `;
 

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
-import '../../../../fonts/MontserratRegular.otf';
 
 const ButtonStyled = styled.button`
   width: 155px;
@@ -13,7 +12,7 @@ const ButtonStyled = styled.button`
 `;
 
 const Title = styled.p`
-     font-family: Montserrat Regular;
+     font-family: Montserrat;
      font-size: 18px;
      margin-left: 15%; 
 `;

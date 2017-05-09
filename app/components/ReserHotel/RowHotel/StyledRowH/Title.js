@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import '../../../../fonts/RobotoRegular.ttf';
+
 
 
 const Title = styled.p`
 
-     font-family: Roboto Regular;
+     font-family: Roboto;
      font-size: 17px;
      color: #2b5bac;
      margin-top: 10px;
