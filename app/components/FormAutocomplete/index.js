@@ -57,52 +57,75 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
     }
   }
   render() {
+
     const AsyncComponent = Select.Async;
-    return (
+    if (this.props.placeholder){
+        return (
           <Grid className='gridAutocomplete'>
             <Grid.Row centered>
               <div className="selectFormSearch">
                 <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
                 <AsyncComponent
-        					value={this.state.startLocation}
-        					onChange={this.onChange}
-        					valueKey="id" labelKey="City"
-        					loadOptions={this.getCity}
+                  value={this.state.startLocation}
+                  onChange={this.onChange}
+                  valueKey="id" labelKey="City"
+                  loadOptions={this.getCity}
                   className=""
                   clearable = {true}
-                  placeholder = 'Donde recogera el auto?'
-                  />
-
-              </div>
-              <span id='spanPickUpLocation' className='out'>Selecciona ubicacion</span>
-            </Grid.Row>
-            <Grid.Row centered id='return'>
-              <div className={`selectFormSearch ${this.state.UI.checkbox}`} >
-                <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
-                <AsyncComponent
-        					value={this.state.returnLocation}
-        					onChange={this.onChangeReturn}
-        					valueKey="id" labelKey="City"
-        					loadOptions={this.getCity}
-                  className=""
-                  clearable = {true}
-                  placeholder = 'Donde entregara el auto?'
-
+                  placeholder = { this.props.placeholder}
                   />
               </div>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={16}>
-                <Form.Field id='checkLocation'
-                  control={Checkbox}
-                  onClick={this.showReturn}
-                  defaultChecked
-                  label={<label className="spanWhite checkboxForm">Entregar en la misma ubicacion</label>}
-                />
-              </Grid.Column>
             </Grid.Row>
           </Grid>
-    );
+        );
+    }
+    else {
+      return (
+            <Grid className='gridAutocomplete'>
+              <Grid.Row centered>
+                <div className="selectFormSearch">
+                  <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
+                  <AsyncComponent
+                    value={this.state.startLocation}
+                    onChange={this.onChange}
+                    valueKey="id" labelKey="City"
+                    loadOptions={this.getCity}
+                    className=""
+                    clearable = {true}
+                    placeholder =  'Donde recogera el auto'
+                    />
+
+                </div>
+                <span id='spanPickUpLocation' className='out'>Selecciona ubicacion</span>
+              </Grid.Row>
+              <Grid.Row centered id='return'>
+                <div className={`selectFormSearch ${this.state.UI.checkbox}`} >
+                  <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
+                  <AsyncComponent
+                    value={this.state.returnLocation}
+                    onChange={this.onChangeReturn}
+                    valueKey="id" labelKey="City"
+                    loadOptions={this.getCity}
+                    className=""
+                    clearable = {true}
+                    placeholder = 'Donde entregara el auto?'
+
+                    />
+                </div>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={16}>
+                  <Form.Field id='checkLocation'
+                    control={Checkbox}
+                    onClick={this.showReturn}
+                    defaultChecked
+                    label={<label className="spanWhite checkboxForm">Entregar en la misma ubicacion</label>}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+      );
+    }
   }
 }
 
