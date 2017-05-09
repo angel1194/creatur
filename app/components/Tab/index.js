@@ -6,7 +6,7 @@
 import { Link } from 'react-router';
 import React from 'react';
 import FormSearch from '../FormSearch/'
-import Test from '../Test/'
+import FormSearchHotel from '../ReserHotel/FormSearchHotel/'
 function Tab(props) {
   if (props.type == 'car') {
     return (
@@ -26,7 +26,7 @@ function Tab(props) {
           <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto</Link></div>
           <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel</Link></div>
         </div>
-        <Test/>
+        <FormSearchHotel title='Bienvenido'/>
       </div>
     )
   }
