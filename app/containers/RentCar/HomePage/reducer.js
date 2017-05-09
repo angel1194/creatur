@@ -15,11 +15,13 @@ import {
   LOAD_COMMENTS_SUCCESS,
   SAVE_LOCATION,
   SAVE_DATE,
+  TAB_CHANGE,
 
 } from './constants';
 
 const initialState = fromJS({
   'comments':[],
+  'type': 'car',
   'cars': [],
   'UI':{
     Loading: false,
@@ -53,6 +55,8 @@ function homePageReducer(state = initialState, action)
       return state.setIn(['values', action.data[1]], action.data[0])
     case SAVE_LOCATION:
       return state.setIn(['values', action.location[1]], action.location[0])
+    case TAB_CHANGE:
+      return state.set('type', action.tipo)
     default:
       return state;
   }

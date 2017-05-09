@@ -12,6 +12,7 @@ import {
   SAVE_LOCATION,
   SAVE_DATE,
   SET_LOADING_FALSE,
+  TAB_CHANGE,
 } from './constants';
 
 export function loadingTrue(){
@@ -54,5 +55,11 @@ export function saveDate(data, input){
     type: SAVE_DATE,
     data,
     input,
+  }
+}
+export function tabChange(tipo){
+  return{
+    type: TAB_CHANGE,
+    tipo,
   }
 }
