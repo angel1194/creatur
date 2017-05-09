@@ -64,7 +64,7 @@ const Mrh4 = styled.p`
   margin-bottom : 0;
   color: #6d6d6d;
  font-family: Roboto Regular;
-  
+
 `;
 
 
@@ -87,7 +87,7 @@ function DualRangeSlider(props) {
 
   if (props.Mode === "Money") {
     DualR = (
-      <Wrapper >
+      <Wrapper>
         <H3>{props.Title}</H3>
         <DivWrapper>
           <input type="range" step={props.Step} min={props.Min} max={props.Max} />
@@ -95,12 +95,12 @@ function DualRangeSlider(props) {
         </DivWrapper>
         <PriceLeft><Lh4>$0.0</Lh4></PriceLeft>
         <PriceRight><Rh4>$0.0</Rh4></PriceRight>
-      </Wrapper >
+      </Wrapper>
     );
   } else {
 
     DualR = (
-      <Wrapper >
+      <Wrapper>
         <H3>{props.Title}</H3>
         <DivWrapper>
           <input type="range" step={props.Step} min={props.Min} max={props.Max} />
@@ -113,7 +113,7 @@ function DualRangeSlider(props) {
           <FlexItem><Mrh4>4</Mrh4></FlexItem>
           <FlexItem><Rh4>5</Rh4></FlexItem>
         </FlexContainer>
-      </Wrapper >
+      </Wrapper>
     );
 
   }

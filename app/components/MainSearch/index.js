@@ -14,17 +14,18 @@ import MainSlider from '../MainSlider/'
 import Comments from '../Comments'
 import { browserHistory } from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Tab from '../Tab'
 
-
+// <FormSearch title="Bienvenido" dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
 function MainSearch(props) {
-
   return (
     <div>
       <Container fluid className='slider'>
         <Container className= 'containerFormSearch' fluid>
           <MainSlider />
           <div className='ui container containerForm'>
-            <FormSearch title="Bienvenido" dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
+            <Tab type={props.type} tabChange={props.tabChange} dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
+
           </div>
         </Container>
       </Container>
