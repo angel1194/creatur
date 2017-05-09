@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 
 const Wrapper = Styled.div`
 
-  width: auto;
+  width: 100%;
   height: 60px;
   display: -webkit-flex;
   -webkit-flex-direction: column;

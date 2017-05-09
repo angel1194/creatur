@@ -1,19 +1,14 @@
 import styled from 'styled-components';
 import '../../../../fonts/RobotoRegular.ttf';
 
-
-const Title = styled.p`
+const Price = styled.p`
 
      font-family: Roboto Regular;
      font-size: 17px;
      color: #2b5bac;
-     margin-top: 10px;
-     margin-left: 10px;
-     margin-bottom: 5px;
      font-weight: bold;
-
+     margin: 0;
 
 `;
 
-
-export default Title;
+export default Price;

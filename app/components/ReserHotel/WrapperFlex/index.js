@@ -12,7 +12,7 @@ import styled from 'styled-components';
 const WrapperFlex = styled.div`
 
    margin: 4px;
-   padding: 5px;
+   padding: 0;
    border: 1px solid #eaeff3;
    background: transparent;
    -webkit-flex: ${(props) => props.Grow} ${(props) => props.Shrink} ${(props) => props.Basis}%;

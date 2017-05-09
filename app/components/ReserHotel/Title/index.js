@@ -16,8 +16,6 @@ function Title(props) {
     <Wrapper>
       <Text>{props.Title}</Text>
       <Line />
-
-
     </Wrapper>
 
   );

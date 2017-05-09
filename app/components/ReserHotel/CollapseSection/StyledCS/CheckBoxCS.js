@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const CheckBoxCS = styled.div`
      
      &.checkboxFour {
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	background: #87b672;
 	margin: 0;
 	border-radius: 50%;
@@ -16,16 +16,16 @@ const CheckBoxCS = styled.div`
 
 &.checkboxFour label {
 	display: block;
-	width: 14px;
-	height: 14px;
+	width: 11px;
+	height: 11px;
 	border-radius: 50%;
 
 	transition: all .5s ease;
 	cursor: pointer;
 	position: absolute;
 	z-index: 1;
-	top: 3px;
-	left: 3px;
+	top: 2px;
+	left: 2px;
 	background: #fff;
 	
 }

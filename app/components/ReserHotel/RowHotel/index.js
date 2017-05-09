@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -19,13 +19,22 @@ import ImgD from './defaultHotel.jpg';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import TripAdvisor from '../../../components/ReserHotel/TripAdvisor';
 import LocationLabel from '../../../components/ReserHotel/LocationLabel';
+import PriceLabel from '../../../components/ReserHotel/PriceLabel';
+import Button from '../../../components/ReserHotel/Button';
+
+const ColumMargin = styled(Column) `
+
+ margin-right: 10px;
+ align-items: flex-end;
+`;
+
 function generateRowHotel(num) {
 
   let ArrElm = []
   for (var i = 0; i < num; i++) {
     ArrElm.push(<Wrapper key={i}>
       <Row>
-        <img src={ImgD} />
+        <Img src={ImgD} Width={"200px"} />
         <Column>
           <Title>Hotel Maldivas Luxury</Title>
           <StarRating />
@@ -33,8 +42,11 @@ function generateRowHotel(num) {
           <LocationLabel />
         </Column>
       </Row>
-      <Row>Others
-        
+      <Row>
+        <ColumMargin>
+          <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
+          <Button Title={"Comprar"} Color={"Blue"} />
+        </ColumMargin>
       </Row>
 
     </Wrapper>);
@@ -46,8 +58,8 @@ function generateRowHotel(num) {
 
 function RowHotel() {
   return (
-    <WrapperFlex Overflow="scroll" Order={2} Grow={3} Shrink={1} Basis={60}>
-      {generateRowHotel(3)}
+    <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
+      {generateRowHotel(5)}
     </WrapperFlex>
   );
 }

@@ -24,7 +24,7 @@ const WP = styled.div`
 
 function Filter() {
   return (
-    <WrapperFlex Order={1} Grow={1} Shrink={6} Basis={13}>
+    <WrapperFlex Order={1} Grow={1} Shrink={6} Basis={20}>
       <Title Title="Filtrar Resultados" />
         <WP>
       <DualRangeSlider Title="Número de estrellas" Step="1" Min="1" Max="5" />

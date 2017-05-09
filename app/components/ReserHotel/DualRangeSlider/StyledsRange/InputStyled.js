@@ -30,10 +30,9 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    top: -13px;
+    top: -10px;
     pointer-events: all;
     border: 1px solid #87b672;
-    box-shadow: 0px 1px 1px 0px #87b672;
     border-radius:50%;
     background-image:url(${icon});
     background-color: white;
@@ -42,8 +41,8 @@ input[type=range]::-webkit-slider-thumb {
     position: relative;
     z-index: 1;
     outline: 0;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
 }
 
  

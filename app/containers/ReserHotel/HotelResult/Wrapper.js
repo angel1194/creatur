@@ -7,7 +7,7 @@ const Wrapper = styled.div`
    display: -webkit-flex;
    display:         flex;
    -webkit-flex-flow: row;
-           flex-flow: row;
+           flex-flow: row;     
 `;
 
 export default Wrapper;

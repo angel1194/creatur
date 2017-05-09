@@ -5,10 +5,11 @@ const Text = Styled.p`
  text-align : center;
  color : #ffffff;
  font-family : 'Montserrat Regular';
- font-size: 23px;
- margin-top: 10px;
- margin-bottom: 0px; 
- 
+ font-size: 18px;
+ margin-top: 0px;
+ margin-bottom: 11px; 
+ top: 10px;
+ position: relative;
 `;
 
 
