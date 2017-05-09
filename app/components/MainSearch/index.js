@@ -14,7 +14,7 @@ import MainSlider from '../MainSlider/'
 import Comments from '../Comments'
 import { browserHistory } from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-
+import Tab from '../Tab'
 
 function MainSearch(props) {
 
@@ -24,6 +24,7 @@ function MainSearch(props) {
         <Container className= 'containerFormSearch' fluid>
           <MainSlider />
           <div className='ui container containerForm'>
+            <Tab />
             <FormSearch title="Bienvenido" dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
           </div>
         </Container>
