@@ -9,76 +9,14 @@ import styled, { css } from 'styled-components';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
-import C from './StyledsRange/C';
-import D from './StyledsRange/D';
-import Fl from './StyledsRange/Fl';
-import H from './StyledsRange/H';
-import Pos from './StyledsRange/Pos';
-import Ta from './StyledsRange/Ta';
-import W from './StyledsRange/W';
+
 import H3 from '../H3';
-import InputStyled from './StyledsRange/InputStyled';
+import { InputContainer, Wrapper } from './StyledsRange/StyledsRange';
 
 import FlexContainer from '../FlexContainer';
 import FlexItem from '../FlexItem';
 
 
-const Lh4 = styled.p`
-
-  text-align: left;
-  margin : 0;
-  color: #6d6d6d;
-  font-family: Roboto;
-`;
-
-const LhC = styled.p`
-
-  text-align: center;
-  margin : 0;
-  color: #6d6d6d;
-  font-family: Roboto;
-`;
-
-const Rh4 = styled.p`
-  color: #6d6d6d;
-  text-align: right;
-  margin : 0;
-   font-family: Roboto;
-`;
-
-const Mlh4 = styled.p`
-
-  text-align: left;
-  margin-left: 26%;
-  margin-top: 0;
-  margin-bottom : 0;
-  color: #6d6d6d;
- font-family: Roboto;
-`;
-
-const Mrh4 = styled.p`
-
-  text-align: right;
-  margin-right: 26%;
-  margin-top: 0;
-  margin-bottom : 0;
-  color: #6d6d6d;
- font-family: Roboto;
-
-`;
-
-
-
-const Wtop = css`
-
-  margin-top: 15px;
-
-`;
-
-const Wrapper = styled.div`${W}${Wtop}`;
-const PriceLeft = styled.div`${D}${C}`;
-const PriceRight = styled.div`${D}${Fl}`;
-const DivWrapper = styled.div`${InputStyled}${Pos}${Ta}${H}`;
 
 
 
@@ -89,12 +27,13 @@ function DualRangeSlider(props) {
     DualR = (
       <Wrapper>
         <H3>{props.Title}</H3>
-        <DivWrapper>
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-        </DivWrapper>
-        <PriceLeft><Lh4>$0.0</Lh4></PriceLeft>
-        <PriceRight><Rh4>$0.0</Rh4></PriceRight>
+        <InputContainer>
+        h
+          <input type="range" />
+          h2
+          <input type="range" />
+          h3
+        </InputContainer>
       </Wrapper>
     );
   } else {
@@ -102,17 +41,10 @@ function DualRangeSlider(props) {
     DualR = (
       <Wrapper>
         <H3>{props.Title}</H3>
-        <DivWrapper>
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-        </DivWrapper>
-        <FlexContainer>
-          <FlexItem><Lh4>1</Lh4></FlexItem>
-          <FlexItem><Mlh4>2</Mlh4></FlexItem>
-          <FlexItem><LhC>3</LhC></FlexItem>
-          <FlexItem><Mrh4>4</Mrh4></FlexItem>
-          <FlexItem><Rh4>5</Rh4></FlexItem>
-        </FlexContainer>
+        <InputContainer>
+          <input type="range" />
+          <input type="range" />
+        </InputContainer>
       </Wrapper>
     );
 

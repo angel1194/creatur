@@ -1,13 +1,19 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import icon from '../iconSlider.png'
 
-const InputSlyled = css`
 
-  input {
+const InputContainer = styled.div`
+
+  
+     width:100%;
+ 
+    
+    input {
     pointer-events: none;
     position: absolute;
     overflow: hidden;
     left: 0;
+    top: 0;
     width: 100%;
     outline: none;
     height: 35px;
@@ -79,11 +85,15 @@ input[type=range]::-moz-range-thumb {
 
 input[type=range]::-moz-focus-outer {
     border: 0;
-}
-
 
  
+}
+`;
+
+const Wrapper = styled.div`
+     flex-flow: column nowrap;
+
 `;
 
 
-export default InputSlyled;
+export { InputContainer, Wrapper };

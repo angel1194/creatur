@@ -5,9 +5,8 @@
 */
 
 import React, { PropTypes } from 'react';
-import Wrapper from './StyledTitle/Wrapper';
-import Text from './StyledTitle/Text';
-import Line from './StyledTitle/Line';
+import {Wrapper, Text, Line} from './StyledTitle/StyledsTitles';
+
 
 
 

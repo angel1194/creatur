@@ -18,11 +18,52 @@ import RowHotel from '../../../components/ReserHotel/RowHotel';
 import HotelRate from '../../../components/ReserHotel/HotelRate';
 import MostSold from '../../../components/ReserHotel/MostSold';
 import MapView from '../../../components/ReserHotel/MapView';
-import { Container } from 'semantic-ui-react';
 
-const WrapperBar = styled(Wrapper)`
+
+const WrapperBar = styled(Wrapper) `
     min-height: 118px;
-`; 
+`;
+
+const Container = styled.div`
+  width : 90%;
+  max-width: 1200px;
+  min-height: 1000px;
+  margin: auto;
+  /*
+  Flex
+  */ 
+
+  display:flex;
+	flex-flow: row nowrap;
+;
+`;
+
+const ContenFilter = styled.div`
+  flex:1 1 20%;
+  order:1;
+  border: 1px solid #eaeff3;
+  margin:4px;
+
+`;
+
+
+const ContenResults = styled.div`
+  flex:1 1 60%;
+  order:2;
+
+  margin:4px;
+`;
+
+const ContenTools = styled.div`
+  flex:1 1 20%;
+  order:3;
+  border: 1px solid #eaeff3;
+  margin:4px;
+
+`;
+
+
+
 
 
 export class HotelResult extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -30,21 +71,17 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
     return (
 
       <Container>
-        <WrapperBar>
-          <WrapperFlex Order={1} Grow={1} Shrink={6} Basis={20}>
-           <MapView />
-          </WrapperFlex>
-          <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}></WrapperFlex>
-          <WrapperFlex Order={3} Grow={1} Shrink={6} Basis={20}></WrapperFlex>
-        </WrapperBar>
-        <Wrapper>
-          <Filter />
-          <RowHotel />
-          <WrapperFlex Order={3} Grow={1} Shrink={6} Basis={20}>
-            <HotelRate />
-            <MostSold />
-          </WrapperFlex>
-        </Wrapper>
+        <ContenFilter>
+         <Filter />
+        </ContenFilter>
+        <ContenResults>
+          Results
+        </ContenResults>
+        <ContenTools>
+          Tools
+        </ContenTools>
+
+
       </Container>
     );
   }

@@ -14,7 +14,6 @@ import DualRangeSlider from '../../../components/ReserHotel/DualRangeSlider';
 import Title from '../../../components/ReserHotel/Title';
 import Line from '../../../components/ReserHotel/Line';
 import CollapseSection from '../../../components/ReserHotel/CollapseSection';
-import WrapperFlex from '../../../components/ReserHotel/WrapperFlex';
 
 const WP = styled.div`
 
@@ -24,7 +23,7 @@ const WP = styled.div`
 
 function Filter() {
   return (
-    <WrapperFlex Order={1} Grow={1} Shrink={6} Basis={20}>
+    <div>
       <Title Title="Filtrar Resultados" />
         <WP>
       <DualRangeSlider Title="Número de estrellas" Step="1" Min="1" Max="5" />
@@ -43,7 +42,7 @@ function Filter() {
       <Line />
       <CollapseSection Title="Zona" SubTitles="Cerca del centro" ID="Z1" />
       </WP>
-    </WrapperFlex>
+    </div>
 
   );
 }
