@@ -31,7 +31,7 @@ const Container = styled.div`
   margin: auto;
   /*
   Flex
-  */ 
+  */
 
   display:flex;
 	flex-flow: row nowrap;
@@ -59,12 +59,7 @@ const ContenTools = styled.div`
   order:3;
   border: 1px solid #eaeff3;
   margin:4px;
-
 `;
-
-
-
-
 
 export class HotelResult extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -78,7 +73,7 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
           Results
         </ContenResults>
         <ContenTools>
-          Tools
+          <MostSold/>
         </ContenTools>
 
 

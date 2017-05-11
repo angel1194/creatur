@@ -12,8 +12,8 @@ import FontAwesome from 'react-fontawesome';
 
 
 const FontA = styled(FontAwesome) `
-     color: #f5d21a !important;
-    padding: 5px
+    color: #f5d21a !important;
+    padding: 5px;
     padding-left: 0;
     font-weight: 900 !important;
     top:-10px !important;
@@ -28,26 +28,22 @@ const FontB =  styled(FontA) `
     font-weight: 900 !important;
     top:-10px !important;
     position: relative !important;
-
 `;
 
 
 function StarRating() {
   return (
     <div>
-
-      <FontB name='star' size="lg" />
-      <FontA name='star' size="lg" />
-      <FontA name='star' size="lg" />
-      <FontA name='star' size="lg" />
-      <FontA name='star' size="lg" />
-
+      <FontB name='star' />
+      <FontA name='star' />
+      <FontA name='star' />
+      <FontA name='star' />
+      <FontA name='star' />
     </div>
   );
 }
 
 StarRating.propTypes = {
-
 };
 
 export default StarRating;

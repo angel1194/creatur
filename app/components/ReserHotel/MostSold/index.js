@@ -46,24 +46,46 @@ const FontB = styled(FontAwesome) `
     top:-5px !important;
     position: relative !important;
     margin-left: 10px !important;
+`;
 
+const Div = styled.div `
+  border: 1px solid #eaeff3;
+  margin: 5px;
+  padding-bottom: 5px;
+`;
+
+const RowRight = styled(Row) `
+  margin-left: 48px;
 `;
 
 function MostSold() {
   return (
     <Column>
-    <Title Title="Lo Más vendido" />
-    <Row>
-        <P>Hotel Nayarit</P>
-        <FontA name='angle-up' size="2x" />
-      </Row>
-      <Row>
-        <StarRating />
-        <FontB name='tripadvisor' size="lg" />
-        <PB>3.0/5</PB>
-      </Row>
-      <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
-      <Img src={HtImg} Width={"200px"} />
+      <Title Title="Lo más vendido" />
+      <Div>
+        <P>Hotel Nayarit Spa</P>
+        <Row>
+          <StarRating/>
+          <FontB name='tripadvisor' size="lg" />
+          <PB>3.0/5</PB>
+        </Row>
+        <RowRight>
+          <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} MostSold={true}/>
+        </RowRight>
+        <Img src={HtImg} Width={"200px"}/>
+      </Div>
+      <Div>
+        <P>Hotel Nayarit Spa</P>
+        <Row>
+          <StarRating/>
+          <FontB name='tripadvisor' size="lg" />
+          <PB>3.0/5</PB>
+        </Row>
+        <RowRight>
+          <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} MostSold={true}/>
+        </RowRight>
+        <Img src={HtImg} Width={"200px"}/>
+      </Div>
     </Column>
   );
 }
