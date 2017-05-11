@@ -10,6 +10,7 @@ import DatePickerForm from '../DatePickerForm/'
 import { browserHistory } from 'react-router'
 import FormAutocomplete from '../../components/FormAutocomplete'
 import LoadingSpin from '../../components/LoadingSpin'
+import ButtonSearch from '../../components/ButtonSearch'
 
 function FormSearch(props) {
   return (
@@ -25,7 +26,7 @@ function FormSearch(props) {
               <label id='error'></label>
             </div>
           <Grid.Row centered className='divButtonGreeen'>
-            <Button className="buttonGreen" onClick={props.loadingTrue}>BUSCAR EL MEJOR PRECIO!</Button>
+            <ButtonSearch typeSearch='car' loadingTrue={props.loadingTrue}/>
           </Grid.Row>
         </Grid>
       </div>

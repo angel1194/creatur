@@ -19,7 +19,7 @@ class MainSlider extends React.PureComponent { // eslint-disable-line react/pref
       dots: true,
       infinite: true,
       lazyLoad: true,
-      speed: 1500,
+      speed: 4000,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay:true,
@@ -29,31 +29,34 @@ class MainSlider extends React.PureComponent { // eslint-disable-line react/pref
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
+          dots: true,
+          speed: 4000,
         }
       }, {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
+          initialSlide: 1,
+          speed: 4000,
         }
       }, {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          speed: 4000,
         }
       }]
     }
     return (
       <Slider {...settings}>
-        <div><img src="http://lorempixel.com/1200/540/transport/8/" /></div>
-        <div><img src="http://lorempixel.com/1200/540/transport/7/" /></div>
+        <div><img src="http://lorempixel.com/1200/540/transport/1/" /></div>
+        <div><img src="http://lorempixel.com/1200/540/transport/2/" /></div>
         <div><img src="http://lorempixel.com/1200/540/transport/3/" /></div>
         <div><img src="http://lorempixel.com/1200/540/transport/4/" /></div>
         <div><img src="http://lorempixel.com/1200/540/transport/5/" /></div>
-        <div><img src="http://lorempixel.com/1200/540/transport/10/" /></div>
+        <div><img src="http://lorempixel.com/1200/540/transport/6/" /></div>
       </Slider>
     );
   }

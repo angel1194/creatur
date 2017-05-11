@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import {Form, Grid, Input, Button, Header, Checkbox, Divider} from 'semantic-ui-react'
 import FormAutocomplete from '../../../components/FormAutocomplete'
 import { Link } from 'react-router'
+import ButtonSearch from '../../../components/ButtonSearch'
 // const Body = styled.div`
 //   background: black;
 //   width: 400px;
@@ -52,15 +53,15 @@ function FormSearchHotel(props) {
             </div>
             <div className="dad-reserv">
               <div className="child">
-                <label for="">Habitaciones</label>
+                <label htmlFor="">Habitaciones</label>
                 <input className="inputs" type="number" placeholder="10"/>
               </div>
               <div className="child">
-                <label for="">Adultos</label>
+                <label htmlFor="">Adultos</label>
                 <input className="inputs" type="number" placeholder="10"/>
               </div>
               <div className="child">
-                <label for="">Ninos (0-7)</label>
+                <label htmlFor="">Ninos (0-7)</label>
                 <input className="inputs" type="number" placeholder="10"/>
               </div>
             </div>
@@ -69,11 +70,11 @@ function FormSearchHotel(props) {
             </div>
             <div className="section-dad">
               <div className="section-child">
-                <label for="">Menor 1</label>
+                <label htmlFor="">Menor 1</label>
                 <input className="inputs" type="number" placeholder="10"/>
               </div>
               <div className="section-child">
-                <label for="">Menor 2</label>
+                <label htmlFor="">Menor 2</label>
                 <input className="inputs" type="number" placeholder="10"/>
               </div>
             </div>
@@ -81,7 +82,7 @@ function FormSearchHotel(props) {
               <a href="#"><i className="fa fa-plus-circle" aria-hidden="true"></i>Anadir otra habitacion</a>
             </div>
             <Grid.Row centered className='divButtonGreeen'>
-              <Button className="buttonGreen" onClick={props.loadingTrue}><Link to='/results'>BUSCAR EL MEJOR PRECIO!</Link></Button>
+              <ButtonSearch typeSearch='hotel'/>
             </Grid.Row>
         </div>
         </Grid>
