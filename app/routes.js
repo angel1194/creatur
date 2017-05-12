@@ -138,7 +138,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/results',
+      path: '/hotel/available',
       name: 'hotelResult',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -171,6 +171,26 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('login', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/hotel/quotation',
+      name: 'hotelQuotation',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReserHotel/HotelQuotation/reducer'),
+          import('containers/ReserHotel/HotelQuotation/sagas'),
+          import('containers/ReserHotel/HotelQuotation'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('hotelQuotation', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });
