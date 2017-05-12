@@ -157,6 +157,26 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    }, {
+      path: '/hotel/pasarela',
+      name: 'pasarela',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReserHotel/Pasarela/reducer'),
+          import('containers/ReserHotel/Pasarela/sagas'),
+          import('containers/ReserHotel/Pasarela'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('pasarela', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     },
 {
   path: '*',
