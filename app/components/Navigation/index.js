@@ -23,7 +23,7 @@ function Navigation() {
         <Link href="#"><li>Servicio</li></Link>
         <Link href="/reserve-list"><li>Mi Reserva</li></Link>
         <Link href="#"><li>Tu Viaje</li></Link>
-        <Link href="#"><li>Inicia Sesion</li></Link>
+        <Link to='/login'><li>Inicia Sesion</li></Link>
       </ul>
     </nav>
   </nav>
