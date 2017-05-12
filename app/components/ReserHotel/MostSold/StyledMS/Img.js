@@ -2,9 +2,18 @@ import styled from 'styled-components';
 
 import React, { PropTypes } from 'react';
 
+const StyledImg = styled.img`
+margin: 5px;
+margin-right: 10px;
+`;
+
+
+
+
+
 function Img(props) {
   return (
-    <img className={props.className} src={props.src} width={props.Width} />
+    <StyledImg className={props.className} src={props.src} width={props.Width} />
   );
 }
 

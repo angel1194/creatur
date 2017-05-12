@@ -29,9 +29,24 @@ const PriceN = styled(TextSmall) `
 
 
 function PriceLabel(props) {
- 
-  return (
-    <div>
+
+let ComponentMostSold;
+
+if(props.MostSold){
+ComponentMostSold = (
+  <div>
+    <Wrapper>
+      <TextSmall>desde</TextSmall>
+      <Price>${props.Since}</Price>
+      <Currency>{props.Currency}</Currency>
+    </Wrapper>
+    <PriceN>Precio por noche</PriceN>
+  </div>
+);
+}
+else{
+  ComponentMostSold = (
+  <div>
       <Wrapper>
         <TextSmall>desde</TextSmall>
         <Price>${props.Since}</Price>
@@ -39,15 +54,19 @@ function PriceLabel(props) {
       </Wrapper>
       <PriceN>Precio por noche</PriceN>
       <Total>Total ${props.Total}</Total>
-    </div>
-  );
+</div>
+);
+}
+
+  return ComponentMostSold;
 }
 
 PriceLabel.propTypes = {
   Since: PropTypes.string,
   Currency: PropTypes.string,
   Total: PropTypes.string,
-  Tam: PropTypes.string
+  Tam: PropTypes.string,
+  MostSold: PropTypes.bool
 };
 
 export default PriceLabel;
