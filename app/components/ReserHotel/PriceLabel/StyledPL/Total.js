@@ -15,11 +15,11 @@ const Currency = styled.p`
 const Total = styled.p`
 
      font-family: Roboto;
-     font-size: 20px;
+     font-size: 17px;
      color: #5e5e5e;
      margin-left:5px;
      text-align: right;
-     margin-top: 25px;
+     margin-top: 10px;
 `;
 
 

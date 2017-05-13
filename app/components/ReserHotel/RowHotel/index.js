@@ -22,10 +22,18 @@ import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import Button from '../../../components/ReserHotel/Button';
 
-const ColumMargin = styled(Column) `
+const ColumMarginRight = styled(Column) `
 
  margin-right: 10px;
- align-items: flex-end;
+ margin-top: 10px;
+ align-items: flex-start;
+
+`;
+
+const ColumMarginTop = styled(Column) `
+
+ margin-top: 10px;
+ align-items: flex-start;
 `;
 
 function generateRowHotel(num) {
@@ -35,18 +43,18 @@ function generateRowHotel(num) {
     ArrElm.push(<Wrapper key={i}>
       <Row>
         <Img src={ImgD} Width={"200px"} />
-        <Column>
+        <ColumMarginTop>
           <Title>Hotel Maldivas Luxury</Title>
           <StarRating />
           <TripAdvisor />
           <LocationLabel />
-        </Column>
+        </ColumMarginTop>
       </Row>
       <Row>
-        <ColumMargin>
+        <ColumMarginRight>
           <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
           <Button Title={"Comprar"} Color={"Blue"} />
-        </ColumMargin>
+        </ColumMarginRight>
       </Row>
 
     </Wrapper>);

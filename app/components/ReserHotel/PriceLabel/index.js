@@ -19,7 +19,7 @@ import Wrapper from './StyledPL/Wrapper';
 const PriceN = styled(TextSmall) `
 
   margin:0;
-  margin-top:0 !important;
+  margin-top:2px !important;
   margin-left:0 !important;
   margin-bottom:0 !important;
   margin-right: 0px;

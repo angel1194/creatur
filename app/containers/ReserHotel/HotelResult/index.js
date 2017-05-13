@@ -42,7 +42,8 @@ const ContenFilter = styled.div`
   flex:1 1 20%;
   order:1;
   border: 1px solid #eaeff3;
-  margin:4px;
+  margin: 4px;
+  min-width: 234px;
 
 `;
 
@@ -50,8 +51,7 @@ const ContenFilter = styled.div`
 const ContenResults = styled.div`
   flex:1 1 60%;
   order:2;
-
-  margin:4px;
+  min-width: 704px;
 `;
 
 const ContenTools = styled.div`
@@ -59,6 +59,7 @@ const ContenTools = styled.div`
   order:3;
   border: 1px solid #eaeff3;
   margin:4px;
+  min-width: 234px;
 `;
 
 export class HotelResult extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -70,7 +71,7 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
          <Filter />
         </ContenFilter>
         <ContenResults>
-          Results
+          <RowHotel />
         </ContenResults>
         <ContenTools>
           <MostSold/>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Title = styled.p`
 
      font-family: Roboto;
-     font-size: 17px;
+     font-size: 21px;
      color: #2b5bac;
      margin-top: 10px;
      margin-left: 10px;

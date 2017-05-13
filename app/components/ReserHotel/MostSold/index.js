@@ -50,7 +50,8 @@ const FontB = styled(FontAwesome) `
 
 const Div = styled.div `
   border: 1px solid #eaeff3;
-  margin: 5px;
+  margin: auto;
+  margin-top: 8px;
   padding-bottom: 5px;
 `;
 

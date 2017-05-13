@@ -4,17 +4,16 @@ import icon from '../iconSlider.png'
 
 const InputContainer = styled.div`
 
-  
-     width:100%;
- 
+    position: relative;
+    height: 25px;
+    top: -5px;
+    padding-left: 5%;
     
     input {
     pointer-events: none;
     position: absolute;
     overflow: hidden;
-    left: 0;
-    top: 0;
-    width: 100%;
+    width: 90%;
     outline: none;
     height: 35px;
     margin: 0;
@@ -42,7 +41,7 @@ input[type=range]:last-of-type::-moz-range-track {
 
 input[type=range]::-moz-range-track {
     -moz-appearance: none;
-   background-color: #87b672;
+    background-color: #87b672;
     height: 6px;
     border-radius: 13px;
     border: none;
