@@ -12,8 +12,23 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectHotelQuotation from './selectors';
 import {Container } from 'semantic-ui-react'
 import messages from './messages';
+import InfoHotel from '../../../components/ReserHotel/InfoHotel'
 import SendQuotationHotel from '../../../components/ReserHotel/SendQuotationHotel'
+import styled from 'styled-components';
 
+const GeneralContainer = styled.div`
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-between;
+`;
+
+const ContainerInfo = styled.div`
+  width:80%;
+  height:auto;
+  display:flex;
+`;
 export class HotelQuotation extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -24,7 +39,12 @@ export class HotelQuotation extends React.PureComponent { // eslint-disable-line
             { name: 'description', content: 'Description of HotelQuotation' },
           ]}
         />
-      <SendQuotationHotel/>
+      <GeneralContainer>
+        <ContainerInfo>
+          <InfoHotel/>
+        </ContainerInfo>
+        <SendQuotationHotel/>
+      </GeneralContainer>
       </Container>
     );
   }
