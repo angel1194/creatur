@@ -45,7 +45,7 @@ function SendQuotationHotel() {
         <ColorAwesome name='print' size='lg'/>
         <ColorAwesome name='download' size='lg'/>
       </ContIcon>
-      <InputIcon name='envelope' placeholder='tucorreo@aqui.com' type='text'/>
+      <InputIcon name='envelope' placeholder='tucorreo@aqui.com' type='email'/>
       <AddButton text='Anadir otra habitacion'/>
       <TextArea placeholder='Comentarios'/>
       <GreenButton text='ENVIAR COTIZACION'/>

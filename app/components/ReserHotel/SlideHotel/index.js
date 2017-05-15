@@ -10,7 +10,8 @@ import Slider from 'react-slick';
 
 const ContainerSlider=styled.div`
   width:35%;
-  height:250px;
+  height:245px;
+  border-bottom:1px solid #eaeaea;
 `;
 
 

@@ -15,8 +15,9 @@ import FontAwesome from 'react-fontawesome';
 const ContainerScore = styled.div`
   width:65%;
   background-color:#FFF;
-  height:250px;
+  height:245px;
   padding: 10px 10px 10px 20px;
+  border-bottom:1px solid #eaeaea;
 `;
 
 const NameHotel = styled(H3)`
