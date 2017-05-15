@@ -21,7 +21,7 @@ class CommentSlide extends React.PureComponent { // eslint-disable-line react/pr
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <Image shape='circular' floated='left' size='mini' alt='User Photo' src={this.props.comment.Photo} />
+            <Image shape='circular' floated='left' size='mini' alt='User Photo' src="http://lorempixel.com/200/200/sports/1/"/>
             <a>
               {this.props.comment.FullName}
             </a>

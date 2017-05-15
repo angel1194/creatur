@@ -10,6 +10,7 @@ import {Form, Grid, Input, Button, Header, Checkbox, Divider} from 'semantic-ui-
 import FormAutocomplete from '../../../components/FormAutocomplete'
 import { Link } from 'react-router'
 import ButtonSearch from '../../../components/ButtonSearch'
+import Cama from './cama.png';
 // const Body = styled.div`
 //   background: black;
 //   width: 400px;
@@ -24,7 +25,7 @@ function FormSearchHotel(props) {
         <Header as='h1' className='titleForm'>{props.title}</Header>
         <Grid>
           <div className='containerFormHotel'>
-            <FormAutocomplete placeholder='Buscar Hotel....'/>
+            <FormAutocomplete placeholder='Destino, hotel, lugar de interés'/>
             <div className='searchMap'>
               <div>
                 <a id='search' href=''>
@@ -38,16 +39,16 @@ function FormSearchHotel(props) {
                 <label className="fecha">Fecha de llegada</label>
                 <ul>
                   <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                  <li><input className="inputt" type="text" placeholder=" dd/mm/aa"/></li>
+                  <li><input className="inputt" type="text" placeholder="12/Ene/2016"/></li>
                 </ul>
                 <label className="fecha">Fecha de salida</label>
                 <ul>
                   <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                  <li><input className="inputt" type="text" placeholder=" dd/mm/aa"/></li>
+                  <li><input className="inputt" type="text" placeholder="12/Ene/2016"/></li>
                 </ul>
               </div>
               <div className="bed">
-                <i className="fa fa-bed fa-2x" aria-hidden="true"></i>
+                <img src={Cama}/>
                 <h4>4 noches</h4>
               </div>
             </div>
@@ -79,7 +80,7 @@ function FormSearchHotel(props) {
               </div>
             </div>
             <div className="link">
-              <a href="#"><i className="fa fa-plus-circle" aria-hidden="true"></i>Anadir otra habitacion</a>
+              <a href="#"><i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Anadir otra habitación</a>
             </div>
             <Grid.Row centered className='divButtonGreeen'>
               <ButtonSearch typeSearch='hotel'/>
