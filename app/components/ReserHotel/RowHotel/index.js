@@ -67,7 +67,7 @@ function generateRowHotel(num) {
 function RowHotel() {
   return (
     <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
-      {generateRowHotel(5)}
+      {generateRowHotel(4)}
     </WrapperFlex>
   );
 }

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
    margin-right: 10px;
    padding: 0;
    height: 160px;
-   border: 1px solid #eaeff3;
+   border: 2px solid #eaeff3;
 `;
 
 
