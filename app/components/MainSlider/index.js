@@ -19,35 +19,11 @@ class MainSlider extends React.PureComponent { // eslint-disable-line react/pref
       dots: true,
       infinite: true,
       lazyLoad: true,
-      speed: 4000,
+      speed: 8000,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay:true,
-      responsive:[{
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-          speed: 4000,
-        }
-      }, {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-          speed: 4000,
-        }
-      }, {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          speed: 4000,
-        }
-      }]
+
     }
     return (
       <Slider {...settings}>
