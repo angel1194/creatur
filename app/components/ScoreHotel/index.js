@@ -56,7 +56,7 @@ const GreenAwesome=styled(FontAwesome)`
 function ScoreHotel() {
   return (
     <ContainerScore>
-      <NameHotel>Prueba</NameHotel>
+      <NameHotel>Jumeirah Vittaveli</NameHotel>
       <StarRating/>
       <AddressLabel>
         Maldivas

@@ -10,7 +10,7 @@ import Slider from 'react-slick';
 
 const ContainerSlider=styled.div`
   width:35%;
-  height:245px;
+  height:245px !important;
   border-bottom:1px solid #eaeaea;
 `;
 
@@ -33,15 +33,15 @@ class SlideHotel extends React.PureComponent { // eslint-disable-line react/pref
     }
     return (
       <ContainerSlider>
-      <Slider {...settings}>
-        <div><img src="http://lorempixel.com/316/250/transport/1/" /></div>
-        <div><img src="http://lorempixel.com/316/250/transport/2/" /></div>
-        <div><img src="http://lorempixel.com/316/250/transport/3/" /></div>
-        <div><img src="http://lorempixel.com/316/250/transport/4/" /></div>
-        <div><img src="http://lorempixel.com/316/250/transport/5/" /></div>
-        <div><img src="http://lorempixel.com/316/250/transport/6/" /></div>
-      </Slider>
-    </ContainerSlider>
+        <Slider {...settings}>
+          <div><img src="http://lorempixel.com/316/245/transport/1/" /></div>
+          <div><img src="http://lorempixel.com/316/245/transport/2/" /></div>
+          <div><img src="http://lorempixel.com/316/245/transport/3/" /></div>
+          <div><img src="http://lorempixel.com/316/245/transport/4/" /></div>
+          <div><img src="http://lorempixel.com/316/245/transport/5/" /></div>
+          <div><img src="http://lorempixel.com/316/245/transport/6/" /></div>
+        </Slider>
+      </ContainerSlider>
     );
   }
 }
