@@ -20,21 +20,13 @@ const FontA = styled(FontAwesome) `
 
 `;
 
-const FontB =  styled(FontA) `
-    color: #56953f !important;
-    padding: 5px
-    padding-left: 10px;
-    font-weight: 900 !important;
-    top:-10px !important;
-    position: relative !important;
 
-`;
 
 
 function TripAdvisor() {
   return (
     <div>
-       <FontB name='tripadvisor' size="lg" />
+       <FontA name='tripadvisor' size="lg" />
        <FontA name='circle-thin' size="lg" />
        <FontA name='circle-thin' size="lg" />
        <FontA name='circle-thin' size="lg" />
