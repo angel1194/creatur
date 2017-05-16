@@ -21,20 +21,11 @@ const FontA = styled(FontAwesome) `
 
 `;
 
-const FontB =  styled(FontA) `
-    color: #f5d21a !important;
-    padding: 5px
-    padding-left: 10px;
-    font-weight: 900 !important;
-    top:-10px !important;
-    position: relative !important;
-`;
-
 
 function StarRating() {
   return (
     <div>
-      <FontB name='star' />
+      <FontA name='star' />
       <FontA name='star' />
       <FontA name='star' />
       <FontA name='star' />

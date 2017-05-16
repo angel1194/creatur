@@ -39,7 +39,7 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
 		if (!city) {
 			return Promise.resolve({ options: [] });
 		}
-		return fetch(`http://localhost:8000/autocomplete/?term=${city}`)
+		return fetch(`http://192.168.1.38:8000/autocomplete/?term=${city}`)
 		.then((response) => response.json())
 		.then((json) => {
 			return { options: json };

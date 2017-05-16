@@ -1,9 +1,3 @@
-/*
- *
- * HotelQuotation
- *
- */
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -12,7 +6,31 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectHotelQuotation from './selectors';
 import {Container } from 'semantic-ui-react'
 import messages from './messages';
+import InfoHotel from '../../../components/ReserHotel/InfoHotel'
 import SendQuotationHotel from '../../../components/ReserHotel/SendQuotationHotel'
+import styled from 'styled-components';
+import HeaderTable from '../../../components/HeaderTable'
+import HotelRoom from '../../../components/HotelRoom'
+import RadioButtonGreen from '../../../components/RadioButtonGreen'
+
+const GeneralContainer = styled.div`
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-between;
+`;
+
+const ContainerInfo = styled.div`
+  width:80%;
+  height:auto;
+  display:flex;
+`;
+
+const Divider=styled.div`
+  width:80%;
+  border:1px solid #58ACFA ;
+`;
 
 export class HotelQuotation extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -24,7 +42,16 @@ export class HotelQuotation extends React.PureComponent { // eslint-disable-line
             { name: 'description', content: 'Description of HotelQuotation' },
           ]}
         />
-      <SendQuotationHotel/>
+      <GeneralContainer>
+        <ContainerInfo>
+          <InfoHotel/>
+        </ContainerInfo>
+        <SendQuotationHotel/>
+      </GeneralContainer>
+      <HeaderTable/>
+      <HotelRoom NameRoom='Villa Sunset Water'/>
+      <Divider/>
+      <HotelRoom NameRoom='Villa Sunrise Beach'/>
       </Container>
     );
   }

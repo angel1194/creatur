@@ -10,7 +10,7 @@ import FontAwesome from 'react-fontawesome';
 
 const ContainerInput = styled.div`
   width:100%;
-  height:40px;
+  height:35px;
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
@@ -21,7 +21,7 @@ const ContainerInput = styled.div`
 
 const IconInput = styled.div`
   width:40px;
-  height:39px;
+  height:auto;
   background-color:#87b672;
   display:flex;
   justify-content:center;
@@ -36,7 +36,6 @@ const Input = styled.input`
 `;
 
 function InputIcon(props) {
-  console.log(props);
   return (
     <ContainerInput>
       <IconInput>
