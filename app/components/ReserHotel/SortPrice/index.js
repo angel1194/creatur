@@ -9,12 +9,13 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import Wrapper from './StyledSP/StyledSP';
+import {Wrapper, InputText, TextBold} from './StyledSP/StyledSP';
 
 function SortPrice() {
   return (
     <Wrapper>
-      <FormattedMessage {...messages.header} />
+      <TextBold>Ordenar Por: </TextBold>
+      <InputText type="text" placeholder="Precio" />
     </Wrapper>
   );
 }
