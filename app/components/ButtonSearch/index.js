@@ -14,14 +14,14 @@ function ButtonSearch(props) {
   if(props.typeSearch == 'hotel'){
     return (
       <div>
-        <Button className="buttonGreen"><Link to='/results'>BUSCAR EL MEJOR PRECIO!</Link></Button>
+        <Button className="buttonGreen"><Link to='/hotel/available'>¡BUSCAR EL MEJOR PRECIO!</Link></Button>
       </div>
     );
   }
   else {
         return (
         <div>
-          <Button className="buttonGreen" onClick={props.loadingTrue}>BUSCAR EL MEJOR PRECIO!</Button>
+          <Button className="buttonGreen" onClick={props.loadingTrue}>¡BUSCAR EL MEJOR PRECIO!</Button>
         </div>
             );
   }

@@ -21,7 +21,7 @@ import {
 
 const initialState = fromJS({
   'comments':[],
-  'type': 'car',
+  'type': 'hotel',
   'cars': [],
   'UI':{
     Loading: false,
