@@ -39,12 +39,12 @@ function FormSearchHotel(props) {
                 <label className="fecha">Fecha de llegada</label>
                 <ul>
                   <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                  <li><input className="inputt" type="text" placeholder="12/Ene/2016"/></li>
+                  <li><input type="text" placeholder="12/Ene/2016"/></li>
                 </ul>
                 <label className="fecha">Fecha de salida</label>
                 <ul>
                   <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                  <li><input className="inputt" type="text" placeholder="12/Ene/2016"/></li>
+                  <li><input type="text" placeholder="12/Ene/2016"/></li>
                 </ul>
               </div>
               <div className="bed">
@@ -67,7 +67,7 @@ function FormSearchHotel(props) {
               </div>
             </div>
             <div className="edad">
-              <h4>Edad de los menores</h4>
+              <p>Edad de los menores</p>
             </div>
             <div className="section-dad">
               <div className="section-child">
@@ -80,7 +80,8 @@ function FormSearchHotel(props) {
               </div>
             </div>
             <div className="link">
-              <a href="#"><i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Anadir otra habitación</a>
+              <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+              <a href="#">Añadir otra habitación</a>
             </div>
             <Grid.Row centered className='divButtonGreeen'>
               <ButtonSearch typeSearch='hotel'/>
