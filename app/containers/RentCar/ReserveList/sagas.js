@@ -8,7 +8,7 @@ import {loadReserveList, setReserveList} from './actions'
 // Individual exports for testing
 export function* getAPIReserveList() {
   var ary=[]
-  const requestURL = `http://localhost:8000/list/prebooking/`
+  const requestURL = `http://192.168.1.38:8000/list/prebooking/`
   try{
     const getreserveList = yield call(request, requestURL)
     var count=getreserveList.PreBookings.length
@@ -20,7 +20,7 @@ export function* getAPIReserveList() {
 
 export function* getAPICancelReserve(){
 
-  const requestURL = `http://localhost:8000/cancel/booking/`
+  const requestURL = `http://192.168.1.38:8000/cancel/booking/`
   const getData = yield select(makeSelectRequest())
    try {
      const getCancel = yield call(request, requestURL, {
@@ -43,7 +43,7 @@ export function* getAPICancelReserve(){
 
 export function* getAPIAuthorizationReserve(){
 
-  const requestURL = `http://localhost:8000/autorization/booking`
+  const requestURL = `http://192.168.1.38:8000/autorization/booking`
   const getData = yield select(makeSelectRequest())
   console.log(getData);
    try {
@@ -67,7 +67,7 @@ export function* getAPIAuthorizationReserve(){
 
 export function* getAPIDeleteReserve(){
 
-  const requestURL = `http://localhost:8000/delete/registry/booking/`
+  const requestURL = `http://192.168.1.38:8000/delete/registry/booking/`
   const getData = yield select(makeSelectRequest())
    try {
      const getDelete = yield call(request, requestURL, {
@@ -90,7 +90,7 @@ export function* getAPIDeleteReserve(){
 
 export function* getAPIPrintReserve(){
   const getData = yield select(makeSelectRequest())
-  const requestURL = `http://localhost:8000/print_voucher/${getData.AprovedID}/`
+  const requestURL = `http://192.168.1.38:8000/print_voucher/${getData.AprovedID}/`
   try {
     const getVoucher = yield call(request, requestURL, {
       method:'POST',
