@@ -28,10 +28,10 @@ function TableReserve(props) {
 
   {
       // onClick={()=>{ props.printReserve(props.data.idPrebooking)}}
-    if (data == 'Aprovado') {
+    if (data == 'Aprobado') {
       return(
         <Table.Cell>
-          <Link className='printButton' to={`http://localhost:8000/print_voucher/${props.data.idPrebooking}`} target='_black'><Icon name='print' size='small'/></Link>
+          <Link className='printButton' to={`http://192.168.1.38:8000/print_voucher/${props.data.idPrebooking}`} target='_black'><Icon name='print' size='small'/></Link>
           <button className='buttonPen' onClick={()=>{ validation('cancel')}}><Icon name='ban' size='small'/></button>
         </Table.Cell>
       )
@@ -56,7 +56,7 @@ function TableReserve(props) {
   if (props.data.status == 'Pendiente') {
     var cls = 'statusPen'
   }
-  else if (props.data.status == 'Aprovado') {
+  else if (props.data.status == 'Aprobado') {
     var cls = 'statusApr'
   }
   else{
