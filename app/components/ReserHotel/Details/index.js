@@ -1,3 +1,4 @@
+'use strict';
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import Tooltip from 'rc-tooltip';
@@ -12,6 +13,9 @@ import FontAwesome from 'react-fontawesome';
 import { ButtonStyled, Title, Line, Arrow, Wrapper } from '../Button/StyledButton/ButtonStyled';
 import ImgMap from './MapDefault.jpg';
 import CircleGreen from '../CirclesGreen';
+import Slider from '../SlickSlider/src/slider';
+import CustomPaging from '../SlickSlider'
+
 
 const Text = styled(H3)`
   font-family: sans-serif;
@@ -34,7 +38,7 @@ const Div = styled(Row)`
   margin-bottom: 60px;
 `;
 
-const Slider = styled.div`
+const Slick = styled.div`
   width: 75%;
 `;
 
@@ -129,9 +133,9 @@ function Details() {
         <Subtitle TextGrey ={"Tel. 01 800 000 0000"}/>
       </Rowtop>
       <Div>
-        <Slider>
-
-        </Slider>
+        <Slick>
+          <CustomPaging />
+        </Slick>
         <Lugares>
           <P1><Subtitle GlobalText={"desde"} /></P1>
           <Rowtop>
