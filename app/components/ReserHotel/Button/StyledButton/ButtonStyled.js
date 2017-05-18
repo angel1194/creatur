@@ -14,7 +14,7 @@ const ButtonStyled = styled.button`
 const Title = styled.p`
      font-family: Montserrat;
      font-size: 18px;
-     margin-left: 15%; 
+     margin-left: 15%;
 `;
 
 const Line = styled.hr`
@@ -37,7 +37,6 @@ const Wrapper = styled.div`
 `;
 
 const Arrow = styled(FontAwesome)`
-
           top:-4px !important;
           position: relative !important;
 

@@ -14,6 +14,11 @@ const Color = styled.p`
    margin-left: 10px;
 `;
 
+const A = styled.a `
+  color: #87b672;
+  margin: 2px 0px 0px 150px;
+`;
+
 function Subtitle(props) {
   return (
     <div>
@@ -23,13 +28,17 @@ function Subtitle(props) {
       <Color>
         {props.TextGrey}
       </Color>
+      <A>
+        {props.Ancor}
+      </A>
     </div>
   );
 }
 
 Subtitle.propTypes = {
   GlobalText: PropTypes.string,
-  TextGrey: PropTypes.string
+  TextGrey: PropTypes.string,
+  Ancor: PropTypes.string
 };
 
 export default Subtitle;
