@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap_white.css';
 //import Column from './StyledD/Column';
 import Row from './StyledD/Row';
 import Tabs from '../Tabs';
@@ -9,6 +11,7 @@ import Subtitle from '../../../components/ReserHotel/Subtitle';
 import FontAwesome from 'react-fontawesome';
 import { ButtonStyled, Title, Line, Arrow, Wrapper } from '../Button/StyledButton/ButtonStyled';
 import ImgMap from './MapDefault.jpg';
+import CircleGreen from '../CirclesGreen';
 
 const Text = styled(H3)`
   font-family: sans-serif;
@@ -28,6 +31,7 @@ const Div = styled(Row)`
   width: 100%;
   height: auto;
   border: 1px solid #cdcdcd;
+  margin-bottom: 60px;
 `;
 
 const Slider = styled.div`
@@ -61,14 +65,8 @@ const P1 = styled.p`
 
 const FontB = styled(FontAwesome) `
     color: #2c3e50 !important;
-    font-weight: 900 !important;
     top:-5px !important;
-`;
-
-const FontA = styled(FontAwesome) `
-    color: #27ae60 !important;
-    font-weight: 900 !important;
-    margin-left: 5px;
+    margin-top: 4px;
 `;
 
 const Btnreserv = styled(ButtonStyled) `
@@ -84,11 +82,36 @@ const LineBlue = styled.div `
   width: 95%;
 `;
 
+const FontA = styled(FontAwesome) `
+    color: #27ae60 !important;
+    font-weight: 900 !important;
+    margin-left: 5px;
+    margin-top: 4px;
+`;
+
 const Map = styled.img `
 width: 85%;
 height: 110px;
 margin-top: 20px;
 margin-left: -18px;
+`;
+
+const FontBlue = styled(FontAwesome) `
+    color: #2b5bac !important;
+`;
+
+const IconsBlue = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 70%;
+    margin-bottom: 25px;
+`;
+
+const Icons = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 
@@ -117,12 +140,11 @@ function Details() {
           </Rowtop>
           <P><Subtitle TextGrey={"Precio por noche"}/></P>
           <Subtitle GlobalText={"Habitación Económica"}/>
-          <FontB name='tripadvisor' size="lg" />
-          <FontA name='dot-circle-o' size="lg"/>
-          <FontA name='dot-circle-o' size="lg"/>
-          <FontA name='dot-circle-o' size="lg"/>
-          <FontA name='dot-circle-o' size="lg"/>
-          <FontA name='circle-thin' size="lg"/>
+          <Icons>
+            <FontB name='tripadvisor' size="lg" />
+            <CircleGreen/>
+            <FontA name='circle-thin' size="lg"/>
+          </Icons>
           <Btnreserv>
             <Wrapper>
               <Title>Reservar</Title>
@@ -132,7 +154,19 @@ function Details() {
           </Btnreserv>
           <LineBlue />
           <Map src={ImgMap}/>
-          <Subtitle Ancor={"Ver mapa"} />
+          <a href="#"><Subtitle Ancor={"Ver Ubicación"} /></a>
+          <Subtitle GlobalText={"Lugares de interés"} />
+          <a href="#" ><Subtitle AncorUbication={"Plaza de Gaspar a 1km Monasterio Iglesia"} /></a>
+          <IconsBlue>
+            <Tooltip placement="bottomRight" overlay="Información general" arrowContent={<div className="rc-tooltip-arrow-inner"></div>}>
+              <a href="#"><FontBlue name='info-circle' size="2x"/></a>
+            </Tooltip>
+            <FontBlue name='check-square' size="2x"/>
+            <FontBlue name='minus-square' size="2x"/>
+            <Tooltip placement="bottomLeft" overlay="Términos y Condiciones" arrowContent={<div className="rc-tooltip-arrow-inner"></div>}>
+              <a href="#"><FontBlue name='exclamation-circle' size="2x"/></a>
+            </Tooltip>
+          </IconsBlue>
         </Lugares>
       </Div>
     </div>

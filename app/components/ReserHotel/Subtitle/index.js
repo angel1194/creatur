@@ -14,9 +14,16 @@ const Color = styled.p`
    margin-left: 10px;
 `;
 
-const A = styled.a `
+const A = styled.p `
   color: #87b672;
-  margin: 2px 0px 0px 150px;
+  margin: 2px 0px 0px 123px;
+  text-decoration: underline;
+`;
+
+const Ubication = styled.div `
+  color: #3498db;
+  text-decoration: underline;
+  width: 70%;
 `;
 
 function Subtitle(props) {
@@ -31,6 +38,9 @@ function Subtitle(props) {
       <A>
         {props.Ancor}
       </A>
+      <Ubication>
+        {props.AncorUbication}
+      </Ubication>
     </div>
   );
 }
@@ -38,7 +48,8 @@ function Subtitle(props) {
 Subtitle.propTypes = {
   GlobalText: PropTypes.string,
   TextGrey: PropTypes.string,
-  Ancor: PropTypes.string
+  Ancor: PropTypes.string,
+  AncorUbication: PropTypes.string
 };
 
 export default Subtitle;

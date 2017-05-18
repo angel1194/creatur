@@ -18,6 +18,14 @@ const A = styled.a`
   border: 1px solid #cdcdcd;
   text-decoration: none;
   padding: 10px 145px 10px 145px;
+  color: #2c3e50 !important;
+  font-family: Roboto !important;
+
+  &:hover {
+    box-shadow: inset 0px -60px 0px #2b5bac;
+    transition: 0.8s;
+    color: white !important;
+  }
 `;
 
 function Tabs() {
