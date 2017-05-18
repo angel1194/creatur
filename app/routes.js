@@ -157,20 +157,41 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
-      path: '/login',
-      name: 'login',
+    },
+
+    {
+     path: '/login',
+     name: 'login',
+     getComponent(nextState, cb) {
+       const importModules = Promise.all([
+         import('containers/Login/reducer'),
+         import('containers/Login/sagas'),
+         import('containers/Login'),
+       ]);        const renderRoute = loadModule(cb);        importModules.then(([reducer, sagas, component]) => {
+         injectReducer('login', reducer.default);
+         injectSagas(sagas.default);
+         renderRoute(component);
+       });        importModules.catch(errorLoading);
+     },
+   },
+
+     {
+
+
+
+      path: '/hotel/pasarela',
+      name: 'pasarela',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/Login/reducer'),
-          import('containers/Login/sagas'),
-          import('containers/Login'),
+          import('containers/ReserHotel/Pasarela/reducer'),
+          import('containers/ReserHotel/Pasarela/sagas'),
+          import('containers/ReserHotel/Pasarela'),
+
         ]);
 
         const renderRoute = loadModule(cb);
-
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('login', reducer.default);
+          injectReducer('pasarela', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });
@@ -191,6 +212,7 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('hotelQuotation', reducer.default);
+
           injectSagas(sagas.default);
           renderRoute(component);
         });
