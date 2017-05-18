@@ -23,10 +23,10 @@ function Tab(props) {
       <div>
         <div className='tab'>
 
-          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel</Link><img src={blueHotel} /></div>
-          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto</Link><img src={whiteCar} /></div>
+          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel <img src={blueHotel} /></Link></div>
+          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto <img src={whiteCar} /></Link></div>
 
-         
+
 
         </div>
         <FormSearch title='Bienvenido'dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
@@ -38,10 +38,10 @@ function Tab(props) {
       <div>
         <div className='tab'>
 
-          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel</Link><img onClick={ () => props.tabChange("hotel") } src={whiteHotel} /></div>
-          <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto</Link><img src={blueCar} /></div>
+          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel <img onClick={ () => props.tabChange("hotel") } src={whiteHotel} /></Link></div>
+          <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto <img src={blueCar} /></Link></div>
 
-        
+
 
         </div>
         <FormSearchHotel title='Bienvenido'/>
