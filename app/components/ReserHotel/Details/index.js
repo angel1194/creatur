@@ -1,4 +1,3 @@
-'use strict';
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import Tooltip from 'rc-tooltip';
@@ -13,9 +12,10 @@ import FontAwesome from 'react-fontawesome';
 import { ButtonStyled, Title, Line, Arrow, Wrapper } from '../Button/StyledButton/ButtonStyled';
 import ImgMap from './MapDefault.jpg';
 import CircleGreen from '../CirclesGreen';
-import Slider from '../SlickSlider/src/slider';
-import CustomPaging from '../SlickSlider'
 
+import DetailsRoom from './DetailsRoom';
+import DetailsRoom1 from './DetailsRoom1';
+import HeadertableDetails from './HeadertableDetails';
 
 const Text = styled(H3)`
   font-family: sans-serif;
@@ -118,8 +118,14 @@ const Icons = styled.div`
     flex-direction: row;
 `;
 
+const LineDetails = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: #58ACFA;
+`;
 
 function Details() {
+
   return (
     <div>
       <Tabs />
@@ -134,7 +140,7 @@ function Details() {
       </Rowtop>
       <Div>
         <Slick>
-          <CustomPaging />
+
         </Slick>
         <Lugares>
           <P1><Subtitle GlobalText={"desde"} /></P1>
@@ -173,9 +179,13 @@ function Details() {
           </IconsBlue>
         </Lugares>
       </Div>
+      <HeadertableDetails />
+      <DetailsRoom />
+      <LineDetails/>
+      <DetailsRoom1 />
     </div>
   );
-}
+  }
 
 Details.propTypes = {
 

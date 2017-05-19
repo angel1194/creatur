@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import SlickSlider from '../index';
+// import DetailsRoom from '../index';
 
-describe('<SlickSlider />', () => {
+describe('<DetailsRoom />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

@@ -17,14 +17,22 @@ import HotelBlue from './hotelBlue.png';
 import AutoWhite from './autoWhite.png';
 import HotelWhite from './hotelWhite.png';
 
+
+import styled from 'styled-components';
+
+const Span = styled.span`
+  font-size: 25px;
+  text-align: center;
+`;
+
 function Tab(props) {
   if (props.type == 'car') {
     return (
       <div>
         <div className='tab'>
 
-          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel <img src={blueHotel} /></Link></div>
-          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto <img src={whiteCar} /></Link></div>
+          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
+          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
 
 
@@ -38,8 +46,8 @@ function Tab(props) {
       <div>
         <div className='tab'>
 
-          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel <img onClick={ () => props.tabChange("hotel") } src={whiteHotel} /></Link></div>
-          <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto <img src={blueCar} /></Link></div>
+          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
+          <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
 
 

@@ -10,6 +10,7 @@ import styled from 'styled-components';
 const Radio=styled.div`
 &.radio {
   padding:0px;
+  margin-left: -10px;
 }
 
 &.radio input[type=radio]{
