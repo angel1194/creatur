@@ -17,6 +17,9 @@ import DetailsRoom from './DetailsRoom';
 import DetailsRoom1 from './DetailsRoom1';
 import HeadertableDetails from './HeadertableDetails';
 
+import SimpleSlider from './SimpleSlider';
+import SliderTresItems from './SliderTresItems';
+
 const DivContainer = styled.div`
   width: 100%;
 `;
@@ -144,7 +147,8 @@ function Details() {
       </Rowtop>
       <Div>
         <Slick>
-          
+          <SimpleSlider />
+          <SliderTresItems />
         </Slick>
         <Lugares>
           <P1><Subtitle GlobalText={"desde"} /></P1>
