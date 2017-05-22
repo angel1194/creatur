@@ -17,13 +17,18 @@ import DetailsRoom from './DetailsRoom';
 import DetailsRoom1 from './DetailsRoom1';
 import HeadertableDetails from './HeadertableDetails';
 
+const DivContainer = styled.div`
+  width: 100%;
+`;
+
 const Text = styled(H3)`
   font-family: sans-serif;
   font-weight: bold;
 `;
 
 const Star = styled.div`
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-left: 5px;
 `;
 
 const Rowtop = styled(Row)`
@@ -32,7 +37,6 @@ margin-top: 5px;
 
 const Div = styled(Row)`
   margin-top: 10px;
-  width: 100%;
   height: auto;
   border: 1px solid #cdcdcd;
   margin-bottom: 60px;
@@ -127,7 +131,7 @@ const LineDetails = styled.div`
 function Details() {
 
   return (
-    <div>
+    <DivContainer>
       <Tabs />
       <Row>
         <Text>Jumeirah Vittaveli</Text>
@@ -140,7 +144,7 @@ function Details() {
       </Rowtop>
       <Div>
         <Slick>
-
+          
         </Slick>
         <Lugares>
           <P1><Subtitle GlobalText={"desde"} /></P1>
@@ -183,7 +187,7 @@ function Details() {
       <DetailsRoom />
       <LineDetails/>
       <DetailsRoom1 />
-    </div>
+    </DivContainer>
   );
   }
 

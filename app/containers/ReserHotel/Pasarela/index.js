@@ -14,7 +14,7 @@ import styled from 'styled-components';
 import Details from '../../../components/ReserHotel/Details';
 
 const Container = styled.div `
-  width : 70%;
+  width : 75%;
   margin: auto;
 `;
 

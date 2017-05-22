@@ -9,17 +9,21 @@ import styled from 'styled-components';
 import FlexRow from './StyledT/Row';
 
 const Ul = styled(FlexRow)`
+  width: 100%;
   list-style: none;
-  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
 const A = styled.a`
   text-decoration: none;
   border: 1px solid #cdcdcd;
   text-decoration: none;
-  padding: 10px 145px 10px 145px;
   color: #2c3e50 !important;
   font-family: Roboto !important;
+  padding: 10px 160px  10px 160px;
 
   &:hover {
     box-shadow: inset 0px -60px 0px #2b5bac;
