@@ -197,6 +197,26 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    }, {
+      path: '/hotel/roomer',
+      name: 'roomer',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReserHotel/Roomer/reducer'),
+          import('containers/ReserHotel/Roomer/sagas'),
+          import('containers/ReserHotel/Roomer'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('roomer', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     },
 {
   path: '*',
