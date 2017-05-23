@@ -57,7 +57,7 @@ getClient (email) {
   if (!email) {
     return Promise.resolve({ options: [] });
   }
-  return fetch(`http://localhost:8000/autocomplete/client/?term=${email}`)
+  return fetch(`http://192.168.1.38:8000/autocomplete/client/?term=${email}`)
   .then((response) => response.json())
   .then((json) => {
     if (json.length != 1) {

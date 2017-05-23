@@ -10,7 +10,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 export function* getAPIReserve(){
 
   const client = yield select(makeSelectClient())
-  const requestURL = `http://localhost:8000/save/prebooking`
+  const requestURL = `http://192.168.1.38:8000/save/prebooking`
 
   try {
     const getReserve = yield call(request, requestURL, {
