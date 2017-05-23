@@ -30,12 +30,14 @@ function Tab(props) {
     return (
       <div>
         <div className='tab'>
-
           <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
           <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
-
-
+          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
+          <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
+          <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
+          <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
+          <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
         </div>
         <FormSearch title='Bienvenido'dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
       </div>
@@ -45,12 +47,14 @@ function Tab(props) {
     return(
       <div>
         <div className='tab'>
-
           <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
           <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
-
-
+          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
+          <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
+          <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
+          <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
+          <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
         </div>
         <FormSearchHotel title='Bienvenido'/>
       </div>
