@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectRoomer from './selectors';
 import {Container} from 'semantic-ui-react'
-import Tabs from '../../../components/ReserHotel/Tabs'
+import ContainerRoomer from '../../../components/ContainerRoomer'
 
 export class Roomer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -22,7 +22,7 @@ export class Roomer extends React.PureComponent { // eslint-disable-line react/p
             { name: 'description', content: 'Description of Roomer' },
           ]}
         />
-      <Tabs/>
+      <ContainerRoomer/>
       </Container>
     );
   }

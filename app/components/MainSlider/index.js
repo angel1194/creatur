@@ -6,7 +6,7 @@
 
 import React from 'react';
 import Slider from 'react-slick'
-import Img from './img/viaje.png'
+import Img from './img/Slide.jpg'
 import Img2 from './img/viaje.jpg'
 // import styled from 'styled-components';
 
@@ -25,16 +25,13 @@ class MainSlider extends React.PureComponent { // eslint-disable-line react/pref
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay:true,
+      arrows:false
 
     }
     return (
       <Slider {...settings}>
         <div><img src={Img} /></div>
         <div><img src={ Img2 } /></div>
-        <div><img src="http://lorempixel.com/1200/540/people/3/" /></div>
-        <div><img src="http://lorempixel.com/1200/540/people/4/" /></div>
-        <div><img src="http://lorempixel.com/1200/540/people/5/" /></div>
-        <div><img src="http://lorempixel.com/1200/540/people/6/" /></div>
       </Slider>
     );
   }
