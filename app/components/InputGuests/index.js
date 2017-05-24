@@ -43,11 +43,11 @@ function InputGuests(props) {
     <Container>
       <InputC>
         <Label>{props.Titulo}</Label>
-        <Input id={ props.First }/>
+        <Input Name={ props.First }/>
       </InputC>
       <InputC>
         <Label>{ props.SubTitle }</Label>
-        <Input id={ props.IdSecond }/>
+        <Input Name={ props.IdSecond }/>
       </InputC>
     </Container>
   );
