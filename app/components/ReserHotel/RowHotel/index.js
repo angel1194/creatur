@@ -22,6 +22,8 @@ import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import Button from '../../../components/ReserHotel/Button';
 
+import OffersDay from '../OffersDay'
+
 const ColumMarginRight = styled(Column) `
 
  margin-right: 10px;
@@ -54,9 +56,8 @@ function generateRowHotel(num) {
         <ColumMarginRight>
           <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
           <Button Title={"Comprar"} Color={"Blue"} />
-        </ColumMarginRight>
+          </ColumMarginRight>
       </Row>
-
     </Wrapper>);
   }
 
@@ -68,6 +69,7 @@ function RowHotel() {
   return (
     <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
       {generateRowHotel(4)}
+        <OffersDay />
     </WrapperFlex>
   );
 }
