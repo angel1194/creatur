@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
 // import { FormattedMessage } from 'react-intl';
@@ -17,29 +17,29 @@ const FontA = styled(FontAwesome) `
     padding: 5px
     padding-left: 5px;
     font-weight: 900 !important;
-    top: 5px !important;
+   
     position: relative !important;
 
 `;
 
 const Wrapper = styled.div`
   display: flex;
-   flex-direction: row ;
-   align-items: flex-start;
-   margin: 0;
+  flex-direction: row ;
+  align-items: flex-end;
+  margin: 0;
 `;
 
-function LocationLabel() {
+function LocationLabel(props) {
   return (
     <Wrapper>
-     <Text>CD. México</Text>
-     <FontA name='map-marker' size="lg" />
+      <Text>{props.Title}</Text>
+      <FontA name='map-marker' size="lg" />
     </Wrapper>
   );
 }
 
 LocationLabel.propTypes = {
-
+  Title: PropTypes.string
 };
 
 export default LocationLabel;

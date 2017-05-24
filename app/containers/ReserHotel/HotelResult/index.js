@@ -48,7 +48,8 @@ const ContenFilter = styled.div`
   border: 2px solid #eaeff3;
   margin: 4px;
   min-width: 234px;
-  max-height:700px; 
+  max-height:1000px; 
+   border-radius: 6px 6px 0 0;
 
 `;
 
@@ -57,17 +58,18 @@ const ContenResults = styled.div`
   flex:1 1 60%;
   order:2;
   min-width: 704px;
-  max-height:900px;
+  max-height:1000px; 
   // overflow: scroll;
 `;
 
 const ContenTools = styled.div`
   flex:1 1 20%;
   order:3;
+  border-radius: 6px 6px 0 0;
   border: 2px solid #eaeff3;
   margin:4px;
   min-width: 234px;
-  max-height:700px;
+  max-height:1000px; 
   
 `;
 

@@ -19,6 +19,9 @@ const Text = Styled.p`
      margin:0 ;
      top: 14px;
      position: relative;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
 `;
 
 const Wrapper = Styled.div`
@@ -26,6 +29,7 @@ const Wrapper = Styled.div`
      width: 100%;
      height: 54px;
      background-color: #2b5bac;
+     border-radius: 6px 6px 0 0;
    
 
 `;

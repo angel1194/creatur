@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import React, { PropTypes } from 'react';
 
 const StyledImg = styled.img`
-margin: 5px;
-margin-right: 10px;
+  margin:auto;
 `;
 
 

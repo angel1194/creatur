@@ -15,12 +15,12 @@ import Wrapper from './StyledBarF/StyledBF';
 function BarFilters() {
   return (
     <Wrapper>
-      <InputLabel Type="text" Title="Destino" Placeholder="Mexico Df" />
-      <InputLabel Type="date" Title="Entrada" Placeholder="12/Ene/2017" />
-      <InputLabel Type="date" Title="Salida" Placeholder="12/Ene/2017" />
-      <InputLabel Type="number" Title="Habitaciones" Placeholder="0" />
-      <InputLabel Type="number" Title="Noches" Placeholder="0" />
-      <InputLabel Type="number" Title="Adultos" Placeholder="0" />
+      <InputLabel Type="text" Title="Destino" Placeholder="Paris Francia" />
+      <InputLabel Type="date" Title="Entrada" Placeholder="2017-09-15" />
+      <InputLabel Type="date" Title="Salida" Placeholder="2017-09-19" />
+      <InputLabel Type="number" Title="Habitaciones" Placeholder="1" />
+      <InputLabel Type="number" Title="Noches" Placeholder="4" />
+      <InputLabel Type="number" Title="Adultos" Placeholder="2" />
       <InputLabel Type="number" Title="Niños" Placeholder="0" />
 
 

@@ -15,17 +15,20 @@ const FontA = styled(FontAwesome) `
     padding: 5px
     padding-left: 0;
     font-weight: 900 !important;
-    top:-10px !important;
+    
     position: relative !important;
 
 `;
 
 
-
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 function TripAdvisor() {
   return (
-    <div>
+    <Wrapper>
        <FontA name='tripadvisor' size="lg" />
        <FontA name='circle-thin' size="lg" />
        <FontA name='circle-thin' size="lg" />
@@ -33,7 +36,7 @@ function TripAdvisor() {
        <FontA name='circle-thin' size="lg" />
        <FontA name='circle-thin' size="lg" />
 
-    </div>
+    </Wrapper>
   );
 }
 

@@ -11,6 +11,7 @@ const H3 = styled.p`
      color : #2b5bac;
      margin: 0;
      font-size: 15px;
-`; 
+     font-weight: 500;
+`;
 
 export default H3;

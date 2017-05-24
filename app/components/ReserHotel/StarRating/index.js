@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 // import { FormattedMessage } from 'react-intl';
@@ -16,25 +16,60 @@ const FontA = styled(FontAwesome) `
     padding: 5px;
     padding-left: 0;
     font-weight: 900 !important;
-    top:-10px !important;
+ 
     position: relative !important;
 
 `;
 
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
-function StarRating() {
+
+function addStar(num) {
+  let ArrStars = [], i = 0;
+
+  for (i = 0; i < num; i++) {
+    ArrStars.push(<FontA name='star' />);
+  }
+
+  return ArrStars;
+
+}
+
+function generateStarts(num) {
+
+  if (Number.isInteger(num)) {
+
+    return addStar(num);
+
+  } else {
+
+    num = parseInt(num);
+    let ArrStar = addStar(num);
+    ArrStar.push(<FontA name='star-half' />);
+    return ArrStar;
+  }
+
+
+
+
+
+}
+
+
+
+function StarRating(props) {
   return (
-    <div>
-      <FontA name='star' />
-      <FontA name='star' />
-      <FontA name='star' />
-      <FontA name='star' />
-      <FontA name='star' />
-    </div>
+    <Wrapper>
+      {generateStarts(props.NumStart)}
+    </Wrapper>
   );
 }
 
 StarRating.propTypes = {
+  NumStart: PropTypes.number
 };
 
 export default StarRating;

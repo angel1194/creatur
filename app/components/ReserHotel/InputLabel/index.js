@@ -22,7 +22,7 @@ function InputLabel(props) {
       Input = (
         <Wrapper>
           <SmallText>{props.Title}</SmallText>
-          <InputText type={props.Type} placeholder={props.Placeholder} />
+          <InputText type={props.Type} value={props.Placeholder} />
         </Wrapper>
       );
       break;
@@ -30,7 +30,7 @@ function InputLabel(props) {
       Input = (
         <Wrapper>
           <SmallText>{props.Title}</SmallText>
-          <InputText type={props.Type} placeholder={props.Placeholder} />
+          <InputText type={props.Type} value={props.Placeholder} />
         </Wrapper>
       );
       break;
@@ -39,7 +39,7 @@ function InputLabel(props) {
         <Wrapper>
           <SmallText>{props.Title}</SmallText>
          
-            <InputNum type={props.Type} placeholder={props.Placeholder} />
+            <InputNum type={props.Type} value={props.Placeholder} />
          
         </Wrapper>
       );

@@ -17,12 +17,12 @@ import FlexContainer from '../FlexContainer';
 import FlexItem from '../FlexItem';
 
 
-const Container = styled(FlexContainer)`
+const Container = styled(FlexContainer) `
   height: 35px;
 
 `;
 
-const FlexItemleft = styled(FlexItem)`
+const FlexItemleft = styled(FlexItem) `
       text-align: left;
       margin:0;
       padding-top: 5px;
@@ -30,7 +30,7 @@ const FlexItemleft = styled(FlexItem)`
 `;
 
 
-const FlexItemright = styled(FlexItem)`
+const FlexItemright = styled(FlexItem) `
       text-align: right;
       padding-top: 5px;
 `;
@@ -48,8 +48,8 @@ function DualRangeSlider(props) {
           <input type="range" step={props.Step} min={props.Min} max={props.Max} />
         </InputContainer>
         <Container>
-          <FlexItemleft>$0.0</FlexItemleft>
-          <FlexItemright>$0.0</FlexItemright>
+          <FlexItemleft>$372.00</FlexItemleft>
+          <FlexItemright>$840.18</FlexItemright>
         </Container>
       </Wrapper>
     );
