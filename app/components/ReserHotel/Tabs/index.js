@@ -1,55 +1,52 @@
-/**
-*
-* Tabs
-*
-*/
-
-import React from 'react';
+import React,{ PropTypes } from 'react';
 import styled from 'styled-components';
-import FlexRow from './StyledT/Row';
 
-const Ul = styled(FlexRow)`
-  width: 100%;
-  list-style: none;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+const Tab = styled.div`
+  width:100%;
+  height:50px;
+  display:flex;
+  flex-direction:row;
+  margin-bottom:20px;
 `;
 
-const A = styled.a`
-  text-decoration: none;
-  border: 1px solid #cdcdcd;
-  text-decoration: none;
-  color: #2c3e50 !important;
-  font-family: Roboto !important;
-  padding: 10px 160px  10px 160px;
+const DivTab = styled.div`
+  width:33.33%;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ccc;
 
-  &:hover {
-    box-shadow: inset 0px -60px 0px #2b5bac;
-    transition: 0.8s;
-    color: white !important;
+  &.position{
+    background:#2b5bac !important;
+    color:white !important;
+    font-weight:bold;
   }
+
+`;
+const Label = styled.label`
+  font-family:Roboto !important;
+  font-size:18px;
 `;
 
-function Tabs() {
+function Tabs(props) {
   return (
-      <Ul>
-        <li>
-          <A href="">Detalles</A>
-        </li>
-        <li>
-          <A href="">Caracteristicas</A>
-        </li>
-        <li>
-          <A href="">Precio</A>
-        </li>
-      </Ul>
+        <Tab>
+          <DivTab className={ props.selected == "1" ? 'position' : '' } >
+            <Label>Detalles</Label>
+          </DivTab>
+          <DivTab className={ props.selected == '2' ? 'position' : '' }>
+            <Label>Ingresa tus datos</Label>
+          </DivTab>
+          <DivTab className={ props.selected == '3' ? 'position' : '' }>
+            <Label>Pago</Label>
+          </DivTab>
+        </Tab>
   );
 }
 
 Tabs.propTypes = {
-
+  selected:PropTypes.string
 };
 
 export default Tabs;
