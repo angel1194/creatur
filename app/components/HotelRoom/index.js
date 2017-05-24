@@ -10,6 +10,7 @@ import H3 from '../ReserHotel/H3'
 import CollapseSection from '../../components/ReserHotel/CollapseSection';
 import RadioButtonGreen from '../RadioButtonGreen'
 import FontAwesome from 'react-fontawesome';
+import Room from '../ReserHotel/SlideHotel/img/Room.jpg'
 
 const ContainerRoom=styled.div`
   width:78.4%;
@@ -95,7 +96,7 @@ function HotelRoom(props) {
     <ContainerRoom>
       <RoomImg>
         <NameRoom>{props.NameRoom}</NameRoom>
-        <img src='http://lorempixel.com/250/180/business/9/'/>
+        <img src={Room} width='250'/>
       </RoomImg>
       <DetailsRoom>
         <Label>Capacidad para 3 personas</Label>

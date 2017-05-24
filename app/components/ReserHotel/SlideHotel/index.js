@@ -7,6 +7,9 @@
 import React from 'react';
 import styled,{css} from 'styled-components';
 import Slider from 'react-slick';
+import First from './img/First.jpg'
+import Second from './img/Second.jpg'
+
 
 const ContainerSlider=styled.div`
   width:35%;
@@ -34,12 +37,8 @@ class SlideHotel extends React.PureComponent { // eslint-disable-line react/pref
     return (
       <ContainerSlider>
         <Slider {...settings}>
-          <div><img src="http://lorempixel.com/316/245/transport/1/" /></div>
-          <div><img src="http://lorempixel.com/316/245/transport/2/" /></div>
-          <div><img src="http://lorempixel.com/316/245/transport/3/" /></div>
-          <div><img src="http://lorempixel.com/316/245/transport/4/" /></div>
-          <div><img src="http://lorempixel.com/316/245/transport/5/" /></div>
-          <div><img src="http://lorempixel.com/316/245/transport/6/" /></div>
+          <div><img src={First} /></div>
+          <div><img src={Second} /></div>
         </Slider>
       </ContainerSlider>
     );
