@@ -10,6 +10,8 @@ import Tabs from '../../components/ReserHotel/Tabs'
 import RoomTitular from '../../components/RoomTitular'
 import DataRoomer from '../../components/DataRoomer'
 import HotelSummary from '../HotelSummary'
+import DataPayment from '../../components/DataPayment'
+import BillingPayment from '../../components/BillingPayment'
 
 const Container = styled.div`
   width:100%;
@@ -34,8 +36,10 @@ function ContainerRoomer() {
     <Container>
       <TitularContainer>
         <Tabs selected='2'/>
-        <RoomTitular/>
-        <DataRoomer/>
+        {/*<RoomTitular/>*/}
+        {/*<DataRoomer/>*/}
+        <DataPayment />
+        <BillingPayment />
       </TitularContainer>
       <HotelSummary/>
     </Container>
