@@ -9,6 +9,9 @@ import styled from 'styled-components';
 import InputGuests from '../InputGuests';
 import FontAwesome from 'react-fontawesome';
 import GreenButton from '../GreenButton';
+import AddCheckList from '../AddCheckList';
+import Visa from './visa-mastercard.png'
+import AExpress from './American_Express.png'
 
 const Container =styled.div`
   width:100%;
@@ -24,6 +27,7 @@ const Title = styled.label`
   font-family:Montserrat;
   font-size:18px;
   color:black;
+  margin-right: 20px;
 `;
 
 const Text = styled.label`
@@ -52,7 +56,7 @@ const Icon = styled.div`
   width:35px;
   color:white !important;
   font-size:18px;
-  background-color:#87b672;
+  background-color:#63B473;
   height:35px;
   display:flex;
   flex-direction:row;
@@ -114,14 +118,39 @@ const Tel = styled.input`
 const ButtonPosition=styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-left: 510px;
+  margin-right: 20PX;
   width:30% !important;
 `;
+
+const DivCheck = styled.div`
+
+`
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+`
+const Check = styled.div`
+  margin: 10px 0px 0px 20px;
+`
+const Img = styled.img`
+  width: 50px;
+`
+const Card = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 
 function DataPayment() {
   return (
     <Container>
-      <Title>Informacion para el pago</Title>
+      <Card>
+        <Title>Informacion para el pago</Title>
+        <Img src={Visa}/>
+        <Img src={AExpress}/>
+      </Card>
       <Text>Numero de tarjeta</Text>
       <Number/>
       <Text>codigo de seguridad</Text>
@@ -164,10 +193,17 @@ function DataPayment() {
           <FontAwesome name='caret-down'/>
         </Icon>
         <Tel/>
+        <Check><AddCheckList text="Celular"/></Check>
       </Code>
-      <ButtonPosition>
-        <GreenButton text='PAGAR'/>
-      </ButtonPosition>
+      <Row>
+        <DivCheck>
+          <AddCheckList text="Necesito un comprobante fiscal"/>
+          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso."/>
+        </DivCheck>
+        <ButtonPosition>
+          <GreenButton text='PAGAR'/>
+        </ButtonPosition>
+      </Row>
     </Container>
   );
 }

@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import InputGuests from '../InputGuests';
 import GreenButton from '../GreenButton';
+import AddCheckList from '../AddCheckList';
 
 const Container =styled.div`
   width:100%;
@@ -52,14 +53,21 @@ const Number = styled.input`
 const ButtonPosition=styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-left: 510px;
   width:30% !important;
+  margin-right: 20PX;
 `;
 
 const Div = styled.div`
   margin-bottom: -25px;
 `
-
+const DivCheck = styled.div`
+  margin-top: 20px;
+`
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
 function BillingPayment() {
   return (
     <Container>
@@ -71,9 +79,14 @@ function BillingPayment() {
       </Div>
       <Text>Colonia / Fraccionamiento</Text>
       <Number/>
-      <ButtonPosition>
-        <GreenButton text='PAGAR'/>
-      </ButtonPosition>
+      <Row>
+        <DivCheck>
+          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso."/>
+        </DivCheck>
+        <ButtonPosition>
+          <GreenButton text='PAGAR'/>
+        </ButtonPosition>
+      </Row>
     </Container>
   );
 }
