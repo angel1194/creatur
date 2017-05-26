@@ -66,17 +66,13 @@ function generateRowHotel(num) {
       </Row>
       <Row>
         <ColumMarginRight>
-<<<<<<< HEAD
+
           <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price2} />
           <Link to="/hotel/quotation">
-          <Button Title={"Comprar"} Color={"Blue"}  />
-        </Link>
+            <Button Title={"Comprar"} Color={"Blue"} />
+          </Link>
         </ColumMarginRight>
-=======
-          <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
-          <Button Title={"Comprar"} Color={"Blue"} />
-          </ColumMarginRight>
->>>>>>> c31bf28b108046afab9d8167fe56c42ebbeeae2b
+
       </Row>
     </Wrapper>);
   }
@@ -89,7 +85,7 @@ function RowHotel() {
   return (
     <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
       {generateRowHotel(4)}
-        <OffersDay />
+      <OffersDay />
     </WrapperFlex>
   );
 }
