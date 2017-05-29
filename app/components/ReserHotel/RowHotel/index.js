@@ -24,7 +24,8 @@ import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import Button from '../../../components/ReserHotel/Button';
 
-import OffersDay from '../OffersDay'
+import OffersDay from '../OffersDay';
+import BarImgOffers from '../BarImgOffers';
 
 const ColumMarginRight = styled(Column) `
 
@@ -86,6 +87,7 @@ function RowHotel() {
     <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
       {generateRowHotel(4)}
       <OffersDay />
+      <BarImgOffers />
     </WrapperFlex>
   );
 }

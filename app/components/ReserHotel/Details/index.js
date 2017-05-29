@@ -135,7 +135,7 @@ function Details() {
 
   return (
     <DivContainer>
-      <Tabs />
+      <Tabs selected='1'/>
       <Row>
         <Text>Jumeirah Vittaveli</Text>
         <Star><StarRating /></Star>
