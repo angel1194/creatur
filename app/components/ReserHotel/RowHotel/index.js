@@ -12,11 +12,10 @@ import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import WrapperFlex from '../../../components/ReserHotel/WrapperFlex';
-import Wrapper from './StyledRowH/Wrapper';
-import Column from './StyledRowH/Column';
-import Row from './StyledRowH/Row';
+import { Wrapper, Column, Row, Title } from './StyledRowH/StyledRowH';
+
 import Img from './StyledRowH/Img';
-import Title from './StyledRowH/Title';
+
 import ImgD from './defaultHotel.jpg';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import TripAdvisor from '../../../components/ReserHotel/TripAdvisor';
@@ -54,27 +53,32 @@ function generateRowHotel(num) {
   ]
   let ArrElm = []
   for (var i = 0; i < num; i++) {
-    ArrElm.push(<Wrapper key={i}>
-      <Row>
-        <Img src={AImage[i]} Width={"200px"} />
-        <ColumMarginTop>
-          <Title>{TiltesHotel[i]}</Title>
-          <StarRating NumStart={ANumStars[i]} />
-          <TripAdvisor />
-          <LocationLabel Title={ALocations[i]} />
-        </ColumMarginTop>
-      </Row>
-      <Row>
-        <ColumMarginRight>
-
-          <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price2} />
-          <Link to="/hotel/quotation">
-            <Button Title={"Comprar"} Color={"Blue"} />
-          </Link>
-        </ColumMarginRight>
-
-      </Row>
-    </Wrapper>);
+    ArrElm.push(
+      <Column>
+        <Wrapper>
+           <Row>
+          <Img src={AImage[i]} Width={"200px"} />
+          <ColumMarginTop>
+            <Title>{TiltesHotel[i]}</Title>
+            <StarRating NumStart={ANumStars[i]} />
+            <TripAdvisor />
+            <LocationLabel Title={ALocations[i]} />
+          </ColumMarginTop>
+        </Row>
+        <Row>
+          <ColumMarginRight>
+            <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price2} />
+            <Link to="/hotel/quotation">
+              <Button Title={"Comprar"} Color={"Blue"} />
+            </Link>
+          </ColumMarginRight>
+        </Row>
+        </Wrapper>
+        <Wrapper>
+            <OffersDay />
+        </Wrapper>
+      </Column>
+    )
   }
 
   return ArrElm;
@@ -85,7 +89,7 @@ function RowHotel() {
   return (
     <WrapperFlex Order={2} Grow={3} Shrink={1} Basis={60}>
       {generateRowHotel(4)}
-      <OffersDay />
+
     </WrapperFlex>
   );
 }

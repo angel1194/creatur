@@ -19,8 +19,8 @@ function Footer() {
               <Grid.Column mobile={16} tablet={16} computer={3}>
                 <span className="logoBlanco">Creatu</span><span className="logoVerde">Viaje</span>
                 <br/>
-                <span className='colorGreen'>2017 Creatur</span>
-                <h4>info@creatuviaje.com</h4>
+                <span className='colorGreen'>2017 © Creatur</span>
+                <h4>reservaciones@creatuviaje.com</h4>
                 <Icon link color='green' bordered name='facebook f'></Icon>
                 <Icon link color='green' bordered name='twitter'></Icon>
               </Grid.Column>

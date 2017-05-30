@@ -26,7 +26,7 @@ import SortPrice from '../../../components/ReserHotel/SortPrice';
 const Container = styled.div`
   width : 90%;
   max-width: 1200px;
-  min-height: 1000px;
+  min-height: 1500px;
   margin: auto;
   /*
   Flex
@@ -48,7 +48,7 @@ const ContenFilter = styled.div`
   border: 2px solid #eaeff3;
   margin: 4px;
   min-width: 234px;
-  max-height:1000px; 
+  max-height:1500px; 
    border-radius: 6px 6px 0 0;
 
 `;
@@ -58,7 +58,7 @@ const ContenResults = styled.div`
   flex:1 1 60%;
   order:2;
   min-width: 704px;
-  max-height:1000px; 
+  max-height: 1500px; 
   // overflow: scroll;
 `;
 
@@ -69,7 +69,7 @@ const ContenTools = styled.div`
   border: 2px solid #eaeff3;
   margin:4px;
   min-width: 234px;
-  max-height:1000px; 
+  max-height:1500px; 
   
 `;
 
@@ -90,6 +90,7 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
             <RowHotel />
           </ContenResults>
           <ContenTools>
+            <HotelRate />
             <MostSold />
           </ContenTools>
         </Container>

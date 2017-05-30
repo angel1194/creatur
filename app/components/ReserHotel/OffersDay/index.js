@@ -13,7 +13,10 @@ import FontAwesome from 'react-fontawesome';
 import Checkbox from '../../Checkbox';
 
 const Div = styled.div`
-  border: 2px solid #EAEFF3;
+  border-left:    1px solid red;
+  border-right:  1px solid red; 
+  border-bottom: 1px solid red;
+  width:100%;
   padding: 5px 20px 20px 20px;
 `;
 

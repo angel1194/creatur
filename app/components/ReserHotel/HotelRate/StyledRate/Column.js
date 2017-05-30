@@ -8,4 +8,13 @@ const Column = styled.div`
     
 `;
 
-export default Column;
+const Row = styled.div`
+  display: flex;
+   flex-direction: row;
+   width:100%;
+
+  align-items: flex-end;
+`;
+
+
+export { Column, Row };

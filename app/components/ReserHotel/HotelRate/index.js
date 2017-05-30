@@ -11,14 +11,26 @@ import { FormattedMessage } from 'react-intl';
 
 import messages from './messages';
 import Title from '../../../components/ReserHotel/Title';
-import Column from './StyledRate/Column';
-import Row from './StyledRate/Row';
+import { Column, Row } from './StyledRate/Column';
 import H3 from '../../../components/ReserHotel/H3';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import Line from '../../../components/ReserHotel/Line';
 import FontAwesome from 'react-fontawesome';
+
+const ColumnElement = styled(Column) `
+    width:100%
+    height: 285px;
+    padding: 9px;
+`;
+
+const ContainerItems = styled(Column) `
+    width:100%
+    height: 100%;
+    border:2px solid #eaeff3;
+
+`;
 
 const P = styled(H3) `
    width: 180px;
@@ -70,38 +82,15 @@ const LineN = styled(Line) `
 function HotelRate() {
   return (
     <Column>
-      <Title Title="Hoteles a Cotizar" />
-      <Row>
-        <P>Hotel Nayarit</P>
-        <FontA name='angle-up' size="2x" />
-      </Row>
+    <Row>
+            <Title Title="Hoteles a Cotizar" />
+          </Row>
+      <ColumnElement>
+        <ContainerItems>
+          
 
-      <Row>
-        <StarRating />
-        <FontB name='tripadvisor' size="lg" />
-        <PB>3.0/5</PB>
-      </Row>
-      <LocationLabel />
-
-      <PriceLabel Tam={"Com"} Since={"3,089.56"} Currency={"USD"} Total={"1,200.56"} />
-      <LineN />
-      <Row>
-        <P>Hotel Nayarit</P>
-        <FontA name='angle-down' size="2x" />
-      </Row>
-
-      <Row>
-        <StarRating />
-        <FontB name='tripadvisor' size="lg" />
-        <PB>3.0/5</PB>
-      </Row>
-      <LineN />
-      <Row>
-        <FontC name='envelope' size="lg" />
-        <FontC name='print' size="lg" />
-        <FontC name='download' size="lg" />
-      </Row>
-     
+        </ContainerItems>
+      </ColumnElement>
     </Column>
   );
 }
