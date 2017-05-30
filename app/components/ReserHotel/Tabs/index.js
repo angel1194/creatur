@@ -18,7 +18,7 @@ const DivTab = styled.div`
   border:1px solid #ccc;
 
   &.position{
-    background:#2b5bac !important;
+    background:#204f9e !important;
     color:white !important;
     font-weight:bold;
   }

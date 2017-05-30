@@ -56,7 +56,7 @@ const Icon = styled.div`
   width:35px;
   color:white !important;
   font-size:18px;
-  background-color:#63B473;
+  background-color:#7db464;
   height:35px;
   display:flex;
   flex-direction:row;
@@ -193,12 +193,12 @@ function DataPayment() {
           <FontAwesome name='caret-down'/>
         </Icon>
         <Tel/>
-        <Check><AddCheckList text="Celular"/></Check>
+        <Check><AddCheckList text="Celular" id="1"/></Check>
       </Code>
       <Row>
         <DivCheck>
-          <AddCheckList text="Necesito un comprobante fiscal"/>
-          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso."/>
+          <AddCheckList text="Necesito un comprobante fiscal" id="2"/>
+          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso." id="3"/>
         </DivCheck>
         <ButtonPosition>
           <GreenButton text='PAGAR'/>

@@ -12,7 +12,7 @@ const Header = styled.div`
   width:100%;
   display:flex;
   flex-wrap:nowrap;
-  background-color:#2b5bac;
+  background-color:#204f9e;
   height:40px;
   margin-top:20px;
   margin-bottom:20px;
