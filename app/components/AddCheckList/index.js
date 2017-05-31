@@ -16,9 +16,9 @@ const AddElement = styled.div`
 
 function AddCheckList(props) {
   return (
-    <AddElement className="">
-      <input type="checkbox" value="None" id={props.id} name="check" />
-      <label className="labelCheck" htmlFor={props.id}></label>{props.text}
+    <AddElement className="check-box">
+      <input type="checkbox" id={props.id} name={props.name} />
+      <label htmlFor={props.id}></label>{props.text}
     </AddElement>
   );
 }
@@ -26,6 +26,7 @@ function AddCheckList(props) {
 AddCheckList.propTypes = {
   text:PropTypes.string,
   id:PropTypes.string,
+  name:PropTypes.string
 };
 
 export default AddCheckList;
