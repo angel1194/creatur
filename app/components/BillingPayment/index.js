@@ -81,7 +81,7 @@ function BillingPayment() {
       <Number/>
       <Row>
         <DivCheck>
-          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso."/>
+          <AddCheckList text="He leido y aceptado los Terminos y Condiciones de uso." id="condiciones"/>
         </DivCheck>
         <ButtonPosition>
           <GreenButton text='PAGAR'/>

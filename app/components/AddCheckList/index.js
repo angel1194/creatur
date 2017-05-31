@@ -12,27 +12,13 @@ const AddElement = styled.div`
   width:100%;
   display:flex;
   flex-direction:row;
-  flex-wrap:nowrap;
-`;
-
-const GreenIcon=styled(FontAwesome)`
-  color:#87B672 !important;
-  cursor:pointer;
-`;
-
-const LabelElement=styled.label`
-  margin-left:5px
-  color:#5E5E5E;
-  cursor:pointer;
 `;
 
 function AddCheckList(props) {
   return (
-    <AddElement>
-      <GreenIcon  name='check-square-o' size='lg' />
-      <LabelElement htmlFor='addElement'>
-        {props.text}
-      </LabelElement>
+    <AddElement className="check-box">
+      <input type="checkbox" id={props.id} name={props.name} />
+      <label htmlFor={props.id}></label>{props.text}
     </AddElement>
   );
 }
@@ -40,6 +26,7 @@ function AddCheckList(props) {
 AddCheckList.propTypes = {
   text:PropTypes.string,
   id:PropTypes.string,
+  name:PropTypes.string
 };
 
 export default AddCheckList;

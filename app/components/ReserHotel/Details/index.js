@@ -30,7 +30,6 @@ const Text = styled(H3)`
 `;
 
 const Star = styled.div`
-  margin-top: 8px;
   margin-left: 5px;
 `;
 
@@ -108,7 +107,7 @@ margin-left: -18px;
 `;
 
 const FontBlue = styled(FontAwesome) `
-    color: #2b5bac !important;
+    color: #204f9e !important;
 `;
 
 const IconsBlue = styled.div`
@@ -131,6 +130,10 @@ const LineDetails = styled.div`
   background-color: #58ACFA;
 `;
 
+const DivTop = styled.div`
+  margin-top: 8px;
+`;
+
 function Details() {
 
   return (
@@ -140,7 +143,9 @@ function Details() {
         <Text>Jumeirah Vittaveli</Text>
         <Star><StarRating /></Star>
       </Row>
-      <Subtitle GlobalText={"Maldivas"} />
+      <DivTop>
+        <Subtitle GlobalText={"Maldivas"} />
+      </DivTop>
       <Rowtop>
         <Subtitle GlobalText={"South Male Atoll, 20219 Malé South, Asian Boulevard"}/>
         <Subtitle TextGrey ={"Tel. 01 800 000 0000"}/>

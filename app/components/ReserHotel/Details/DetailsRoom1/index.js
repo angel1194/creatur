@@ -65,7 +65,7 @@ const ContainerPrice=styled.div`
 const ContainerButtonGreen=styled.div`
   width:75%;
   margin-bottom:20px;
-  background:#87b672;
+  background:#7db464;
   margin-left:10px;
   color:white;
   font-family:Montserrat;

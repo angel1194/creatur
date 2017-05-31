@@ -189,7 +189,7 @@ nav
       text-align: center
   .selected
     color: #2b5bac !important
-    background-color: #2b5bac
+    background-color: #204f9e
     border-radius: 6px 0px 0px 6px
     a
       color: white !important
@@ -326,7 +326,7 @@ h1.ui.header
 
 .form
   margin-top: 10px
-  background-color: rgba(43, 91, 172, .9)
+  background-color: rgba(32, 79, 158, 0.9)
   margin-bottom: 15px
   width: 366px !important
   border-radius: 5px !important
@@ -477,7 +477,7 @@ h1.ui.header
   line-height: 1
   color: #555
   text-align: center
-  background-color: #87b672
+  background-color: #7db464 !important
   border-radius: 5px 0px 0px 5px !important
   i
     text-align: center
@@ -489,7 +489,7 @@ h1.ui.header
 
 
 .buttonGreen
-  background-color: #87b672 !important
+  background-color: #7db464 !important
   color: white !important
   border-radius: 5px !important
   height: 50px !important
@@ -1916,7 +1916,7 @@ footer
       margin-right: 15px
       font-family: Roboto !important
   .fa-search
-    color: #87b672
+    color: #7db464
 /*style class div dad-dates*/
 .dad-dates
   display: flex
@@ -1937,7 +1937,7 @@ footer
       margin-top: 0px !important
       li
         i
-          background-color: #87b672
+          background-color: #7db464
           color: #fff
           padding: 9px 10px 10px 10px
           border-radius: 5px 0px 0px 5px !important
@@ -2039,9 +2039,40 @@ footer
     input
       border-radius: 5px
 
+/*arrows slider*/
 .slick-next
   right: 25px
 
 .slick-prev
   left: 25px
   z-index: 3
+
+/*style checkbox*/
+
+.check-box input[type=checkbox]
+	display: none
+
+.check-box label
+  cursor: pointer
+
+.check-box label:before
+  background: #fff
+  color: #7db464
+  content: '\f096'
+  font-family: FontAwesome
+  text-align: center
+  font-weight: bold
+  font-size: 20px
+  margin-right: 5px
+  width: 100px !important
+
+.check-box input[type=checkbox]:checked + label:before
+  background: #fff
+  color: #7db464
+  content: '\f046'
+  font-family: FontAwesome
+  text-align: center
+  font-weight: bold
+  font-size: 20px
+  margin-right: 5px
+  width: 100px !important
