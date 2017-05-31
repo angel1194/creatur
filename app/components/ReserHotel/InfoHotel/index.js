@@ -17,6 +17,7 @@ const ContainerHotel = styled.div`
   display:flex;
   flex-wrap:wrap;
   border:1px solid #eaeaea;
+  margin-bottom:20px;
 `;
 
 function InfoHotel() {
