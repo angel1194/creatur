@@ -4,33 +4,34 @@
 *
 */
 
-import React,{ PropTypes } from 'react';
-import styled,{css} from 'styled-components';
+import React, { PropTypes } from 'react';
+import styled, { css } from 'styled-components';
 import H3 from '../ReserHotel/H3'
 import CollapseSection from '../../components/ReserHotel/CollapseSection';
 import RadioButtonGreen from '../RadioButtonGreen'
 import FontAwesome from 'react-fontawesome';
 import Room from '../ReserHotel/SlideHotel/img/Room.jpg'
+import { Link } from 'react-router';
 
-const ContainerRoom=styled.div`
+const ContainerRoom = styled.div`
   width:78.4%;
   display:flex;
   flex-wrap:wrap;
 `;
 
-const RoomImg=styled.div`
+const RoomImg = styled.div`
   padding:0px 15px 10px 15px;
   width:33.33%;
   height:245px;
   border-right:2px solid #58ACFA
 `;
 
-const NameRoom=styled(H3)`
+const NameRoom = styled(H3) `
   font-family:roboto !important;
   font-size:20px;
 `;
 
-const DetailsRoom=styled.div`
+const DetailsRoom = styled.div`
   width:33.33%;
   display:flex;
   flex-direction:column;
@@ -44,18 +45,18 @@ const Label = styled.label`
   margin-top:5px;
 `;
 
-const LabelA=styled(Label)`
+const LabelA = styled(Label) `
   margin-top:0px !important
 `;
 
-const LinkA=styled.a`
+const LinkA = styled.a`
   color:#87b672 !important;
   text-decoration:underline
   margin-top:15px;
   cursor:pointer;
 `;
 
-const ContainerPrice=styled.div`
+const ContainerPrice = styled.div`
   width:33.33%;
   height:245px;
   padding:15px 50px;
@@ -63,7 +64,7 @@ const ContainerPrice=styled.div`
   flex-direction:column;
 `;
 
-const ContainerButtonGreen=styled.div`
+const ContainerButtonGreen = styled.div`
   width:75%;
   margin-bottom:20px;
   background:#87b672;
@@ -76,16 +77,17 @@ const ContainerButtonGreen=styled.div`
   padding:5px 15px;
 `;
 
-const ButtonGreen=styled.label`
+const ButtonGreen = styled.label`
   width:auto;
   border-bottom:1px solid white;
+  color:#fff;
 `;
 
-const Space=styled(FontAwesome)`
+const Space = styled(FontAwesome) `
   margin-left:5px;
 `;
 
-const Title=styled(H3)`
+const Title = styled(H3) `
   color:#424242 !important;
   margin-top:10px;
 `;
@@ -96,13 +98,13 @@ function HotelRoom(props) {
     <ContainerRoom>
       <RoomImg>
         <NameRoom>{props.NameRoom}</NameRoom>
-        <img src={Room} width='250'/>
+        <img src={Room} width='250' />
       </RoomImg>
       <DetailsRoom>
         <Label>Capacidad para 3 personas</Label>
         <Label>Opciones de cama:</Label>
-        <RadioButtonGreen text='2 camas dobles'  ID='1' name='Habitacion'/>
-        <RadioButtonGreen text='1 camas dobles'  ID='2' name='Habitacion'/>
+        <RadioButtonGreen text='2 camas dobles' ID='1' name='Habitacion' />
+        <RadioButtonGreen text='1 camas dobles' ID='2' name='Habitacion' />
         <Label>Piscina privada con vista al mar</Label>
         <LabelA>Banera</LabelA>
         <LabelA>Patio</LabelA>
@@ -110,10 +112,12 @@ function HotelRoom(props) {
       </DetailsRoom>
       <ContainerPrice>
         <ContainerButtonGreen>
-          <ButtonGreen>
-            Reservar
-            <Space name='chevron-right'/>
-          </ButtonGreen>
+          <Link to="hotel/pasarela">
+            <ButtonGreen>
+              Reservar
+            <Space name='chevron-right' />
+            </ButtonGreen>
+          </Link>
         </ContainerButtonGreen>
         <Label> Por noche $1,200.56 usd</Label>
         <LabelA> Impuestos $100.56 usd</LabelA>

@@ -94,7 +94,7 @@ function DetailsRoom(props) {
     <ContainerRoom>
       <RoomImg>
         <NameRoom>Villa Sunset Water</NameRoom>
-        <img src='http://lorempixel.com/250/180/business/9/'/>
+        <img src='http://lorempixel.com/output/city-q-c-200-180-10.jpg'/>
       </RoomImg>
       <DetailsRooms>
         <Label>Capacidad para 3 personas</Label>

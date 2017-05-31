@@ -5,25 +5,27 @@
 */
 
 import React from 'react';
-import {Button} from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router'
 import styled from 'styled-components';
 
 
 function ButtonSearch(props) {
-  if(props.typeSearch == 'hotel'){
+  if (props.typeSearch == 'hotel') {
     return (
       <div>
-        <Button className="buttonGreen"><Link to='/hotel/available'>¡BUSCAR EL MEJOR PRECIO!</Link></Button>
+        <Link to='/hotel/available'>
+          <Button className="buttonGreen">¡BUSCAR EL MEJOR PRECIO!</Button>
+        </Link>
       </div>
     );
   }
   else {
-        return (
-        <div>
-          <Button className="buttonGreen" onClick={props.loadingTrue}>¡BUSCAR EL MEJOR PRECIO!</Button>
-        </div>
-            );
+    return (
+      <div>
+        <Button className="buttonGreen" onClick={props.loadingTrue}>¡BUSCAR EL MEJOR PRECIO!</Button>
+      </div>
+    );
   }
 
 

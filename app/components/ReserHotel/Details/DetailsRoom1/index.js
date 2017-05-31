@@ -10,7 +10,7 @@ import H3 from '../../H3'
 import CollapseSection from '../../CollapseSection';
 import RadioButtonGreen from '../../../RadioButtonGreen'
 import FontAwesome from 'react-fontawesome';
-
+import { Link } from 'react-router';
 const ContainerRoom=styled.div`
   width: 100%;
   display:flex;
@@ -78,6 +78,7 @@ const ContainerButtonGreen=styled.div`
 const ButtonGreen=styled.label`
   width:auto;
   border-bottom:1px solid white;
+  color:#fff;
 `;
 
 const Space=styled(FontAwesome)`
@@ -94,7 +95,7 @@ function DetailsRoom1(props) {
     <ContainerRoom>
       <RoomImg>
         <NameRoom>Villa Sunrise Beach</NameRoom>
-        <img src='http://lorempixel.com/250/180/business/9/'/>
+        <img src='http://lorempixel.com/output/city-q-c-200-180-10.jpg'/>
       </RoomImg>
       <DetailsRooms>
         <Label>Capacidad para 3 personas</Label>
@@ -108,10 +109,12 @@ function DetailsRoom1(props) {
       </DetailsRooms>
       <ContainerPrice>
         <ContainerButtonGreen>
+          <Link to="hotel/roomer">
           <ButtonGreen>
             Reservar
             <Space name='chevron-right'/>
           </ButtonGreen>
+          </Link>
         </ContainerButtonGreen>
         <Label> Por noche $1,200.56 usd</Label>
         <LabelA> Impuestos $100.56 usd</LabelA>
