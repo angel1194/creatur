@@ -33,8 +33,8 @@ function CompareHotel() {
     <Container>
       <GeneralContainer>
         <ContainerInfo>
-          <InfoHotel/>
-          <InfoHotel/>
+          <InfoHotel reserve={true}/>
+          <InfoHotel reserve={true}/>
         </ContainerInfo>
         <SendQuotationHotel/>
       </GeneralContainer>

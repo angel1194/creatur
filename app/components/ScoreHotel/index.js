@@ -53,28 +53,71 @@ const GreenAwesome=styled(FontAwesome)`
   font-size:18px !important;
 `;
 
-function ScoreHotel() {
-  return (
-    <ContainerScore>
-      <NameHotel>Jumeirah Vittaveli</NameHotel>
-      <StarRating/>
-      <AddressLabel>
-        Maldivas
-      </AddressLabel>
-      <br/>
-      <AddressLabel>
-        South Male Atoll, 20229 Male, Asian Boulevard
-      </AddressLabel>
-      <ContTrip>
-        <TripAd/>
-        <LocationLabel/>
-      </ContTrip>
-      <Details>
-        Detalles
-        <GreenAwesome name='chevron-down'/>
-      </Details>
-    </ContainerScore>
-  );
+const DivButton= styled.div`
+  width:100%;
+  height:40px;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between
+`;
+
+const ButtonBlue= styled.button`
+  width:150px;
+  height:40px;
+  background-color:#2b5bac;
+  color:white !important;
+`;
+
+function ScoreHotel(props) {
+  if(props.reserve== true){
+    return (
+      <ContainerScore>
+        <DivButton>
+          <NameHotel>Jumeirah Vittaveli</NameHotel>
+          <ButtonBlue>Reservar</ButtonBlue>
+        </DivButton>
+        <StarRating/>
+        <AddressLabel>
+          Maldivas
+        </AddressLabel>
+        <br/>
+        <AddressLabel>
+          South Male Atoll, 20229 Male, Asian Boulevard
+        </AddressLabel>
+        <ContTrip>
+          <TripAd/>
+          <LocationLabel/>
+        </ContTrip>
+        <Details>
+          Detalles
+          <GreenAwesome name='chevron-down'/>
+        </Details>
+      </ContainerScore>
+    );
+  }
+  else{
+    return (
+      <ContainerScore>
+          <NameHotel>Jumeirah Vittaveli</NameHotel>
+        <StarRating/>
+        <AddressLabel>
+          Maldivas
+        </AddressLabel>
+        <br/>
+        <AddressLabel>
+          South Male Atoll, 20229 Male, Asian Boulevard
+        </AddressLabel>
+        <ContTrip>
+          <TripAd/>
+          <LocationLabel/>
+        </ContTrip>
+        <Details>
+          Detalles
+          <GreenAwesome name='chevron-down'/>
+        </Details>
+      </ContainerScore>
+    );
+  }
 }
 
 ScoreHotel.propTypes = {

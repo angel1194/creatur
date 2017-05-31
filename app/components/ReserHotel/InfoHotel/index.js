@@ -20,11 +20,11 @@ const ContainerHotel = styled.div`
   margin-bottom:20px;
 `;
 
-function InfoHotel() {
+function InfoHotel(props) {
   return (
     <ContainerHotel>
       <SlideHotel/>
-      <ScoreHotel/>
+      <ScoreHotel reserve={props.reserve}/>
       <BookingInfo/>
       <TermConditionsHotel/>
     </ContainerHotel>
