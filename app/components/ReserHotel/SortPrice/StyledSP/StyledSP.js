@@ -6,11 +6,11 @@ const Wrapper = styled.div`
   display: flex;
   flex:1 1 20%;
   order:3;
-  margin: 4px;
-  min-width: 234px;
+  min-width: 235px;
   flex-direction: row;
   align-self: flex-end;
-  align-items: flex-end;
+  align-items: center;
+  margin-left: 18px;
 
 `;
 
@@ -18,7 +18,7 @@ const TextBold = styled.p`
 
      font-family: Roboto;
      font-size: 11.5px;
-     color: #989898;
+     color: #363636;
      
 
 `;

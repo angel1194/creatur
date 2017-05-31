@@ -24,32 +24,31 @@ import SortPrice from '../../../components/ReserHotel/SortPrice';
 
 
 const Container = styled.div`
-  width : 90%;
+  width :1280;
   max-width: 1200px;
   min-height: 1500px;
   margin: auto;
   /*
   Flex
   */
-
   display:flex;
 	flex-flow: row nowrap;
 
 `;
 
 const ContainerBar = styled(Container) `
- min-height: 118px;
- margin-bottom: 15px;
+ min-height: 127px;
+ margin-bottom: 20px;
 `;
 
 const ContenFilter = styled.div`
   flex:1 1 20%;
   order:1;
   border: 2px solid #eaeff3;
-  margin: 4px;
-  min-width: 234px;
+  margin-right: 18px;
+  min-width: 235px;
   max-height:1500px; 
-   border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
 
 `;
 
@@ -57,7 +56,7 @@ const ContenFilter = styled.div`
 const ContenResults = styled.div`
   flex:1 1 60%;
   order:2;
-  min-width: 704px;
+  min-width: 631px;
   max-height: 1500px; 
   // overflow: scroll;
 `;
@@ -65,11 +64,10 @@ const ContenResults = styled.div`
 const ContenTools = styled.div`
   flex:1 1 20%;
   order:3;
-  border-radius: 6px 6px 0 0;
-  border: 2px solid #eaeff3;
-  margin:4px;
-  min-width: 234px;
+  min-width: 235px;
   max-height:1500px; 
+  margin-left: 18px;
+  
   
 `;
 

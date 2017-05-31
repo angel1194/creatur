@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 
 const ButtonStyled = styled.button`
-  width: 155px;
-  height: 45px;
+  width: 135px;
+  height: 33px;
   background-color:#2b5bac;
   margin-top: 4px;
   align-self: flex-start;
   color: #ffffff;
-
+  border-radius: 6px !important;
 `;
 
 const Title = styled.p`

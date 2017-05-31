@@ -18,6 +18,10 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import FontAwesome from 'react-fontawesome';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
+import logoTripAdvisor from './tripadvisor.png'
+const Container = styled(Column) `
+    border: 2px solid #eaeff3;  
+`;
 
 const ColumnElement = styled(Column) `
     width:100%
@@ -83,6 +87,13 @@ const RowRight = styled(Column) `
 `;
 
 
+const ImgIcon = styled.img`
+    width:18px; 
+    height:11px;
+    margin-left: 10px !important;
+
+`;
+
 function GenereteRow() {
 
   let ArrElements = [];
@@ -92,7 +103,7 @@ function GenereteRow() {
   let APrice = [{ price1: "234.32" }, { price1: "354.35" }];
   let Atrib = ["4.5", "5.0"];
   let AImage = ["http://fdc299df7e8620a6a240-772058fd34e7c581cd222855053d4ddc.r68.cf1.rackcdn.com/responsive/575/fdc299df7e8620a6a240-772058fd34e7c581cd222855053d4ddc.r68.cf1.rackcdn.com/lps/assets/u/trp4456ex-188420-Exterior-2-1.jpg",
-  "http://www.dilos.com/picture/hotel/87507"
+    "http://www.dilos.com/picture/hotel/87507"
   ]
   for (var i = 0; i <= 1; i++) {
     ArrElements.push(
@@ -102,7 +113,7 @@ function GenereteRow() {
             <P>{ATitles[i]}</P>
             <Row>
               <StarRating NumStart={ANumStars[i]} />
-              <FontB name='tripadvisor' />
+               <ImgIcon src={logoTripAdvisor} />
               <PB>{Atrib[i]}</PB>
             </Row>
           </ContainerTS>
@@ -124,13 +135,13 @@ function GenereteRow() {
 
 function MostSold() {
   return (
-    <Column>
+    <Container>
       <Row>
         <Title Title="Lo más vendido" />
       </Row>
       {GenereteRow()}
 
-    </Column>
+    </Container>
   );
 }
 

@@ -4,7 +4,7 @@ const Column = styled.div`
    display: flex;
    flex-direction: column ;
    align-items: flex-start;
-   margin-top: 10px;
+   margin-bottom: 20px;
 `;
 
 const Wrapper = styled.div`
@@ -15,7 +15,23 @@ const Wrapper = styled.div`
    padding: 0;
    width: 100%;
    height: 160px;
-   border: 1px solid red;
+   border: 2px solid #eaeff3;
+   border-radius: 6px;
+  
+`;
+
+const WrapperTrans = styled.div`
+      display: flex;
+      flex-direction: row;
+      justify-content:  space-between ;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 160px;
+      border-left: 2px solid #eaeff3;
+      border-right: 2px solid #eaeff3;
+      border-bottom: 2px solid #eaeff3;
+      border-radius: 0 0 6px 6px;
   
 `;
 
@@ -35,9 +51,11 @@ const Title = styled.p`
 const Row = styled.div`
    display: flex;
    flex-direction: row ;
-   align-items: flex-start;
-   
-  
+   align-items: flex-start;   
 `;
 
-export { Column, Wrapper, Title, Row };
+
+
+
+
+export { Column, Wrapper, WrapperTrans, Title, Row };

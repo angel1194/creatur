@@ -8,7 +8,8 @@ const Wrapper = styled.div`
   order:1;
   border: 2px solid #eaeff3;
   margin: 4px;
-  min-width: 234px;
+  min-width: 235px;
+  margin-right: 18px;
 
 `;
 

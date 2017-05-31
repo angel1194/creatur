@@ -16,8 +16,10 @@ const FontA = styled(FontAwesome) `
     padding: 5px;
     padding-left: 0;
     font-weight: 900 !important;
- 
     position: relative !important;
+    background: -webkit-gradient(linear, left top, left bottom, from(#feee00), to(#e19155));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 
 `;
 

@@ -7,18 +7,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import logoTripAdvisor from './tripadvisor.png'
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
 const FontA = styled(FontAwesome) `
     color: #56953f !important;
-    padding: 5px
-    padding-left: 0;
     font-weight: 900 !important;
-    
+    padding-left: 5px;
     position: relative !important;
 
 `;
+
 
 
 const Wrapper = styled.div`
@@ -29,12 +29,13 @@ const Wrapper = styled.div`
 function TripAdvisor() {
   return (
     <Wrapper>
-       <FontA name='tripadvisor' size="lg" />
-       <FontA name='circle-thin' size="lg" />
-       <FontA name='circle-thin' size="lg" />
-       <FontA name='circle-thin' size="lg" />
-       <FontA name='circle-thin' size="lg" />
-       <FontA name='circle-thin' size="lg" />
+
+      <img width="23px" height="14px" src={logoTripAdvisor} />
+      <FontA name='circle-thin' size="lg" />
+      <FontA name='circle-thin' size="lg" />
+      <FontA name='circle-thin' size="lg" />
+      <FontA name='circle-thin' size="lg" />
+      <FontA name='circle-thin' size="lg" />
 
     </Wrapper>
   );
