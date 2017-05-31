@@ -239,6 +239,26 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    }, {
+      path: '/hotel/compare',
+      name: 'compare',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReserHotel/Compare/reducer'),
+          import('containers/ReserHotel/Compare/sagas'),
+          import('containers/ReserHotel/Compare'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('compare', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     },
 {
   path: '*',
