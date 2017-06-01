@@ -19,6 +19,7 @@ import HeadertableDetails from './HeadertableDetails';
 
 import SimpleSlider from './SimpleSlider';
 import SliderTresItems from './SliderTresItems';
+import {Link} from 'react-router';
 
 const DivContainer = styled.div`
   width: 100%;
@@ -168,6 +169,7 @@ function Details() {
             <CircleGreen/>
             <FontA name='circle-thin' size="lg"/>
           </Icons>
+          <Link to="/hotel/roomer">
           <Btnreserv>
             <Wrapper>
               <Title>Reservar</Title>
@@ -175,6 +177,7 @@ function Details() {
             </Wrapper>
             <Line />
           </Btnreserv>
+           </Link>
           <LineBlue />
           <Map src={ImgMap}/>
           <a href="#"><Subtitle Ancor={"Ver Ubicación"} /></a>

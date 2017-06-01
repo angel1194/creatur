@@ -112,7 +112,7 @@ function HotelRoom(props) {
       </DetailsRoom>
       <ContainerPrice>
         <ContainerButtonGreen>
-          <Link to="hotel/pasarela">
+          <Link to="/hotel/pasarela">
             <ButtonGreen>
               Reservar
             <Space name='chevron-right' />

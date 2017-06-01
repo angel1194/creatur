@@ -22,15 +22,18 @@ import TripAdvisor from '../../../components/ReserHotel/TripAdvisor';
 import LocationLabel from '../../../components/ReserHotel/LocationLabel';
 import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import Button from '../../../components/ReserHotel/Button';
-
 import OffersDay from '../OffersDay';
 import BarImgOffers from '../BarImgOffers';
+
+import AddCheckList from '../../AddCheckList';
+
+
 
 const ColumMarginRight = styled(Column) `
 
   margin-right: 10px;
   margin-top: 10px;
-  align-items: flex-start;
+  align-items: flex-end;
 
 `;
 
@@ -78,9 +81,12 @@ function generateRowHotel(num) {
           <Row>
             <ColumMarginRight>
               <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price2} />
+
+              <AddCheckList JustifyContent="flex-end" />
               <Link to="/hotel/quotation">
                 <Button Title={"Comprar"} Color={"Blue"} />
               </Link>
+
             </ColumMarginRight>
           </Row>
         </Wrapper>

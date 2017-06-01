@@ -41,7 +41,7 @@ function ContainerRoomer() {
         {/*<DataPayment />
         <BillingPayment />*/}
       </TitularContainer>
-      <HotelSummary/>
+      {/*<HotelSummary/>*/}
     </Container>
   );
 }

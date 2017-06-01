@@ -10,7 +10,7 @@ import H3 from '../../H3'
 import CollapseSection from '../../CollapseSection';
 import RadioButtonGreen from '../../../RadioButtonGreen'
 import FontAwesome from 'react-fontawesome';
-
+import {Link} from 'react-router'
 const ContainerRoom=styled.div`
   width: 100%;
   display:flex;
@@ -108,10 +108,12 @@ function DetailsRoom(props) {
       </DetailsRooms>
       <ContainerPrice>
         <ContainerButtonGreen>
+          <Link to="/hotel/roomer">
           <ButtonGreen>
             Reservar
             <Space name='chevron-right'/>
           </ButtonGreen>
+          </Link>
         </ContainerButtonGreen>
         <Label> Por noche $1,200.56 usd</Label>
         <LabelA> Impuestos $100.56 usd</LabelA>

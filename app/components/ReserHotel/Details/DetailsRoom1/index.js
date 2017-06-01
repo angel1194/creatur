@@ -109,7 +109,7 @@ function DetailsRoom1(props) {
       </DetailsRooms>
       <ContainerPrice>
         <ContainerButtonGreen>
-          <Link to="hotel/roomer">
+          <Link to="/hotel/roomer">
           <ButtonGreen>
             Reservar
             <Space name='chevron-right'/>
