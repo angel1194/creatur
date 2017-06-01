@@ -16,31 +16,30 @@ import Line from '../../../components/ReserHotel/Line';
 import CollapseSection from '../../../components/ReserHotel/CollapseSection';
 
 const WP = styled.div`
-
-   margin: 7%;
-
+  margin:15px;
+   margin-top:0;
 `;
 
 function Filter() {
   return (
     <div>
       <Title Title="Filtrar Resultados" />
-        <WP>
-      <DualRangeSlider Title="Número de estrellas" Step="1" Min="1" Max="5" />
-      <Line />
-      <DualRangeSlider Title="Precio por noche" Mode="Money" Step="1" Min="1" Max="1000" />
-      <Line />
-      <DualRangeSlider Title="Calificaciones Tripadvisor" Step="1" Min="1" Max="5" />
-      <Line />
-      <CollapseSection Title="Tipo de tarifa" SubTitles="Reembolsable" ID="TF1" />
-      <Line />
-      <CollapseSection Title="Proveedor" SubTitles="Bookhole" ID="PV1" />
-      <Line />
-      <CollapseSection Title="Plan de Alimentos" SubTitles="Pensión Completa" ID="PA1" />
-      <Line />
-      <CollapseSection Title="Camas" SubTitles="Individual" ID="C1" />
-      <Line />
-      <CollapseSection Title="Zona" SubTitles="Cerca del centro" ID="Z1" />
+      <WP>
+        <DualRangeSlider Title="Número de estrellas" Step="1" Min="1" Max="5" />
+        <Line />
+        <DualRangeSlider Title="Precio por noche" Mode="Money" Step="1" Min="1" Max="1000" />
+        <Line />
+        <DualRangeSlider Title="Calificaciones Tripadvisor" Step="1" Min="1" Max="5" />
+        <Line />
+        <CollapseSection Title="Tipo de tarifa" SubTitles="Reembolsable" ID="TF1" />
+        <Line />
+        <CollapseSection Title="Proveedor" SubTitles="Bookhole" ID="PV1" />
+        <Line />
+        <CollapseSection Title="Plan de Alimentos" SubTitles="Pensión Completa" ID="PA1" />
+        <Line />
+        <CollapseSection Title="Camas" SubTitles="Individual" ID="C1" />
+        <Line />
+        <CollapseSection Title="Zona" SubTitles="Cerca del centro" ID="Z1" />
       </WP>
     </div>
 

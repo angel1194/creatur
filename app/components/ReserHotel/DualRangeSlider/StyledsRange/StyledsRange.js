@@ -90,6 +90,7 @@ input[type=range]::-moz-focus-outer {
 `;
 
 const Wrapper = styled.div`
+     margin-top:10px;
      flex-flow: column nowrap;
 
 `;
