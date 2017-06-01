@@ -14,10 +14,10 @@ const Wrapper = styled.div`
    margin: 0;
    padding: 0;
    width: 100%;
-   height: 160px;
+   height: 211px;
    border: 2px solid #eaeff3;
    border-radius: 6px;
-  
+
 `;
 
 const WrapperTrans = styled.div`
@@ -27,12 +27,12 @@ const WrapperTrans = styled.div`
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 160px;
+      height: auto;
       border-left: 2px solid #eaeff3;
       border-right: 2px solid #eaeff3;
       border-bottom: 2px solid #eaeff3;
       border-radius: 0 0 6px 6px;
-  
+
 `;
 
 const Title = styled.p`
@@ -51,7 +51,7 @@ const Title = styled.p`
 const Row = styled.div`
    display: flex;
    flex-direction: row ;
-   align-items: flex-start;   
+   align-items: flex-start;
 `;
 
 

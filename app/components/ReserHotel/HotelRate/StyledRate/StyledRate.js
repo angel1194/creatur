@@ -8,6 +8,7 @@ const Column = styled.div`
    align-items: flex-end;
    margin: 0;
    border: 2px solid #eaeff3;
+   border-radius: 6px;
    margin-bottom:20px;
 
 `;

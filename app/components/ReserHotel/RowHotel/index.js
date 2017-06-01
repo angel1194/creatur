@@ -62,6 +62,15 @@ function generateRowHotel(num) {
     "http://www.hotel-r.net/im/hotel/de/legend-hotel.jpg", "http://media-cdn.tripadvisor.com/media/photo-s/0c/08/a9/0d/hotel-acadia-astotel.jpg",
     "http://www.france-voyage.com/visuals/hotels/gite-auberge-chouette-768674-22205673_w600.jpg"
   ]
+
+  let ArrRoom1 = [{room:"Doble Standard", board:"Solo Habitación", price:"434.80", occupancy:"2", id:"1"}, {room:"Doble 2 camas Standard", board:"Solo Habitación", price:"454.72", occupancy:"2", id:"2"}, {room:"Doble design room", board:"Solo Habitación", price:"458.72", occupancy:"2", id:"3"}];
+  let ArrRoom2 = [{room:"Individual Standard", board:"Solo Habitación", price:"554.35", occupancy:"2", id:"4"}];
+  let ArrRoom3 = [{room:"Double Room", board:"Bed and buffet breakfast", price:"382.93", occupancy:"2", id:"5"}];
+  let ArrRoom4 = [{room:"Doble Standard", board:"Solo Habitación", price:"372.00", occupancy:"2", id:"6"}];
+  let ArrRoom = [ArrRoom1 , ArrRoom2, ArrRoom3, ArrRoom4];
+
+
+
   let ArrElm = []
   for (var i = 0; i < num; i++) {
     ArrElm.push(
@@ -91,7 +100,7 @@ function generateRowHotel(num) {
           </Row>
         </Wrapper>
         <WrapperTrans>
-          <OffersDay />
+          <OffersDay ArrRoom={ArrRoom[i]} />
         </WrapperTrans>
       </Column>
     )

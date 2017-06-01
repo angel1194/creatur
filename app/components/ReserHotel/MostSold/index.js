@@ -21,6 +21,7 @@ import PriceLabel from '../../../components/ReserHotel/PriceLabel';
 import logoTripAdvisor from './tripadvisor.png'
 const Container = styled(Column) `
     border: 2px solid #eaeff3;  
+    border-radius: 6px;
 `;
 
 const ColumnElement = styled(Column) `
