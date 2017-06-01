@@ -14,7 +14,7 @@ import Checkbox from '../../Checkbox';
 
 const Div = styled.div`
   width:100%;
-  padding: 5px 20px 20px 20px;
+  padding: 10px 40px 20px 40px;
 `;
 
 const Row = styled.div `
@@ -40,28 +40,32 @@ const Reg = styled.div`
   margin-left: 22px;
 `
 
-function OffersDay() {
+function OffersDay(props) {
+let texts = [];
+let prices = [];
+  for (var i = 0; i < props.ArrRoom.length; i++) {
+
+    texts.push(
+      <div>
+      <AddCheckList id={props.ArrRoom[i].id} text={props.ArrRoom[i].room +" Hasta "+props.ArrRoom[i].occupancy+" Personas"}/>
+      <Reg><Subtitle GlobalText={"Regimen: " + props.ArrRoom[i].board}/></Reg>
+      </div>
+    );
+    prices.push(
+      <Price>
+        <Subtitle GlobalText={"desde $"+props.ArrRoom[i].price}/>
+      </Price>
+    );
+
+  }
   return (
     <Div>
       <Row>
         <div>
-          <AddCheckList text="Estandar, 1 cama doble"/>
-          <Reg><Subtitle GlobalText="Regimen: Solo Alojamiento, Otra informacion"/></Reg>
-          <AddCheckList text="Familiar, hasta 5 personas"/>
-          <Reg><Subtitle GlobalText="Regimen: Solo Alojamiento, Otra informacion"/></Reg>
-          <AddCheckList text="Cuadruple"/>
-          <Reg><Subtitle GlobalText="Regimen: Solo Alojamiento, Otra informacion"/></Reg>
+          {texts}
         </div>
         <div>
-          <Price>
-            <Subtitle GlobalText="desde $800.56"/>
-          </Price>
-          <Price>
-            <Subtitle GlobalText="desde $1000.00"/>
-          </Price>
-          <Price>
-            <Subtitle GlobalText="desde $1200.56"/>
-          </Price>
+          {prices}
         </div>
         <div>
           <Row>
@@ -74,7 +78,7 @@ function OffersDay() {
 }
 
 OffersDay.propTypes = {
-
+  ArrRoom:PropTypes.array
 };
 
 export default OffersDay;
