@@ -41,7 +41,7 @@ const Line = styled.div`
 
 const Body = styled.div`
   width:100%;
-  padding:10px 20px;
+  padding:10px 20px 0px 20px;
   display:flex;
   flex-direction:column;
 `;
@@ -90,7 +90,62 @@ const CheckIn = styled.div`
 `;
 
 const DivSubTotal = styled.div`
+    border-bottom:1px solid #ccc
+    width:100%;
+    height:80px;
+    display:flex;
+    flex-direction:row'
+    flex-wrap:wrap;
+    margin-top:15px
+`;
 
+const RowDiv=styled.div`
+  width:50%
+  height:20px;
+  display:flex;
+  flex-direction:row;
+  align-items:center
+  justify-content:flex-start
+`;
+
+const SRowDiv=styled.div`
+  width:50%
+  height:20px;
+  display:flex;
+  flex-direction:row;
+  align-items:center
+  justify-content:flex-end
+`;
+
+const NewSub=styled(SubText)`
+  font-size:12px;
+`;
+
+const DivCancel = styled(DivSubTotal)`
+  border-bottom:none !important
+  margin-bottom:0px !important
+`;
+
+const Footer = styled.div`
+  width:100%;
+  background-color:#e2e2e2
+  height:50px;
+  margin-top:-20px
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:20px
+`;
+
+const TextTotal= styled(Text)`
+  font-size:16px;
+`;
+
+const NH3 = styled(H3)`
+  margin-left:5px
+  font-size:20px
+  font-family:Roboto;
+  margin-right:5px;
 `;
 
 function HotelSummary() {
@@ -120,7 +175,34 @@ function HotelSummary() {
           <Text>Salida:</Text>
           <SubText>Dom 5 de marzo, 2017</SubText>
         </CheckIn>
+        <DivSubTotal>
+          <RowDiv>
+            <NewSub>4 noches de hospedaje</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>$1,200.56 USD</SubText>
+          </SRowDiv>
+          <RowDiv>
+            <NewSub>Impuestos y cargos</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>$350.56 USD</SubText>
+          </SRowDiv>
+        </DivSubTotal>
+        <DivCancel>
+          <RowDiv>
+            <NewSub>Cargos de cancelacion</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>$350.56 USD</SubText>
+          </SRowDiv>
+        </DivCancel>
       </Body>
+      <Footer>
+        <TextTotal>Total:</TextTotal>
+        <NH3>$3,089.56</NH3>
+        <TextTotal>USD</TextTotal>
+      </Footer>
     </Container>
   );
 }
