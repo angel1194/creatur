@@ -35,13 +35,13 @@ function ContainerRoomer() {
   return (
     <Container>
       <TitularContainer>
-        <Tabs selected='2'/>
+        <Tabs selected='1'/>
         <RoomTitular/>
         <DataRoomer/>
         {/*<DataPayment />
         <BillingPayment />*/}
       </TitularContainer>
-      {/*<HotelSummary/>*/}
+      <HotelSummary/>
     </Container>
   );
 }
