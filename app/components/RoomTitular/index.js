@@ -25,6 +25,7 @@ const Message=styled.div`
   flex-direction:row;
   align-items:center;
   color:#2b5bac;
+  border-radius: 6px 6px 0px 0px;
 `;
 
 const TextM = styled.label`
@@ -45,6 +46,7 @@ const InputContainer = styled.div`
   padding:25px 40px 0px 25px;
   display:flex;
   flex-direction:column;
+  border-radius: 0px 0px 6px 6px;
 `;
 
 function RoomTitular() {

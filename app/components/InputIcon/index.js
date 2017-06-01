@@ -17,6 +17,7 @@ const ContainerInput = styled.div`
   box-shadow: inset 15px 3px 2px  #eaeaea;
   border:1px solid #ccc;
   margin-bottom:10px;
+  border-radius: 6px;
 `;
 
 const IconInput = styled.div`
@@ -28,11 +29,13 @@ const IconInput = styled.div`
   align-items:center;
   font-size:20px;
   color:white;
+  border-radius: 6px 0px 0px 6px;
 `;
 
 const Input = styled.input`
   width:100%;
   padding-left:10px;
+  border-radius: 6px;
 `;
 
 function InputIcon(props) {

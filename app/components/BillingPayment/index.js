@@ -18,6 +18,7 @@ const Container =styled.div`
   border:1px solid #eaeff3;
   display:flex;
   flex-direction:column;
+  border-radius: 6px;
 `;
 
 const Title = styled.label`
@@ -40,6 +41,7 @@ const Direction = styled.input`
     margin-bottom:5px;
     border:1px solid #eaeff3;
     padding-left:10px;
+    border-radius: 6px;
 `;
 
 const Number = styled.input`
@@ -48,6 +50,7 @@ const Number = styled.input`
     height:35px;
     border:1px solid #eaeff3;
     padding-left:10px;
+    border-radius: 6px;
 `;
 
 const ButtonPosition=styled.div`

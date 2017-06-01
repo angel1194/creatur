@@ -21,6 +21,7 @@ const Container =styled.div`
   border:1px solid #eaeff3;
   display:flex;
   flex-direction:column;
+  border-radius: 6px;
 `;
 
 const Title = styled.label`
@@ -49,6 +50,7 @@ const Phone = styled.input`
   box-shadow:inset 1px 1px 2px #ccc;
   height:35px;
   padding-left:10px;
+  border-radius: 6px 0px 0px 6px;
 `;
 
 const Icon = styled.div`
@@ -63,6 +65,7 @@ const Icon = styled.div`
   align-items:center;
   justify-content:center;
   margin-right: 20px;
+  border-radius: 0px 6px 6px 0px;
 `;
 
 const Number = styled.input`
@@ -71,6 +74,7 @@ const Number = styled.input`
     height:35px;
     border:1px solid #eaeff3;
     padding-left:10px;
+    border-radius: 6px;
 `;
 
 const CoSeguridad = styled.input`
@@ -79,6 +83,7 @@ const CoSeguridad = styled.input`
     height:35px;
     border:1px solid #eaeff3;
     padding-left:10px;
+    border-radius: 6px;
 `;
 
 const Pais = styled.input`
@@ -87,6 +92,7 @@ const Pais = styled.input`
   box-shadow:inset 1px 1px 2px #ccc;
   height:35px;
   padding-left:10px;
+  border-radius: 6px 0px 0px 6px;
 `;
 
 const FlexRow = styled.div`
@@ -113,6 +119,7 @@ const Tel = styled.input`
   border:1px solid #eaeff3;
   padding-left:10px;
   margin-bottom: 10px;
+  border-radius: 6px;
 `;
 
 const ButtonPosition=styled.div`
@@ -141,7 +148,11 @@ const Card = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
+
+const I = styled.i`
+  color: #A6A4A4;
+`;
 
 function DataPayment() {
   return (
@@ -153,7 +164,7 @@ function DataPayment() {
       </Card>
       <Text>Numero de tarjeta</Text>
       <Number/>
-      <Text>codigo de seguridad</Text>
+      <Text>codigo de seguridad <I className="fa fa-question-circle fa-lg" aria-hidden="true"></I></Text>
       <CoSeguridad/>
       <Text>Expiracion</Text>
       <Code>

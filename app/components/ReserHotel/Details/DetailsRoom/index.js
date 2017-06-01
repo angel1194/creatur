@@ -67,17 +67,19 @@ const ContainerButtonGreen=styled.div`
   margin-bottom:20px;
   background:#7db464;
   margin-left:10px;
-  color:white;
+  color: #fff !important;
   font-family:Montserrat;
   display:flex;
   flex-direction:column;
   align-items:center
   padding:5px 15px;
+  border-radius: 6px;
 `;
 
 const ButtonGreen=styled.label`
   width:auto;
   border-bottom:1px solid white;
+  color: #fff;
 `;
 
 const Space=styled(FontAwesome)`
@@ -109,10 +111,10 @@ function DetailsRoom(props) {
       <ContainerPrice>
         <ContainerButtonGreen>
           <Link to="/hotel/roomer">
-          <ButtonGreen>
-            Reservar
-            <Space name='chevron-right'/>
-          </ButtonGreen>
+            <ButtonGreen>
+              Reservar
+              <Space name='chevron-right'/>
+            </ButtonGreen>
           </Link>
         </ContainerButtonGreen>
         <Label> Por noche $1,200.56 usd</Label>

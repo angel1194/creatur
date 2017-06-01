@@ -36,6 +36,7 @@ const Input = styled.input`
   height:35px;
   border:1px solid #eaeff3;
   padding-left:10px;
+  border-radius: 6px;
 `;
 
 function InputGuests(props) {

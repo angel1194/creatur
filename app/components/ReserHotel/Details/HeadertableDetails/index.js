@@ -16,6 +16,7 @@ const Header = styled.div`
   height:40px;
   margin-top:20px;
   margin-bottom:20px;
+  border-radius: 6px;
 `;
 
 const HeaderTitle = styled.div`

@@ -19,6 +19,7 @@ function GreenButton(props) {
     font-size:14px !important;
     height:40px;
     padding:0px !important;
+    border-radius: 6px !important;
   `;
 
   return (
