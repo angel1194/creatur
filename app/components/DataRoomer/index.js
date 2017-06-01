@@ -10,6 +10,7 @@ import InputGuests from '../InputGuests';
 import FontAwesome from 'react-fontawesome';
 import AddButton from '../AddButton';
 import GreenButton from '../GreenButton';
+import AddCheckList from '../AddCheckList'
 
 const Container =styled.div`
   width:100%;
@@ -19,6 +20,7 @@ const Container =styled.div`
   border:1px solid #eaeff3;
   display:flex;
   flex-direction:column;
+  border-radius: 6px;
 `;
 
 const Title = styled.label`
@@ -46,7 +48,7 @@ const Code = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
-  width:355px;
+  width:100%;
   height:35px;
 
 
@@ -58,6 +60,7 @@ const Phone = styled.input`
   box-shadow:inset 1px 1px 2px #ccc;
   height:35px;
   padding-left:10px;
+  border-radius: 6px 0px 0px 6px;
 `;
 
 const Icon = styled.div`
@@ -71,6 +74,7 @@ const Icon = styled.div`
   flex-direction:row;
   align-items:center;
   justify-content:center;
+  border-radius: 0px 6px 6px 0px;
 `;
 
 const Number = styled.input`
@@ -80,6 +84,7 @@ const Number = styled.input`
     margin-left:5px;
     border:1px solid #eaeff3;
     padding-left:10px;
+    border-radius: 6px;
 `;
 
 const NewAddButton = styled.div`
@@ -104,6 +109,10 @@ const ButtonPosition=styled.div`
   width:30% !important;
 `;
 
+const Cel = styled.div`
+  padding: 10px 10px 10px 20px;
+`;
+
 
 function DataRoomer() {
   return (
@@ -117,6 +126,7 @@ function DataRoomer() {
             <FontAwesome name='caret-down'/>
           </Icon>
           <Number/>
+          <Cel><AddCheckList text="Celular" id="cel" /></Cel>
         </Code>
         <NewAddButton>
           <AddButton text='Anadir otro numero telefonico'/>

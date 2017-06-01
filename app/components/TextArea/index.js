@@ -14,6 +14,7 @@ const DivTextArea = styled.div`
   box-shadow: inset 2px 2px 2px  #eaeaea;
   margin-top:10px;
   margin-bottom:10px;
+  border-radius: 6px;
 `;
 const TextAreaInput = styled.textarea`
   width:100%;

@@ -73,6 +73,7 @@ const ContainerButtonGreen=styled.div`
   flex-direction:column;
   align-items:center
   padding:5px 15px;
+  border-radius: 6px;
 `;
 
 const ButtonGreen=styled.label`
