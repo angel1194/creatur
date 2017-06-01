@@ -14,7 +14,7 @@ import Checkbox from '../../Checkbox';
 
 const Div = styled.div`
   width:100%;
-  padding: 10px 40px 20px 40px;
+  padding: 10px 40px 10px 40px;
 `;
 
 const Row = styled.div `
