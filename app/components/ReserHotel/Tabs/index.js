@@ -7,6 +7,8 @@ const Tab = styled.div`
   display:flex;
   flex-direction:row;
   margin-bottom:20px;
+  border-radius:6px !important;
+  border:1px solid #ccc;
 `;
 
 const DivTab = styled.div`
@@ -15,8 +17,6 @@ const DivTab = styled.div`
   flex-direction:row;
   align-items:center;
   justify-content:center;
-  border:1px solid #ccc;
-
   &.position{
     background:#204f9e !important;
     color:white !important;
