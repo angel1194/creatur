@@ -54,8 +54,16 @@ const Row = styled.div`
    align-items: flex-start;
 `;
 
+const Img = styled.img`
+
+  width:200px;
+  height:158px;
+  border:6px;
+  border-radius: 6px !important;
+`;
 
 
 
 
-export { Column, Wrapper, WrapperTrans, Title, Row };
+
+export { Column, Wrapper, WrapperTrans, Title, Row, Img };
