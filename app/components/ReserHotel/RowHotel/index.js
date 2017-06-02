@@ -50,13 +50,14 @@ const ColumMarginTop = styled(Column) `
 function generateRowHotel(num) {
 
   let TiltesHotel = ["Aberotel Montparnasse", "LEGEND", "Hotel Acadia - Astotel", "Chouette Hotel"];
-  let ANumStars = [3.0, 4.0, 3.0, 3.0];
+  let ANumStars = ["3.0", " 4.0", "3.0", "3.0"];
   let ALocations = ["RUE BLOMET 24", "RUE DE RENNES 151 bis", "4 Rue Geoffroy Marie", "237 Rue De La Convention"];
   let APrice = [{ price1: "434.80", price2: "434.80" }, { price1: "554.35", price2: "840.18" }, { price1: "382.93", price2: "382.93" }, { price1: "372.00", price2: "521.00" }];
   let AImage = ["https://media-cdn.tripadvisor.com/media/photo-s/03/ff/ae/c2/aberotel-montparnasse.jpg",
     "http://www.hotel-r.net/im/hotel/de/legend-hotel.jpg", "http://media-cdn.tripadvisor.com/media/photo-s/0c/08/a9/0d/hotel-acadia-astotel.jpg",
     "http://www.france-voyage.com/visuals/hotels/gite-auberge-chouette-768674-22205673_w600.jpg"
   ]
+  let ArrCalification = ["4.0", "4.5", "null", "4.5"];
 
   let ArrRoom1 = [{ room: "Doble Standard", board: "Solo Habitación", price: "434.80", occupancy: "2", id: "1" }, { room: "Doble 2 camas Standard", board: "Solo Habitación", price: "454.72", occupancy: "2", id: "2" }, { room: "Doble design room", board: "Solo Habitación", price: "458.72", occupancy: "2", id: "3" }];
   let ArrRoom2 = [{ room: "Individual Standard", board: "Solo Habitación", price: "554.35", occupancy: "2", id: "4" }];
@@ -78,7 +79,7 @@ function generateRowHotel(num) {
             <ColumMarginTop>
               <Title>{TiltesHotel[i]}</Title>
               <StarRating NumStart={ANumStars[i]} />
-              <TripAdvisor />
+              <TripAdvisor Calification={ArrCalification[i]} />
               <LocationLabel Title={ALocations[i]} />
             </ColumMarginTop>
           </Row>
@@ -86,9 +87,9 @@ function generateRowHotel(num) {
             <ColumMarginRight>
               <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price1 * 4} />
 
-              <AddCheckList JustifyContent="flex-end" />
+              <AddCheckList id={"bt" + i} JustifyContent="flex-end" Margin="20px" />
               <Link to="/hotel/quotation">
-                <Button Title={"Comprar"} Color={"Blue"} />
+                <Button Title={"Comparar"} Color={"Blue"} />
               </Link>
 
             </ColumMarginRight>

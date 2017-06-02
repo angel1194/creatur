@@ -42,6 +42,8 @@ function addStar(num) {
 
 function generateStarts(num) {
 
+  num = parseFloat(num);
+
   if (Number.isInteger(num)) {
 
     return addStar(num);

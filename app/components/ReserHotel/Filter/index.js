@@ -20,9 +20,14 @@ const WP = styled.div`
    margin-top:0;
 `;
 
+const DivBorder = styled.div`
+  border: 2px solid #eaeff3;
+  border-radius: 6px;
+`;
+
 function Filter() {
   return (
-    <div>
+    <DivBorder>
       <Title Title="Filtrar Resultados" />
       <WP>
         <DualRangeSlider Title="Número de estrellas" Step="1" Min="1" Max="5" />
@@ -41,7 +46,7 @@ function Filter() {
         <Line />
         <CollapseSection Title="Zona" SubTitles="Cerca del centro" ID="Z1" />
       </WP>
-    </div>
+    </DivBorder>
 
   );
 }

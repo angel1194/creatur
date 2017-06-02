@@ -44,11 +44,11 @@ const ContainerBar = styled(Container) `
 const ContenFilter = styled.div`
   flex:1 1 20%;
   order:1;
-  border: 2px solid #eaeff3;
+ 
   margin-right: 18px;
   min-width: 235px;
   max-height:1500px; 
-  border-radius: 6px 6px 0 0;
+ 
 
 `;
 

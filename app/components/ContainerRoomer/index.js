@@ -35,7 +35,7 @@ function ContainerRoomer() {
   return (
     <Container>
       <TitularContainer>
-        <Tabs selected='1'/>
+        <Tabs selected='2'/>
         <RoomTitular/>
         <DataRoomer/>
         {/*<DataPayment />
