@@ -47,9 +47,11 @@ function CardCar(props) {
             <i name='travel' className="fa fa-suitcase" >
               <span className="colorGreen letterCarFeatures">{props.car.BaggageQuantity}</span>
             </i>
-            <i name='cloud' className="fa fa-snowflake-o" >
-              <span className="colorGreen letterCarFeatures">{(props.car.AirConditionInd)=='true' ? 'Si' : 'No'}</span>
-            </i>
+            {
+              (props.car.AirConditionInd) == 'true' ?
+              <i name='cloud' className="fa fa-snowflake-o" />
+              : ''
+            }
             <i name='car' className="icon cri-transmision" >
               <span className="colorGreen letterCarFeatures">{(props.car.TransmissionType) == 'Automatic' ? 'A' : 'M'}</span>
             </i>
@@ -58,10 +60,11 @@ function CardCar(props) {
             </i>
           </div>
         </Card.Content>
-        {(props.availableCar[props.car.ID]) ?
-          <Button className="buttonCotizar secundary" onClick ={() => browserHistory.push('/quotation/')} ><span>Cotizar</span></Button>
-           :  <Button className="buttonCotizar primary" onClick ={() => browserHistory.push(`/reserve/${props.car.ID}`)} ><span>Reservar</span></Button>
-}
+        {
+          (props.availableCar[props.car.ID]) ?
+            <Button className="buttonCotizar secundary" onClick ={() => browserHistory.push('/quotation/')} ><span>Cotizar</span></Button>
+            :  <Button className="buttonCotizar primary" onClick ={() => browserHistory.push(`/reserve/${props.car.ID}`)} ><span>Reservar</span></Button>
+        }
       </Card>
     </Grid.Column>
   );
