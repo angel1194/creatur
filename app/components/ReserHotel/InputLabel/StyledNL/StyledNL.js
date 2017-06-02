@@ -27,11 +27,13 @@ const InputText = styled.input`
      width: 136px;
      height: 30px;
      padding: 4px;
+     border-radius: 6px !important;
 
      &:focus { 
     outline: none !important;
     border:1px solid #204f9e;
     box-shadow: 0 0 3px #204f9e;
+    border-radius: 6px !important;
 }
 `;
 
@@ -42,10 +44,12 @@ const InputNum = styled.input`
      width: 50px;
      height: 30px;
      padding: 4px;
+     border-radius: 6px !important;
 
      &:focus { 
     outline: none !important;
     border:1px solid #204f9e;
+    border-radius: 6px !important;
     box-shadow: 0 0 3px #204f9e;
 }
 `;

@@ -12,7 +12,6 @@ const Div = styled.div`
   width: 86%;
 `
 
-
 class SimpleSlider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props){
     super(props)

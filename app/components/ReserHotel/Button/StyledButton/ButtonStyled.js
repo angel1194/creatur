@@ -13,13 +13,14 @@ const ButtonStyled = styled.button`
 
 const Title = styled.p`
      font-family: Montserrat;
-     font-size: 18px;
+     font-weight: 400;
+     font-size: 14px;
      margin-left: 15%;
 `;
 
 const Line = styled.hr`
     border-top: 1px solid #719fec;
-    border-bottom: 1px solid #719fec;
+    border-bottom: 0px solid #719fec;
     border-left:1px solid #719fec;
     border-right:1px solid #719fec;
     color:#719fec;

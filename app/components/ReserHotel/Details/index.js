@@ -43,6 +43,7 @@ const Div = styled(Row)`
   height: auto;
   border: 1px solid #cdcdcd;
   margin-bottom: 60px;
+  border-radius: 6px;
 `;
 
 const Slick = styled.div`
@@ -101,10 +102,11 @@ const FontA = styled(FontAwesome) `
 `;
 
 const Map = styled.img `
-width: 85%;
-height: 110px;
-margin-top: 20px;
-margin-left: -18px;
+  width: 85%;
+  height: 110px;
+  margin-top: 20px;
+  margin-left: -18px;
+  border-radius: 6px;
 `;
 
 const FontBlue = styled(FontAwesome) `

@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   margin: 4px;
   min-width: 235px;
   margin-right: 18px;
+  border-radius:6px;
 
 `;
 
@@ -18,6 +19,7 @@ const Img = styled.div`
   height:116px
   background-image:url(${IcnDefault});
   background-size:100% auto;
+  border-radius: 6px;
 `;
 
 const ButtonIcon = styled.button`
@@ -30,6 +32,7 @@ const ButtonIcon = styled.button`
     left: 120px;
     display: flex;
     justify-content: center;
+    border-radius: 6px 0 6px 0 !important;
 
 `;
 

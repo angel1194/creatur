@@ -17,6 +17,8 @@ function AddCheckList(props) {
   display:flex;
   flex-direction:row;
   justify-content: ${props.JustifyContent};
+  margin-top:${props.Margin};
+  margin-bottom:${props.Margin};
 `;
 
   return (
@@ -31,7 +33,8 @@ AddCheckList.propTypes = {
   text: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
-  JustifyContent: PropTypes.string
+  JustifyContent: PropTypes.string,
+  Margin: PropTypes.string
 };
 
 export default AddCheckList;

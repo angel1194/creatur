@@ -33,6 +33,7 @@ function SendQuotationHotel(props) {
     border:1px solid #eaeaea;
     height:300px;
     padding:15px;
+    border-radius: 6px;
 `;
 
   }
