@@ -48,11 +48,11 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
   showReturn(e , data){
     if( data.checked == true){
       this.setState({
-        UI: {checkbox:''}
+        UI: {checkbox:'activeReturn'}
       })
     }else{
       this.setState({
-        UI: {checkbox:'activeReturn'}
+        UI: {checkbox:''}
       })
     }
   }
@@ -118,8 +118,7 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
                   <Form.Field id='checkLocation'
                     control={Checkbox}
                     onClick={this.showReturn}
-                    defaultChecked
-                    label={<label className="spanWhite checkboxForm">Entregar en la misma ubicacion</label>}
+                    label={<label className="spanWhite checkboxForm">Entregar en diferente ubicacion</label>}
                   />
                 </Grid.Column>
               </Grid.Row>
