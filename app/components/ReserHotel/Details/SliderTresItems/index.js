@@ -9,12 +9,10 @@ import Slider from 'react-slick'
 import styled from 'styled-components';
 
 const Div = styled.div`
-  width: 70%;
-  margin-left: 80px;
+  width: 630px;
 `
 const Img = styled.img`
   margin-top: 15px;
-  width: 90%;
 `
 
 class SliderTresItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -29,19 +27,19 @@ class SliderTresItems extends React.PureComponent { // eslint-disable-line react
       speed: 1500,
       slidesToShow: 3,
       slidesToScroll: 3,
-      autoplay: true,
+      autoplay: false,
       arrows: true,
       centerMode: true
     };
     return (
       <Div>
         <Slider {...settings}>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg"/></div>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg" /></div>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg" /></div>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg" /></div>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg" /></div>
-          <div><Img src="http://lorempixel.com/output/city-q-c-220-100-8.jpg" /></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg"/></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg" /></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg" /></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg" /></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg" /></div>
+          <div><Img src="http://lorempixel.com/output/city-q-c-155-105-4.jpg" /></div>
         </Slider>
       </Div>
     );

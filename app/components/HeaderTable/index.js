@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import H3 from '../ReserHotel/H3'
 
 const Header = styled.div`
-  width:78.4%;
   display:flex;
   flex-wrap:nowrap;
   background-color:#2b5bac;

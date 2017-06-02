@@ -9,29 +9,34 @@ import H3 from '../../../components/ReserHotel/H3';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import Subtitle from '../../../components/ReserHotel/Subtitle';
 import FontAwesome from 'react-fontawesome';
-import { ButtonStyled, Title, Line, Arrow, Wrapper } from '../Button/StyledButton/ButtonStyled';
 import ImgMap from './MapDefault.jpg';
-import CircleGreen from '../CirclesGreen';
 
-import DetailsRoom from './DetailsRoom';
-import DetailsRoom1 from './DetailsRoom1';
-import HeadertableDetails from './HeadertableDetails';
-
+import HeaderTable from '../../HeaderTable';
+import HotelRoom from '../../HotelRoom';
+import Button from '../Button';
+import TripAdvisor from '../TripAdvisor';
+import PriceLabel from '../PriceLabel';
 import SimpleSlider from './SimpleSlider';
 import SliderTresItems from './SliderTresItems';
 import {Link} from 'react-router';
 
 const DivContainer = styled.div`
-  width: 100%;
+  margin: 0px 80px 0px 40px;
+`;
+
+const Usua = styled.div`
+  text-align: right;
+  width: 200px;
 `;
 
 const Text = styled(H3)`
   font-family: sans-serif;
   font-weight: bold;
+  font-size:21px;
 `;
 
 const Star = styled.div`
-  margin-left: 5px;
+  margin: 5px;
 `;
 
 const Rowtop = styled(Row)`
@@ -39,87 +44,56 @@ margin-top: 5px;
 `;
 
 const Div = styled(Row)`
-  margin-top: 10px;
   height: auto;
   border: 1px solid #cdcdcd;
-  margin-bottom: 60px;
   border-radius: 6px;
+  margin-bottom: 68px;
 `;
 
 const Slick = styled.div`
-  width: 75%;
+  width: 734px;
 `;
 
-const Lugares = styled.div`
-  width: 25%;
-  margin-top: 40px;
-`;
-
-const Number = styled(H3)`
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 28px;
-`;
+const Lugares =styled.div`
+  margin: 14px 57px 0px 10px;
+`
 
 const UsD = styled.p`
   margin: 10px 0px 0px 0px;
   font-size: 18px;
 `;
 
-const P = styled.p`
-  text-align: right;
-  margin: 5px 78px 0px 0px;
-`;
-
-const P1 = styled.p`
-  margin-bottom: -10px;
-`;
-
-const FontB = styled(FontAwesome) `
-    color: #2c3e50 !important;
-    top:-5px !important;
-    margin-top: 4px;
-`;
-
-const Btnreserv = styled(ButtonStyled) `
-  margin-top: 35px;
-  width: 70%;
+const Btnreserv = styled.div `
+  margin-top: 28px;
+  margin-bottom: 25px;
 `;
 
 const LineBlue = styled.div `
-  margin-top: 20px;
   background-color: #03A9F4;
   height: 1px;
-  margin-left: -30px;
-  width: 95%;
-`;
-
-const FontA = styled(FontAwesome) `
-    color: #27ae60 !important;
-    font-weight: 900 !important;
-    margin-left: 5px;
-    margin-top: 4px;
+  margin-left: -45px;
+  width: 240px;
+  margin-bottom: 25px
 `;
 
 const Map = styled.img `
-  width: 85%;
-  height: 110px;
-  margin-top: 20px;
-  margin-left: -18px;
+  width: 212px;
+  height: 102px;
+  margin-left: -30px;
   border-radius: 6px;
 `;
 
 const FontBlue = styled(FontAwesome) `
     color: #204f9e !important;
+    margin-right: 25px
 `;
 
 const IconsBlue = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-top: 30px;
-    width: 70%;
     margin-bottom: 25px;
+    margin-left: -15px;
 `;
 
 const Icons = styled.div`
@@ -127,15 +101,25 @@ const Icons = styled.div`
     flex-direction: row;
 `;
 
-const LineDetails = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: #58ACFA;
-`;
+
 
 const DivTop = styled.div`
   margin-top: 8px;
 `;
+
+const Price =styled.div `
+  width: 160px;
+  margin-bottom: 25px;
+`;
+const AncorMap = styled.div`
+  margin-left: -30px;
+  margin-bottom: 25px;
+`;
+
+const LineBlu =styled.div`
+background-color: #58ACFA;
+  height: 2px;
+`
 
 function Details() {
 
@@ -159,32 +143,24 @@ function Details() {
           <SliderTresItems />
         </Slick>
         <Lugares>
-          <P1><Subtitle GlobalText={"desde"} /></P1>
-          <Rowtop>
-            <Number>$3,089.56</Number>
-            <UsD><Subtitle TextGrey ={"USD"}/></UsD>
-          </Rowtop>
-          <P><Subtitle TextGrey={"Precio por noche"}/></P>
+          <Usua><img src="http://lorempixel.com/output/people-q-c-100-30-1.jpg"/></Usua>
+          <Price><PriceLabel Since="3,089.56" MostSold="1" /></Price>
           <Subtitle GlobalText={"Habitación Económica"}/>
           <Icons>
-            <FontB name='tripadvisor' size="lg" />
-            <CircleGreen/>
-            <FontA name='circle-thin' size="lg"/>
+            <TripAdvisor />
           </Icons>
           <Link to="/hotel/roomer">
-          <Btnreserv>
-            <Wrapper>
-              <Title>Reservar</Title>
-              <Title><Arrow name='angle-right' size="lg" /></Title>
-            </Wrapper>
-            <Line />
-          </Btnreserv>
-           </Link>
+              <Btnreserv>
+                <Button Title="Reservar" />
+              </Btnreserv>
+          </Link>
           <LineBlue />
           <Map src={ImgMap}/>
-          <a href="#"><Subtitle Ancor={"Ver Ubicación"} /></a>
+          <AncorMap><a href="#"><Subtitle Ancor={"Ver Ubicación"} /></a></AncorMap>
           <Subtitle GlobalText={"Lugares de interés"} />
-          <a href="#" ><Subtitle AncorUbication={"Plaza de Gaspar a 1km Monasterio Iglesia"} /></a>
+          <a href="#" ><Subtitle AncorUbication={"Plaza de Gaspar a 1km"} /></a>
+          <a href="#" ><Subtitle AncorUbication={"Monasterio"} /></a>
+          <a href="#" ><Subtitle AncorUbication={"Iglesia"} /></a>
           <IconsBlue>
             <Tooltip placement="bottomRight" overlay="Información general" arrowContent={<div className="rc-tooltip-arrow-inner"></div>}>
               <a href="#"><FontBlue name='info-circle' size="2x"/></a>
@@ -197,10 +173,10 @@ function Details() {
           </IconsBlue>
         </Lugares>
       </Div>
-      <HeadertableDetails />
-      <DetailsRoom />
-      <LineDetails/>
-      <DetailsRoom1 />
+      <HeaderTable />
+      <HotelRoom NameRoom="Villa Sunset Water"/>
+      <LineBlu />
+      <HotelRoom NameRoom="Villa Sunrise Beach"/>
     </DivContainer>
   );
   }
