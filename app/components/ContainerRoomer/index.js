@@ -36,10 +36,10 @@ function ContainerRoomer() {
     <Container>
       <TitularContainer>
         <Tabs selected='2'/>
-      {/*<RoomTitular/>
-        <DataRoomer/>*/}
-        <DataPayment />
-        <BillingPayment />
+        <RoomTitular/>
+        <DataRoomer/>
+        {/*<DataPayment />
+        <BillingPayment />*/}
       </TitularContainer>
       <HotelSummary/>
     </Container>

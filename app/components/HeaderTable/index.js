@@ -9,12 +9,14 @@ import styled from 'styled-components';
 import H3 from '../ReserHotel/H3'
 
 const Header = styled.div`
+  width:80%;
   display:flex;
   flex-wrap:nowrap;
   background-color:#2b5bac;
   height:40px;
   margin-top:20px;
   margin-bottom:20px;
+  border-radius: 6px;
 `;
 
 const HeaderTitle = styled.div`

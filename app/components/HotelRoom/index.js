@@ -14,6 +14,7 @@ import Room from '../ReserHotel/SlideHotel/img/Room.jpg'
 import { Link } from 'react-router';
 
 const ContainerRoom = styled.div`
+  width:80%;
   display:flex;
   flex-wrap:wrap;
 `;
