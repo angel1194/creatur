@@ -1,206 +1,97 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-import Tooltip from 'rc-tooltip';
-import 'rc-tooltip/assets/bootstrap_white.css';
+import FontAwesome from 'react-fontawesome';
 //import Column from './StyledD/Column';
 import Row from './StyledD/Row';
 import Tabs from '../Tabs';
 import H3 from '../../../components/ReserHotel/H3';
 import StarRating from '../../../components/ReserHotel/StarRating';
 import Subtitle from '../../../components/ReserHotel/Subtitle';
-import FontAwesome from 'react-fontawesome';
-import { ButtonStyled, Title, Line, Arrow, Wrapper } from '../Button/StyledButton/ButtonStyled';
-import ImgMap from './MapDefault.jpg';
-import CircleGreen from '../CirclesGreen';
-
-import DetailsRoom from './DetailsRoom';
-import DetailsRoom1 from './DetailsRoom1';
-import HeadertableDetails from './HeadertableDetails';
-
+import HeaderTable from '../../HeaderTable';
+import HotelRoom from '../../HotelRoom';
 import SimpleSlider from './SimpleSlider';
 import SliderTresItems from './SliderTresItems';
-import {Link} from 'react-router';
+import PriceRoom from './PriceRoom';
+
 
 const DivContainer = styled.div`
-  width: 100%;
+  margin: 0px 35px 0px 35px;
+`;
+
+const ContainerTab = styled.div`
+  margin: 0px 40px 0px 40px;
+`;
+
+const Rowtop = styled(Row)`
+  margin-top: 5px;
 `;
 
 const Text = styled(H3)`
   font-family: sans-serif;
   font-weight: bold;
+  font-size:21px;
 `;
 
 const Star = styled.div`
-  margin-left: 5px;
-`;
-
-const Rowtop = styled(Row)`
-margin-top: 5px;
-`;
-
-const Div = styled(Row)`
-  margin-top: 10px;
-  height: auto;
-  border: 1px solid #cdcdcd;
-  margin-bottom: 60px;
-  border-radius: 6px;
-`;
-
-const Slick = styled.div`
-  width: 75%;
-`;
-
-const Lugares = styled.div`
-  width: 25%;
-  margin-top: 40px;
-`;
-
-const Number = styled(H3)`
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 28px;
-`;
-
-const UsD = styled.p`
-  margin: 10px 0px 0px 0px;
-  font-size: 18px;
-`;
-
-const P = styled.p`
-  text-align: right;
-  margin: 5px 78px 0px 0px;
-`;
-
-const P1 = styled.p`
-  margin-bottom: -10px;
-`;
-
-const FontB = styled(FontAwesome) `
-    color: #2c3e50 !important;
-    top:-5px !important;
-    margin-top: 4px;
-`;
-
-const Btnreserv = styled(ButtonStyled) `
-  margin-top: 35px;
-  width: 70%;
-`;
-
-const LineBlue = styled.div `
-  margin-top: 20px;
-  background-color: #03A9F4;
-  height: 1px;
-  margin-left: -30px;
-  width: 95%;
-`;
-
-const FontA = styled(FontAwesome) `
-    color: #27ae60 !important;
-    font-weight: 900 !important;
-    margin-left: 5px;
-    margin-top: 4px;
-`;
-
-const Map = styled.img `
-  width: 85%;
-  height: 110px;
-  margin-top: 20px;
-  margin-left: -18px;
-  border-radius: 6px;
-`;
-
-const FontBlue = styled(FontAwesome) `
-    color: #204f9e !important;
-`;
-
-const IconsBlue = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 30px;
-    width: 70%;
-    margin-bottom: 25px;
-`;
-
-const Icons = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
-const LineDetails = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: #58ACFA;
+  margin: 5px;
 `;
 
 const DivTop = styled.div`
   margin-top: 8px;
 `;
 
+const ContainerPriceSlick = styled(Row)`
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  border: 1px solid #cdcdcd;
+  border-radius: 6px;
+  margin-bottom: 68px;
+`;
+
+const Slick = styled.div`
+  width: auto;
+`;
+
+const Lugares =styled.div`
+`;
+
+const LineBlu =styled.div`
+  background-color: #58ACFA;
+  height: 2px;
+`;
+
 function Details() {
 
   return (
     <DivContainer>
-      <Tabs selected='1'/>
-      <Row>
-        <Text>Jumeirah Vittaveli</Text>
-        <Star><StarRating /></Star>
-      </Row>
-      <DivTop>
-        <Subtitle GlobalText={"Maldivas"} />
-      </DivTop>
-      <Rowtop>
-        <Subtitle GlobalText={"South Male Atoll, 20219 Malé South, Asian Boulevard"}/>
-        <Subtitle TextGrey ={"Tel. 01 800 000 0000"}/>
-      </Rowtop>
-      <Div>
+      <ContainerTab>
+        <Tabs selected='1'/>
+        <Row>
+          <Text>Jumeirah Vittaveli</Text>
+          <Star><StarRating /></Star>
+        </Row>
+        <DivTop>
+          <Subtitle GlobalText={"Maldivas"} />
+        </DivTop>
+        <Rowtop>
+          <Subtitle GlobalText={"South Male Atoll, 20219 Malé South, Asian Boulevard"}/>
+          <Subtitle TextGrey ={"Tel. 01 800 000 0000"}/>
+        </Rowtop>
+      </ContainerTab>
+      <ContainerPriceSlick>
         <Slick>
           <SimpleSlider />
           <SliderTresItems />
         </Slick>
         <Lugares>
-          <P1><Subtitle GlobalText={"desde"} /></P1>
-          <Rowtop>
-            <Number>$3,089.56</Number>
-            <UsD><Subtitle TextGrey ={"USD"}/></UsD>
-          </Rowtop>
-          <P><Subtitle TextGrey={"Precio por noche"}/></P>
-          <Subtitle GlobalText={"Habitación Económica"}/>
-          <Icons>
-            <FontB name='tripadvisor' size="lg" />
-            <CircleGreen/>
-            <FontA name='circle-thin' size="lg"/>
-          </Icons>
-          <Link to="/hotel/roomer">
-          <Btnreserv>
-            <Wrapper>
-              <Title>Reservar</Title>
-              <Title><Arrow name='angle-right' size="lg" /></Title>
-            </Wrapper>
-            <Line />
-          </Btnreserv>
-           </Link>
-          <LineBlue />
-          <Map src={ImgMap}/>
-          <a href="#"><Subtitle Ancor={"Ver Ubicación"} /></a>
-          <Subtitle GlobalText={"Lugares de interés"} />
-          <a href="#" ><Subtitle AncorUbication={"Plaza de Gaspar a 1km Monasterio Iglesia"} /></a>
-          <IconsBlue>
-            <Tooltip placement="bottomRight" overlay="Información general" arrowContent={<div className="rc-tooltip-arrow-inner"></div>}>
-              <a href="#"><FontBlue name='info-circle' size="2x"/></a>
-            </Tooltip>
-            <FontBlue name='check-square' size="2x"/>
-            <FontBlue name='minus-square' size="2x"/>
-            <Tooltip placement="bottomLeft" overlay="Términos y Condiciones" arrowContent={<div className="rc-tooltip-arrow-inner"></div>}>
-              <a href="#"><FontBlue name='exclamation-circle' size="2x"/></a>
-            </Tooltip>
-          </IconsBlue>
+          <PriceRoom />
         </Lugares>
-      </Div>
-      <HeadertableDetails />
-      <DetailsRoom />
-      <LineDetails/>
-      <DetailsRoom1 />
+      </ContainerPriceSlick>
+      <HeaderTable />
+      <HotelRoom NameRoom="Villa Sunset Water"/>
+      <LineBlu />
+      <HotelRoom NameRoom="Villa Sunrise Beach"/>
     </DivContainer>
   );
   }

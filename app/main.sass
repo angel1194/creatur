@@ -172,7 +172,7 @@ nav
   position: absolute
   font-family: Montserrat !important
   flex-wrap: wrap
-  left: -101px
+  left: -26px
   top: 35px
   width: 9%
   height: auto
@@ -305,7 +305,7 @@ a
   font-size: 35px
   font-family: Montserrat
   font-weight: 800
-     
+
 
 .login
   font-size: 10px
@@ -521,6 +521,7 @@ h1, #spanWhite, h4, .spanWhite
   justify-content: space-around
   .Select-control
     height: 30px
+    border-radius: 6px !important
     .Select-multi-value-wrapper
       height: 30px
 
@@ -825,6 +826,7 @@ i
 
 .slider #inputSearchDisplay
   position: relative
+  margin-left: 75px
 
 .slideImg img
   width: 100%
@@ -1944,7 +1946,7 @@ footer
           background-color: #7db464
           color: #fff
           padding: 9px 10px 10px 10px
-          border-radius: 5px 0px 0px 5px !important
+          -webkit-border-radius: 5px 0px 0px 5px !important
         input
           border-radius: inherit !important
           padding: 10px
@@ -2044,12 +2046,17 @@ footer
       border-radius: 5px
 
 /*arrows slider*/
-.slick-next
-  right: 25px
 
+.slick-next
+  right: 25px !important
+
+.slick-next:before
+ font-size: 37px !important
 .slick-prev
-  left: 25px
-  z-index: 3
+  left: 25px !important
+  z-index: 3 !important
+.slick-prev:before
+  font-size: 37px !important
 
 /*style checkbox*/
 
