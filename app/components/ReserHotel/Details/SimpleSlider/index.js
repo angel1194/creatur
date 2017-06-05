@@ -22,7 +22,6 @@ class SimpleSlider extends React.PureComponent { // eslint-disable-line react/pr
   }
   render () {
     const settings = {
-      dots: true,
       dotsClass: 'slick-dots slick-thumb',
       infinite: true,
       speed: 1500,

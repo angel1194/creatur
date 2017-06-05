@@ -1,1 +1,1 @@
-export const baseUrl = (process.env.NODE_ENV === 'production') ? 'https://s3.amazonaws.com/static.neostack.com/img/react-slick' : '/img/react-slick'
+export const baseUrl = (process.env.NODE_ENV === 'production') ? 'http://lorempixel.com/output/city-q-c-680-450-10.jpg' : 'http://lorempixel.com/output/city-q-c-680-450-10.jpg'

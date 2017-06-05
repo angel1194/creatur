@@ -40,6 +40,7 @@ function Subtitle(props) {
       <Ubication>
         {props.AncorUbication}
       </Ubication>
+      {props.Price}
     </div>
   );
 }
@@ -48,7 +49,8 @@ Subtitle.propTypes = {
   GlobalText: PropTypes.string,
   TextGrey: PropTypes.string,
   Ancor: PropTypes.string,
-  AncorUbication: PropTypes.string
+  AncorUbication: PropTypes.string,
+  Price: PropTypes.string
 };
 
 export default Subtitle;
