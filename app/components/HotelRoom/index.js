@@ -102,13 +102,7 @@ function HotelRoom(props) {
       </RoomImg>
       <DetailsRoom>
         <Label>Capacidad para 3 personas</Label>
-        <Label>Opciones de cama:</Label>
-        <RadioButtonGreen text='2 camas dobles' ID='1' name='Habitacion' />
-        <RadioButtonGreen text='1 camas dobles' ID='2' name='Habitacion' />
-        <Label>Piscina privada con vista al mar</Label>
-        <LabelA>Banera</LabelA>
-        <LabelA>Patio</LabelA>
-        <LinkA>Mas</LinkA>
+        <Label>Regimen: Solo Habitación</Label>
       </DetailsRoom>
       <ContainerPrice>
         <ContainerButtonGreen>

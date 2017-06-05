@@ -49,9 +49,11 @@ export class HotelQuotation extends React.PureComponent { // eslint-disable-line
         <SendQuotationHotel/>
       </GeneralContainer>
       <HeaderTable/>
-      <HotelRoom NameRoom='Villa Sunset Water'/>
+      <HotelRoom NameRoom='Doble Standard'/>
       <Divider/>
-      <HotelRoom NameRoom='Villa Sunrise Beach'/>
+      <HotelRoom NameRoom='Doble 2 Camas Standard'/>
+       <Divider/>
+      <HotelRoom NameRoom='Doble design room'/>
       </Container>
     );
   }

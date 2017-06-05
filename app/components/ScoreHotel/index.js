@@ -76,7 +76,7 @@ function ScoreHotel(props) {
           <NameHotel>Jumeirah Vittaveli</NameHotel>
           <ButtonBlue>Reservar</ButtonBlue>
         </DivButton>
-        <StarRating/>
+        <StarRating NumStart={"3.0"} />
         <AddressLabel>
           Maldivas
         </AddressLabel>
@@ -85,8 +85,8 @@ function ScoreHotel(props) {
           South Male Atoll, 20229 Male, Asian Boulevard
         </AddressLabel>
         <ContTrip>
-          <TripAd/>
-          <LocationLabel/>
+          <TripAd />
+          <LocationLabel Title={"RUE BLOMET 24"}/>
         </ContTrip>
         <Details>
           Detalles
@@ -99,7 +99,7 @@ function ScoreHotel(props) {
     return (
       <ContainerScore>
           <NameHotel>Jumeirah Vittaveli</NameHotel>
-        <StarRating/>
+        <StarRating NumStart={"3.0"} />
         <AddressLabel>
           Maldivas
         </AddressLabel>
@@ -109,7 +109,7 @@ function ScoreHotel(props) {
         </AddressLabel>
         <ContTrip>
           <TripAd/>
-          <LocationLabel/>
+          <LocationLabel Title="RUE BLOMET 24"/>
         </ContTrip>
         <Details>
           Detalles
