@@ -14,11 +14,8 @@ import FormAutocomplete from '../../../components/FormAutocomplete'
 import { Link } from 'react-router'
 import ButtonSearch from '../../../components/ButtonSearch'
 import Cama from './cama.png';
-// const Body = styled.div`
-//   background: black;
-//   width: 400px;
-//   height: 300px;
-// `
+import InputKids from '../../InputKids'
+
 class FormSearchHotel extends React.Component {
   constructor (props) {
     super(props)
@@ -79,29 +76,22 @@ class FormSearchHotel extends React.Component {
               <div className="dad-reserv">
                 <div className="child">
                   <label htmlFor="">Habitaciones</label>
-                  <input className="inputs" type="number" placeholder="10"/>
+                  <input className="inputs" type="number" min="0" placeholder="10"/>
                 </div>
                 <div className="child">
                   <label htmlFor="">Adultos</label>
-                  <input className="inputs" type="number" placeholder="10"/>
+                  <input className="inputs" type="number" min="0" placeholder="10"/>
                 </div>
                 <div className="child">
                   <label htmlFor="">Ninos (0-7)</label>
-                  <input className="inputs" type="number" placeholder="10"/>
+                  <input className="inputs" type="number" min="0" placeholder="10"/>
                 </div>
               </div>
               <div className="edad">
                 <p>Edad de los menores</p>
               </div>
               <div className="section-dad">
-                <div className="section-child">
-                  <label htmlFor="">Menor 1</label>
-                  <input className="inputs" type="number" placeholder="10"/>
-                </div>
-                <div className="section-child">
-                  <label htmlFor="">Menor 2</label>
-                  <input className="inputs" type="number" placeholder="10"/>
-                </div>
+                <InputKids Menor="1"/>
               </div>
               <div className="link">
                 <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
