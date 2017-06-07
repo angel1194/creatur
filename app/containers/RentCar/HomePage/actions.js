@@ -13,6 +13,7 @@ import {
   SAVE_DATE,
   SET_LOADING_FALSE,
   TAB_CHANGE,
+  VALUE_KIDS,
 } from './constants';
 
 export function loadingTrue(){
@@ -57,9 +58,17 @@ export function saveDate(data, input){
     input,
   }
 }
+
 export function tabChange(tipo){
   return{
     type: TAB_CHANGE,
     tipo,
+  }
+}
+
+export function valueKids(value){
+  return{
+    type:VALUE_KIDS,
+    value
   }
 }

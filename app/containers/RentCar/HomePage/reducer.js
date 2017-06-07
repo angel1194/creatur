@@ -16,7 +16,7 @@ import {
   SAVE_LOCATION,
   SAVE_DATE,
   TAB_CHANGE,
-
+  VALUE_KIDS,
 } from './constants';
 
 const initialState = fromJS({
@@ -26,6 +26,9 @@ const initialState = fromJS({
   'UI':{
     Loading: false,
     Error: false
+  },
+  'hotel':{
+    "kids":0
   },
   'values': {
     "pickUPLocation":"",
@@ -57,6 +60,8 @@ function homePageReducer(state = initialState, action)
       return state.setIn(['values', action.location[1]], action.location[0])
     case TAB_CHANGE:
       return state.set('type', action.tipo)
+    case VALUE_KIDS:
+      return state.setIn(['hotel','kids'],action.value)
     default:
       return state;
   }
