@@ -37,7 +37,7 @@ export class Available extends React.PureComponent { // eslint-disable-line reac
         transitionAppearTimeout = {1000}
         key={i}
          >
-      <CardCar car={car} key={car.ID} addCarChecked={this.props.addCarChecked} availableCar={this.props.Available.car}/>
+      <CarCard car={car} key={car.ID} addCarChecked={this.props.addCarChecked} availableCar={this.props.Available.car}/>
     </ReactCSSTransitionGroup>
     )
   }
