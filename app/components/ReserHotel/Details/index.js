@@ -59,6 +59,7 @@ const Lugares =styled.div`
 const LineBlu =styled.div`
   background-color: #58ACFA;
   height: 2px;
+  width: 80%;
 `;
 
 function Details() {

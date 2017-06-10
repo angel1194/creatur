@@ -22,6 +22,7 @@ const ContainerInput = styled.div`
 
 const IconInput = styled.div`
   width:40px;
+  padding: 0px 5px 0px 5px;
   height:auto;
   background-color:#87b672;
   display:flex;
