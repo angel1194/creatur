@@ -19,12 +19,15 @@ import InputKids from '../../InputKids'
 class FormSearchHotel extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
+    this.state =
+    {
+      value:0,
       startDate: moment(),
       endDate:moment().add(1, "days"),
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
+    this.clickInput = this.clickInput.bind(this)
   }
 
   handleChange(date) {
@@ -32,10 +35,17 @@ class FormSearchHotel extends React.Component {
       startDate: date
     });
   }
+
   handleChangeReturn(date) {
     this.setState({
       endDate: date
     })
+  }
+
+  clickInput(e){
+    this.setState({
+      value:e.target.value
+    });
   }
 
   render() {
@@ -60,7 +70,6 @@ class FormSearchHotel extends React.Component {
                   <ul>
                     <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
                     <li><DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
-
                   </ul>
                   <label className="fecha">Fecha de salida</label>
                   <ul>
@@ -84,15 +93,10 @@ class FormSearchHotel extends React.Component {
                 </div>
                 <div className="child">
                   <label htmlFor="">Ninos (0-7)</label>
-                  <input className="inputs" type="number" min="0" placeholder="10"/>
+                  <input onChange={this.clickInput} id='inputChild' className="inputs" type="number" min="0" placeholder="10"/>
                 </div>
               </div>
-              <div className="edad">
-                <p>Edad de los menores</p>
-              </div>
-              <div className="section-dad">
-                <InputKids Menor="1"/>
-              </div>
+              {this.state.value > 0 ? <InputKids Menor={this.state.value} /> : ''}
               <div className="link">
                 <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
                 <a href="#">Añadir otra habitación</a>
