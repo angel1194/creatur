@@ -4,7 +4,7 @@
 *
 */
 
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Subtitle from '../Subtitle'
 import styled from 'styled-components';
 import AddButton from '../../AddButton';
@@ -17,13 +17,17 @@ const Div = styled.div`
   padding: 10px 40px 10px 40px;
 `;
 
-const Row = styled.div `
+const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 
-const Column = styled.div `
+const RowRight = styled(Row) `
+
+`;
+
+const Column = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -40,45 +44,54 @@ const Reg = styled.div`
   margin-left: 22px;
 `
 
+function generateOccupancy(Occupancy) {
+
+  Occupancy = Occupancy.split("/")[0];
+
+  // let jsOCP ={ 
+  //   "Adults":Occupancy[0],
+  //   "children":Occupancy[1],
+  //   "infants":Occupancy[2]
+  // };
+
+  return Occupancy;
+
+};
+
 function OffersDay(props) {
-let texts = [];
-let prices = [];
-  for (var i = 0; i < props.ArrRoom.length; i++) {
 
-    texts.push(
-      <div>
-      <AddCheckList id={props.ArrRoom[i].id} text={props.ArrRoom[i].room +" Hasta "+props.ArrRoom[i].occupancy+" Personas"}/>
-      <Reg><Subtitle GlobalText={"Regimen: " + props.ArrRoom[i].board}/></Reg>
-      </div>
-    );
-    prices.push(
-      <Price>
-        <Subtitle GlobalText={"desde $"+props.ArrRoom[i].price}/>
-      </Price>
+  let ArrRooms = props.ArrRoom.map((element, i) => {
+
+    return (
+      <Row>
+        <Column>
+          <AddCheckList id={i} text={element.Room.TextValue + " Hasta " + generateOccupancy(element.Room.Occupancy) + " Personas"} />
+          <Reg>
+            <Subtitle GlobalText={"Regimen: " + element.Board.TextValue} />
+          </Reg>
+        </Column>
+
+        <Price>
+          <Subtitle GlobalText={"desde $" + element.RatePrice[1].TextValue} />
+        </Price>
+      </Row>
     );
 
-  }
+  });
+
+
+
   return (
     <Div>
-      <Row>
-        <div>
-          {texts}
-        </div>
-        <div>
-          {prices}
-        </div>
-        <div>
-          <Row>
-            <AddButton text="habitaciones"/>
-          </Row>
-        </div>
-      </Row>
+      <AddButton text="habitaciones" />
+      {ArrRooms[1]}
+
     </Div>
   );
 }
 
 OffersDay.propTypes = {
-  ArrRoom:PropTypes.array
+  ArrRoom: PropTypes.array
 };
 
 export default OffersDay;

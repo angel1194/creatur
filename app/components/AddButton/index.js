@@ -13,6 +13,12 @@ const AddElement = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
+  justify-content: flex-end;
+`;
+
+
+const Input = styled.input`
+      visibility: hidden;
 `;
 
 const BlueIcon=styled(FontAwesome)`
@@ -26,13 +32,24 @@ const LabelElement=styled.label`
   cursor:pointer;
 `;
 
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 function AddButton(props) {
+
+  let idUnique = guidGenerator();
+
   return (
     <AddElement>
       <BlueIcon name='plus-circle' size='lg' id='addElement'/>
-      <LabelElement htmlFor='addElement'>
+      <LabelElement htmlFor={idUnique}>
         {props.text}
       </LabelElement>
+      <Input type='checkbox'  id={idUnique} />
     </AddElement>
   );
 }

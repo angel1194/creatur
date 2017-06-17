@@ -73,6 +73,7 @@ const ContenTools = styled.div`
 
 export class HotelResult extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log(this.props);
     return (
       <div>
         <ContainerBar>
@@ -85,7 +86,7 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
             <Filter />
           </ContenFilter>
           <ContenResults>
-            <RowHotel />
+            <RowHotel Results={this.props.HotelResult.Hotels} />
           </ContenResults>
           <ContenTools>
             <HotelRate />

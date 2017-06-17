@@ -27,7 +27,6 @@ const WrapperTrans = styled.div`
       margin: 0;
       padding: 0;
       width: 100%;
-      height: auto;
       border-left: 2px solid #eaeff3;
       border-right: 2px solid #eaeff3;
       border-bottom: 2px solid #eaeff3;

@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
 import { Link } from 'react-router';
@@ -27,97 +27,70 @@ import BarImgOffers from '../BarImgOffers';
 
 import AddCheckList from '../../AddCheckList';
 
-
-
 const ColumMarginRight = styled(Column) `
-
   margin-right: 10px;
   margin-top: 10px;
   align-items: flex-end;
-
 `;
 
 const ColumMarginTop = styled(Column) `
-
   margin-top: 10px;
   align-items: flex-start;
   padding-left: 10px;
-
 `;
 
+function generateRowHotel(ArrHotels) {
 
+  let ArrElm = ArrHotels.map((element, i) => {
 
-function generateRowHotel(num) {
+    
 
-  let TiltesHotel = ["Aberotel Montparnasse", "LEGEND", "Hotel Acadia - Astotel", "Chouette Hotel"];
-  let ANumStars = ["3.0", " 4.0", "3.0", "3.0"];
-  let ALocations = ["RUE BLOMET 24", "RUE DE RENNES 151 bis", "4 Rue Geoffroy Marie", "237 Rue De La Convention"];
-  let APrice = [{ price1: "434.80", price2: "434.80" }, { price1: "554.35", price2: "840.18" }, { price1: "382.93", price2: "382.93" }, { price1: "372.00", price2: "521.00" }];
-  let AImage = ["https://media-cdn.tripadvisor.com/media/photo-s/03/ff/ae/c2/aberotel-montparnasse.jpg",
-    "http://www.hotel-r.net/im/hotel/de/legend-hotel.jpg", "http://media-cdn.tripadvisor.com/media/photo-s/0c/08/a9/0d/hotel-acadia-astotel.jpg",
-    "http://www.france-voyage.com/visuals/hotels/gite-auberge-chouette-768674-22205673_w600.jpg"
-  ]
-  let ArrCalification = ["4.0", "4.5", "null", "4.5"];
+    return (<Column>
+      <Wrapper>
+        <Row>
 
-  let ArrRoom1 = [{ room: "Doble Standard", board: "Solo Habitación", price: "434.80", occupancy: "2", id: "1" }, { room: "Doble 2 camas Standard", board: "Solo Habitación", price: "454.72", occupancy: "2", id: "2" }, { room: "Doble design room", board: "Solo Habitación", price: "458.72", occupancy: "2", id: "3" }];
-  let ArrRoom2 = [{ room: "Individual Standard", board: "Solo Habitación", price: "554.35", occupancy: "2", id: "4" }];
-  let ArrRoom3 = [{ room: "Double Room", board: "Bed and buffet breakfast", price: "382.93", occupancy: "2", id: "5" }];
-  let ArrRoom4 = [{ room: "Doble Standard", board: "Solo Habitación", price: "372.00", occupancy: "2", id: "6" }];
-  let ArrRoom = [ArrRoom1, ArrRoom2, ArrRoom3, ArrRoom4];
+          <Img src={"http://via.placeholder.com/200x156"} Width={"200px"} Height={"156px"} />
 
+          <ColumMarginTop>
+            <Title>{element.Hotel.Name}</Title>
+            <StarRating NumStart={element.Rating.TextValue} />
+            <TripAdvisor Calification={(element.TripAdvisor == null) ? "0.0" : element.TripAdvisor.CategoryValue } />
+            <LocationLabel Title={element.Line[0].TextValue} />
+          </ColumMarginTop>
+        </Row>
+        <Row>
+          <ColumMarginRight>
+            <PriceLabel Tam={"Com"} Since={element.Rate[0].RatePrice[1].TextValue} Currency={"USD"} Total={parseInt(element.Rate[0].RatePrice[1].TextValue) * 4} />
 
+            <AddCheckList id={"bt" + i} JustifyContent="flex-end" Margin="20px" />
+            <Link to="/hotel/quotation">
+              <Button Title={"Comparar"} Color={"Blue"} />
+            </Link>
 
-  let ArrElm = []
-  for (var i = 0; i < num; i++) {
-    ArrElm.push(
-      <Column>
-        <Wrapper>
-          <Row>
+          </ColumMarginRight>
+        </Row>
+      </Wrapper>
+      <WrapperTrans>
+    <OffersDay ArrRoom={element.Rate} />
+       
+      </WrapperTrans>
+    </Column>);
+  });
 
-            <Img src={AImage[i]} Width={"200px"} Height={"156px"} />
-
-            <ColumMarginTop>
-              <Title>{TiltesHotel[i]}</Title>
-              <StarRating NumStart={ANumStars[i]} />
-              <TripAdvisor Calification={ArrCalification[i]} />
-              <LocationLabel Title={ALocations[i]} />
-            </ColumMarginTop>
-          </Row>
-          <Row>
-            <ColumMarginRight>
-              <PriceLabel Tam={"Com"} Since={APrice[i].price1} Currency={"USD"} Total={APrice[i].price1 * 4} />
-
-              <AddCheckList id={"bt" + i} JustifyContent="flex-end" Margin="20px" />
-              <Link to="/hotel/quotation">
-                <Button Title={"Comparar"} Color={"Blue"} />
-              </Link>
-
-            </ColumMarginRight>
-          </Row>
-        </Wrapper>
-        <WrapperTrans>
-          <OffersDay ArrRoom={ArrRoom[i]} />
-        </WrapperTrans>
-      </Column>
-    )
-  }
 
   return ArrElm;
-
 }
 
-function RowHotel() {
+function RowHotel(props) {
   return (
     <div>
-      {generateRowHotel(4)}
-
-
+      {generateRowHotel(props.Results)}
     </div>
   );
 }
 
 RowHotel.propTypes = {
-
+  Results: PropTypes.array
 };
 
 export default RowHotel;
