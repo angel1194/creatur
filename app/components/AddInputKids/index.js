@@ -20,7 +20,7 @@ function AddInputKids(props) {
 }
 
 AddInputKids.propTypes = {
-  Menor: PropTypes.int,
+
 };
 
 export default AddInputKids;

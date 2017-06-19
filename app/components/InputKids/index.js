@@ -7,29 +7,24 @@
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
 
+class InputKids extends React.Component {
 
-
-
-function InputKids(props) {
-  return (
-    <div>
-      <div className="edad">
-        <p>Edad de los menores</p>
-      </div>
+  render (){
+    return (
       <div className="section-dad">
         <div>
           <div className="section-child">
-            <label htmlFor="">Menor {props.Menor}</label>
-           <input className="inputs" type="number" min="0" placeholder="10"/>
-         </div>
+            <label htmlFor="">Menor{this.props.Menor}</label>
+            <input className="inputs" type="number" min="0" placeholder="10"/>
+          </div>
         </div>
       </div>
-  </div>
   );
+  }
 }
 
 InputKids.propTypes = {
-  Menor: PropTypes.string
+
 };
 
 export default InputKids;
