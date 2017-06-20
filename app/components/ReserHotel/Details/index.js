@@ -83,7 +83,6 @@ function Details() {
       <ContainerPriceSlick>
         <Slick>
           <SimpleSlider />
-          <SliderTresItems />
         </Slick>
         <Lugares>
           <PriceRoom />
