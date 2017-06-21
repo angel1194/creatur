@@ -10,7 +10,6 @@ import Subtitle from '../../../components/ReserHotel/Subtitle';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../../HotelRoom';
 import SimpleSlider from './SimpleSlider';
-import SliderTresItems from './SliderTresItems';
 import PriceRoom from './PriceRoom';
 
 

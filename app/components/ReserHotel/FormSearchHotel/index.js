@@ -14,15 +14,7 @@ import FormAutocomplete from '../../../components/FormAutocomplete'
 import { Link } from 'react-router'
 import ButtonSearch from '../../../components/ButtonSearch'
 import Cama from './cama.png';
-import InputKids from '../../InputKids';
 import AddRoomForm from '../AddRoomForm';
-
-const AddInputs = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 11px;
-`
 
 class FormSearchHotel extends React.Component {
   constructor (props) {
@@ -31,12 +23,11 @@ class FormSearchHotel extends React.Component {
     {
       startDate: moment(),
       endDate:moment().add(1, "days"),
-      input: [],
-      show: true
+      show: [],
+      rooms: 0
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
-    this.clickInput = this.clickInput.bind(this)
     this.addRom = this.addRom.bind(this)
   }
 
@@ -52,23 +43,16 @@ class FormSearchHotel extends React.Component {
     })
   }
 
-  clickInput(e){
-    var input = []
-    e.currentTarget.value = (e.currentTarget.value < 0)? 0 : e.currentTarget.value;
-    var currentValue = e.currentTarget.value
-    for (var i = 1; i <= currentValue; i++) {
-      input.push(<InputKids key={i} Menor={i}/>)
-    }
+  addRom(){
+    let count = this.state.rooms + 1
     this.setState({
-      input:input
+      rooms:count
     })
+    this.state.show.push(<AddRoomForm key={'Room'+ this.state.rooms}/>)
+    console.log(count);
   }
 
-  addRom(){
-    this.setState(e => ({
-      show: !e.show
-    }));
-  }
+
 
   render() {
     return (
@@ -104,30 +88,11 @@ class FormSearchHotel extends React.Component {
                   <h4>4 noches</h4>
                 </div>
               </div>
-              <div className="dad-reserv">
-                <div className="child">
-                  <label htmlFor="">Habitaciones</label>
-                  <input className="inputs" type="number" min="0" placeholder="10"/>
-                </div>
-                <div className="child">
-                  <label htmlFor="">Adultos</label>
-                  <input className="inputs" type="number" min="0" placeholder="10"/>
-                </div>
-                <div className="child">
-                  <label htmlFor="">Niños (0-7)</label>
-                  <input onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="10"/>
-                </div>
-              </div>
-              <div className="edad">
-                <p>{this.state.input == 0 ? '' : 'Edad de los menores'}</p>
-              </div>
-              <AddInputs>
-                {this.state.input.map(element => element)}
-              </AddInputs>
-              <AddRoomForm show={this.state.show}/>
+              <AddRoomForm/>
+              {this.state.show.map(element => element)}
               <div className="link">
                 <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
-                <a onClick={this.addRom}>{this.state.show ? 'Añadir otra habitación' : 'Cancelar habitación'}</a>
+                <a onClick={this.addRom}>Añadir otra habitación</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
                 <ButtonSearch typeSearch='hotel'/>
