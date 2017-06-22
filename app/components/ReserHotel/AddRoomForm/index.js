@@ -41,13 +41,12 @@ class AddRoomForm extends React.PureComponent {
     this.setState({
       input:input
     })
-    console.log(input);
   }
 
   render() {
     return (
       <div>
-        {this.state.show ? <Line/> : ''}
+        {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
             <label htmlFor="">Habitaciones</label>
@@ -68,6 +67,10 @@ class AddRoomForm extends React.PureComponent {
         <AddInputs>
           {this.state.input.map(element => element)}
         </AddInputs>
+        <div className="remove">
+          {this.props.remove == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
+          <a onClick={() => {console.log('click');}}>{this.props.remove == true ? 'Eliminar' : ''}</a>
+        </div>
       </div>
     );
   }
