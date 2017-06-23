@@ -1,3 +1,4 @@
+
 /*
  *
  * Available
@@ -14,6 +15,7 @@ import { loadCar, addCarChecked, resetCarChecked } from './actions'
 import { loadingTrue, saveDate, saveLocation } from '../HomePage/actions'
 import { Icon,Image, Grid, Container, Header, Card, Button,Segment } from 'semantic-ui-react'
 import CardCar from '../../../components/CardCar'
+import CarCard from '../../../components/CarCard'
 import NewSearch from '../../../components/NewSearch'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -35,7 +37,7 @@ export class Available extends React.PureComponent { // eslint-disable-line reac
         transitionAppearTimeout = {1000}
         key={i}
          >
-      <CardCar car={car} key={car.ID} addCarChecked={this.props.addCarChecked} availableCar={this.props.Available.car}/>
+      <CarCard car={car} key={car.ID} addCarChecked={this.props.addCarChecked} availableCar={this.props.Available.car}/>
     </ReactCSSTransitionGroup>
     )
   }

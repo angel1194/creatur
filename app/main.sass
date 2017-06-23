@@ -376,12 +376,13 @@ h1.ui.header
   width: 100%
   overflow: hidden
   display: flex
-  justify-content: space-around
+  justify-content: center
   flex-direction: row
-  height: 30px
-  border-radius: 5px !important
+  height: 35px
+  border-radius: 6px !important
   input
-    border-radius: 0 !important
+    border-radius: 0px 6px 6px 0px !important
+    height: 35px
     text-align: center
     padding-top: .400em !important
 
@@ -521,10 +522,10 @@ h1, #spanWhite, h4, .spanWhite
   flex-direction: row
   justify-content: space-around
   .Select-control
-    height: 30px
-    border-radius: 6px !important
+    height: 35px
     .Select-multi-value-wrapper
       height: 30px
+
 
 .columnPaddingzero
   flex: 2
@@ -551,6 +552,8 @@ h1, #spanWhite, h4, .spanWhite
     .Select-placeholder
       left: 9% !important
       line-height: 2em !important
+  .Select-control
+    border-radius: 6px !important
 
 
 i
@@ -809,6 +812,7 @@ i
   width: 365px
   position: absolute
   z-index: 102
+  border-radius: 6px
 
 // SLIDE
 .containerFormSearch
