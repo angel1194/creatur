@@ -47,7 +47,7 @@ class FormSearchHotel extends React.Component {
     this.setState({
       rooms:count
     })
-    this.state.show.push(<AddRoomForm key={'Room'+ count} id={'Room' + count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
+    this.state.show.push(<AddRoomForm key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
   }
 
   removeRom(){

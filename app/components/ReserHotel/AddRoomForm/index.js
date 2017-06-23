@@ -29,7 +29,6 @@ class AddRoomForm extends React.PureComponent {
       input: []
     };
     this.clickInput = this.clickInput.bind(this)
-    this.getClass = this.getClass.bind(this)
   }
 
   clickInput(e){
@@ -44,16 +43,10 @@ class AddRoomForm extends React.PureComponent {
     })
   }
 
-  getClass(id){
-    var divId=document.getElementById(id)
-    divId.parentNode.removeChild(divId)
-    console.log(divId);
-  }
-
   render() {
 
     return (
-      <div id={this.props.id}>
+      <div>
         {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
