@@ -24,11 +24,10 @@ class FormSearchHotel extends React.Component {
       startDate: moment(),
       endDate:moment().add(1, "days"),
       show: [],
-      rooms: 1
+      rooms: 0
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
-    this.addRom = this.addRom.bind(this)
   }
 
   handleChange(date) {
@@ -48,7 +47,15 @@ class FormSearchHotel extends React.Component {
     this.setState({
       rooms:count
     })
-    this.state.show.push(<AddRoomForm key={'Room'+ count} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
+    this.state.show.push(<AddRoomForm key={'Room'+ count} id={'Room' + count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
+  }
+
+  removeRom(){
+    let res = this.state.rooms - 1
+    this.setState({
+      rooms:res
+    })
+    this.state.show.pop()
   }
 
   render() {
@@ -89,7 +96,7 @@ class FormSearchHotel extends React.Component {
               {this.state.show.map(element => element)}
               <div className="link">
                 {this.state.rooms <= 3 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-                <a onClick={this.addRom}>{this.state.rooms <= 3 ? 'Añadir otra habitación' : ''}</a>
+                <a onClick={() => this.addRom()}>{this.state.rooms <= 3 ? 'Añadir otra habitación' : ''}</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
                 <ButtonSearch typeSearch='hotel'/>

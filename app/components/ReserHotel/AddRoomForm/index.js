@@ -29,11 +29,12 @@ class AddRoomForm extends React.PureComponent {
       input: []
     };
     this.clickInput = this.clickInput.bind(this)
+    this.getClass = this.getClass.bind(this)
   }
 
   clickInput(e){
     var input = []
-    e.currentTarget.value = (e.currentTarget.value < 0)? 0 : e.currentTarget.value;
+    e.currentTarget.value = (e.currentTarget.value < 0) ? 0 : e.currentTarget.value;
     var currentValue = e.currentTarget.value
     for (var i = 1; i <= currentValue; i++) {
       input.push(<InputKids key={i} Menor={i}/>)
@@ -43,9 +44,16 @@ class AddRoomForm extends React.PureComponent {
     })
   }
 
+  getClass(id){
+    var divId=document.getElementById(id)
+    divId.parentNode.removeChild(divId)
+    console.log(divId);
+  }
+
   render() {
+
     return (
-      <div>
+      <div id={this.props.id}>
         {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
@@ -69,7 +77,7 @@ class AddRoomForm extends React.PureComponent {
         </AddInputs>
         <div className="remove">
           {this.props.remove == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
-          <a onClick={() => {console.log('click');}}>{this.props.remove == true ? 'Eliminar' : ''}</a>
+          <a onClick={()=> this.props.res()}>{this.props.remove == true ? 'Eliminar' : ''}</a>
         </div>
       </div>
     );
