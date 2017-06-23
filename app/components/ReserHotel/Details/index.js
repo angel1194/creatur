@@ -10,7 +10,6 @@ import Subtitle from '../../../components/ReserHotel/Subtitle';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../../HotelRoom';
 import SimpleSlider from './SimpleSlider';
-import SliderTresItems from './SliderTresItems';
 import PriceRoom from './PriceRoom';
 
 
@@ -59,6 +58,7 @@ const Lugares =styled.div`
 const LineBlu =styled.div`
   background-color: #58ACFA;
   height: 2px;
+  width: 80%;
 `;
 
 function Details() {
@@ -82,7 +82,6 @@ function Details() {
       <ContainerPriceSlick>
         <Slick>
           <SimpleSlider />
-          <SliderTresItems />
         </Slick>
         <Lugares>
           <PriceRoom />

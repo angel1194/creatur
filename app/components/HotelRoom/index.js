@@ -14,7 +14,7 @@ import Room from '../ReserHotel/SlideHotel/img/Room.jpg'
 import { Link } from 'react-router';
 
 const ContainerRoom = styled.div`
-  width:80%;
+  width: 80%;
   display:flex;
   flex-wrap:wrap;
 `;
@@ -75,6 +75,7 @@ const ContainerButtonGreen = styled.div`
   flex-direction:column;
   align-items:center
   padding:5px 15px;
+  border-radius: 6px;
 `;
 
 const ButtonGreen = styled.label`
@@ -92,13 +93,16 @@ const Title = styled(H3) `
   margin-top:10px;
 `;
 
+const Img = styled.img `
+  border-radius: 6px;
+`;
 
 function HotelRoom(props) {
   return (
     <ContainerRoom>
       <RoomImg>
         <NameRoom>{props.NameRoom}</NameRoom>
-        <img src={Room} width='250' />
+        <Img src={Room} width='250' />
       </RoomImg>
       <DetailsRoom>
         <Label>Capacidad para 3 personas</Label>

@@ -330,6 +330,7 @@ h1.ui.header
   margin-bottom: 15px
   width: 366px !important
   border-radius: 5px !important
+  z-index: 3 !important
 
 .titleForm
   padding-top: 23px !important
@@ -2001,29 +2002,41 @@ footer
   font-family: Montserrat !important
   h4
     font-family: Montserrat !important
+
+.remove
+  margin: 0px 0px 15px 8px
+  font-family: Roboto !important
+  display: flex
+  flex-direction: row
+  align-items: center !important
+  .fa-minus-circle
+    color: rgb(217, 50, 51)
+    margin: 2px 0px 0px 20px !important
+  a
+    color: rgb(217, 50, 51) !important
+    font-family: sans-serif !important
+    margin: 1px 0px 0px 5px !important
+    cursor: pointer
+
 /*style class div section-dad
 
 .section-dad
   display: flex !important
   flex-direction: row !important
-  justify-content: space-around !important
-  width: 50% !important
-  margin-bottom: 20px
-  margin-left: 15px
+  flex-wrap: wrap !important
+  margin-bottom: 10px
+  margin-left: 29px
   .section-child
-    flex-wrap: wrap !important
     display: flex !important
-    flex-direction: row !important
-    width: 50% !important
-    margin-left: 30px
+    flex-direction: column !important
     label
       color: white !important
       font-family: Roboto !important
       font-weight: 100
     input
       border-radius: inherit !important
-      width: 4.5em !important
-      border-radius: 5px !important
+      width: 4.6em !important
+      border-radius: 6px !important
 
 .link
   margin: -5px 0px 15px 0px
@@ -2040,6 +2053,7 @@ footer
     color: #fff !important
     font-family: sans-serif !important
     margin: 1px 0px 0px 5px
+    cursor: pointer
 
   .ui.form
     input

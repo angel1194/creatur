@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import SliderTresItems from '../index';
+// import InputKids from '../index';
 
-describe('<SliderTresItems />', () => {
+describe('<InputKids />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

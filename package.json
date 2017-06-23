@@ -231,6 +231,7 @@
     "react-dom": "15.4.1",
     "react-fontawesome": "^1.6.1",
     "react-helmet": "3.2.2",
+    "react-image-gallery": "^0.8.2",
     "react-intl": "2.1.5",
     "react-paginate": "^4.2.0",
     "react-redux": "4.4.6",
