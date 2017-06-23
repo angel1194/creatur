@@ -51,15 +51,15 @@ class AddRoomForm extends React.PureComponent {
         <div className="dad-reserv">
           <div className="child">
             <label htmlFor="">Habitaciones</label>
-            <input className="inputs" type="number" min="0" placeholder="10"/>
+            <input className="inputs" type="number" min="0" placeholder="0"/>
           </div>
           <div className="child">
             <label htmlFor="">Adultos</label>
-            <input className="inputs" type="number" min="0" placeholder="10"/>
+            <input className="inputs" type="number" min="0" placeholder="0"/>
           </div>
           <div className="child">
             <label htmlFor="">Niños (0-7)</label>
-            <input onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="10"/>
+            <input onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
           </div>
         </div>
         <div className="edad">

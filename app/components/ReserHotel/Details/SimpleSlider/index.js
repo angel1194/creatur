@@ -26,16 +26,16 @@ class SimpleSlider extends React.PureComponent { // eslint-disable-line react/pr
       const images = [
         {
           original: 'http://lorempixel.com/output/city-q-c-690-460-3.jpg',
-          thumbnail: 'http://lorempixel.com/output/city-q-c-200-120-3.jpg',
+          thumbnail: 'http://lorempixel.com/output/city-q-c-155-110-3.jpg',
 
         },
         {
           original: 'http://lorempixel.com/output/city-q-c-690-460-5.jpg',
-          thumbnail: 'http://lorempixel.com/output/city-q-c-200-120-5.jpg'
+          thumbnail: 'http://lorempixel.com/output/city-q-c-155-110-5.jpg'
         },
         {
           original: 'http://lorempixel.com/output/sports-q-c-690-460-6.jpg',
-          thumbnail: 'http://lorempixel.com/output/sports-q-c-200-120-6.jpg'
+          thumbnail: 'http://lorempixel.com/output/sports-q-c-155-110-6.jpg'
         }
       ]
 
@@ -45,9 +45,11 @@ class SimpleSlider extends React.PureComponent { // eslint-disable-line react/pr
           slideInterval={4000}
           onImageLoad={this.handleImageLoad}
           showPlayButton={false}
-          showFullscreenButton={false}
+          showFullscreenButton={true}
           slideOnThumbnailHover={false}
           autoPlay={false}
+          showIndex={true}
+          showBullets={false}
         />
 
       );
