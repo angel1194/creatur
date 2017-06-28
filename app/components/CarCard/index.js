@@ -140,7 +140,7 @@ function CarCard(props) {
           </CheckContainer>
         </ContainerInfo>
       </DataContainer>
-      <IconContainer className='hola'>
+      <IconContainer>
         <span className='fa fa-users'> 4</span>
         <span className='fa fa-suitcase'> 4</span>
         {
