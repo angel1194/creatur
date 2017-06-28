@@ -13,7 +13,7 @@ function AddInputKids(props) {
     <div>
       <div className="section-child">
         <label htmlFor="">Menor {props.Menor}</label>
-       <input className="inputs" type="number" min="0" placeholder="10"/>
+       <input className="inputs" type="number" min="0" placeholder="0"/>
      </div>
     </div>
   );

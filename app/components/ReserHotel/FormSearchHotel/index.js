@@ -24,7 +24,7 @@ class FormSearchHotel extends React.Component {
       startDate: moment(),
       endDate:moment().add(1, "days"),
       show: [],
-      rooms: 0
+      rooms: 1
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)

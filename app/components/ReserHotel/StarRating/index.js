@@ -33,7 +33,7 @@ function addStar(num) {
   let ArrStars = [], i = 0;
 
   for (i = 0; i < num; i++) {
-    ArrStars.push(<FontA name='star' />);
+    ArrStars.push(<FontA name='star' key={i}/>);
   }
 
   return ArrStars;
