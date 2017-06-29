@@ -19,8 +19,9 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
       this.onChange = this.onChange.bind(this)
       this.onChangeReturn = this.onChangeReturn.bind(this)
       this.showReturn = this.showReturn.bind(this)
+      this.hotelLocation = this.hotelLocation.bind(this)
   }
-  onChange (value ) {
+  onChange (value) {
     //TO DO
     //al tercer dato, realizar el request
       this.setState({
@@ -56,8 +57,14 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
       })
     }
   }
-  render() {
+  hotelLocation(value){
+    this.setState({
+      startLocation: value,
+    });
+    this.props.setLocation([value.Code, 'pickUPLocation'])
+  }
 
+  render() {
     const AsyncComponent = Select.Async;
     if (this.props.placeholder){
         return (
@@ -67,7 +74,7 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
                 <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
                 <AsyncComponent
                   value={this.state.startLocation}
-                  onChange={this.onChange}
+                  onChange={this.hotelLocation}
                   valueKey="id" labelKey="City"
                   loadOptions={this.getCity}
                   className=""

@@ -33,13 +33,15 @@ class FormSearchHotel extends React.Component {
   handleChange(date) {
     this.setState({
       startDate: date
-    });
+    })
+    this.props.saveDataHotel([date.format('YYYY-MM-DD'), 'pickUpDataHotel'])
   }
 
   handleChangeReturn(date) {
     this.setState({
       endDate: date
     })
+    this.props.saveDataHotel([date.format('YYYY-MM-DD'), 'returnDataHotel'])
   }
 
   addRom(){
@@ -65,7 +67,7 @@ class FormSearchHotel extends React.Component {
           <Header as='h1' className='titleForm'>{this.props.title}</Header>
           <Grid>
             <div className='containerFormHotel'>
-              <FormAutocomplete placeholder='Destino, hotel, lugar de interés'/>
+              <FormAutocomplete placeholder='Destino, hotel, lugar de interés' setLocation={this.props.setLocation} type={this.props.type}/>
               <div className='searchMap'>
                 <div>
                   <a id='search' href=''>
@@ -79,12 +81,12 @@ class FormSearchHotel extends React.Component {
                   <label className="fecha">Fecha de llegada</label>
                   <ul>
                     <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                    <li><DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
+                    <li><DatePicker saveDataHotel={this.props.saveDataHotel} selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
                   </ul>
                   <label className="fecha">Fecha de salida</label>
                   <ul>
                     <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                    <li><DatePicker selected={this.state.endDate} onChange={this.handleChangeReturn} minDate={moment(this.state.startDate)}/></li>
+                    <li><DatePicker saveDataHotel={this.props.saveDataHotel} selected={this.state.endDate} onChange={this.handleChangeReturn} minDate={moment(this.state.startDate)}/></li>
                   </ul>
                 </div>
                 <div className="bed">

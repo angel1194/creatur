@@ -14,7 +14,7 @@ import MainSearch from '../../../components/MainSearch'
 import Comments from '../../../components/CommentSlide'
 
 import {Container, Grid, Icon, Button} from 'semantic-ui-react'
-import { loadingTrue, saveDate, saveLocation, commentsLoaded, tabChange} from './actions'
+import { loadingTrue, saveDate, saveLocation, commentsLoaded, tabChange, setLocation, saveDataHotel} from './actions'
 import Slider from 'react-slick'
 
 
@@ -137,7 +137,7 @@ export class HomePage extends React.PureComponent {
           ]}
         />
 
-      <MainSearch dataUI={this.props.HomePage} loading={this.props.HomePage.UI.Loading} saveDate={this.props.saveDate} loadingTrue={this.props.loadingTrue}  saveLocation={this.props.saveLocation} tabChange={this.props.tabChange} type={ this.props.HomePage.type }/>
+      <MainSearch dataUI={this.props.HomePage} loading={this.props.HomePage.UI.Loading} saveDate={this.props.saveDate} loadingTrue={this.props.loadingTrue}  saveLocation={this.props.saveLocation} tabChange={this.props.tabChange} type={ this.props.HomePage.type } setLocation={this.props.setLocation}/>
         <Container className="containerComments">
             <h2>CLIENTES</h2>
             <span>Que dicen nuestros clientes</span>
@@ -176,6 +176,12 @@ function mapDispatchToProps(dispatch) {
     },
     tabChange:(type)=>{
       dispatch(tabChange(type))
+    },
+    setLocation:(type)=>{
+      dispatch(setLocation(type))
+    },
+    saveDataHotel:(type)=>{
+      dispatch(saveDataHotel(type))
     },
     dispatch,
   };
