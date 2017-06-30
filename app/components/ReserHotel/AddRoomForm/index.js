@@ -29,6 +29,8 @@ class AddRoomForm extends React.PureComponent {
       input: []
     };
     this.clickInput = this.clickInput.bind(this)
+    this.OnChange = this.OnChange.bind(this)
+
   }
 
   clickInput(e){
@@ -43,6 +45,13 @@ class AddRoomForm extends React.PureComponent {
     })
   }
 
+  OnChange(e){
+    let data=[]
+    data.push(e.target.value)
+    data.push(e.target.name)
+    this.props.saveRoomsAdult(data)
+  }
+
   render() {
 
     return (
@@ -50,16 +59,16 @@ class AddRoomForm extends React.PureComponent {
         {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
-            <label htmlFor="">Habitaciones</label>
-            <input className="inputs" type="number" min="0" placeholder="0"/>
+            <label htmlFor="rooms">Habitaciones</label>
+            <input id="rooms" onChange={this.OnChange } className="inputs" type="number" min="0" placeholder="0" name='roomsHotel'/>
           </div>
           <div className="child">
-            <label htmlFor="">Adultos</label>
-            <input className="inputs" type="number" min="0" placeholder="0"/>
+            <label htmlFor="adult">Adultos</label>
+            <input id="adult" onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name='adultHotel'/>
           </div>
           <div className="child">
-            <label htmlFor="">Niños (0-7)</label>
-            <input onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
+            <label htmlFor="child">Niños (0-7)</label>
+            <input id="child" onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
           </div>
         </div>
         <div className="edad">

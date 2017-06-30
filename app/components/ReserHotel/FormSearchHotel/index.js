@@ -49,7 +49,7 @@ class FormSearchHotel extends React.Component {
     this.setState({
       rooms:count
     })
-    this.state.show.push(<AddRoomForm key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
+    this.state.show.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
   }
 
   removeRom(){
@@ -59,6 +59,8 @@ class FormSearchHotel extends React.Component {
     })
     this.state.show.pop()
   }
+
+  
 
   render() {
     return (
@@ -78,15 +80,15 @@ class FormSearchHotel extends React.Component {
               </div>
               <div className="dad-dates">
                 <div className="dates">
-                  <label className="fecha">Fecha de llegada</label>
+                  <label htmlFor="checkin" className="fecha">Fecha de llegada</label>
                   <ul>
                     <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                    <li><DatePicker saveDataHotel={this.props.saveDataHotel} selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
+                    <li><DatePicker id="checkin" saveDataHotel={this.props.saveDataHotel} selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
                   </ul>
-                  <label className="fecha">Fecha de salida</label>
+                  <label htmlFor="checkout" className="fecha">Fecha de salida</label>
                   <ul>
                     <li><i className="fa fa-calendar fa-lg" aria-hidden="true"></i></li>
-                    <li><DatePicker saveDataHotel={this.props.saveDataHotel} selected={this.state.endDate} onChange={this.handleChangeReturn} minDate={moment(this.state.startDate)}/></li>
+                    <li><DatePicker id="checkout" saveDataHotel={this.props.saveDataHotel} selected={this.state.endDate} onChange={this.handleChangeReturn} minDate={moment(this.state.startDate)}/></li>
                   </ul>
                 </div>
                 <div className="bed">
@@ -94,7 +96,7 @@ class FormSearchHotel extends React.Component {
                   <h4>4 noches</h4>
                 </div>
               </div>
-              <AddRoomForm/>
+              <AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult}/>
               {this.state.show.map(element => element)}
               <div className="link">
                 {this.state.rooms <= 3 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}

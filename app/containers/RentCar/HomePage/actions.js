@@ -15,6 +15,7 @@ import {
   TAB_CHANGE,
   SET_LOCATION,
   SAVE_DATA_HOTEL,
+  SAVE_ROOMS_ADULT,
 } from './constants';
 
 export function loadingTrue(){
@@ -74,9 +75,17 @@ export function setLocation(location){
   }
 }
 
-export function saveDataHotel(data) {
+export function saveDataHotel(data, input) {
   return {
     type: SAVE_DATA_HOTEL,
+    data,
+    input,
+  }
+}
+
+export function saveRoomsAdult(data) {
+  return {
+    type: SAVE_ROOMS_ADULT,
     data,
   }
 }

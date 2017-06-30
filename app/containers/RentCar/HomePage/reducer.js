@@ -18,6 +18,7 @@ import {
   TAB_CHANGE,
   SET_LOCATION,
   SAVE_DATA_HOTEL,
+  SAVE_ROOMS_ADULT,
 } from './constants';
 
 const initialState = fromJS({
@@ -33,6 +34,8 @@ const initialState = fromJS({
       "pickUPLocation":"",
       "pickUpDataHotel":"",
       "returnDataHotel":"",
+      "roomsHotel":"",
+      "adultHotel":"",
     }
   },
   'values': {
@@ -69,6 +72,8 @@ function homePageReducer(state = initialState, action)
       return state.setIn(['hotel', 'request','pickUPLocation'],action.location[0])
     case SAVE_DATA_HOTEL:
       return state.setIn(['hotel', 'request', action.data[1]],action.data[0])
+    case SAVE_ROOMS_ADULT:
+      return state.setIn(['hotel', 'request', action.data[1]], action.data[0])
     default:
       return state;
   }

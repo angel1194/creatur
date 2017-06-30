@@ -56,7 +56,7 @@ function Tab(props) {
           <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
           <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
         </div>
-        <FormSearchHotel title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataHotel={props.saveDataHotel}/>
+        <FormSearchHotel title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataHotel={props.saveDataHotel} saveRoomsAdult={props.saveRoomsAdult}/>
       </div>
     )
   }
