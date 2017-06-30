@@ -61,7 +61,7 @@ function CarSingle(props) {
         </div>
       </div>
       <div className='singleCarContainer-carImage'>
-        <img src={`https://s3-us-west-2.amazonaws.com/projuv-data/static/FleetImages/${props.cars.PictureURL}`} alt="Auto"/>
+        <img src={props.cars.PictureURL} alt="Auto"/>
       </div>
     </div>
     <Button primary className='buttonCotizar' onClick={  ()=>props.setCarReserve(props.cars) } ><span>Reservar</span></Button>

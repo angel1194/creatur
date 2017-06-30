@@ -32,7 +32,7 @@ function CardCar(props) {
           </Card.Header>
           <div className='contentCarPrice'>
             <div className='contentImgCar'>
-              <img className='imgCar' alt='car' width='200' src={`https://s3-us-west-2.amazonaws.com/projuv-data/static/FleetImages/${props.car.PictureURL}`}/>
+              <img className='imgCar' alt='car' width='200' src={props.car.PictureURL}/>
             </div>
             <div className='contentPrice'>
               <h2 className='colorBlue'>${props.car.EstimatedTotalAmount}</h2>
