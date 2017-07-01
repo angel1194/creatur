@@ -59,16 +59,16 @@ class AddRoomForm extends React.PureComponent {
         {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
-            <label htmlFor="rooms">Habitaciones</label>
-            <input id="rooms" onChange={this.OnChange } className="inputs" type="number" min="0" placeholder="0" name='roomsHotel'/>
+            <label htmlFor={this.props.idFor}>Habitaciones</label>
+            <input id={this.props.idFor} onChange={this.OnChange } className="inputs" type="number" min="0" placeholder="0" name='roomsHotel'/>
           </div>
           <div className="child">
-            <label htmlFor="adult">Adultos</label>
-            <input id="adult" onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name='adultHotel'/>
+            <label htmlFor={this.props.idFor + 1}>Adultos</label>
+            <input id={this.props.idFor + 1} onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name='adultHotel'/>
           </div>
           <div className="child">
-            <label htmlFor="child">Niños (0-7)</label>
-            <input id="child" onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
+            <label htmlFor={this.props.idFor + 2}>Niños (0-7)</label>
+            <input id={this.props.idFor + 2} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
           </div>
         </div>
         <div className="edad">

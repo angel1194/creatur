@@ -24,7 +24,7 @@ class FormSearchHotel extends React.Component {
       startDate: moment(),
       endDate:moment().add(1, "days"),
       show: [],
-      rooms: 1
+      rooms: 0
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
@@ -49,7 +49,7 @@ class FormSearchHotel extends React.Component {
     this.setState({
       rooms:count
     })
-    this.state.show.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 0 ? true : false} remove={this.state.rooms >= 0 ? true : false}/>)
+    this.state.show.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} idFor={'Room'+ count} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 1 ? true : false} remove={this.state.rooms >= 1 ? true : false}/>)
   }
 
   removeRom(){
@@ -60,11 +60,9 @@ class FormSearchHotel extends React.Component {
     this.state.show.pop()
   }
 
-  
-
   render() {
     return (
-      <div id="inputSearchDisplay">
+      <div id="inputSearchDisplay" onLoad={() => this.addRom()}>
         <div className='ui form' >
           <Header as='h1' className='titleForm'>{this.props.title}</Header>
           <Grid>
@@ -96,11 +94,10 @@ class FormSearchHotel extends React.Component {
                   <h4>4 noches</h4>
                 </div>
               </div>
-              <AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult}/>
               {this.state.show.map(element => element)}
               <div className="link">
-                {this.state.rooms <= 3 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-                <a onClick={() => this.addRom()}>{this.state.rooms <= 3 ? 'Añadir otra habitación' : ''}</a>
+                {this.state.rooms <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+                <a onClick={() => this.addRom()}>{this.state.rooms <= 2 ? 'Añadir otra habitación' : ''}</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
                 <ButtonSearch typeSearch='hotel'/>
