@@ -21,8 +21,8 @@ function Footer() {
                 <br/>
                 <span className='colorGreen'>2017 © Creatur</span>
                 <h4>reservaciones@creatuviaje.com</h4>
-                <Icon link color='green' bordered name='facebook f'></Icon>
-                <Icon link color='green' bordered name='twitter'></Icon>
+                <a href='http://facebook.com' target='_blank'><Icon color='green' bordered name='facebook f'></Icon></a>
+                <a href='http://twitter.com' target='_blank'><Icon color='green' bordered name='twitter'></Icon></a>
               </Grid.Column>
               <Grid.Column mobile={16} tablet={16} computer={12} className="menuFooter">
                 <span className="trianguloDer"></span><Link to='/'>INICIO</Link>
