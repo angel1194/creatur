@@ -37,6 +37,7 @@ const DataContainer = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
+  padding:5px;
 `;
 
 const CarTitle= styled.label`
@@ -113,9 +114,12 @@ const Image = styled.img`
     width:120px !important;
     height:70px !important;
 `;
-
+const IconCar = styled.span`
+  font-size:120px;
+  color:#b2b2b3;
+`;
 function CarCard(props) {
-  
+
     function ShortName(){
       var textAry = props.car.Name.split(' ')
       var indexOr = textAry.indexOf('or')
@@ -123,7 +127,7 @@ function CarCard(props) {
 
       return result.toString().replace(/,/g," ")
     }
-    
+
     function getCarCheck(e, data){
       props.addCarChecked(props.car.ID, data.checked)
 
@@ -139,12 +143,18 @@ function CarCard(props) {
       </Header>
       <DataContainer>
         <CarImg>
-          <Image src={ props.car.PictureURL } />
+          {
+            (props.car.PictureURL) != 'default'
+            ?
+            <Image src={ props.car.PictureURL} />
+            :
+            <IconCar className='icon-default'/>
+          }
         </CarImg>
         <ContainerInfo>
           <Total>
             <Label>${props.car.EstimatedTotalAmount}</Label>
-            <Dolar onClick={ () => checkImage()}>USD</Dolar>
+            <Dolar>USD</Dolar>
           </Total>
           <CheckContainer>
             <Checkbox className='checkboxAvail' label='Cotizar' onChange={getCarCheck.bind(this)}/>
