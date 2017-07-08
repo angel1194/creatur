@@ -93,10 +93,15 @@ const FontBlue = styled(FontAwesome) `
   color: #204f9e !important;
   font-size: 32px;
 `;
+
+const ImgUs = styled.img`
+  width: 100px;
+  height: 30px;
+`;
 function PriceRoom() {
   return (
     <Div>
-      <Usua><img src="http://lorempixel.com/output/abstract-q-c-100-30-2.jpg"/></Usua>
+      <Usua><ImgUs src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png"/></Usua>
       <Main>
         <Subtitle GlobalText={"desde"}/>
         <Row>

@@ -43,7 +43,7 @@ function generateRowHotel(ArrHotels) {
 
   let ArrElm = ArrHotels.map((element, i) => {
 
-    
+
 
     return (<Column>
       <Wrapper>
@@ -72,7 +72,7 @@ function generateRowHotel(ArrHotels) {
       </Wrapper>
       <WrapperTrans>
     <OffersDay ArrRoom={element.Rate} />
-       
+
       </WrapperTrans>
     </Column>);
   });

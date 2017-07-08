@@ -69,7 +69,7 @@ function Details() {
         <Tabs selected='1'/>
         <Row>
           <Text>Jumeirah Vittaveli</Text>
-          <Star><StarRating /></Star>
+          <Star><StarRating/></Star>
         </Row>
         <DivTop>
           <Subtitle GlobalText={"Maldivas"} />

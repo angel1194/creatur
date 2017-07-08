@@ -39,7 +39,7 @@ function Tab(props) {
           <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
           <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
         </div>
-        <FormSearch title='Bienvenido'dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
+        <FormSearch title='Bienvenido' dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
       </div>
     );
   }
@@ -56,7 +56,7 @@ function Tab(props) {
           <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
           <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
         </div>
-        <FormSearchHotel title='Bienvenido'/>
+        <FormSearchHotel title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataHotel={props.saveDataHotel} saveRoomsAdult={props.saveRoomsAdult}/>
       </div>
     )
   }
