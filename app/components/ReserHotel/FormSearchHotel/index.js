@@ -23,8 +23,9 @@ class FormSearchHotel extends React.Component {
     {
       startDate: moment(),
       endDate:moment().add(1, "days"),
-      show: [],
-      rooms: 0
+      showRooms: [],
+      rooms: 0,
+      data:[]
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
@@ -49,15 +50,21 @@ class FormSearchHotel extends React.Component {
     this.setState({
       rooms:count
     })
-    this.state.show.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} idFor={'Room'+ count} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 1 ? true : false} remove={this.state.rooms >= 1 ? true : false}/>)
+    this.state.showRooms.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} object={()=> setRoom()} idFor={'Room'+ count} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 1 ? true : false} remove={this.state.rooms >= 1 ? true : false}/>)
   }
 
+  setRoom(js){
+    this.setState({
+        data:js
+    });
+    console.log(this.state);
+  }
   removeRom(){
     let res = this.state.rooms - 1
     this.setState({
       rooms:res
     })
-    this.state.show.pop()
+    this.state.showRooms.pop()
   }
 
   render() {
@@ -94,7 +101,7 @@ class FormSearchHotel extends React.Component {
                   <h4>4 noches</h4>
                 </div>
               </div>
-              {this.state.show.map(element => element)}
+              {this.state.showRooms.map(element => element)}
               <div className="link">
                 {this.state.rooms <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
                 <a onClick={() => this.addRom()}>{this.state.rooms <= 2 ? 'Añadir otra habitación' : ''}</a>

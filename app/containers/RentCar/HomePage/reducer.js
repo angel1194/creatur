@@ -34,9 +34,8 @@ const initialState = fromJS({
       "pickUPLocation":"",
       "pickUpDataHotel":"",
       "returnDataHotel":"",
-      "roomsHotel":"",
-      "adultHotel":"",
-    }
+    },
+    'rooms':{},
   },
   'values': {
     "pickUPLocation":"",
@@ -73,7 +72,7 @@ function homePageReducer(state = initialState, action)
     case SAVE_DATA_HOTEL:
       return state.setIn(['hotel', 'request', action.data[1]],action.data[0])
     case SAVE_ROOMS_ADULT:
-      return state.setIn(['hotel', 'request', action.data[1]], action.data[0])
+      return state.setIn(['hotel', 'rooms', action.data[1]], action.data[0])
     default:
       return state;
   }

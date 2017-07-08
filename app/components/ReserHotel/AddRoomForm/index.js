@@ -26,7 +26,8 @@ class AddRoomForm extends React.PureComponent {
   constructor(props){
     super(props)
     this.state ={
-      input: []
+      input: [],
+      rooms:[],
     };
     this.clickInput = this.clickInput.bind(this)
     this.OnChange = this.OnChange.bind(this)
@@ -46,10 +47,15 @@ class AddRoomForm extends React.PureComponent {
   }
 
   OnChange(e){
-    let data=[]
-    data.push(e.target.value)
-    data.push(e.target.name)
-    this.props.saveRoomsAdult(data)
+    let data={
+
+    }
+    console.log(e.target.id);
+    data['input']= e.target.id
+    data['value']= e.target.value
+    // data.push(e.target.id)
+    // this.props.saveRoomsAdult(data)
+    console.log(data);
   }
 
   render() {
