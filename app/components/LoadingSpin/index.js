@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import ImgLoading from './Loading.gif'
 // import styled from 'styled-components';
 
 
@@ -14,7 +15,8 @@ function LoadingSpin(props) {
     if(loading) {
       return (
         <div className='divSpin'>
-          <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+          {/*<i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>*/}
+          <img src={ImgLoading}/>
           <span className="sr-only">Loading...</span>
         </div>
       )
