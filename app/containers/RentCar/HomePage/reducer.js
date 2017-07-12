@@ -31,11 +31,11 @@ const initialState = fromJS({
   },
   'hotel':{
     'request': {
+      'rooms':{},
       "pickUPLocation":"",
       "pickUpDataHotel":"",
       "returnDataHotel":"",
     },
-    'rooms':{},
   },
   'values': {
     "pickUPLocation":"",

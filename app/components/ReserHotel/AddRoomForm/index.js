@@ -22,24 +22,27 @@ const AddInputs = styled.div`
   margin-left: 11px;
 `;
 
-class AddRoomForm extends React.PureComponent {
+class AddRoomForm extends React.Component {
   constructor(props){
     super(props)
     this.state ={
       input: [],
-      rooms:[],
+      room:{},
     };
     this.clickInput = this.clickInput.bind(this)
     this.OnChange = this.OnChange.bind(this)
-
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
-
+  componentDidMount(){
+    this.state.room[this.props.idFor]={}
+    console.log(this.state);
+  }
   clickInput(e){
     var input = []
     e.currentTarget.value = (e.currentTarget.value < 0) ? 0 : e.currentTarget.value;
     var currentValue = e.currentTarget.value
     for (var i = 1; i <= currentValue; i++) {
-      input.push(<InputKids key={i} Menor={i}/>)
+      input.push(<InputKids key={i} Menor={i} name={this.props.idFor}/>)
     }
     this.setState({
       input:input
@@ -47,34 +50,32 @@ class AddRoomForm extends React.PureComponent {
   }
 
   OnChange(e){
-    let data={
 
-    }
-    console.log(e.target.id);
-    data['input']= e.target.id
-    data['value']= e.target.value
-    // data.push(e.target.id)
-    // this.props.saveRoomsAdult(data)
-    console.log(data);
+  }
+  input(val, room){
+    var state = this.state
+    state.room[room].totalRooms = val
+    console.log('state . ', state);
+    this.setState(state)
   }
 
   render() {
-
+    console.log(this.props);
     return (
       <div>
         {this.props.line == true ? <Line/> : ''}
         <div className="dad-reserv">
           <div className="child">
             <label htmlFor={this.props.idFor}>Habitaciones</label>
-            <input id={this.props.idFor} onChange={this.OnChange } className="inputs" type="number" min="0" placeholder="0" name='roomsHotel'/>
+            <input id={this.props.idFor} onChange={(e)=> this.input(e.target.value, this.props.idFor)} className="inputs" type="number" min="0" placeholder="0" name={`Hotel${this.props.idFor}`}/>
           </div>
           <div className="child">
             <label htmlFor={this.props.idFor + 1}>Adultos</label>
-            <input id={this.props.idFor + 1} onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name='adultHotel'/>
+            <input id={this.props.idFor + 1} onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name={`adultHotel${this.props.idFor}`}/>
           </div>
           <div className="child">
             <label htmlFor={this.props.idFor + 2}>Niños (0-7)</label>
-            <input id={this.props.idFor + 2} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0"/>
+            <input id={this.props.idFor + 2} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0" name={`childHotel${this.props.idFor}`}/>
           </div>
         </div>
         <div className="edad">

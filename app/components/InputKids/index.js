@@ -15,7 +15,7 @@ class InputKids extends React.Component {
         <div>
           <div className="section-child">
             <label htmlFor="">Menor {this.props.Menor}</label>
-            <input className="inputs" type="number" min="0" placeholder="0"/>
+            <input className="inputs" type="number" min="0" placeholder="0" name={`${this.props.Menor}Menor${this.props.name}`}/>
           </div>
         </div>
       </div>

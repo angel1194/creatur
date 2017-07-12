@@ -23,9 +23,18 @@ class FormSearchHotel extends React.Component {
     {
       startDate: moment(),
       endDate:moment().add(1, "days"),
+      roomsUI:{
+        "001":{
+          "room":0,
+          "adult":0,
+          "kid":{
+            "001":0,
+          }
+        }
+      },
       showRooms: [],
       rooms: 0,
-      data:[]
+      data:[{Room0:{}}]
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChangeReturn = this.handleChangeReturn.bind(this)
@@ -46,11 +55,23 @@ class FormSearchHotel extends React.Component {
   }
 
   addRom(){
-    let count = this.state.rooms + 1
-    this.setState({
-      rooms:count
-    })
-    this.state.showRooms.push(<AddRoomForm saveRoomsAdult={this.props.saveRoomsAdult} object={()=> setRoom()} idFor={'Room'+ count} key={'Room'+ count} res={()=>this.removeRom()} line={this.state.rooms >= 1 ? true : false} remove={this.state.rooms >= 1 ? true : false}/>)
+    var state =  this.state
+    var newRoom = {}
+    newRoom[Date.now()] = {}
+    // console.log(newRoom);
+    state.data.push(newRoom)
+    console.log(state);
+    this.setState(state)
+
+
+    this.state.showRooms.push(<AddRoomForm
+      saveRoomsAdult={this.props.saveRoomsAdult}
+      object={()=> setRoom()}
+      idFor={'Room'+ count}
+      key={'Room'+ count}
+      res={()=>this.removeRom()}
+      line={this.state.rooms >= 1 ? true : false}
+      remove={this.state.rooms >= 1 ? true : false}/>)
   }
 
   setRoom(js){
@@ -69,7 +90,8 @@ class FormSearchHotel extends React.Component {
 
   render() {
     return (
-      <div id="inputSearchDisplay" onLoad={() => this.addRom()}>
+      <div id="inputSearchDisplay">
+      {/* <div id="inputSearchDisplay" onLoad={() => this.addRom()}> */}
         <div className='ui form' >
           <Header as='h1' className='titleForm'>{this.props.title}</Header>
           <Grid>
@@ -101,6 +123,13 @@ class FormSearchHotel extends React.Component {
                   <h4>4 noches</h4>
                 </div>
               </div>
+              {this.state.data.map((room, i)=><AddRoomForm
+                                                room = {room}
+                                                key={i}
+                                                res={()=>this.removeRom()}
+                                                line={this.state.data.length >= 2 ? true : false}
+                                                remove={this.state.data.length >= 2 ? true : false}
+                                              />)}
               {this.state.showRooms.map(element => element)}
               <div className="link">
                 {this.state.rooms <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
