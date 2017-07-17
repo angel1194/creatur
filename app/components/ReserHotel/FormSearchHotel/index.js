@@ -105,6 +105,7 @@ class FormSearchHotel extends React.Component {
               {this.state.data.map((room, i)=><AddRoomForm
                                                 room = {room}
                                                 key={i}
+                                                idFor={i}
                                                 res={()=>this.removeRom()}
                                                 line={i >= 1 ? true : false}
                                                 remove={i >= 1 ? true : false}

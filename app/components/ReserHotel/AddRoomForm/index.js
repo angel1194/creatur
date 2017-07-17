@@ -67,12 +67,12 @@ class AddRoomForm extends React.Component {
             <input id={this.props.idFor} onChange={(e)=> this.input(e.target.value, this.props.idFor)} className="inputs" type="number" min="0" placeholder="0" name={`Hotel${this.props.idFor}`}/>
           </div>
           <div className="child">
-            <label htmlFor={this.props.idFor + 1}>Adultos</label>
-            <input id={this.props.idFor + 1} onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name={`adultHotel${this.props.idFor}`}/>
+            <label htmlFor={this.props.idFor + 'A'}>Adultos</label>
+            <input id={this.props.idFor + 'A'} onChange={this.OnChange} className="inputs" type="number" min="0" placeholder="0" name={`adultHotel${this.props.idFor}`}/>
           </div>
           <div className="child">
-            <label htmlFor={this.props.idFor + 2}>Niños (0-7)</label>
-            <input id={this.props.idFor + 2} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0" name={`childHotel${this.props.idFor}`}/>
+            <label htmlFor={this.props.idFor + 'n'}>Niños (0-7)</label>
+            <input id={this.props.idFor + 'n'} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0" name={`childHotel${this.props.idFor}`}/>
           </div>
         </div>
         <div className="edad">
