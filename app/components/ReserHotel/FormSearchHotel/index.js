@@ -23,17 +23,6 @@ class FormSearchHotel extends React.Component {
     {
       startDate: moment(),
       endDate:moment().add(1, "days"),
-      roomsUI:{
-        "001":{
-          "room":0,
-          "adult":0,
-          "kid":{
-            "001":0,
-          }
-        }
-      },
-      showRooms: [],
-      rooms: 0,
       data:[{Room0:{}}]
     };
     this.handleChange = this.handleChange.bind(this)
@@ -58,34 +47,24 @@ class FormSearchHotel extends React.Component {
     var state =  this.state
     var newRoom = {}
     newRoom[Date.now()] = {}
-    // console.log(newRoom);
     state.data.push(newRoom)
-    console.log(state);
     this.setState(state)
-
-
-    this.state.showRooms.push(<AddRoomForm
-      saveRoomsAdult={this.props.saveRoomsAdult}
-      object={()=> setRoom()}
-      idFor={'Room'+ count}
-      key={'Room'+ count}
-      res={()=>this.removeRom()}
-      line={this.state.rooms >= 1 ? true : false}
-      remove={this.state.rooms >= 1 ? true : false}/>)
+    console.log(state);
   }
 
   setRoom(js){
     this.setState({
         data:js
     });
-    console.log(this.state);
   }
+
   removeRom(){
-    let res = this.state.rooms - 1
+    let res = this.state.data
     this.setState({
-      rooms:res
+      data:res
     })
-    this.state.showRooms.pop()
+    this.state.data.pop()
+    console.log(res);
   }
 
   render() {
@@ -127,13 +106,12 @@ class FormSearchHotel extends React.Component {
                                                 room = {room}
                                                 key={i}
                                                 res={()=>this.removeRom()}
-                                                line={this.state.data.length >= 2 ? true : false}
-                                                remove={this.state.data.length >= 2 ? true : false}
+                                                line={i >= 1 ? true : false}
+                                                remove={i >= 1 ? true : false}
                                               />)}
-              {this.state.showRooms.map(element => element)}
               <div className="link">
-                {this.state.rooms <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-                <a onClick={() => this.addRom()}>{this.state.rooms <= 2 ? 'Añadir otra habitación' : ''}</a>
+                {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+                <a onClick={() => this.addRom()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
                 <ButtonSearch typeSearch='hotel'/>

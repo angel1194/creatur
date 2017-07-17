@@ -35,7 +35,6 @@ class AddRoomForm extends React.Component {
   }
   componentDidMount(){
     this.state.room[this.props.idFor]={}
-    console.log(this.state);
   }
   clickInput(e){
     var input = []
@@ -55,12 +54,10 @@ class AddRoomForm extends React.Component {
   input(val, room){
     var state = this.state
     state.room[room].totalRooms = val
-    console.log('state . ', state);
     this.setState(state)
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.props.line == true ? <Line/> : ''}
