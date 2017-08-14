@@ -19,6 +19,7 @@ import {
   SET_LOCATION,
   SAVE_DATA_HOTEL,
   SAVE_ROOMS_ADULT,
+
 } from './constants';
 
 const initialState = fromJS({
@@ -76,6 +77,7 @@ function homePageReducer(state = initialState, action)
       return state.setIn(['hotel', 'request', action.data[1]], action.data[0])
     default:
       return state;
+
   }
 }
 

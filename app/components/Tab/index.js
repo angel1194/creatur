@@ -5,13 +5,14 @@
 */
 import { Link } from 'react-router';
 import React from 'react';
-import FormSearch from '../FormSearch/'
-import FormSearchHotel from '../ReserHotel/FormSearchHotel/'
+import FormSearch from '../FormSearch/';
+import FormSearchHotel from '../ReserHotel/FormSearchHotel/';
+import FormSearchFly from '../FlightSearch/FormSearchFly';
 
-import whiteCar from './img/autoWhite.png'
-import blueHotel from './img/hotelBlue.png'
-import blueCar from './img/auto.png'
-import whiteHotel from './img/hotelWhite.png'
+import whiteCar from './img/autoWhite.png';
+import blueHotel from './img/hotelBlue.png';
+import blueCar from './img/auto.png';
+import whiteHotel from './img/hotelWhite.png';
 import Auto from './auto.png';
 import HotelBlue from './hotelBlue.png';
 import AutoWhite from './autoWhite.png';
@@ -33,7 +34,8 @@ function Tab(props) {
           <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
           <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
-          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
+          <div><Link to='#' onClick={ ()=> props.tabChange('fly')}>Vuelos<Span className="icon-plane"></Span></Link></div>
+
           <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
           <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
           <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
@@ -43,14 +45,15 @@ function Tab(props) {
       </div>
     );
   }
-  else{
+  else if(props.type=='hotel'){
     return(
       <div>
         <div className='tab'>
           <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
           <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
 
-          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
+          <div><Link to='#' onClick={ ()=> props.tabChange('fly')}>Vuelos<Span className="icon-plane"></Span></Link></div>
+
           <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
           <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
           <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
@@ -59,9 +62,26 @@ function Tab(props) {
         <FormSearchHotel title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataHotel={props.saveDataHotel} saveRoomsAdult={props.saveRoomsAdult}/>
       </div>
     )
+  }else if(props.type=='fly'){
+    return(
+      <div>
+        <div className='tab'>
+          <div ><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
+          <div ><Link to='#' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
+          <div className='selected'><Link to=''>Vuelos<Span className="icon-plane"></Span></Link></div>
+
+          <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
+          <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
+          <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
+          <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
+
+        </div>
+                   <FormSearchFly title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataFly={props.saveDataFly}/>
+      </div>
+    )
+  }
   }
 
-}
 
 Tab.propTypes = {
 
