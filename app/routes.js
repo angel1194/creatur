@@ -259,6 +259,26 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    }, {
+      path: '/manzanero',
+      name: 'events',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Events/reducer'),
+          import('containers/Events/sagas'),
+          import('containers/Events'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('events', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     },
 {
   path: '*',
