@@ -24,7 +24,8 @@ function MainSearch(props) {
         <Container className= 'containerFormSearch' fluid>
           <MainSlider />
           <div className='ui container containerForm'>
-            <Tab saveRoomsAdult={props.saveRoomsAdult} saveDataHotel={props.saveDataHotel} setLocation={props.setLocation} type={props.type} tabChange={props.tabChange} dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
+            <Tab hotel='hotel' auto='hotel / ticket' iconHotel='icon-hotel' iconCar='icon-car' iconVuelos='icon-plane' saveRoomsAdult={props.saveRoomsAdult} saveDataHotel={props.saveDataHotel} setLocation={props.setLocation} type={props.type} tabChange={props.tabChange} dataUI={props.dataUI} loading={props.loading} resetState={props.resetState}
+             loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
 
           </div>
         </Container>

@@ -30,14 +30,14 @@ function Tab(props) {
     return (
       <div>
         <div className='tab'>
-          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
-          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
+          <div><Link to='#' onClick={ () => props.tabChange("hotel") }>{props.hotel}<Span className={props.iconHotel}></Span></Link></div>
+          <div className='selected'><Link to='' onClick={ () => props.tabChange("car") }>{props.auto}<Span className={props.iconCar}></Span></Link></div>
 
-          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
-          <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
-          <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
-          <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
-          <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
+          <div><Link to='#'>{props.Vuelos}<Span className={props.iconVuelos}></Span></Link></div>
+          <div><Link to=''>{props.Cruceros}<Span className={props.iconCrucero}></Span></Link></div>
+          <div><Link to='#'>{props.Tours}<Span className={props.iconTours}></Span></Link></div>
+          <div><Link to=''>{props.Circuitos}<Span className={props.iconRoute}></Span></Link></div>
+          <div><Link to=''>{props.Otro}<Span className={props.iconOtro}></Span></Link></div>
         </div>
         <FormSearch title='Bienvenido' dataUI={props.dataUI} loading={props.loading} resetState={props.resetState} loadingTrue={props.loadingTrue}  saveDate={props.saveDate} saveLocation={props.saveLocation}/>
       </div>
@@ -47,14 +47,14 @@ function Tab(props) {
     return(
       <div>
         <div className='tab'>
-          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>Hotel<Span className="icon-hotel"></Span></Link></div>
-          <div ><Link to='' onClick={ () => props.tabChange("car") }>Auto<Span className="icon-car"></Span></Link></div>
+          <div className='selected'><Link to='#' onClick={ () => props.tabChange("hotel") }>{props.hotel}<Span className={props.iconHotel}></Span></Link></div>
+          <div ><Link to='' onClick={ () => props.tabChange("car") }>{props.auto}<Span className={props.iconCar}></Span></Link></div>
 
-          <div><Link to='#'>Vuelos<Span className="icon-plane"></Span></Link></div>
-          <div><Link to=''>Cruceros<Span className="icon-ship"></Span></Link></div>
-          <div><Link to='#'>Tours<Span className="icon-bus"></Span></Link></div>
-          <div><Link to=''>Circuitos<Span className="icon-route"></Span></Link></div>
-          <div><Link to=''>Otro<Span className="icon-flag"></Span></Link></div>
+          <div><Link to='#'>{props.vuelo}<Span className={props.iconVuelos}></Span></Link></div>
+          <div><Link to=''>{props.Cruceros}<Span className={props.iconCrucero}></Span></Link></div>
+          <div><Link to='#'>{props.Tours}<Span className={props.iconTours}></Span></Link></div>
+          <div><Link to=''>{props.Circuitos}<Span className={props.iconRoute}></Span></Link></div>
+          <div><Link to=''>{props.Otro}<Span className={props.iconOtro}></Span></Link></div>
         </div>
         <FormSearchHotel title='Bienvenido' setLocation={props.setLocation} type={props.type} saveDataHotel={props.saveDataHotel} saveRoomsAdult={props.saveRoomsAdult}/>
       </div>
