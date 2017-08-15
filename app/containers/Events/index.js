@@ -5,14 +5,13 @@
  */
 
 import React,{Component} from 'react';
-import MainSearch from '../../components/MainSearch';
+import MainEvents from '../../components/Events/MainEvents';
 
 class Events extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <MainSearch />
-        <h1>Hola manzanero</h1>
+        <MainEvents/>
       </div>
     );
   }
