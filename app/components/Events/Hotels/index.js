@@ -10,6 +10,7 @@ import PriceLabel from '../../ReserHotel/PriceLabel';
 import Button from '../../ReserHotel/Button';
 import OffersDay from '../../ReserHotel/OffersDay';
 import AddCheckList from '../../AddCheckList';
+import MapView from '../../ReserHotel/MapView'
 
 const ColumMarginRight = styled(Column) `
   margin-right: 10px;
@@ -21,6 +22,16 @@ const ColumMarginTop = styled(Column) `
   margin-top: 10px;
   align-items: flex-start;
   padding-left: 10px;
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const DivRooms = styled.div`
+  width: 75%;
 `;
 
 class Hotels extends React.Component {
@@ -39,7 +50,7 @@ class Hotels extends React.Component {
           image:"https://images.bestday.com/_lib/vimages/Merida_Yucatan/Hotels/Hotel-Casa-Lucia/Fachada_t.jpg",
           title:'Hotel Casa Lucía',
           price:'2452',
-          numStart:4,
+          numStart:4.5,
           location:'Mérida - Zona Centro',
         },
         '003':{
@@ -56,32 +67,37 @@ class Hotels extends React.Component {
     const {hotels} = this.state
 
     return (
-      <div>
-        {Object.keys(hotels).map((item, i)=>
-        <Column key={i}>
-          <Wrapper>
-            <Row>
-              <Img src={hotels[item].image} Width="200px" Height="156px" />
-              <ColumMarginTop>
-                <Title>{hotels[item].title}</Title>
-                <StarRating NumStart={hotels[item].numStart} />
-                <TripAdvisor Calification='0' />
-                <LocationLabel Title={hotels[item].location} />
-              </ColumMarginTop>
-            </Row>
-            <Row>
-              <ColumMarginRight>
-                <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
-                <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
-                {/* <Link to="/hotel/quotation"> */}
-                  <Button Title="Habitacion" Color="Blue" />
-                {/* </Link> */}
-              </ColumMarginRight>
-            </Row>
-          </Wrapper>
-        </Column>
-        )}
-      </div>
+      <Div>
+        <DivRooms>
+          {Object.keys(hotels).map((item, i)=>
+          <Column key={i}>
+            <Wrapper>
+              <Row>
+                <Img src={hotels[item].image} Width="200px" Height="156px" />
+                <ColumMarginTop>
+                  <Title>{hotels[item].title}</Title>
+                  <StarRating NumStart={hotels[item].numStart} />
+                  <TripAdvisor Calification='0' />
+                  <LocationLabel Title={hotels[item].location} />
+                </ColumMarginTop>
+              </Row>
+              <Row>
+                <ColumMarginRight>
+                  <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
+                  <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
+                  {/* <Link to="/hotel/quotation"> */}
+                    <Button Title="Habitacion" Color="Blue" />
+                  {/* </Link> */}
+                </ColumMarginRight>
+              </Row>
+            </Wrapper>
+          </Column>
+          )}
+        </DivRooms>
+        <div>
+          <MapView/>
+        </div>
+      </Div>
     );
   }
 }

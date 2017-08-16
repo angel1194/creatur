@@ -16,16 +16,16 @@ class MainEvents extends React.Component {
     return (
       <div>
         <Container>
-          {/* <Tab
+          <Tab
             hotel='Hotel'
             auto='Hotel y Tickets'
             Vuelos="Transport"
             iconHotel='icon-hotel'
             iconCar='icon-car'
             iconVuelos='icon-plane'
-          /> */}
+          />
           {/* <Rooms/> */}
-          <Hotels/>
+          {/* <Hotels/> */}
         </Container>
       </div>
     );
