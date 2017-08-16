@@ -16,7 +16,8 @@ class SearchForm extends React.PureComponent { // eslint-disable-line react/pref
     render(){
       return(
         <div className='selectFormSearch'>
-          <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span><input width='50' type="text" value='MERIDA'/>
+          <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
+          <input width='50' type="text" value='MERIDA'/>
         </div>
       )
     }

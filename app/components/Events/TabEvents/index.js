@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import FormSearch from '../../FormSearch/';
 import FormSearchHotel from '../../ReserHotel/FormSearchHotel/';
 import { Link } from 'react-router';
+import FormTransport from '../FormTransport';
 
 const Span = styled.span`
   font-size: 25px;
@@ -26,12 +27,11 @@ class TabEvents extends React.Component {
    }
 
    changeLocation(ubicacion){
-   console.log(ubicacion);
 
   this.setState({
     ubicacion:ubicacion
   })
-  console.log(this.state);
+
    }
 
 renderForm(){
@@ -45,7 +45,11 @@ renderForm(){
     return(
     <FormSearch title='Bienvenido' dataUI={this.props.dataUI} loading={this.props.loading} resetState={this.props.resetState} loadingTrue={this.props.loadingTrue}  saveDate={this.props.saveDate} saveLocation={this.props.saveLocation}/>
   )
-  }
+}else if (this.state.ubicacion==='transport') {
+  return(
+    <FormTransport title='Bienvenido' />
+  )
+}
 }
 
 render(){
@@ -56,7 +60,7 @@ render(){
         <div className='selected' ><Link onClick={()=>{this.changeLocation('hotel')}}>{this.props.hotel}<Span className={this.props.iconHotel}></Span></Link></div>
         <div ><Link  onClick={()=>{this.changeLocation('car')}}>{this.props.auto}<Span className={this.props.iconCar}></Span></Link></div>
 
-        <div><Link >{this.props.transport}<Span className={this.props.iconTransport}></Span></Link></div>
+        <div><Link onClick={()=>{this.changeLocation('transport')}}>{this.props.transport}<Span className={this.props.iconTransport}></Span></Link></div>
 
       </div>
      {this.renderForm()}
