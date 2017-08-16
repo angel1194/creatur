@@ -73,7 +73,7 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
               <div className="selectFormSearch">
                 <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
                 <AsyncComponent
-                  value={this.state.startLocation}
+                  value= {this.state.startLocation}
                   onChange={this.hotelLocation}
                   valueKey="id" labelKey="City"
                   loadOptions={this.getCity}
