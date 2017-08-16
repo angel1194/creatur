@@ -280,6 +280,27 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
+    {
+      path: '/manzanero/admin',
+      name: 'admin',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Events/Home/reducer'),
+          import('containers/Events/Home/sagas'),
+          import('containers/Events/Admin'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('admin', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
 {
   path: '*',
     name: 'notfound',
