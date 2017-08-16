@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the events state domain
  */
-const selectEventsDomain = () => (state) => state.get('events');
+const selectHomeDomain = () => (state) => state.get('home');
 
 /**
  * Other specific selectors
@@ -14,12 +14,12 @@ const selectEventsDomain = () => (state) => state.get('events');
  * Default selector used by Events
  */
 
-const makeSelectEvents = () => createSelector(
-  selectEventsDomain(),
+const makeSelectHome = () => createSelector(
+  selectHomeDomain(),
   (substate) => substate.toJS()
 );
 
-export default makeSelectEvents;
+export default makeSelectHome;
 export {
-  selectEventsDomain,
+  selectHomeDomain,
 };
