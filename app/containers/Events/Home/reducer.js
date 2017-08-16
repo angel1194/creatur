@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function eventsReducer(state = initialState, action) {
+function homeReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function eventsReducer(state = initialState, action) {
   }
 }
 
-export default eventsReducer;
+export default homeReducer;
