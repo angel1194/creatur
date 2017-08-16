@@ -28,8 +28,12 @@ const ContainerInfo = styled.div`
 `;
 
 const Divider=styled.div`
-  width:80%;
+  width:100%;
   border:1px solid #58ACFA ;
+`;
+
+const Div = styled.div`
+  width: 80%;
 `;
 
 export class HotelQuotation extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -48,12 +52,14 @@ export class HotelQuotation extends React.PureComponent { // eslint-disable-line
         </ContainerInfo>
         <SendQuotationHotel/>
       </GeneralContainer>
-      <HeaderTable/>
-      <HotelRoom NameRoom='Doble Standard'/>
-      <Divider/>
-      <HotelRoom NameRoom='Doble 2 Camas Standard'/>
-       <Divider/>
-      <HotelRoom NameRoom='Doble design room'/>
+      <Div>
+        <HeaderTable/>
+        <HotelRoom NameRoom='Doble Standard'/>
+        <Divider/>
+        <HotelRoom NameRoom='Doble 2 Camas Standard'/>
+         <Divider/>
+        <HotelRoom NameRoom='Doble design room'/>
+      </Div>
       </Container>
     );
   }

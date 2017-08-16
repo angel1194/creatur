@@ -259,47 +259,62 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
+    },
+    // ruta de home para eventos
+    {
       path: '/manzanero',
-      name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/Events/Home/reducer'),
-          import('containers/Events/Home/sagas'),
           import('containers/Events/Home'),
         ]);
-
         const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
-          injectSagas(sagas.default);
+        importModules.then(([component]) => {
           renderRoute(component);
         });
-
         importModules.catch(errorLoading);
       },
     },
+    // ruta de admin para eventos
     {
       path: '/manzanero/admin',
-      name: 'admin',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/Events/Home/reducer'),
-          import('containers/Events/Home/sagas'),
           import('containers/Events/Admin'),
         ]);
-
         const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('admin', reducer.default);
-          injectSagas(sagas.default);
+        importModules.then(([component]) => {
           renderRoute(component);
         });
-
         importModules.catch(errorLoading);
-      },
+      }
+    },
+    //ruta de hoteles para eventos
+    {
+      path: '/manzanero/hotels',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Events/Hotels'),
+        ]);
+        const renderRoute = loadModule(cb);
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+        importModules.catch(errorLoading);
+      }
+    },
+    // ruta de habitaciones para eventos
+    {
+      path: '/manzanero/rooms',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Events/Rooms'),
+        ]);
+        const renderRoute = loadModule(cb);
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+        importModules.catch(errorLoading);
+      }
     },
 {
   path: '*',

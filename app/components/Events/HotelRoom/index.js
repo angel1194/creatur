@@ -1,16 +1,10 @@
-/**
-*
-* HotelRoom
-*
-*/
-
 import React, { PropTypes } from 'react';
 import styled, { css } from 'styled-components';
-import H3 from '../ReserHotel/H3'
-import CollapseSection from '../../components/ReserHotel/CollapseSection';
-import RadioButtonGreen from '../RadioButtonGreen'
+import H3 from '../../ReserHotel/H3'
+import CollapseSection from '../../../components/ReserHotel/CollapseSection';
+import RadioButtonGreen from '../../RadioButtonGreen'
 import FontAwesome from 'react-fontawesome';
-import Room from '../ReserHotel/SlideHotel/img/Room.jpg'
+import Room from '../../ReserHotel/SlideHotel/img/Room.jpg'
 import { Link } from 'react-router';
 
 const ContainerRoom = styled.div`
@@ -26,11 +20,6 @@ const RoomImg = styled.div`
   border-right:2px solid #58ACFA
 `;
 
-const NameRoom = styled(H3) `
-  font-family:roboto !important;
-  font-size:20px;
-`;
-
 const DetailsRoom = styled.div`
   width:33.33%;
   display:flex;
@@ -43,10 +32,6 @@ const DetailsRoom = styled.div`
 const Label = styled.label`
   color:#5e5e5e;
   margin-top:5px;
-`;
-
-const LabelA = styled(Label) `
-  margin-top:0px !important
 `;
 
 const LinkA = styled.a`
@@ -84,6 +69,10 @@ const ButtonGreen = styled.label`
   color:#fff;
 `;
 
+const LabelA = styled(Label) `
+  margin-top:0px !important
+`;
+
 const Space = styled(FontAwesome) `
   margin-left:5px;
 `;
@@ -91,6 +80,11 @@ const Space = styled(FontAwesome) `
 const Title = styled(H3) `
   color:#424242 !important;
   margin-top:10px;
+`;
+
+const NameRoom = styled(H3) `
+  font-family:roboto !important;
+  font-size:20px;
 `;
 
 const Img = styled.img `
@@ -110,7 +104,7 @@ function HotelRoom(props) {
       </DetailsRoom>
       <ContainerPrice>
         <ContainerButtonGreen>
-          <Link to="/hotel/pasarela">
+          <Link to="/manzanero/rooms">
             <ButtonGreen>
               Reservar
             <Space name='chevron-right' />

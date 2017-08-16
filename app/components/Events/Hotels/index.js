@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import {Container} from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { Wrapper, WrapperTrans, Column, Row, Title, Img } from '../../ReserHotel/RowHotel/StyledRowH/StyledRowH';
 import StarRating from '../../ReserHotel/StarRating';
@@ -67,37 +67,39 @@ class Hotels extends React.Component {
     const {hotels} = this.state
 
     return (
-      <Div>
-        <DivRooms>
-          {Object.keys(hotels).map((item, i)=>
-          <Column key={i}>
-            <Wrapper>
-              <Row>
-                <Img src={hotels[item].image} Width="200px" Height="156px" />
-                <ColumMarginTop>
-                  <Title>{hotels[item].title}</Title>
-                  <StarRating NumStart={hotels[item].numStart} />
-                  <TripAdvisor Calification='0' />
-                  <LocationLabel Title={hotels[item].location} />
-                </ColumMarginTop>
-              </Row>
-              <Row>
-                <ColumMarginRight>
-                  <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
-                  <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
-                  {/* <Link to="/hotel/quotation"> */}
-                    <Button Title="Habitacion" Color="Blue" />
-                  {/* </Link> */}
-                </ColumMarginRight>
-              </Row>
-            </Wrapper>
-          </Column>
-          )}
-        </DivRooms>
-        <div>
-          <MapView/>
-        </div>
-      </Div>
+      <Container>
+        <Div>
+          <DivRooms>
+            {Object.keys(hotels).map((item, i)=>
+            <Column key={i}>
+              <Wrapper>
+                <Row>
+                  <Img src={hotels[item].image} Width="200px" Height="156px" />
+                  <ColumMarginTop>
+                    <Title>{hotels[item].title}</Title>
+                    <StarRating NumStart={hotels[item].numStart} />
+                    <TripAdvisor Calification='0' />
+                    <LocationLabel Title={hotels[item].location} />
+                  </ColumMarginTop>
+                </Row>
+                <Row>
+                  <ColumMarginRight>
+                    <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
+                    <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
+                    <Link to="/manzanero/rooms">
+                      <Button Title="Habitacion" Color="Blue" />
+                    </Link>
+                  </ColumMarginRight>
+                </Row>
+              </Wrapper>
+            </Column>
+            )}
+          </DivRooms>
+          <div>
+            <MapView/>
+          </div>
+        </Div>
+    </Container>
     );
   }
 }

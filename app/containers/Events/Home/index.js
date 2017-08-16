@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Home from '../../../components/Events/Home';
+import Hom from '../../../components/Events/Home';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <Home/>
+        <Hom/>
       </div>
     );
   }
