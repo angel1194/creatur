@@ -44,11 +44,11 @@ const ContainerBar = styled(Container) `
 const ContenFilter = styled.div`
   flex:1 1 20%;
   order:1;
- 
+
   margin-right: 18px;
   min-width: 235px;
-  max-height:1500px; 
- 
+  max-height:1500px;
+
 
 `;
 
@@ -57,7 +57,7 @@ const ContenResults = styled.div`
   flex:1 1 60%;
   order:2;
   min-width: 631px;
-  max-height: 1500px; 
+  max-height: 1500px;
   // overflow: scroll;
 `;
 
@@ -65,10 +65,10 @@ const ContenTools = styled.div`
   flex:1 1 20%;
   order:3;
   min-width: 235px;
-  max-height:1500px; 
+  max-height:1500px;
   margin-left: 18px;
-  
-  
+
+
 `;
 
 export class HotelResult extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

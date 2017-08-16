@@ -1,17 +1,11 @@
-/*
- *
- * Events
- *
- */
-
 import React,{Component} from 'react';
-import MainEvents from '../../../components/Events/MainEvents';
+import Hom from '../../../components/Events/Home';
 
-class Home extends Component { // eslint-disable-line react/prefer-stateless-function
+class Home extends Component {
   render() {
     return (
       <div>
-        <MainEvents/>
+        <Hom/>
       </div>
     );
   }
