@@ -12,9 +12,9 @@ class Rooms extends React.Component {
         <Container>
           <InfoHotel/>
           <HeaderTable/>
-          <HotelRoom NameRoom='Doble Standard'/>
+          <HotelRoom/>
           <Divider/>
-          <HotelRoom NameRoom='Doble 2 Camas Standard'/>
+          <HotelRoom/>
         </Container>
       </div>
     );
