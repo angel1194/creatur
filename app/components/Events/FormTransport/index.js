@@ -1,9 +1,3 @@
-/**
-*
-* FormTransport
-*
-*/
-
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -12,23 +6,23 @@ import {Grid, Header} from  'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ButtonFormSearch from '../ButtonFormSearch';
+import { Link } from 'react-router';
 
-class FormTransport extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-    constructor(props){
-      super(props);
-        this.state =
-        {
-          startDate:moment()
-        }
-            this.handleChange= this.handleChange.bind(this);
+class FormTransport extends React.PureComponent {
+  constructor(props){
+    super(props);
+      this.state = {
+        startDate:moment()
       }
-
-
-    handleChange(date){
-      this.setState({
-        startDate:date
-      })
+      this.handleChange= this.handleChange.bind(this);
     }
+
+  handleChange(date){
+    this.setState({
+      startDate:date
+    })
+  }
+
   render() {
     return (
       <div id='inputSearchDisplay'>
@@ -37,7 +31,6 @@ class FormTransport extends React.PureComponent { // eslint-disable-line react/p
           <Grid>
             <div className='containerFormHotel'>
               <SearchForm value='MERIDA'/>
-
               <div className='dad-dates'>
                 <div className='dates'>
                   <label htmlFor="checkin" className='fecha'>FECHA</label>
@@ -45,12 +38,9 @@ class FormTransport extends React.PureComponent { // eslint-disable-line react/p
                     <li><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></li>
                     <li><DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/></li>
                   </ul>
-
                 </div>
-
               </div>
               <div className='passe'>
-
               <div className="dad-reserv">
               <div className="child">
                 <label htmlFor={this.props.idFor + 'A'}>Adultos</label>
@@ -62,10 +52,11 @@ class FormTransport extends React.PureComponent { // eslint-disable-line react/p
               </div>
             </div>
           </div>
-
           </div>
            <Grid.Row centered className='divButtonGreeen'>
-             <ButtonFormSearch/>
+             <Link to="/manzanero/hotels">
+               <ButtonFormSearch/>
+             </Link>
            </Grid.Row>
           </Grid>
         </div>
