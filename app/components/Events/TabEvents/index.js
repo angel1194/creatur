@@ -20,7 +20,7 @@ class TabEvents extends React.Component {
    constructor(props){
      super(props);
      this.state={
-       ubicacion:'hotel'
+       ubicacion:'hotel',
      }
 
      this.changeLocation = this.changeLocation.bind(this);
@@ -29,21 +29,26 @@ class TabEvents extends React.Component {
    changeLocation(ubicacion){
 
   this.setState({
-    ubicacion:ubicacion
-  })
+    ubicacion:ubicacion,
 
+  })
+ console.log(ubicacion);
    }
+
 
 renderForm(){
 
   if(this.state.ubicacion==='hotel'){
+
     return(
 
-    <FormSearchHotel input='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
+    <FormSearchHotel input='manzanero' button='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
        )
+
+
   }else if(this.state.ubicacion==='car'){
     return(
-    <FormSearch title='Bienvenido' dataUI={this.props.dataUI} loading={this.props.loading} resetState={this.props.resetState} loadingTrue={this.props.loadingTrue}  saveDate={this.props.saveDate} saveLocation={this.props.saveLocation}/>
+      <FormSearchHotel input='manzanero' button='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
   )
 }else if (this.state.ubicacion==='transport') {
   return(
@@ -54,16 +59,18 @@ renderForm(){
 
 render(){
   const ubicacion= this.state.ubicacion
+
   return (
     <div>
       <div className='tab'>
-        <div className='selected' ><Link onClick={()=>{this.changeLocation('hotel')}}>{this.props.hotel}<Span className={this.props.iconHotel}></Span></Link></div>
-        <div ><Link  onClick={()=>{this.changeLocation('car')}}>{this.props.auto}<Span className={this.props.iconCar}></Span></Link></div>
+        <div ><Link onClick={()=>{this.changeLocation('hotel')}}>{this.props.hotel}<Span className={this.props.iconHotel}></Span></Link></div>
+        <div ><Link  onClick={()=>{this.changeLocation('car')}}>{this.props.auto}<Span className={this.props.iconTicket}></Span></Link></div>
 
-        <div><Link onClick={()=>{this.changeLocation('transport')}}>{this.props.transport}<Span className={this.props.iconTransport}></Span></Link></div>
+        <div ><Link onClick={()=>{this.changeLocation('transport')}}>{this.props.transport}<Span className={this.props.iconTransport}></Span></Link></div>
 
       </div>
      {this.renderForm()}
+
     </div>
 
 
