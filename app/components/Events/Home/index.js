@@ -1,14 +1,5 @@
-/**
-*
-* MainEvents
-*
-*/
-
 import React from 'react';
-import Tab from '../../Tab';
-import {Container, Grid, } from 'semantic-ui-react'
-import Hotels from '../Hotels';
-import Rooms from '../Rooms';
+import {Container} from 'semantic-ui-react'
 import MainEvents from '../MainEvents';
 // import styled from 'styled-components';
 

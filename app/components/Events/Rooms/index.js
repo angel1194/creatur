@@ -3,6 +3,7 @@ import {Container} from 'semantic-ui-react';
 import styled from 'styled-components';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../HotelRoom';
+import InfoHotel from '../InfoHotel';
 
 const Divider=styled.div`
   width:100%;
@@ -14,6 +15,7 @@ class Rooms extends React.Component {
     return (
       <div>
         <Container>
+          <InfoHotel/>
           <HeaderTable/>
           <HotelRoom NameRoom='Doble Standard'/>
           <Divider/>

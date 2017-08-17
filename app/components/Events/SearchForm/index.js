@@ -1,9 +1,3 @@
-/**
-*
-* SearchForm
-*
-*/
-
 import React from 'react';
 // import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
@@ -12,7 +6,7 @@ import { Grid, Form, Checkbox } from 'semantic-ui-react'
 import Select from 'react-select';
 
 
-class SearchForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class SearchForm extends React.PureComponent {
     render(){
       return(
         <div className='selectFormSearch'>
