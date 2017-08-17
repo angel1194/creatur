@@ -31,6 +31,14 @@ class Hotels extends React.Component {
     super(props);
     this.state = InicialState
   }
+
+  setHotels(item){
+    const state = this.state
+    this.setState({
+      hotels:item
+    })
+  }
+
   render() {
     const {hotels} = this.state
 
@@ -55,7 +63,7 @@ class Hotels extends React.Component {
                     <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
                     <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
                     <Link to="/manzanero/rooms">
-                      <Button Title="Habitacion" Color="Blue" />
+                      <Button setHotels={()=>this.setHotels(hotels[item].items)} Title="Habitacion" Color="Blue" />
                     </Link>
                   </ColumMarginRight>
                 </Row>

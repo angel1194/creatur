@@ -7,7 +7,7 @@ const state = {
       numStart:4,
       location:'Mérida',
       items:{
-        image:"",
+        image:"https://images.trvl-media.com/hotels/2000000/1790000/1781400/1781314/412853a8_z.jpg",
         type:'Doble Standard',
         personas:3,
         price:245.00,
