@@ -22,7 +22,7 @@ function MainEvents (props){
             auto='Hotel y Tickets'
             transport="Transport"
             iconHotel='icon-hotel'
-            iconCar='icon-car'
+            iconTicket='fa fa-ticket'
             iconTransport='icon-bus'
             saveRoomsAdult={props.saveRoomsAdult}
             saveDataHotel={props.saveDataHotel}

@@ -16,6 +16,7 @@ import ButtonSearch from '../../../components/ButtonSearch'
 import Cama from './cama.png';
 import AddRoomForm from '../AddRoomForm';
 import SearchForm from '../../Events/SearchForm';
+import ButtonFormSearch from '../../Events/ButtonFormSearch'
 
 class FormSearchHotel extends React.Component {
   constructor (props) {
@@ -117,7 +118,7 @@ class FormSearchHotel extends React.Component {
                 <a onClick={() => this.addRom()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
-                <ButtonSearch typeSearch='hotel'/>
+              {this.props.button ? <ButtonFormSearch/>:  <ButtonSearch  typeSearch='hotel'/>}
               </Grid.Row>
           </div>
           </Grid>

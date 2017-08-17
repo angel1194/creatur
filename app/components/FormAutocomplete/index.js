@@ -88,10 +88,14 @@ class FormAutocomplete extends React.PureComponent { // eslint-disable-line reac
     }
     else {
       return (
+
+        
             <Grid className='gridAutocomplete'>
               <Grid.Row centered>
                 <div className="selectFormSearch">
                   <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
+
+
                   <AsyncComponent
                     value={this.state.startLocation}
                     onChange={this.onChange}

@@ -9,9 +9,15 @@ import Select from 'react-select';
 class SearchForm extends React.PureComponent {
     render(){
       return(
+      <Grid className='gridAutocomplete'>
+          <Grid.Row centered>
         <div className='selectFormSearch'>
-          <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span><input width='50' type="text" value='MERIDA'/>
+          <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
+          <input type="text" value='MERIDA'/>
         </div>
+      </Grid.Row>
+      </Grid>
+
       )
     }
 
