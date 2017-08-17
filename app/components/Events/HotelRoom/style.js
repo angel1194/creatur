@@ -62,4 +62,12 @@ const ButtonGreen = styled.label`
   color:#fff;
 `;
 
-export default {ContainerRoom, RoomImg, DetailsRoom, Label, LinkA, ContainerPrice, ContainerButtonGreen, ButtonGreen};
+const LabelA = styled(Label) `
+  margin-top:0px !important
+`;
+
+const Img = styled.img `
+  border-radius: 6px;
+`;
+
+export {ContainerRoom, RoomImg, DetailsRoom, Label, LinkA, ContainerPrice, ContainerButtonGreen, ButtonGreen, LabelA, Img};
