@@ -394,17 +394,27 @@ h1.ui.header
     border-radius: 0px 5px 5px 0px !important
 
 
+
 .gridAutocompleteForm
   margin: 0 auto !important
-  width: 87% !important
+  width: 99% !important
+  padding-top: 0px
 
   input
     border-radius: 0px 5px 5px 0px !important
 
+  .gridCenter
+    padding: 0
+    width: 100%
 
-
-
-
+  .gridCenterDate
+     width: 100%
+     padding-left: 30px
+     padding-right: 0px
+  .gridCenterTime
+    width: 100%
+    padding-right: 10px
+    padding-left: 10px
 .selectFormSearch
   height: 37px
   width: 93%
@@ -1922,6 +1932,16 @@ footer
        height: 80%
 /*Estilos de  los hoteles*/
 .containerFormHotel
+  /*ESTILOS DE SEARCHFORMSALIDA EN COMPONENTE FORMTRANSPORT*/
+  .SearchFormSalida
+   padding-bottom: 10px
+   padding-left: 25px
+   .salida
+     color: #fff
+     padding-left: 11px
+
+
+  /*********************************************************/
   .divButtonGreeen
     margin-left: 25px !important
     margin-bottom: 5px
@@ -1958,11 +1978,22 @@ footer
       font-family: Montserrat
       color: #fff
       margin: 0px 0px 0px 40px
+    .hora
+      font-family: Montserrat
+      color: #fff
+      margin: 0px 0px 0px 40px
+    .salida
+     margin-left: 30px
+     color: #fff
+    .dateTimeForm
+       padding: 0 0 0px 0px
+
     ul
       display: flex
       flex-direction: row
       list-style: none
       margin-top: 0px !important
+
       li
         i
           background-color: #7db464
@@ -1985,6 +2016,7 @@ footer
           height: 2.5em !important
           font-family: Montserrat !important
 
+
 /*icono bed*/
 .bed
   align-self: center
@@ -1996,6 +2028,27 @@ footer
     margin-top: 4px
     display: inline-block
     font-family: Montserrat
+
+.ticket-reserv
+  display: flex !important
+  flex-direction: row !important
+  flex-wrap: nowrap !important
+  margin-left: 31px
+  width: 80%
+
+  .child
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    color: white !important
+    label
+      font-family: Montserrat !important
+    .inputs
+      width: 70% !important
+      border-radius: 5px !important
+
+
+
 
 .dad-reserv
   display: flex !important
@@ -2017,7 +2070,7 @@ footer
 
 /*style class div edad
 
-.edad
+.edadCLIENTES
   margin-left: 2em
   color: #fff
   font-family: Montserrat !important
@@ -2123,6 +2176,32 @@ footer
   margin-right: 5px
   width: 100px !important
 
+
 /**Passenger Form Transport***/
-.passe
-  margin-top: 10px
+.dateAndTime
+ display: flex
+ flex-direction: row
+ color: #fff
+ padding-top: 10px
+
+ .fecha
+   padding-left: 34px
+ .hora
+    padding-left: 105px
+
+.formsDateTime
+  display: flex
+  flex-direction: row
+  padding-bottom: 20px
+
+
+.ticket
+  display: flex !important
+  flex-direction: column !important
+  flex-wrap: nowrap !important
+  margin-left: 48px
+  width: 38%
+  color: #fff
+  padding-bottom: 20px
+  .boletos
+    padding-left: 4px

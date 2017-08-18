@@ -13,7 +13,7 @@ function ButtonFormSearch() {
     return (
       <div>
         <Link>
-          <Button className="buttonGreen">¡BUSCAR EL MEJOR PRECIO!</Button>
+          <Button className="buttonGreen">¡AGREGAR AL CARRITO!</Button>
         </Link>
       </div>
     );
