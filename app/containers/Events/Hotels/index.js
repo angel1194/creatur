@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Hotel from '../../../components/Events/Hotels'
+import MainHotels from '../../../components/Events/MainHotels'
 
-class Hotels extends Component { // eslint-disable-line react/prefer-stateless-function
+class Hotels extends Component {
   render() {
     return (
       <div>
-        <Hotel/>
+        <MainHotels/>
       </div>
     );
   }

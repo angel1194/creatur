@@ -10,9 +10,6 @@ import PriceLabel from '../../ReserHotel/PriceLabel';
 import Button from '../../ReserHotel/Button';
 import OffersDay from '../../ReserHotel/OffersDay';
 import AddCheckList from '../../AddCheckList';
-import MapView from '../../ReserHotel/MapView';
-import {Div, DivRooms} from './style';
-import InicialState from '../state'
 
 const ColumMarginRight = styled(Column) `
   margin-right: 10px;
@@ -27,55 +24,33 @@ const ColumMarginTop = styled(Column) `
 `;
 
 class Hotels extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = InicialState
-  }
-
-  setHotels(item){
-    const state = this.state
-    this.setState({
-      hotels:item
-    })
-  }
 
   render() {
-    const {hotels} = this.state
-
     return (
       <Container>
-        <Div>
-          <DivRooms>
-            {Object.keys(hotels).map((item, i)=>
-            <Column>
-              <Wrapper>
-                <Row>
-                  <Img src={hotels[item].image} Width="200px" Height="156px" />
-                  <ColumMarginTop>
-                    <Title>{hotels[item].title}</Title>
-                    <StarRating NumStart={hotels[item].numStart} />
-                    <TripAdvisor Calification='0' />
-                    <LocationLabel Title={hotels[item].location} />
-                  </ColumMarginTop>
-                </Row>
-                <Row>
-                  <ColumMarginRight>
-                    <PriceLabel Tam="Com" Since={hotels[item].price} Currency="MX" Total='1736' />
-                    <AddCheckList id={"id"+i} JustifyContent="flex-end" Margin="20px" />
-                    <Link to="/manzanero/rooms">
-                      <Button setHotels={()=>this.setHotels(hotels[item].items)} Title="Habitacion" Color="Blue" />
-                    </Link>
-                  </ColumMarginRight>
-                </Row>
-              </Wrapper>
-            </Column>
-            )}
-          </DivRooms>
-          <div>
-            <MapView/>
-          </div>
-        </Div>
-    </Container>
+        <Column>
+          <Wrapper>
+            <Row>
+              <Img src={this.props.elements.image} Width="200px" Height="156px" />
+              <ColumMarginTop>
+                <Title>{this.props.elements.title}</Title>
+                <StarRating NumStart={this.props.elements.numStart} />
+                <TripAdvisor Calification='0' />
+                <LocationLabel Title={this.props.elements.location} />
+              </ColumMarginTop>
+            </Row>
+            <Row>
+              <ColumMarginRight>
+                <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
+                <AddCheckList id={this.props.id.toString()} JustifyContent="flex-end" Margin="20px" />
+                <Link to="/manzanero/rooms">
+                  <Button Title="Habitacion" Color="Blue" />
+                </Link>
+              </ColumMarginRight>
+            </Row>
+          </Wrapper>
+        </Column>
+      </Container>
     );
   }
 }

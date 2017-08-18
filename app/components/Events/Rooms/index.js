@@ -3,9 +3,14 @@ import {Container} from 'semantic-ui-react';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../HotelRoom';
 import InfoHotel from '../InfoHotel';
-import {Divider} from './style'
+import {Divider} from './style';
 
 class Rooms extends React.Component {
+  constructor(){
+    super();
+    this.state = InicialState
+  }
+
   render() {
     return (
       <div>

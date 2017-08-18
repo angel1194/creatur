@@ -23,6 +23,7 @@ const NameRoom = styled(H3) `
 `;
 
 class HotelRoom extends React.Component {
+
   render(){
     return (
       <ContainerRoom>
