@@ -28,15 +28,15 @@ class HotelRoom extends React.Component {
     return (
       <ContainerRoom>
         <RoomImg>
-          <NameRoom>nombre</NameRoom>
-          <Img src='https://images.trvl-media.com/hotels/2000000/1790000/1781400/1781314/412853a8_z.jpg' width='250' />
+          <NameRoom>{this.props.elements.type}</NameRoom>
+          <Img src={this.props.elements.image} width='250' />
         </RoomImg>
         <DetailsRoom>
-          <Label>Capacidad para 3 personas</Label>
+          <Label>Capacidad para {this.props.elements.personas} personas</Label>
           <Label>Regimen: Solo Habitación</Label>
         </DetailsRoom>
         <ContainerPrice>
-          <Label> Por noche $798.00 MXN</Label>
+          <Label> Por noche ${this.props.elements.price} MXN</Label>
           <LabelA> Impuestos $100.56 usd</LabelA>
           <Title>Precio Total</Title>
           <H3>$3,089.56 <Label>USD</Label></H3>

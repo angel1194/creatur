@@ -43,7 +43,7 @@ class Hotels extends React.Component {
               <ColumMarginRight>
                 <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
                 <AddCheckList id={this.props.id.toString()} JustifyContent="flex-end" Margin="20px" />
-                <Link to="/manzanero/rooms">
+                <Link onClick={() => this.props.test(this.props.elements.key, this.props.elements.items)} to="/manzanero/rooms">
                   <Button Title="Habitacion" Color="Blue" />
                 </Link>
               </ColumMarginRight>

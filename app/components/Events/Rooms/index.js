@@ -12,18 +12,20 @@ class Rooms extends React.Component {
     this.state = InicialState
   }
 
+
+
   render() {
     const {hotels} = this.state
+    let test = Object.keys(hotels['001'])
+
     return (
       <div>
-        {console.log(hotels['001'].items.personas)}
         <Container>
+          {console.log(test['items'])}
           <InfoHotel/>
           <HeaderTable/>
-          {Object.keys(hotels).map((item, i)=>console.log('items de hotels',hotels[item].items))}
-          <HotelRoom/>
+          {Object.keys(hotels).map((item, i)=><HotelRoom key={i} elements={hotels[item]}/>)}
           <Divider/>
-          <HotelRoom/>
         </Container>
       </div>
     );
