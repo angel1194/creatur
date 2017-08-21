@@ -15,6 +15,8 @@ import { Link } from 'react-router'
 import ButtonSearch from '../../../components/ButtonSearch'
 import Cama from './cama.png';
 import AddRoomForm from '../AddRoomForm';
+import SearchForm from '../../Events/SearchForm';
+import ButtonFormSearch from '../../Events/ButtonFormSearch'
 
 class FormSearchHotel extends React.Component {
   constructor (props) {
@@ -75,7 +77,8 @@ class FormSearchHotel extends React.Component {
           <Header as='h1' className='titleForm'>{this.props.title}</Header>
           <Grid>
             <div className='containerFormHotel'>
-              <FormAutocomplete placeholder='Destino, hotel, lugar de interés' setLocation={this.props.setLocation} type={this.props.type}/>
+              {this.props.input ? <SearchForm value='MERIDA'/>:<FormAutocomplete placeholder='Destino, hotel, lugar de interés' setLocation={this.props.setLocation} type={this.props.type}/>}
+
               <div className='searchMap'>
                 <div>
                   <a id='search' href=''>
@@ -115,7 +118,7 @@ class FormSearchHotel extends React.Component {
                 <a onClick={() => this.addRom()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
               </div>
               <Grid.Row centered className='divButtonGreeen'>
-                <ButtonSearch typeSearch='hotel'/>
+              {this.props.button ? <Link to="/manzanero/hotels"><ButtonFormSearch/></Link>:  <ButtonSearch  typeSearch='hotel'/>}
               </Grid.Row>
           </div>
           </Grid>

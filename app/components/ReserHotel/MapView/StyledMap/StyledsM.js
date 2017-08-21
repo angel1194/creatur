@@ -44,10 +44,9 @@ const Text = styled.p`
      margin:0;
      top: 3px;
      position:relative;
-    
+
 `;
 
 
 
 export { Wrapper, Img, ButtonIcon, Text };
-

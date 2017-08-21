@@ -19,7 +19,7 @@ function FormSearch(props) {
         <Header as='h1' className='titleForm'>{props.title}</Header>
         <Grid>
           <LoadingSpin loading={props.loading}/>
-          <FormAutocomplete saveLocation={props.saveLocation}/>
+         <FormAutocomplete saveLocation={props.saveLocation}/>
           <Divider className='dividerForm' />
           <DatePickerForm saveDate={props.saveDate} />
             <div className='errorsValidation'>
