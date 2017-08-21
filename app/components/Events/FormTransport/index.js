@@ -25,40 +25,34 @@ class FormTransport extends React.PureComponent { // eslint-disable-line react/p
           <Header as='h1' className='titleForm'>{this.props.title}</Header>
           <Grid>
             <div className='containerFormHotel'>
-                  {/*FORM SALIDA */}
-                    <div className='SearchFormSalida'>
-                     <label htmlFor="checkin" className='salida'>SALIDA</label>
-                     <SearchForm />
-                    </div>
-                    {/*FECHA Y HORA  */}
-
-                     <div className='dateAndTime'>
-                      <label htmlFor="checkin" className='fecha'>FECHA</label>
-                      <label htmlFor="" className='hora'>HORA</label>
-
-                     </div>
-
-                     <div className='formsDateTime'>
-                       <DateForm />
-
-                       <TimeForm />
-
-                     </div>
+             {/*FORM SALIDA */}
+             <div className='SearchFormSalida'>
+              <label htmlFor="checkin" className='salida'>SALIDA</label>
+              <SearchForm />
              </div>
+             {/*FECHA Y HORA  */}
+            <div className='dateAndTime'>
+             <label htmlFor="checkin" className='fecha'>FECHA</label>
+             <label htmlFor="" className='hora'>HORA</label>
+            </div>
 
-             {/*BOLETOS*/}
-             <div className="ticket">
-              <label htmlFor='boletos' className='boletos'>BOLETOS</label>
-              <TicketForm />
-             </div>
-
-             {/*BOTON BUSQUEDA*/}
-             <Grid.Row centered className='divButtonGreeen'>
-               <ButtonFormSearch/>
-             </Grid.Row>
-          </Grid>
-        </div>
+            <div className='formsDateTime'>
+              <DateForm />
+              <TimeForm />
+            </div>
+           </div>
+          {/*BOLETOS*/}
+           <div className="ticket">
+            <label htmlFor='boletos' className='boletos'>BOLETOS</label>
+            <TicketForm />
+           </div>
+         {/*BOTON BUSQUEDA*/}
+           <Grid.Row centered className='divButtonGreeen'>
+            <ButtonFormSearch/>
+           </Grid.Row>
+       </Grid>
       </div>
+     </div>
     );
   }
 }
