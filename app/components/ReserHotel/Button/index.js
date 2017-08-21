@@ -15,7 +15,7 @@ import { ButtonStyled, Title, Line, Arrow, Wrapper } from './StyledButton/Button
 function Button(props) {
   return (
     <div>
-      <ButtonStyled>
+      <ButtonStyled onClick={props.setHotels ? ()=>props.setHotels() : ''}>
         <Wrapper>
           <Title>{props.Title}</Title>
 

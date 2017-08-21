@@ -1,9 +1,3 @@
-/**
-*
-* FormTransport
-*
-*/
-
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -17,7 +11,21 @@ import TimeForm from '../TimeForm';
 import TicketForm from '../TicketForm';
 import DateForm from '../DateForm';
 
-class FormTransport extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class FormTransport extends React.PureComponent {
+  constructor(props){
+    super(props);
+      this.state = {
+        startDate:moment()
+      }
+      this.handleChange= this.handleChange.bind(this);
+    }
+
+  handleChange(date){
+    this.setState({
+      startDate:date
+    })
+  }
+
   render() {
     return (
       <div id='inputSearchDisplay'>
@@ -53,9 +61,12 @@ class FormTransport extends React.PureComponent { // eslint-disable-line react/p
              </div>
 
              {/*BOTON BUSQUEDA*/}
-             <Grid.Row centered className='divButtonGreeen'>
+             
+           <Grid.Row centered className='divButtonGreeen'>
+             <Link to="/manzanero/hotels">
                <ButtonFormSearch/>
-             </Grid.Row>
+             </Link>
+           </Grid.Row>
           </Grid>
         </div>
       </div>
