@@ -398,22 +398,21 @@ h1.ui.header
 .gridAutocompleteForm
   margin: 0 auto !important
   width: 99% !important
-  padding-top: 0px
-
   input
     border-radius: 0px 5px 5px 0px !important
 
   .gridCenter
     padding: 0
-    width: 100%
+    width: 92%
+    padding-left: 28px
 
   .gridCenterDate
      width: 100%
-     padding-left: 30px
+     padding-left: 8px
      padding-right: 0px
   .gridCenterTime
-    width: 100%
-    padding-right: 10px
+    width: 78%
+    padding-right: 8px
     padding-left: 10px
 .selectFormSearch
   height: 37px
@@ -422,6 +421,9 @@ h1.ui.header
   display: flex
   justify-content: flex-start
   flex-direction: row
+  .inputTime
+    border-radius: 5px 5px 5px 5px !important
+
 .Select-arrow-zone
   .Select-arrow
     display: none
@@ -1726,6 +1728,7 @@ footer
     .buttonGreen
       width: 100%
 
+
   .ui.container.containerComments
     margin-left: 3em !important
 
@@ -1933,12 +1936,9 @@ footer
 /*Estilos de  los hoteles*/
 .containerFormHotel
   /*ESTILOS DE SEARCHFORMSALIDA EN COMPONENTE FORMTRANSPORT*/
-  .SearchFormSalida
-   padding-bottom: 10px
-   padding-left: 25px
-   .salida
-     color: #fff
-     padding-left: 11px
+  .salida
+   color: #fff
+   padding-left: 30px
 
 
   /*********************************************************/
@@ -2187,24 +2187,124 @@ footer
  .fecha
    padding-left: 34px
  .hora
-    padding-left: 105px
+    padding-left: 120px
 
 .formsDateTime
   display: flex
   flex-direction: row
   padding-bottom: 20px
-
+  padding-left: 22px
 
 .ticket
   display: flex !important
   flex-direction: column !important
   flex-wrap: nowrap !important
-  margin-left: 48px
-  width: 38%
+  margin-left: 40px
+  width: 45%
   color: #fff
   padding-bottom: 20px
   .boletos
     padding-left: 4px
+  .selectFormSearchTransport
+    height: 37px
+    width: 93%
+    overflow: hidden
+    display: flex
+    justify-content: flex-start
+    flex-direction: row
+    input
+     border-radius: 0px 5px 5px 0px
+
+.buttonCar
+ background-color: #7db464 !important
+ color: white !important
+ border-radius: 5px !important
+ height: 50px !important
+ width: 100%
+
+.divButtonCar
+  padding-left: 10px
+  width: 71%
+
+
+/***********FORMHOTELSTYLES************/
+.dad-datesHotel
+  display: flex
+  flex-direction: row
+  height: auto
+  padding-left: 23px
+  .datesHotel
+    display: flex
+    flex-direction: column
+    margin: 6px 0px 0px -10px
+    padding-left: 10px
+    .fecha
+      font-family: Montserrat
+      color: #fff
+      margin: 0px 0px 0px 0px
+      font-size: 1em
+      padding-left: 12px
+      padding-top: 10px
+    .hora
+      font-family: Montserrat
+      color: #fff
+      margin: 0px 0px 0px 40px
+    .salida
+     margin-left: 30px
+     color: #fff
+    .dateTimeForm
+       padding: 0 0 0px 0px
+
+.dad-reservHotel
+  display: flex !important
+  flex-direction: row !important
+  flex-wrap: nowrap !important
+  margin: 20px 0px 13px 25px
+  width: 80%
+  padding-left: 24px
+  .childHotel
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: white !important
+
+    label
+      font-family: Montserrat !important
+    .inputs
+      width: 75% !important
+      border-radius: 5px !important
+
+.linkHotel
+  margin: -5px 0px 15px 0px
+  font-family: Roboto !important
+  display: flex
+  flex-direction: row
+  align-items: center !important
+  margin-left: 50px
+  margin-top: 10px
+  color: #fff
+  a
+    color: #fff !important
+    font-family: sans-serif !important
+    margin: 1px 0px 0px 5px
+    cursor: pointer
+
+.titleFormHotel
+  padding-top: 23px !important
+  margin-bottom: 0px !important
+  padding-bottom: 15px !important
+
+.bedHotel
+  align-self: center
+  text-align: center
+  padding-top: 35px
+  padding-right: 50px
+  color: #fff
+
+  h4
+    margin-top: 4px
+    display: inline-block
+    font-family: Montserrat
 
 //para que funcionara el contador del carrito
 p

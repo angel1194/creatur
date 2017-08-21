@@ -11,9 +11,9 @@ import { Link } from 'react-router';
 
 function ButtonFormSearch() {
     return (
-      <div>
+      <div className='divButtonCar'>
         <Link>
-          <Button className="buttonGreen">¡AGREGAR AL CARRITO!</Button>
+          <Button className="buttonCar">¡AGREGAR AL CARRITO!</Button>
         </Link>
       </div>
     );

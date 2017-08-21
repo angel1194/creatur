@@ -34,10 +34,10 @@ class FormTransport extends React.PureComponent {
           <Grid>
             <div className='containerFormHotel'>
              {/*FORM SALIDA */}
-             <div className='SearchFormSalida'>
+
               <label htmlFor="checkin" className='salida'>SALIDA</label>
               <SearchForm />
-             </div>
+
              {/*FECHA Y HORA  */}
             <div className='dateAndTime'>
              <label htmlFor="checkin" className='fecha'>FECHA</label>
@@ -52,10 +52,13 @@ class FormTransport extends React.PureComponent {
           {/*BOLETOS*/}
            <div className="ticket">
             <label htmlFor='boletos' className='boletos'>BOLETOS</label>
-            <TicketForm />
+            <div className='selectFormSearchTransport'>
+              <span className="input-group-addon-standar"><i className='fa fa-ticket'></i></span>
+              <input type="number" min="0" placeholder="0"/>
+            </div>
            </div>
          {/*BOTON BUSQUEDA*/}
-           <Grid.Row centered className='divButtonGreeen'>
+           <Grid.Row centered className='divButtonCar'>
             <ButtonFormSearch/>
            </Grid.Row>
        </Grid>

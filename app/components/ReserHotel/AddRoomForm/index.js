@@ -75,7 +75,7 @@ class AddRoomForm extends React.Component {
             <input id={this.props.idFor + 'n'} onChange={this.clickInput} className="inputs" type="number" max="2" placeholder="0" name={`childHotel${this.props.idFor}`}/>
           </div>
         </div>
-        <div className="edad">
+        <div className="edadCLIENTES">
           <p>{this.state.input == 0 ? '' : 'Edad de los menores'}</p>
         </div>
         <AddInputs>
