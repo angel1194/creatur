@@ -44,9 +44,9 @@ function AddButton(props) {
   let idUnique = guidGenerator();
 
   return (
-    <AddElement>
-      <BlueIcon name='plus-circle' size='lg' id='addElement'/>
-      <LabelElement htmlFor={idUnique}>
+    <AddElement onClick={props.setShowRooms ? ()=>props.setShowRooms() : ''}>
+      <BlueIcon name={props.state === false ? 'plus-circle' : props.state === true ? 'minus-circle' : 'plus-circle'} size='lg' id='addElement'/>
+      <LabelElement htmlFor={props.setShowRooms ? '' : idUnique}>
         {props.text}
       </LabelElement>
       <Input type='checkbox'  id={idUnique} />

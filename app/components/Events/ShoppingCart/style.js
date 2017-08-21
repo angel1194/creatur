@@ -66,4 +66,13 @@ const ContainerButtonGreen = styled.div`
   margin-top: 15px;
 `;
 
-export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen};
+const Cart = styled.div`
+  background-color: #2b5bac;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 502px;
+  padding: 0px 5px 0px 5px;
+`;
+
+export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart};

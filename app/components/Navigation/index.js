@@ -5,8 +5,7 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
-// import Cart from './style';
+import Cart from './style';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 
@@ -25,7 +24,7 @@ function Navigation(props) {
         <Link href="#"><li>{props.travel}</li></Link>
         <Link to='/login'><li>{props.login}</li></Link>
         <Link href="/manzanero/cart"><li>{props.cart}<FontAwesome name={props.icon}></FontAwesome></li></Link>
-        {/* <Cart>{props.count}</Cart> */}
+        <Cart>{props.count}</Cart>
       </ul>
     </nav>
   </nav>
