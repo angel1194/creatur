@@ -17,8 +17,7 @@ class TimeForm extends React.PureComponent { // eslint-disable-line react/prefer
       <Grid className='gridAutocompleteForm'>
        <div className='gridCenterTime'>
         <div className='selectFormSearch'>
-          <span className="input-group-addon-standar"><i className="fa fa-clock-o"></i></span>
-          <input type="time" />
+          <input type="time" className='inputTime' />
         </div>
        </div>
      </Grid>

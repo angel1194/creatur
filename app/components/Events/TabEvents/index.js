@@ -10,6 +10,7 @@ import FormSearch from '../../FormSearch/';
 import FormSearchHotel from '../../ReserHotel/FormSearchHotel/';
 import { Link } from 'react-router';
 import FormTransport from '../FormTransport';
+import FormHotel from '../FormHotel';
 
 const Span = styled.span`
   font-size: 25px;
@@ -34,11 +35,11 @@ class TabEvents extends React.Component {
    renderForm(){
      if(this.state.ubicacion==='hotel'){
        return(
-         <FormSearchHotel input='manzanero' button='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
+         <FormHotel title='Bienvenido'/>
        )
      }else if(this.state.ubicacion==='car'){
        return(
-         <FormSearchHotel input='manzanero' button='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
+         <FormHotel input='manzanero' button='manzanero' title='Bienvenido' setLocation={this.props.setLocation} type={this.props.type} saveDataHotel={this.props.saveDataHotel} saveRoomsAdult={this.props.saveRoomsAdult}/>
        )
      }else if (this.state.ubicacion==='transport') {
        return(
