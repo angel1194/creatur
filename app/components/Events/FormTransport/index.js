@@ -35,23 +35,36 @@ class FormTransport extends React.PureComponent {
             <div className='containerFormHotel'>
              {/*FORM SALIDA */}
 
-              <label htmlFor="checkin" className='salida'>SALIDA</label>
-              <SearchForm />
+              <label htmlFor="checkin" className='salida'>Salida</label>
+              <SearchForm value='SIGLO XXI'/>
 
              {/*FECHA Y HORA  */}
             <div className='dateAndTime'>
-             <label htmlFor="checkin" className='fecha'>FECHA</label>
-             <label htmlFor="" className='hora'>HORA</label>
+             <label htmlFor="checkin" className='fecha'>Fecha</label>
+             <label htmlFor="" className='hora'>Hora</label>
             </div>
 
             <div className='formsDateTime'>
-              <DateForm />
-              <TimeForm />
+              <Grid className='gridAutocompleteForm'>
+               <div className='gridCenterDate'>
+                <div className='selectFormSearch'>
+                  <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
+                  <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                </div>
+              </div>
+             </Grid>
+              <Grid className='gridAutocompleteForm'>
+               <div className='gridCenterTime'>
+                <div className='selectFormSearch'>
+                  <input type="time" className='inputTime' />
+                </div>
+               </div>
+             </Grid>
             </div>
            </div>
           {/*BOLETOS*/}
            <div className="ticket">
-            <label htmlFor='boletos' className='boletos'>BOLETOS</label>
+            <label htmlFor='boletos' className='fecha'>Boletos</label>
             <div className='selectFormSearchTransport'>
               <span className="input-group-addon-standar"><i className='fa fa-ticket'></i></span>
               <input type="number" min="0" placeholder="0"/>
@@ -59,7 +72,7 @@ class FormTransport extends React.PureComponent {
            </div>
          {/*BOTON BUSQUEDA*/}
            <Grid.Row centered className='divButtonCar'>
-            <ButtonFormSearch/>
+            <ButtonFormSearch title="AGREGAR AL CARRITO"/>
            </Grid.Row>
        </Grid>
       </div>
