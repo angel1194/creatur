@@ -8,16 +8,21 @@ import Cama from './cama.png';
 import {Icon} from './style'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
 
 class FormHotel extends React.PureComponent {
   constructor(){
     super();
     this.state = {
       hotels:{},
-      startDate:moment()
+      startDate:moment(),
+      input:[],
+      room:[]
     }
     this.request=this.request.bind(this)
     this.handleChange= this.handleChange.bind(this);
+    this.addChild=this.addChild.bind(this);
+    this.addRoom=this.addRoom.bind(this);
   }
 
   handleChange(date){
@@ -49,6 +54,54 @@ class FormHotel extends React.PureComponent {
     // }
   }
 
+  addChild(numchild){
+   const input=[]
+   numchild=(numchild < 0)? 0: numchild;
+   for (var i = 1; i <= numchild; i++) {
+    input.push(
+    <div className='section-dad'>
+      <div key={i} className='section-child'>
+       <label htmlFor="">Menor {i}</label>
+       <input className='inputs' type="number" max='17' min='0'/>
+      </div>
+    </div>)
+  }
+  this.setState({
+    input:input
+  })
+  }
+
+addRoom(){
+  const newRoom=[]
+
+     newRoom.push(
+       <div>
+         <div className='lineRoom'/>
+       <div className="dad-reservHotel">
+         <div className="childHotel">
+           <label htmlFor=''>Adultos</label>
+           <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+         </div>
+         <div className="childHotel">
+           <label htmlFor=''>Cunas</label>
+           <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+         </div>
+         <div className="childHotel">
+           <label htmlFor=''>Niños</label>
+           <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+         </div>
+       </div>
+
+
+       </div>
+
+     )
+
+
+  this.setState({
+    room:newRoom
+  })
+}
   render() {
     return (
       <div id='inputSearchDisplay'>
@@ -99,35 +152,61 @@ class FormHotel extends React.PureComponent {
             <div >
               <div className="dad-reservHotel">
                 <div className="childHotel">
-                  <label htmlFor=''>Habitaciones</label>
+                  <label htmlFor=''>Adultos</label>
                   <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
                 </div>
                 <div className="childHotel">
-                  <label htmlFor=''>Adultos</label>
+                  <label htmlFor=''>Cunas</label>
                   <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
                 </div>
                 <div className="childHotel">
-                  <label htmlFor=''>Niños (0-7)</label>
-                  <input className="inputs" type="number" max="2" placeholder="0" ref='child'/>
+                  <label htmlFor=''>Niños</label>
+                  <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
                 </div>
               </div>
-            </div>
-            {/*ANADIR OTRA HABITACION*/}
-            <div className='linkHotel'>
-              <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
-              <a href="#">Añadir otra habitación</a>
-            </div>
-            {/*BOTON BUSQUEDA*/}
-             <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
-             </Grid.Row>
-            </Grid>
+                {/*AGREGAR EDAD NINOS*/}
+              <div className='edadCLIENTES'>
+                <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
+              </div>
+              <div className='dad-reservHotelChild'>
+                {this.state.input.map(element => element)}
+              </div>
+
           </div>
-        </form>
+            {/*ANADIR OTRA HABITACION*/}
+            <div>
+              {this.state.room.map(element=>element)}
+            </div>
+          <div className='linkHotel'>
+           {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+           <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
+          </div>
+
+
+            {/*BOTON BUSQUEDA*/}
+          <Grid.Row centered className='divButtonCar'>
+            <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
+          </Grid.Row>
+         </Grid>
+        </div>
+       </form>
       </div>
     );
   }
 }
+
+
+const AddInputs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 11px;
+`;
+
+const Linee = styled.hr`
+  border: 1 pt solid #d2d2d2;
+  margin: 0;
+`;
 
 FormHotel.propTypes = {
 
