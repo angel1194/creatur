@@ -14,10 +14,12 @@ class FormHotel extends React.PureComponent {
     super();
     this.state = {
       hotels:{},
-      startDate:moment()
+      startDate:moment(),
+      endDate:moment().add(1, "days"),
     }
     this.request=this.request.bind(this)
-    this.handleChange= this.handleChange.bind(this);
+    this.handleChange= this.handleChange.bind(this)
+    this.handleChangeEnd= this.handleChangeEnd.bind(this);
   }
 
   handleChange(date){
@@ -26,27 +28,35 @@ class FormHotel extends React.PureComponent {
     })
   }
 
+  handleChangeEnd(date) {
+    this.setState({
+      endDate: date
+    })
+  }
+
   request(event){
     event.preventDefault()
 
+    let checkin = this.state.startDate.format('YYYY-MM-DD')
+    let checkout = this.state.endDate.format('YYYY-MM-DD')
     let rooms = this.refs.rooms.value
     let adult = this.refs.adult.value
     let child = this.refs.child.value
 
-    console.log(rooms, adult, child);
-    // let request = {
-    //   checkin:'',
-    //   checkout:'',
-    //   rooms:{
-    //     room:{
-    //       key:1,
-    //       adult:0,
-    //       child:{
-    //
-    //       }
-    //     },
-    //   }
-    // }
+    console.log('fecha de llegada',checkin);
+    let request = {
+      checkin:'',
+      checkout:'',
+      rooms:{
+        room:{
+          key:1,
+          adult:0,
+          child:{
+
+          }
+        },
+      }
+    }
   }
 
   render() {
@@ -75,7 +85,13 @@ class FormHotel extends React.PureComponent {
                     <div className='gridCenterDate'>
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                       <DatePicker
+                        //  openToDate={moment("1993-09-28")}
+                         selected={this.state.startDate}
+                         onChange={this.handleChange}
+                         minDate={moment().subtract(3, "days")}
+                         maxDate={moment().add(3, "days")}
+                       />
                      </div>
                    </div>
                   </Grid>
@@ -84,7 +100,12 @@ class FormHotel extends React.PureComponent {
                     <div className='gridCenterDate'>
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                       <DatePicker
+                         selected={this.state.endDate}
+                         onChange={this.handleChangeEnd}
+                         minDate={moment(this.state.startDate).subtract(3, "days")}
+                         maxDate={moment().add(3, "days")}
+                       />
                      </div>
                    </div>
                   </Grid>
