@@ -43,20 +43,20 @@ class FormHotel extends React.PureComponent {
     let adult = this.refs.adult.value
     let child = this.refs.child.value
 
-    console.log('fecha de llegada',checkin);
     let request = {
-      checkin:'',
-      checkout:'',
+      checkin: checkin,
+      checkout: checkout,
       rooms:{
         room:{
           key:1,
-          adult:0,
+          adult: adult,
           child:{
 
           }
         },
       }
     }
+    console.log(request);
   }
 
   render() {
