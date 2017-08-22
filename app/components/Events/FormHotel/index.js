@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import moment from 'moment';
 import SearchForm from '../../Events/SearchForm';
 import {Grid, Header} from  'semantic-ui-react';
 import ButtonFormSearch from '../ButtonFormSearch';
-import TicketForm from '../TicketForm';
 import DateForm from '../DateForm';
 import Cama from './cama.png';
+import {Icon} from './style'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -59,7 +58,7 @@ class FormHotel extends React.PureComponent {
             <Grid>
               <div className='containerFormHotel'>
                {/*FORM LOCATION */}
-                <SearchForm />
+                <SearchForm value="Merida"/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -72,12 +71,23 @@ class FormHotel extends React.PureComponent {
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>
                    <label htmlFor="checkin" className='fecha'>Fecha de llegada</label>
-                   <div className='selectFormSearch'>
-                     <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                     <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                   <Grid className='gridAutocompleteForm'>
+                    <div className='gridCenterDate'>
+                     <div className='selectFormSearch'>
+                       <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
+                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                     </div>
                    </div>
+                  </Grid>
                    <label htmlFor="checkout" className='fecha'>Fecha de salida</label>
-                   <DateForm/>
+                   <Grid className='gridAutocompleteForm'>
+                    <div className='gridCenterDate'>
+                     <div className='selectFormSearch'>
+                       <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
+                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                     </div>
+                   </div>
+                  </Grid>
                  </div>
                  <div className="bedHotel">
                    <img src={Cama}/>
@@ -109,7 +119,7 @@ class FormHotel extends React.PureComponent {
             </div>
             {/*BOTON BUSQUEDA*/}
              <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch/>
+              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
              </Grid.Row>
             </Grid>
           </div>
