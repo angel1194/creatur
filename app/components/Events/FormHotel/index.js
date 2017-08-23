@@ -20,7 +20,10 @@ class FormHotel extends React.PureComponent {
       room:{},
       data:[
         {
-          Room1:{}
+          Room1:{
+            key:1,
+            age:7
+          }
         }
       ]
     }
@@ -50,21 +53,14 @@ class FormHotel extends React.PureComponent {
     let checkout = this.state.endDate.format('YYYY-MM-DD')
     let adult = this.refs.rooms.value
     let babys = this.refs.adult.value
-    console.log(event.target.elements['age1']);
-    let age = document.getElementById('age').value
+    let rooms = this.state.data
+    console.log(event.target.elements);
 
     let request = {
       checkin: checkin,
       checkout: checkout,
       rooms:[
-        {
-        'adult': adult,
-        'babys':babys,
-        'child':[{
-            key:Date.now(),
-            age: age,
-          }]
-        }
+        rooms
       ]
     }
     console.log(request);
@@ -76,8 +72,8 @@ class FormHotel extends React.PureComponent {
       input.push(
         <div key={i} className='section-dad'>
           <div className='section-child'>
-           <label htmlFor="">Menor {i}</label>
-           <input className='inputs' type="number" max='17' min='0' id='age'/>
+           <label htmlFor={'Menor'+i}>Menor {i}</label>
+           <input className='inputs' type="number" max='17' min='0' id={'Menor'+i}/>
           </div>
         </div>
       )
@@ -91,13 +87,14 @@ class FormHotel extends React.PureComponent {
     var state =  this.state.data
     var newRoom = {}
     newRoom[Date.now()] = {}
+    let states = state.concat(newRoom)
     this.setState({
-      data:state.concat(newRoom)
+      data:states
     })
+    console.log(states);
   }
 
   render() {
-    console.log('renderizando');
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -157,19 +154,18 @@ class FormHotel extends React.PureComponent {
             {/*HUESPEDES*/}
             {this.state.data.map((room, i)=>
               <div key={i}>
-                {console.log(room)}
                 <div className="dad-reservHotel">
                   <div className="childHotel">
-                    <label htmlFor=''>Adultos</label>
-                    <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+                    <label htmlFor={'Adulto'+i}>Adultos</label>
+                    <input className="inputs" type="number" id={'Adulto'+i} min="0" placeholder="0" ref='rooms'/>
                   </div>
                   <div className="childHotel">
-                    <label htmlFor=''>Cunas</label>
-                    <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+                    <label htmlFor={'Cuna'+i}>Cunas</label>
+                    <input className="inputs" type="number" id={'Cuna'+i} min="0" placeholder="0" ref='adult'/>
                   </div>
                   <div className="childHotel">
-                    <label htmlFor=''>Niños</label>
-                    <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                    <label htmlFor={'Ninos'+i}>Niños</label>
+                    <input className="inputs" type="number"  id={'Ninos'+i} max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
                   </div>
                 </div>
                   {/*AGREGAR EDAD NINOS*/}
