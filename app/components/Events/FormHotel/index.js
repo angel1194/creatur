@@ -1,28 +1,34 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
 import moment from 'moment';
 import SearchForm from '../../Events/SearchForm';
 import {Grid, Header} from  'semantic-ui-react';
 import ButtonFormSearch from '../ButtonFormSearch';
-import DateForm from '../DateForm';
 import Cama from './cama.png';
 import {Icon} from './style'
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
 
 class FormHotel extends React.PureComponent {
   constructor(){
-    super();
+    super()
     this.state = {
       hotels:{},
       startDate:moment(),
+      endDate:moment().add(1, "days"),
       input:[],
-      room:[]
+      room:{},
+      data:[
+        {
+          Room1:{}
+        }
+      ]
     }
     this.request=this.request.bind(this)
     this.handleChange= this.handleChange.bind(this);
+    this.handleChangeEnd= this.handleChangeEnd.bind(this);
     this.addChild=this.addChild.bind(this);
-    this.addRoom=this.addRoom.bind(this);
+    this.addRooms=this.addRooms.bind(this)
   }
 
   handleChange(date){
@@ -31,72 +37,67 @@ class FormHotel extends React.PureComponent {
     })
   }
 
+  handleChangeEnd(date) {
+    this.setState({
+      endDate: date
+    })
+  }
+
   request(event){
     event.preventDefault()
 
-    let rooms = this.refs.rooms.value
-    let adult = this.refs.adult.value
-    let child = this.refs.child.value
+    let checkin = this.state.startDate.format('YYYY-MM-DD')
+    let checkout = this.state.endDate.format('YYYY-MM-DD')
+    let adult = this.refs.rooms.value
+    let babys = this.refs.adult.value
+    console.log(event.target.elements['age1']);
+    let age = document.getElementById('age').value
 
-    console.log(rooms, adult, child);
-    // let request = {
-    //   checkin:'',
-    //   checkout:'',
-    //   rooms:{
-    //     room:{
-    //       key:1,
-    //       adult:0,
-    //       child:{
-    //
-    //       }
-    //     },
-    //   }
-    // }
+    let request = {
+      checkin: checkin,
+      checkout: checkout,
+      rooms:[
+        {
+        'adult': adult,
+        'babys':babys,
+        'child':[{
+            key:Date.now(),
+            age: age,
+          }]
+        }
+      ]
+    }
+    console.log(request);
   }
 
-  addChild(numchild){
-   const input=[]
-   numchild=(numchild < 0)? 0: numchild;
-   for (var i = 1; i <= numchild; i++) {
-    input.push(
-    <div className='section-dad'>
-      <div key={i} className='section-child'>
-       <label htmlFor="">Menor {i}</label>
-       <input className='inputs' type="number" max='17' min='0'/>
-      </div>
-    </div>)
-  }
-  this.setState({
-    input:input
-  })
+  addChild(e){
+     const input=[]
+     for (var i = 1; i <= e; i++) {
+      input.push(
+        <div key={i} className='section-dad'>
+          <div className='section-child'>
+           <label htmlFor="">Menor {i}</label>
+           <input className='inputs' type="number" max='17' min='0' id='age'/>
+          </div>
+        </div>
+      )
+    }
+    this.setState({
+      input:input
+    })
   }
 
-addRoom(){
-  const newRoom=[]
-     newRoom.push(
-       <div>
-         <div className='lineRoom'/>
-       <div className="dad-reservHotel">
-         <div className="childHotel">
-           <label htmlFor=''>Adultos</label>
-           <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
-         </div>
-         <div className="childHotel">
-           <label htmlFor=''>Cunas</label>
-           <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
-         </div>
-         <div className="childHotel">
-           <label htmlFor=''>Niños</label>
-           <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
-         </div>
-       </div>
-       </div>
-     )
-  this.setState({
-    room:newRoom
-  })
-}
+  addRooms(){
+    var state =  this.state.data
+    var newRoom = {}
+    newRoom[Date.now()] = {}
+    this.setState({
+      data:state.concat(newRoom)
+    })
+  }
+
   render() {
+    console.log('renderizando');
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -122,7 +123,13 @@ addRoom(){
                     <div className='gridCenterDate'>
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                       <DatePicker
+                        //  openToDate={moment("1993-09-28")}
+                         selected={this.state.startDate}
+                         onChange={this.handleChange}
+                         minDate={moment().subtract(3, "days")}
+                         maxDate={moment().add(3, "days")}
+                       />
                      </div>
                    </div>
                   </Grid>
@@ -131,7 +138,12 @@ addRoom(){
                     <div className='gridCenterDate'>
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                       <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                       <DatePicker
+                         selected={this.state.endDate}
+                         onChange={this.handleChangeEnd}
+                         minDate={moment(this.state.startDate).subtract(3, "days")}
+                         maxDate={moment().add(3, "days")}
+                       />
                      </div>
                    </div>
                   </Grid>
@@ -143,55 +155,55 @@ addRoom(){
                </div>
              </div>
             {/*HUESPEDES*/}
-            <div >
-              <div className="dad-reservHotel">
-                <div className="childHotel">
-                  <label htmlFor=''>Adultos</label>
-                  <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+            {this.state.data.map((room, i)=>
+              <div key={i}>
+                {console.log(room)}
+                <div className="dad-reservHotel">
+                  <div className="childHotel">
+                    <label htmlFor=''>Adultos</label>
+                    <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+                  </div>
+                  <div className="childHotel">
+                    <label htmlFor=''>Cunas</label>
+                    <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+                  </div>
+                  <div className="childHotel">
+                    <label htmlFor=''>Niños</label>
+                    <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                  </div>
                 </div>
-                <div className="childHotel">
-                  <label htmlFor=''>Cunas</label>
-                  <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+                  {/*AGREGAR EDAD NINOS*/}
+                <div className='edadCLIENTES'>
+                  <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
                 </div>
-                <div className="childHotel">
-                  <label htmlFor=''>Niños</label>
-                  <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                <div className='dad-reservHotelChild'>
+                  {this.state.input.map(element => element)}
                 </div>
               </div>
-                {/*AGREGAR EDAD NINOS*/}
-              <div className='edadCLIENTES'>
-                <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
-              </div>
-              <div className='dad-reservHotelChild'>
-                {this.state.input.map(element => element)}
-              </div>
-          </div>
+            )}
+
             {/*ANADIR OTRA HABITACION*/}
-          <div>
-            {this.state.room.map(element=>element)}
+            <div>
             <div className="removeHotel">
-              {this.state.room.length == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a >{this.state.room.length == true ? 'Eliminar' : ''}</a>
+
+            {this.state.data.length > 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
+              {this.state.data.length > 1 ?<a> Eliminar</a> : ''}
             </div>
             <div className='linkHotel'>
-              {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
+              {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
             </div>
           </div>
             {/*BOTON BUSQUEDA*/}
-          <Grid.Row centered className='divButtonCar'>
-            <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
-          </Grid.Row>
-         </Grid>
-        </div>
-       </form>
+            <Grid.Row centered className='divButtonCar'>
+              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
+            </Grid.Row>
+            </Grid>
+          </div>
+        </form>
       </div>
     );
   }
 }
-
-FormHotel.propTypes = {
-
-};
 
 export default FormHotel;
