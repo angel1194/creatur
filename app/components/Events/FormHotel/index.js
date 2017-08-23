@@ -72,8 +72,8 @@ class FormHotel extends React.PureComponent {
       input.push(
         <div key={i} className='section-dad'>
           <div className='section-child'>
-           <label htmlFor="">Menor {i}</label>
-           <input className='inputs' type="number" max='17' min='0' name='acopa'/>
+           <label htmlFor={'Menor'+i}>Menor {i}</label>
+           <input className='inputs' type="number" max='17' min='0' id={'Menor'+i}/>
           </div>
         </div>
       )
@@ -86,7 +86,7 @@ class FormHotel extends React.PureComponent {
   addRooms(){
     var state =  this.state.data
     var newRoom = {}
-    newRoom[Date.now()] = {key:2, age:4}
+    newRoom[Date.now()] = {}
     let states = state.concat(newRoom)
     this.setState({
       data:states
@@ -156,16 +156,16 @@ class FormHotel extends React.PureComponent {
               <div key={i}>
                 <div className="dad-reservHotel">
                   <div className="childHotel">
-                    <label htmlFor=''>Adultos</label>
-                    <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+                    <label htmlFor={'Adulto'+i}>Adultos</label>
+                    <input className="inputs" type="number" id={'Adulto'+i} min="0" placeholder="0" ref='rooms'/>
                   </div>
                   <div className="childHotel">
-                    <label htmlFor=''>Cunas</label>
-                    <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+                    <label htmlFor={'Cuna'+i}>Cunas</label>
+                    <input className="inputs" type="number" id={'Cuna'+i} min="0" placeholder="0" ref='adult'/>
                   </div>
                   <div className="childHotel">
-                    <label htmlFor=''>Niños</label>
-                    <input key={i} className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                    <label htmlFor={'Ninos'+i}>Niños</label>
+                    <input className="inputs" type="number"  id={'Ninos'+i} max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
                   </div>
                 </div>
                   {/*AGREGAR EDAD NINOS*/}
