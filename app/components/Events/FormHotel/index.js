@@ -87,6 +87,7 @@ class FormHotel extends React.PureComponent {
     })
   }
 
+<<<<<<< HEAD
   addRooms(){
     var state =  this.state.data
     var newRoom = {}
@@ -96,6 +97,33 @@ class FormHotel extends React.PureComponent {
     })
   }
 
+=======
+addRoom(){
+  const newRoom=[]
+     newRoom.push(
+       <div>
+         <div className='lineRoom'/>
+       <div className="dad-reservHotel">
+         <div className="childHotel">
+           <label htmlFor=''>Adultos</label>
+           <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
+         </div>
+         <div className="childHotel">
+           <label htmlFor=''>Cunas</label>
+           <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
+         </div>
+         <div className="childHotel">
+           <label htmlFor=''>Niños</label>
+           <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+         </div>
+       </div>
+       </div>
+     )
+  this.setState({
+    room:newRoom
+  })
+}
+>>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
   render() {
     console.log('renderizando');
     return (
@@ -180,6 +208,7 @@ class FormHotel extends React.PureComponent {
                   {this.state.input.map(element => element)}
                 </div>
               </div>
+<<<<<<< HEAD
             )}
 
             {/*ANADIR OTRA HABITACION*/}
@@ -187,6 +216,28 @@ class FormHotel extends React.PureComponent {
               {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
             </div>
+=======
+                {/*AGREGAR EDAD NINOS*/}
+              <div className='edadCLIENTES'>
+                <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
+              </div>
+              <div className='dad-reservHotelChild'>
+                {this.state.input.map(element => element)}
+              </div>
+          </div>
+            {/*ANADIR OTRA HABITACION*/}
+          <div>
+            {this.state.room.map(element=>element)}
+            <div className="removeHotel">
+              {this.state.room.length == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a >{this.state.room.length == true ? 'Eliminar' : ''}</a>
+            </div>
+            <div className='linkHotel'>
+              {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
+            </div>
+          </div>
+>>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
             {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
@@ -199,4 +250,11 @@ class FormHotel extends React.PureComponent {
   }
 }
 
+<<<<<<< HEAD
+=======
+FormHotel.propTypes = {
+
+};
+
+>>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
 export default FormHotel;
