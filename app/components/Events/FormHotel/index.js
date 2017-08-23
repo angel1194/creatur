@@ -20,7 +20,10 @@ class FormHotel extends React.PureComponent {
       room:{},
       data:[
         {
-          Room1:{}
+          Room1:{
+            key:1,
+            age:7
+          }
         }
       ]
     }
@@ -50,21 +53,14 @@ class FormHotel extends React.PureComponent {
     let checkout = this.state.endDate.format('YYYY-MM-DD')
     let adult = this.refs.rooms.value
     let babys = this.refs.adult.value
-    console.log(event.target.elements['age1']);
-    let age = document.getElementById('age').value
+    let rooms = this.state.data
+    console.log(event.target.elements);
 
     let request = {
       checkin: checkin,
       checkout: checkout,
       rooms:[
-        {
-        'adult': adult,
-        'babys':babys,
-        'child':[{
-            key:Date.now(),
-            age: age,
-          }]
-        }
+        rooms
       ]
     }
     console.log(request);
@@ -77,7 +73,7 @@ class FormHotel extends React.PureComponent {
         <div key={i} className='section-dad'>
           <div className='section-child'>
            <label htmlFor="">Menor {i}</label>
-           <input className='inputs' type="number" max='17' min='0' id='age'/>
+           <input className='inputs' type="number" max='17' min='0' name='acopa'/>
           </div>
         </div>
       )
@@ -87,45 +83,18 @@ class FormHotel extends React.PureComponent {
     })
   }
 
-<<<<<<< HEAD
   addRooms(){
     var state =  this.state.data
     var newRoom = {}
-    newRoom[Date.now()] = {}
+    newRoom[Date.now()] = {key:2, age:4}
+    let states = state.concat(newRoom)
     this.setState({
-      data:state.concat(newRoom)
+      data:states
     })
+    console.log(states);
   }
 
-=======
-addRoom(){
-  const newRoom=[]
-     newRoom.push(
-       <div>
-         <div className='lineRoom'/>
-       <div className="dad-reservHotel">
-         <div className="childHotel">
-           <label htmlFor=''>Adultos</label>
-           <input className="inputs" type="number" min="0" placeholder="0" ref='rooms'/>
-         </div>
-         <div className="childHotel">
-           <label htmlFor=''>Cunas</label>
-           <input className="inputs" type="number" min="0" placeholder="0" ref='adult'/>
-         </div>
-         <div className="childHotel">
-           <label htmlFor=''>Niños</label>
-           <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
-         </div>
-       </div>
-       </div>
-     )
-  this.setState({
-    room:newRoom
-  })
-}
->>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
   render() {
-    console.log('renderizando');
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -185,7 +154,6 @@ addRoom(){
             {/*HUESPEDES*/}
             {this.state.data.map((room, i)=>
               <div key={i}>
-                {console.log(room)}
                 <div className="dad-reservHotel">
                   <div className="childHotel">
                     <label htmlFor=''>Adultos</label>
@@ -197,7 +165,7 @@ addRoom(){
                   </div>
                   <div className="childHotel">
                     <label htmlFor=''>Niños</label>
-                    <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                    <input key={i} className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
                   </div>
                 </div>
                   {/*AGREGAR EDAD NINOS*/}
@@ -208,7 +176,6 @@ addRoom(){
                   {this.state.input.map(element => element)}
                 </div>
               </div>
-<<<<<<< HEAD
             )}
 
             {/*ANADIR OTRA HABITACION*/}
@@ -216,28 +183,6 @@ addRoom(){
               {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
             </div>
-=======
-                {/*AGREGAR EDAD NINOS*/}
-              <div className='edadCLIENTES'>
-                <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
-              </div>
-              <div className='dad-reservHotelChild'>
-                {this.state.input.map(element => element)}
-              </div>
-          </div>
-            {/*ANADIR OTRA HABITACION*/}
-          <div>
-            {this.state.room.map(element=>element)}
-            <div className="removeHotel">
-              {this.state.room.length == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a >{this.state.room.length == true ? 'Eliminar' : ''}</a>
-            </div>
-            <div className='linkHotel'>
-              {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
-            </div>
-          </div>
->>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
             {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
@@ -250,11 +195,4 @@ addRoom(){
   }
 }
 
-<<<<<<< HEAD
-=======
-FormHotel.propTypes = {
-
-};
-
->>>>>>> 4a07c27efc6e3fd142c938ce037b477be8b3a3fe
 export default FormHotel;
