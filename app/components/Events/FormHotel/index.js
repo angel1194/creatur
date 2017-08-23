@@ -11,20 +11,23 @@ import {Icon} from './style'
 
 class FormHotel extends React.PureComponent {
   constructor(){
-    super();
+    super()
     this.state = {
       hotels:{},
       startDate:moment(),
       endDate:moment().add(1, "days"),
       input:[],
       room:{},
-      data:[{Room0:{}}]
+      data:[
+        {
+          Room1:{}
+        }
+      ]
     }
     this.request=this.request.bind(this)
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
     this.addChild=this.addChild.bind(this);
-    this.request=this.request.bind(this)
     this.addRooms=this.addRooms.bind(this)
   }
 
@@ -85,15 +88,16 @@ class FormHotel extends React.PureComponent {
   }
 
   addRooms(){
-    var state =  this.state
+    var state =  this.state.data
     var newRoom = {}
     newRoom[Date.now()] = {}
-    state.data.push(newRoom)
-    this.setState(state)
-    console.log(state);
+    this.setState({
+      data:state.concat(newRoom)
+    })
   }
 
   render() {
+    console.log('renderizando');
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
