@@ -67,7 +67,7 @@ class FormTransport extends React.PureComponent {
             <label htmlFor='boletos' className='fecha'>Boletos</label>
             <div className='selectFormSearchTransport'>
               <span className="input-group-addon-standar"><i className='fa fa-ticket'></i></span>
-              <input type="number" min="0" placeholder="0"/>
+              <input type="number" min="0" placeholder="0" />
             </div>
            </div>
          {/*BOTON BUSQUEDA*/}

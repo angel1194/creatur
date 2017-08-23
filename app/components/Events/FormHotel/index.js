@@ -73,7 +73,6 @@ class FormHotel extends React.PureComponent {
 
 addRoom(){
   const newRoom=[]
-
      newRoom.push(
        <div>
          <div className='lineRoom'/>
@@ -91,13 +90,8 @@ addRoom(){
            <input className="inputs" type="number"  max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
          </div>
        </div>
-
-
        </div>
-
      )
-
-
   this.setState({
     room:newRoom
   })
@@ -171,18 +165,19 @@ addRoom(){
               <div className='dad-reservHotelChild'>
                 {this.state.input.map(element => element)}
               </div>
-
           </div>
             {/*ANADIR OTRA HABITACION*/}
-            <div>
-              {this.state.room.map(element=>element)}
+          <div>
+            {this.state.room.map(element=>element)}
+            <div className="removeHotel">
+              {this.state.room.length == true ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a >{this.state.room.length == true ? 'Eliminar' : ''}</a>
             </div>
-          <div className='linkHotel'>
-           {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-           <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
+            <div className='linkHotel'>
+              {this.state.room.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a onClick={()=>this.addRoom()}>{this.state.room.length <= 2 ? 'Añadir otra habitación':''}</a>
+            </div>
           </div>
-
-
             {/*BOTON BUSQUEDA*/}
           <Grid.Row centered className='divButtonCar'>
             <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
@@ -194,19 +189,6 @@ addRoom(){
     );
   }
 }
-
-
-const AddInputs = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 11px;
-`;
-
-const Linee = styled.hr`
-  border: 1 pt solid #d2d2d2;
-  margin: 0;
-`;
 
 FormHotel.propTypes = {
 
