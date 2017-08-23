@@ -31,7 +31,8 @@ class FormHotel extends React.PureComponent {
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
     this.addChild=this.addChild.bind(this);
-    this.addRooms=this.addRooms.bind(this)
+    this.addRooms=this.addRooms.bind(this);
+    this.deleteRoom=this.deleteRoom.bind(this);
   }
 
   handleChange(date){
@@ -85,6 +86,7 @@ class FormHotel extends React.PureComponent {
 
   addRooms(){
     var state =  this.state.data
+    console.log(state);
     var newRoom = {}
     newRoom[Date.now()] = {}
     let states = state.concat(newRoom)
@@ -93,6 +95,16 @@ class FormHotel extends React.PureComponent {
     })
     console.log(states);
   }
+
+ deleteRoom(){
+   var state = this.state.data
+   state.splice(0,1)
+   console.log(state);
+   this.setState({
+     data:state
+   })
+
+ }
 
   render() {
     return (
@@ -154,6 +166,7 @@ class FormHotel extends React.PureComponent {
             {/*HUESPEDES*/}
             {this.state.data.map((room, i)=>
               <div key={i}>
+                {this.state.data.length > 1 ? <div className='lineRoom'></div> : ''}
                 <div className="dad-reservHotel">
                   <div className="childHotel">
                     <label htmlFor={'Adulto'+i}>Adultos</label>
@@ -175,13 +188,19 @@ class FormHotel extends React.PureComponent {
                 <div className='dad-reservHotelChild'>
                   {this.state.input.map(element => element)}
                 </div>
+                <div className="removeHotel">
+                 {this.state.data.length > 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
+                 <a onClick={()=>this.deleteRoom()}>{this.state.data.length > 1 ? 'Eliminar': ''}</a>
+                </div>
               </div>
             )}
 
             {/*ANADIR OTRA HABITACION*/}
-            <div className='linkHotel'>
+            <div>
+             <div className='linkHotel'>
               {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
+             </div>
             </div>
             {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
