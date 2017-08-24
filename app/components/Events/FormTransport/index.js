@@ -36,7 +36,7 @@ class FormTransport extends React.PureComponent {
              {/*FORM SALIDA */}
 
               <label htmlFor="checkin" className='salida'>Salida</label>
-              <SearchForm value='SIGLO XXI'/>
+              <SearchForm location='SIGLO XXI'/>
 
              {/*FECHA Y HORA  */}
             <div className='dateAndTime'>
