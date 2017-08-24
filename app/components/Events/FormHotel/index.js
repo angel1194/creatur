@@ -20,10 +20,7 @@ class FormHotel extends React.PureComponent {
       room:{},
       data:[
         {
-          Room1:{
-            key:1,
-            age:7
-          }
+          Room1:{}
         }
       ]
     }
@@ -55,13 +52,13 @@ class FormHotel extends React.PureComponent {
     let adult = this.refs.rooms.value
     let babys = this.refs.adult.value
     let rooms = this.state.data
-    console.log(event.target.elements);
+    // console.log(event.target.elements);
 
     let request = {
       checkin: checkin,
       checkout: checkout,
       rooms:[
-        rooms
+        {rooms}
       ]
     }
     console.log(request);
@@ -86,27 +83,28 @@ class FormHotel extends React.PureComponent {
 
   addRooms(){
     var state =  this.state.data
-    console.log(state);
     var newRoom = {}
     newRoom[Date.now()] = {}
     let states = state.concat(newRoom)
     this.setState({
       data:states
     })
-    console.log(states);
   }
 
  deleteRoom(){
-   var state = this.state.data
-   state.splice(0,1)
-   console.log(state);
-   this.setState({
-     data:state
-   })
-
+  const state = this.state.data
+  state.splice(0,1)
+  this.setState({
+    data:state
+  })
+  console.log(state);
  }
 
   render() {
+    const startDate = this.state.startDate.format('DD')
+    const endDate = this.state.endDate.format('DD')
+    let count = endDate-startDate
+    // console.log(this.state.data);
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -159,7 +157,7 @@ class FormHotel extends React.PureComponent {
                  </div>
                  <div className="bedHotel">
                    <img src={Cama}/>
-                   <h4>4 noches</h4>
+                   <h4>{count} noches</h4>
                  </div>
                </div>
              </div>
@@ -190,7 +188,7 @@ class FormHotel extends React.PureComponent {
                 </div>
                 <div className="removeHotel">
                  {this.state.data.length > 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
-                 <a onClick={()=>this.deleteRoom()}>{this.state.data.length > 1 ? 'Eliminar': ''}</a>
+                 <a onClick={this.deleteRoom}>{this.state.data.length > 1 ? 'Eliminar': ''}</a>
                 </div>
               </div>
             )}
