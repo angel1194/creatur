@@ -13,7 +13,7 @@ class SearchForm extends React.PureComponent {
        <div className='gridCenter'>
         <div className='selectFormSearch'>
          <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
-         <input type="text" value={this.props.value}/>
+         <input type="text" value={this.props.location}/>
         </div>
        </div>
       </Grid>
