@@ -20,10 +20,7 @@ class FormHotel extends React.PureComponent {
       room:{},
       data:[
         {
-          Room1:{
-            key:1,
-            age:7
-          }
+          Room1:{}
         }
       ]
     }
@@ -31,7 +28,8 @@ class FormHotel extends React.PureComponent {
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
     this.addChild=this.addChild.bind(this);
-    this.addRooms=this.addRooms.bind(this)
+    this.addRooms=this.addRooms.bind(this);
+    this.deleteRoom=this.deleteRoom.bind(this);
   }
 
   handleChange(date){
@@ -54,13 +52,13 @@ class FormHotel extends React.PureComponent {
     let adult = this.refs.rooms.value
     let babys = this.refs.adult.value
     let rooms = this.state.data
-    console.log(event.target.elements);
+    // console.log(event.target.elements);
 
     let request = {
       checkin: checkin,
       checkout: checkout,
       rooms:[
-        rooms
+        {rooms}
       ]
     }
     console.log(request);
@@ -91,10 +89,22 @@ class FormHotel extends React.PureComponent {
     this.setState({
       data:states
     })
-    console.log(states);
   }
 
+ deleteRoom(){
+  const state = this.state.data
+  state.splice(0,1)
+  this.setState({
+    data:state
+  })
+  console.log(state);
+ }
+
   render() {
+    const startDate = this.state.startDate.format('DD')
+    const endDate = this.state.endDate.format('DD')
+    let count = endDate-startDate
+    // console.log(this.state.data);
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -147,13 +157,14 @@ class FormHotel extends React.PureComponent {
                  </div>
                  <div className="bedHotel">
                    <img src={Cama}/>
-                   <h4>4 noches</h4>
+                   <h4>{count} noches</h4>
                  </div>
                </div>
              </div>
             {/*HUESPEDES*/}
             {this.state.data.map((room, i)=>
               <div key={i}>
+                {this.state.data.length > 1 ? <div className='lineRoom'></div> : ''}
                 <div className="dad-reservHotel">
                   <div className="childHotel">
                     <label htmlFor={'Adulto'+i}>Adultos</label>
@@ -175,13 +186,19 @@ class FormHotel extends React.PureComponent {
                 <div className='dad-reservHotelChild'>
                   {this.state.input.map(element => element)}
                 </div>
+                <div className="removeHotel">
+                 {this.state.data.length > 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
+                 <a onClick={this.deleteRoom}>{this.state.data.length > 1 ? 'Eliminar': ''}</a>
+                </div>
               </div>
             )}
 
             {/*ANADIR OTRA HABITACION*/}
-            <div className='linkHotel'>
+            <div>
+             <div className='linkHotel'>
               {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
+             </div>
             </div>
             {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
