@@ -50,12 +50,7 @@ const Form= styled.form`
 class Admin extends Component { // eslint-disable-line react/prefer-stateless-function
 
   componentWillMount(){
-    firebase.auth().onAuthStateChanged((user)=>{
-      if (user) {
-        // browserHistory.push('/manzanero')
-        console.log('log');
-      }
-    })
+      firebase.auth().signOut();
   }
 
   submitForm(e){
@@ -65,17 +60,17 @@ class Admin extends Component { // eslint-disable-line react/prefer-stateless-fu
     const auth=firebase.auth()
 
     const promise = auth.signInWithEmailAndPassword(email,password)
-    promise.catch(e => console.log(e.message))
+    promise.catch(e => alert(e.message))
 
     firebase.auth().onAuthStateChanged(firebaseUser=>{
       if(firebaseUser){
-        console.log(firebaseUser);
+        browserHistory.push('/manzanero/admin/hotels')
       }else{
-        console.log('No se pudo logear');
+        browserHistory.push('/manzanero/admin')
       }
     })
-
   }
+
   render() {
     return (
       <Container>
