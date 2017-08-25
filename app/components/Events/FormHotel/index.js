@@ -17,7 +17,6 @@ class FormHotel extends React.PureComponent {
       startDate:moment(),
       endDate:moment().add(1, "days"),
       input:[],
-      room:1,
       data:[
         {
           Room1:{}
@@ -30,6 +29,7 @@ class FormHotel extends React.PureComponent {
     this.addChild=this.addChild.bind(this);
     this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
+    this.filterInput=this.filterInput.bind(this);
   }
 
   handleChange(date){
@@ -97,7 +97,6 @@ class FormHotel extends React.PureComponent {
   this.setState({
     data:state
   })
-  console.log(state);
  }
 
   render() {
@@ -176,7 +175,7 @@ class FormHotel extends React.PureComponent {
                   </div>
                   <div className="childHotel">
                     <label htmlFor={'Ninos'+i}>Niños</label>
-                    <input className="inputs" type="number"  id={'Ninos'+i} max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child'/>
+                    <input className="inputs" type="number"  id={'Ninos'+i} min='0' max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child' />
                   </div>
                 </div>
                   {/*AGREGAR EDAD NINOS*/}
