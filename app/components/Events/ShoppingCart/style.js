@@ -75,4 +75,9 @@ const Cart = styled.div`
   padding: 0px 5px 0px 5px;
 `;
 
-export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart};
+const ContainerItem = styled.div`
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, ContainerItem};

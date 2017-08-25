@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import { Link } from 'react-router';
-import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen} from './style';
-
+import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, ContainerItem} from './style';
+import Itemcar from '../Itemcar';
 
 class ShoppingCart extends Component {
   render() {
@@ -19,6 +19,11 @@ class ShoppingCart extends Component {
             <Subtitle>Para agregar una reservacion a tu carrito,
               empieza por buscar y navegar a traves de las reservaciones que desee.
               Cuando encuentres algo que te guste, da clic al botón...</Subtitle>
+             <ContainerItem>
+              <Itemcar id='1'/>
+               <Itemcar id='2'/>
+
+            </ContainerItem>
               <ContainerButtonGreen>
                 <ButtonGreen>
                   Añadir al carrito

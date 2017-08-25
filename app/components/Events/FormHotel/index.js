@@ -29,7 +29,6 @@ class FormHotel extends React.PureComponent {
     this.addChild=this.addChild.bind(this);
     this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
-    this.filterInput=this.filterInput.bind(this);
   }
 
   handleChange(date){
