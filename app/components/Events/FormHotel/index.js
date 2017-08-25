@@ -17,7 +17,6 @@ class FormHotel extends React.PureComponent {
       startDate:moment(),
       endDate:moment().add(1, "days"),
       input:[],
-      room:{},
       data:[
         {
           Room1:{}
@@ -98,7 +97,6 @@ class FormHotel extends React.PureComponent {
   this.setState({
     data:state
   })
-  console.log(state);
  }
 
   render() {
