@@ -17,7 +17,7 @@ class FormHotel extends React.PureComponent {
       startDate:moment(),
       endDate:moment().add(1, "days"),
       input:[],
-      room:{},
+      room:1,
       data:[
         {
           Room1:{}
@@ -71,7 +71,7 @@ class FormHotel extends React.PureComponent {
         <div key={i} id={'id'+i} name={'age'+i} className='section-dad'>
           <div className='section-child'>
            <label htmlFor={'Menor'+i}>Menor {i}</label>
-           <input className='inputs' type="number" max='17' min='0' id={'Menor'+i}/>
+           <input className='inputs' name={'Menor'+i} type="number" max='17' min='0' id={i+'Menor'} />
           </div>
         </div>
       )
@@ -93,7 +93,7 @@ class FormHotel extends React.PureComponent {
 
  deleteRoom(){
   const state = this.state.data
-  let remove = state.splice(0,1)
+  let remove = state.pop()
   this.setState({
     data:state
   })
@@ -163,7 +163,7 @@ class FormHotel extends React.PureComponent {
              </div>
             {/*HUESPEDES*/}
             {this.state.data.map((room, i)=>
-              <div key={i} id={'id'+i} name={'room'+i}>
+              <div key={i} id={'id'+i} name={i}>
                 {i >= 1 ? <div className='lineRoom'></div> : ''}
                 <div className="dad-reservHotel">
                   <div className="childHotel">
@@ -184,7 +184,7 @@ class FormHotel extends React.PureComponent {
                   <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
                 </div>
                 <div className='dad-reservHotelChild'>
-                  {this.state.input.map((element, i) => element)}
+                  {this.state.input.map((element) => element)}
                 </div>
                 <div className="removeHotel">
                  {i >= 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
