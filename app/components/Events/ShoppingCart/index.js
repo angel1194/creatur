@@ -22,7 +22,6 @@ class ShoppingCart extends Component {
              <ContainerItem>
               <Itemcar id='1'/>
                <Itemcar id='2'/>
-
             </ContainerItem>
               <ContainerButtonGreen>
                 <ButtonGreen>

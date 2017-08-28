@@ -155,7 +155,7 @@ class FormHotel extends React.PureComponent {
                  </div>
                  <div className="bedHotel">
                    <img src={Cama}/>
-                   <h4>{count} noches</h4>
+                   <h4>{count < 0 ? '0' : count} noches</h4>
                  </div>
                </div>
              </div>

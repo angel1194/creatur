@@ -19,7 +19,6 @@ class Itemcar extends React.PureComponent { // eslint-disable-line react/prefer-
           <div className='icon-person'>
             <span className='item-person'><i className='fa fa-male'></i></span>
             <span className='item-person'><i className='fa fa-male'></i></span>
-
           </div>
           <div className='item-fecha'>
             <span className='icon-fechain'><i className='fa fa-sign-in'></i></span>
@@ -40,7 +39,6 @@ class Itemcar extends React.PureComponent { // eslint-disable-line react/prefer-
             <span className='fa fa-trash'></span>
           </div>
         </div>
-
       </div>
     );
   }
