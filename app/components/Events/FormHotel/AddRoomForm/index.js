@@ -13,7 +13,7 @@ class AddRoomForm extends React.Component {
 
   addAgeInput(e){
     let input = []
-    e.currentTarget.value = (e.currentTarget.value < 0) ? 0 : e.currentTarget.value;
+    // e.currentTarget.value = (e.currentTarget.value < 0) ? 0 : e.currentTarget.value;
     let currentValue = e.currentTarget.value
     for (let i = 1; i <= currentValue; i++) {
       input.push(<InputKids key={i} Menor={i} name={this.props.count}/>)
@@ -38,7 +38,7 @@ class AddRoomForm extends React.Component {
           </div>
           <div className="childHotel">
             <label htmlFor={'Ninos'+this.props.count}>Niños</label>
-            <input className="inputs" id={'Ninos'+this.props.count} onChange={this.addAgeInput} type="number" max="2" placeholder="0" name={'Ninos'+this.props.count}/>
+            <input className="inputs" id={'Ninos'+this.props.count} onChange={this.addAgeInput} type="number" min="0" max="2" placeholder="0" name={'Ninos'+this.props.count}/>
           </div>
         </div>
         <div className="edadCLIENTES">

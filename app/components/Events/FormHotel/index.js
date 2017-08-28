@@ -1,4 +1,4 @@
-import React, {propTypes} from 'react';
+import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
@@ -10,13 +10,24 @@ import Cama from './cama.png';
 import AddRoomForm from './AddRoomForm'
 import InputKids from './InputKids';
 
-class FormHotel extends React.PureComponent {
+class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       startDate:moment(),
       endDate:moment().add(1, "days"),
-      data:{Room0:{adult:0, cuna:0}}
+      data:{Room0:{adult:0, cuna:0}},
+      request:{
+        checkin: '',
+        checkout: '',
+        rooms:{
+          room0:{
+            adult:0,
+            baby:0,
+            child:{}
+          }
+        }
+      }
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
@@ -36,14 +47,21 @@ class FormHotel extends React.PureComponent {
     })
   }
 
+  inputValueChange(){
+
+  }
+
   addRooms(){
     const state = this.state.data
-    state[Date.now()] = {adult:0, cuna:0}
+    const rooms =this.state.request.rooms
+    state[Date.now()] = {adult:0, cuna:0,child:{}}
+    rooms[Date.now()] = {adult:0, cuna:0,child:{}}
     this.setState(state)
+    this.setState(rooms)
   }
 
  deleteRoom(e){
-   const state = this.state.data
+   var state = this.state.data
    delete state[e]
    this.setState(state)
    console.log(e);
@@ -52,32 +70,47 @@ class FormHotel extends React.PureComponent {
  request(event){
    event.preventDefault()
 
-   let location = document.getElementById('location').value
+   let location = event.target.elements['location'].value
    let checkin = this.state.startDate.format('YYYY-MM-DD')
    let checkout = this.state.endDate.format('YYYY-MM-DD')
+   let adult = event.target.elements['Adulto0'].value
+   let cradle = event.target.elements['Cuna0'].value
+   let age1 = event.target.elements['1Menor0'].value
+   let age2 = event.target.elements['2Menor0'].value
    let rooms = this.state.data
-   console.log('evento',event.target.elements['Ninos1'].value);
+  //  console.log('evento',event.target.elements['Adulto0'].value);
+  //  console.log(event.target.elements);
 
    let request = {
-     location: location,
      checkin: checkin,
      checkout: checkout,
-     rooms
+     rooms:{
+       room0:{
+         adult:adult,
+         baby:cradle,
+         child:{
+          //  age1:age1,
+          //  age2:age2
+         }
+       }
+     }
    }
 
-   fetch('',{
-      method: 'post',
-      body: JSON.stringify(request)
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((recurso) => {
-      console.log(recurso);
-    })
+  //  fetch('',{
+  //     method: 'post',
+  //     body: JSON.stringify(request)
+  //   })
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((recurso) => {
+  //     console.log(recurso);
+  //   })
+    console.log(request);
  }
 
   render() {
+    console.log(this.state.request);
     let data = Object.keys(this.state.data)
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
@@ -144,7 +177,6 @@ class FormHotel extends React.PureComponent {
                                     key={i}
                                     count={i}
                                     delete={this.deleteRoom}
-                                    id={'Adulto'+i}
                                     object={key}
                                   />)}
             {/*ANADIR OTRA HABITACION*/}
@@ -165,9 +197,5 @@ class FormHotel extends React.PureComponent {
     );
   }
 }
-
-FormHotel.propTypes = {
-
-};
 
 export default FormHotel;
