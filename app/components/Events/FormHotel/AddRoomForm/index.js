@@ -49,7 +49,7 @@ class AddRoomForm extends React.Component {
         </AddInputs>
         <div className="removeHotel">
           {this.props.count >= 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i> : ''}
-          <a onClick={()=> this.props.delete()}>{this.props.count >= 1 ? 'Eliminar' : ''}</a>
+          <a onClick={()=> this.props.delete(this.props.object)}>{this.props.count >= 1 ? 'Eliminar' : ''}</a>
         </div>
       </div>
     );

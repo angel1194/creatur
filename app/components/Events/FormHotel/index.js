@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {propTypes} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
@@ -11,20 +11,15 @@ import AddRoomForm from './AddRoomForm'
 import InputKids from './InputKids';
 
 class FormHotel extends React.PureComponent {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       startDate:moment(),
       endDate:moment().add(1, "days"),
-      data:[
-        {
-          Room1:{}
-        }
-      ],
+      data:{Room0:{adult:0, cuna:0}}
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
-    this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
     this.request=this.request.bind(this);
   }
@@ -42,42 +37,48 @@ class FormHotel extends React.PureComponent {
   }
 
   addRooms(){
-    let state =  this.state.data
-    let newRoom = {}
-    newRoom[Date.now()] = {}
-    let states = state.concat(newRoom)
-    this.setState({
-      data:states
-    })
-    console.log(state);
+    const state = this.state.data
+    state[Date.now()] = {adult:0, cuna:0}
+    this.setState(state)
   }
 
- deleteRoom(){
-  const state = this.state.data
-  
+ deleteRoom(e){
+   const state = this.state.data
+   delete state[e]
+   this.setState(state)
+   console.log(e);
  }
 
  request(event){
    event.preventDefault()
 
+   let location = document.getElementById('location').value
    let checkin = this.state.startDate.format('YYYY-MM-DD')
    let checkout = this.state.endDate.format('YYYY-MM-DD')
-   let adult = this.refs.rooms.value
-   let babys = this.refs.adult.value
    let rooms = this.state.data
-   // console.log(event.target.elements);
+   console.log('evento',event.target.elements['Ninos1'].value);
 
    let request = {
+     location: location,
      checkin: checkin,
      checkout: checkout,
-     rooms:[
-       {rooms}
-     ]
+     rooms
    }
-   console.log(request);
+
+   fetch('',{
+      method: 'post',
+      body: JSON.stringify(request)
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((recurso) => {
+      console.log(recurso);
+    })
  }
 
   render() {
+    let data = Object.keys(this.state.data)
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
@@ -90,7 +91,7 @@ class FormHotel extends React.PureComponent {
             <Grid>
               <div className='containerFormHotel'>
                {/*FORM LOCATION */}
-                <SearchForm location="Merida"/>
+                <SearchForm location="Merida" idLocation='location'/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -139,16 +140,18 @@ class FormHotel extends React.PureComponent {
                </div>
              </div>
             {/*HUESPEDES*/}
-            {this.state.data.map((room, i)=><AddRoomForm
-                                              key={i}
-                                              count={i}
-                                              delete={this.deleteRoom}
-                                            />)}
+            {data.map((key, i)=><AddRoomForm
+                                    key={i}
+                                    count={i}
+                                    delete={this.deleteRoom}
+                                    id={'Adulto'+i}
+                                    object={key}
+                                  />)}
             {/*ANADIR OTRA HABITACION*/}
             <div>
              <div className='linkHotel'>
-              {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
+              {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a onClick={()=>this.addRooms()}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
             {/*BOTON BUSQUEDA*/}
@@ -162,5 +165,9 @@ class FormHotel extends React.PureComponent {
     );
   }
 }
+
+FormHotel.propTypes = {
+
+};
 
 export default FormHotel;
