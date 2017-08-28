@@ -288,6 +288,19 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       }
     },
+    {
+      path: '/manzanero/admin/hotels',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Events/AdminHotels'),
+        ]);
+        const renderRoute = loadModule(cb);
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+        importModules.catch(errorLoading);
+      }
+    },
     //ruta de hoteles para eventos
     {
       path: '/manzanero/hotels',

@@ -45,13 +45,15 @@ function InputIcon(props) {
       <IconInput>
         <FontAwesome name={props.name} />
       </IconInput>
-      <Input type={props.type} placeholder={props.placeholder}/>
+      <Input name={props.inputName} id={props.inputId} type={props.type} placeholder={props.placeholder} />
     </ContainerInput>
   );
 }
 
 InputIcon.propTypes = {
   name:PropTypes.string,
+  inputName:PropTypes.string,
+  inputId:PropTypes.string,
   type:PropTypes.string,
   placeholder:PropTypes.string,
 };

@@ -1,47 +1,87 @@
 import React,{Component} from 'react';
 import { browserHistory } from 'react-router';
 import styled from 'styled-components'
-import firebaseApp from '../Firebase'
-
+import firebase from '../Firebase'
+import InputIcon from '../../../components/InputIcon'
 
 const Container =styled.div`
   width:70%;
   margin:0 auto;
+  display:flex;
+  flex-direction:row;
+  justify-content:center
 `;
+
+const BoxLogIn= styled.div`
+  width:350px;
+  height:300px;
+  box-shadow:-1px -1px 15px black;
+  border-radius:6px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:20px;
+`;
+
+const Title= styled.span`
+  font-size:20px;
+  font-family:Montserrat;
+`;
+
+const Button =styled.button`
+  width:100px;
+  height:50px;
+  background-color:#2b5bac;
+  box-shadow:1px 1px 8px #000;
+  color:white;
+`;
+
+const Form= styled.form`
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap
+  justify-content:center;
+`;
+
+// const logIn = firebase.auth()
 
 class Admin extends Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentDidMount(){
-    let database=firebaseApp.database().ref();
-    database.on('value', (snap) => {
-        console.log(snap.val());
-      })
-    // firebaseApp.auth().onAuthStateChanged(user => {
-    //   if (user) {
-    //     console.log(user);
-    //     browserHistory.push('/manzanero/');
-    //   }
-    // });
+  componentWillMount(){
+      firebase.auth().signOut();
   }
 
+  submitForm(e){
+    e.preventDefault()
+    let email = e.target.elements['email'].value;
+    let password = e.target.elements['password'].value;
+    const auth=firebase.auth()
 
-  logIn(){
-    var provider = new firebaseApp.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-    firebase.auth().signInWithPopup(provider)
-    .then(result => {
-      console.log(result);
+    const promise = auth.signInWithEmailAndPassword(email,password)
+    promise.catch(e => alert(e.message))
+
+    firebase.auth().onAuthStateChanged(firebaseUser=>{
+      if(firebaseUser){
+        browserHistory.push('/manzanero/admin/hotels')
+      }else{
+        browserHistory.push('/manzanero/admin')
+      }
     })
   }
-
 
   render() {
     return (
       <Container>
-        <button onClick={this.logIn.bind(this)}>
-          Login with Google
-        </button>
+        <BoxLogIn>
+          <Form onSubmit={this.submitForm.bind(this)}>
+            <Title>Iniciar Sesion</Title>
+            <InputIcon inputName='email' inputId='email'  name='user-circle' type='email' placeholder='Ingrese correo....'/>
+            <InputIcon inputName='password' inputId='password'  name='lock' type='password' placeholder='XXX....'/>
+            <Button>LogIn</Button>
+          </Form>
+        </BoxLogIn>
       </Container>
     );
   }
