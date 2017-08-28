@@ -19,6 +19,7 @@ const ContainerButton = styled.div`
   &.iconButton:hover{
     background-color:#0080FF;
     color:white;
+    cursor:pointer
   }
 `;
 

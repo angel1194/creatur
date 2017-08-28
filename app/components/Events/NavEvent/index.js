@@ -7,10 +7,12 @@ const ContainerNav = styled.div`
   width:14%;
   height:700px;
   display:flex;
-  flex-direction:column;
+  flex-direction:row;
+  justify-content:center;
   border-right:1px solid #ccc;
   background-color: #fff;
 `;
+
 /*Componentes del header del nav lateral*/
 const Header = styled.div`
   width:100%;
@@ -40,20 +42,17 @@ const linkStyle ={
   width:'90%'
 }
 
+
 function NavEvent(props)  {
   return (
-    <ContainerNav>
-      {/*<Header>
-        <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
-      </Header>*/}
-      <Body>
-        <Link style={linkStyle} to=''><IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} /></Link>
-        <Link style={linkStyle} to=''><IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} /></Link>
-        <Link style={linkStyle} to=''><IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} /></Link>
-        <Link style={linkStyle} to=''><IconLabel Text='Sales' Icon='history ' setComponent={props.setComponent} /></Link>
-      </Body>
-
-    </ContainerNav>
+      <ContainerNav>
+        <Body>
+          <IconLabel Text='Hotel' Icon='building'  />
+          <Link style={linkStyle} to=''><IconLabel Text='Transporte' Icon='car' /></Link>
+          <Link style={linkStyle} to=''><IconLabel Text='Tickets' Icon='ticket'  /></Link>
+          <Link style={linkStyle} to=''><IconLabel Text='Sales' Icon='history' /></Link>
+        </Body>
+      </ContainerNav>
   );
 }
 
