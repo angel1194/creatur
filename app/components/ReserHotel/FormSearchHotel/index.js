@@ -78,7 +78,6 @@ class FormSearchHotel extends React.Component {
           <Grid>
             <div className='containerFormHotel'>
               {this.props.input ? <SearchForm value='MERIDA'/>:<FormAutocomplete placeholder='Destino, hotel, lugar de interés' setLocation={this.props.setLocation} type={this.props.type}/>}
-
               <div className='searchMap'>
                 <div>
                   <a id='search' href=''>

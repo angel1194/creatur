@@ -9,4 +9,19 @@ const Icon = {
   marginLeft: '8px'
 }
 
-export {Icon};
+const Line = styled.div`
+  background-color: #70a0ec;
+  width: 80%;
+  height: 3px;
+  margin: auto;
+  margin-bottom: 5px;
+`;
+
+const AddInputs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 17px;
+`;
+
+export {Icon, Line, AddInputs};

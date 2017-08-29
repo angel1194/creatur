@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
@@ -7,28 +7,30 @@ import SearchForm from '../../Events/SearchForm';
 import {Grid, Header} from  'semantic-ui-react';
 import ButtonFormSearch from '../ButtonFormSearch';
 import Cama from './cama.png';
-import {Icon} from './style'
+import AddRoomForm from './AddRoomForm'
+import InputKids from './InputKids';
 
-class FormHotel extends React.PureComponent {
-  constructor(){
-    super()
+class FormHotel extends React.Component {
+  constructor(props){
+    super(props)
     this.state = {
-      hotels:{},
       startDate:moment(),
       endDate:moment().add(1, "days"),
-      input:[],
-      data:[
-        {
-          Room1:{}
+      rooms:{
+        room0:{
+          adult:0,
+          baby:0,
+          child:{}
         }
-      ]
+      }
+
     }
-    this.request=this.request.bind(this)
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
-    this.addChild=this.addChild.bind(this);
-    this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
+    this.request=this.request.bind(this);
+    this.inputValueChange= this.inputValueChange.bind(this);
+    this.addRooms=this.addRooms.bind(this);
   }
 
   handleChange(date){
@@ -43,66 +45,62 @@ class FormHotel extends React.PureComponent {
     })
   }
 
-  request(event){
-    event.preventDefault()
-
-    let checkin = this.state.startDate.format('YYYY-MM-DD')
-    let checkout = this.state.endDate.format('YYYY-MM-DD')
-    let adult = this.refs.rooms.value
-    let babys = this.refs.adult.value
-    let rooms = this.state.data
-    // console.log(event.target.elements);
-
-    let request = {
-      checkin: checkin,
-      checkout: checkout,
-      rooms:[
-        {rooms}
-      ]
-    }
-    console.log(request);
-  }
-
-  addChild(e){
-     const input=[]
-     for (var i = 1; i <= e; i++) {
-      input.push(
-        <div key={i} id={'id'+i} name={'age'+i} className='section-dad'>
-          <div className='section-child'>
-           <label htmlFor={'Menor'+i}>Menor {i}</label>
-           <input className='inputs' name={'Menor'+i} type="number" max='17' min='0' id={i+'Menor'} />
-          </div>
-        </div>
-      )
-    }
+  inputValueChange(father,input){
+    let name = input.target.name
+    let value= input.target.value
+    const rooms = this.state.rooms
+    rooms[father][name]=value
     this.setState({
-      input:input
+      rooms:rooms
     })
   }
 
   addRooms(){
-    var state =  this.state.data
-    var newRoom = {}
-    newRoom[Date.now()] = {}
-    let states = state.concat(newRoom)
+    const rooms =this.state.rooms
+    rooms[Date.now()] = {adult:0, baby:0,child:{}}
     this.setState({
-      data:states
+      rooms:rooms
     })
   }
 
- deleteRoom(){
-  const state = this.state.data
-  let remove = state.pop()
-  this.setState({
-    data:state
-  })
+ deleteRoom(e){
+   var state = this.state.rooms
+   delete state[e]
+   this.setState(state)
+ }
+
+ request(event){
+   event.preventDefault()
+
+   let checkin = this.state.startDate.format('YYYY-MM-DD')
+   let checkout = this.state.endDate.format('YYYY-MM-DD')
+   let rooms = this.state.rooms
+
+   let request = {
+     checkin: checkin,
+     checkout: checkout,
+     rooms
+   }
+
+  //  fetch('',{
+  //     method: 'post',
+  //     body: JSON.stringify(request)
+  //   })
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((recurso) => {
+  //     console.log(recurso);
+  //   })
+    console.log(request);
  }
 
   render() {
+    let data = Object.keys(this.state.rooms)
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
-    // console.log(this.state.data);
+
     return (
       <div id='inputSearchDisplay'>
         <form onSubmit={this.request}>
@@ -111,7 +109,7 @@ class FormHotel extends React.PureComponent {
             <Grid>
               <div className='containerFormHotel'>
                {/*FORM LOCATION */}
-                <SearchForm location="Merida"/>
+                <SearchForm location="Merida" idLocation='location'/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -160,41 +158,18 @@ class FormHotel extends React.PureComponent {
                </div>
              </div>
             {/*HUESPEDES*/}
-            {this.state.data.map((room, i)=>
-              <div key={i} id={'id'+i} name={i}>
-                {i >= 1 ? <div className='lineRoom'></div> : ''}
-                <div className="dad-reservHotel">
-                  <div className="childHotel">
-                    <label htmlFor={'Adulto'+i}>Adultos</label>
-                    <input className="inputs" type="number" id={'Adulto'+i} min="0" placeholder="0" ref='rooms'/>
-                  </div>
-                  <div className="childHotel">
-                    <label htmlFor={'Cuna'+i}>Cunas</label>
-                    <input className="inputs" type="number" id={'Cuna'+i} min="0" placeholder="0" ref='adult'/>
-                  </div>
-                  <div className="childHotel">
-                    <label htmlFor={'Ninos'+i}>Niños</label>
-                    <input className="inputs" type="number"  id={'Ninos'+i} min='0' max='2' placeholder="0" onChange={(e)=>this.addChild(e.target.value)} ref='child' />
-                  </div>
-                </div>
-                  {/*AGREGAR EDAD NINOS*/}
-                <div className='edadCLIENTES'>
-                  <p className='childYears'>{this.state.input <= 0 ? '' : 'Edad de los menores'}</p>
-                </div>
-                <div className='dad-reservHotelChild'>
-                  {this.state.input.map((element) => element)}
-                </div>
-                <div className="removeHotel">
-                 {i >= 1 ? <i className="fa fa-minus-circle fa-lg" aria-hidden="true"></i>:''}
-                 <a onClick={this.deleteRoom}>{i >= 1 ? 'Eliminar': ''}</a>
-                </div>
-              </div>
-            )}
+            {data.map((key, i)=><AddRoomForm
+                                    key={i}
+                                    count={i}
+                                    inputValueChange={this.inputValueChange}
+                                    delete={this.deleteRoom}
+                                    object={key}
+                                  />)}
             {/*ANADIR OTRA HABITACION*/}
             <div>
              <div className='linkHotel'>
-              {this.state.data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a onClick={() => this.addRooms()}>{this.state.data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
+              {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
+              <a onClick={this.addRooms}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
             {/*BOTON BUSQUEDA*/}

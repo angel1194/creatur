@@ -30,6 +30,14 @@ const state = {
       location:'Mérida',
       key:'003',
     }
+  },
+  transport:{
+    '001':{
+      location:'',
+      date:'',
+      ticket:'',
+      key:'',
+    }
   }
 }
 
