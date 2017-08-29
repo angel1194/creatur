@@ -14,8 +14,8 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment(),
-      endDate:moment().add(1, "days"),
+      startDate:moment("2017-09-16"),
+      endDate:moment("2017-09-16").add(1, "days"),
       rooms:{
         room0:{
           adult:0,
@@ -128,11 +128,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                        //  openToDate={moment("1993-09-28")}
+                         id="checkin"
                          selected={this.state.startDate}
                          onChange={this.handleChange}
-                         minDate={moment().subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment("2017-09-16").subtract(3, "days")}
+                         maxDate={moment("2017-09-16").add(3, "days")}
                        />
                      </div>
                    </div>
@@ -143,10 +143,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
+                         id="checkout"
                          selected={this.state.endDate}
                          onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate).subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment(this.state.startDate)}
+                         maxDate={moment("2017-09-16").add(3, "days")}
                        />
                      </div>
                    </div>
