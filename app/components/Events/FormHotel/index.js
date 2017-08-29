@@ -16,23 +16,20 @@ class FormHotel extends React.Component {
     this.state = {
       startDate:moment(),
       endDate:moment().add(1, "days"),
-      data:{Room0:{adult:0, cuna:0}},
-      request:{
-        checkin: '',
-        checkout: '',
-        rooms:{
-          room0:{
-            adult:0,
-            baby:0,
-            child:{}
-          }
+      rooms:{
+        room0:{
+          adult:0,
+          baby:0,
+          child:{}
         }
       }
+
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
     this.request=this.request.bind(this);
+    this.inputValueChange= this.inputValueChange.bind(this);
   }
 
   handleChange(date){
@@ -47,17 +44,22 @@ class FormHotel extends React.Component {
     })
   }
 
-  inputValueChange(){
-
+  inputValueChange(father,input){
+    let name = input.target.name
+    let value= input.target.value
+    const rooms = this.state.rooms
+    rooms[father][name]=value
+    this.setState({
+      rooms:rooms
+    })
   }
 
   addRooms(){
-    const state = this.state.data
-    const rooms =this.state.request.rooms
-    state[Date.now()] = {adult:0, cuna:0,child:{}}
-    rooms[Date.now()] = {adult:0, cuna:0,child:{}}
-    this.setState(state)
-    this.setState(rooms)
+    const rooms =this.state.rooms
+    rooms[Date.now()] = {adult:0, baby:0,child:{}}
+    this.setState({
+      rooms:rooms
+    })
   }
 
  deleteRoom(e){
@@ -70,31 +72,31 @@ class FormHotel extends React.Component {
  request(event){
    event.preventDefault()
 
-   let location = event.target.elements['location'].value
-   let checkin = this.state.startDate.format('YYYY-MM-DD')
-   let checkout = this.state.endDate.format('YYYY-MM-DD')
-   let adult = event.target.elements['Adulto0'].value
-   let cradle = event.target.elements['Cuna0'].value
-   let age1 = event.target.elements['1Menor0'].value
-   let age2 = event.target.elements['2Menor0'].value
-   let rooms = this.state.data
-  //  console.log('evento',event.target.elements['Adulto0'].value);
-  //  console.log(event.target.elements);
-
-   let request = {
-     checkin: checkin,
-     checkout: checkout,
-     rooms:{
-       room0:{
-         adult:adult,
-         baby:cradle,
-         child:{
-          //  age1:age1,
-          //  age2:age2
-         }
-       }
-     }
-   }
+  //  let location = event.target.elements['location'].value
+  //  let checkin = this.state.startDate.format('YYYY-MM-DD')
+  //  let checkout = this.state.endDate.format('YYYY-MM-DD')
+  //  let adult = event.target.elements['Adulto0'].value
+  //  let cradle = event.target.elements['Cuna0'].value
+  //  let age1 = event.target.elements['1Menor0'].value
+  //  let age2 = event.target.elements['2Menor0'].value
+  //  let rooms = this.state.data
+  // //  console.log('evento',event.target.elements['Adulto0'].value);
+  // //  console.log(event.target.elements);
+  //
+  //  let request = {
+  //    checkin: checkin,
+  //    checkout: checkout,
+  //    rooms:{
+  //      room0:{
+  //        adult:adult,
+  //        baby:cradle,
+  //        child:{
+  //         //  age1:age1,
+  //         //  age2:age2
+  //        }
+  //      }
+  //    }
+  //  }
 
   //  fetch('',{
   //     method: 'post',
@@ -106,12 +108,11 @@ class FormHotel extends React.Component {
   //   .then((recurso) => {
   //     console.log(recurso);
   //   })
-    console.log(request);
+    // console.log(request);
  }
 
   render() {
-    console.log(this.state.request);
-    let data = Object.keys(this.state.data)
+    let data = Object.keys(this.state.rooms)
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
@@ -176,6 +177,7 @@ class FormHotel extends React.Component {
             {data.map((key, i)=><AddRoomForm
                                     key={i}
                                     count={i}
+                                    inputValueChange={this.inputValueChange}
                                     delete={this.deleteRoom}
                                     object={key}
                                   />)}

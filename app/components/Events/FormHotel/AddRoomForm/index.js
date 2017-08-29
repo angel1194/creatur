@@ -30,11 +30,11 @@ class AddRoomForm extends React.Component {
         <div className="dad-reservHotel">
           <div className="childHotel">
             <label htmlFor={'Adulto'+this.props.count}>Adultos</label>
-            <input className="inputs" id={'Adulto'+this.props.count} type="number" min="0" placeholder="0" name={'Adulto'+this.props.count}/>
+            <input className="inputs" id={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='adult'/>
           </div>
           <div className="childHotel">
             <label htmlFor={'Cuna'+this.props.count}>Cunas</label>
-            <input className="inputs" id={'Cuna'+this.props.count} type="number" min="0" placeholder="0" name={'Cuna'+this.props.count}/>
+            <input className="inputs" id={'Cuna'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='baby'/>
           </div>
           <div className="childHotel">
             <label htmlFor={'Ninos'+this.props.count}>Niños</label>
