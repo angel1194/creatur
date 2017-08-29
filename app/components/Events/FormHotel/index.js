@@ -30,6 +30,7 @@ class FormHotel extends React.Component {
     this.deleteRoom=this.deleteRoom.bind(this);
     this.request=this.request.bind(this);
     this.inputValueChange= this.inputValueChange.bind(this);
+    this.addRooms=this.addRooms.bind(this);
   }
 
   handleChange(date){
@@ -63,40 +64,23 @@ class FormHotel extends React.Component {
   }
 
  deleteRoom(e){
-   var state = this.state.data
+   var state = this.state.rooms
    delete state[e]
    this.setState(state)
-   console.log(e);
  }
 
  request(event){
    event.preventDefault()
 
-  //  let location = event.target.elements['location'].value
-  //  let checkin = this.state.startDate.format('YYYY-MM-DD')
-  //  let checkout = this.state.endDate.format('YYYY-MM-DD')
-  //  let adult = event.target.elements['Adulto0'].value
-  //  let cradle = event.target.elements['Cuna0'].value
-  //  let age1 = event.target.elements['1Menor0'].value
-  //  let age2 = event.target.elements['2Menor0'].value
-  //  let rooms = this.state.data
-  // //  console.log('evento',event.target.elements['Adulto0'].value);
-  // //  console.log(event.target.elements);
-  //
-  //  let request = {
-  //    checkin: checkin,
-  //    checkout: checkout,
-  //    rooms:{
-  //      room0:{
-  //        adult:adult,
-  //        baby:cradle,
-  //        child:{
-  //         //  age1:age1,
-  //         //  age2:age2
-  //        }
-  //      }
-  //    }
-  //  }
+   let checkin = this.state.startDate.format('YYYY-MM-DD')
+   let checkout = this.state.endDate.format('YYYY-MM-DD')
+   let rooms = this.state.rooms
+
+   let request = {
+     checkin: checkin,
+     checkout: checkout,
+     rooms
+   }
 
   //  fetch('',{
   //     method: 'post',
@@ -108,7 +92,7 @@ class FormHotel extends React.Component {
   //   .then((recurso) => {
   //     console.log(recurso);
   //   })
-    // console.log(request);
+    console.log(request);
  }
 
   render() {
@@ -185,7 +169,7 @@ class FormHotel extends React.Component {
             <div>
              <div className='linkHotel'>
               {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
-              <a onClick={()=>this.addRooms()}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
+              <a onClick={this.addRooms}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
             {/*BOTON BUSQUEDA*/}

@@ -13,7 +13,6 @@ class AddRoomForm extends React.Component {
 
   addAgeInput(e){
     let input = []
-    // e.currentTarget.value = (e.currentTarget.value < 0) ? 0 : e.currentTarget.value;
     let currentValue = e.currentTarget.value
     for (let i = 1; i <= currentValue; i++) {
       input.push(<InputKids key={i} Menor={i} name={this.props.count}/>)
