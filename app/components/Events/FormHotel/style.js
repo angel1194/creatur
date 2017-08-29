@@ -21,7 +21,7 @@ const AddInputs = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 17px;
+  margin-left: 25px;
 `;
 
 export {Icon, Line, AddInputs};

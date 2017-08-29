@@ -36,7 +36,6 @@ class FormTransport extends React.PureComponent {
       hours:hours,
       ticket:tickets,
     }
-    console.log(request);
   }
 
   render() {

@@ -20,17 +20,18 @@ class FormHotel extends React.Component {
         room0:{
           adult:0,
           baby:0,
-          child:{}
+          child:{
+
+          }
         }
       }
-
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
-    this.deleteRoom=this.deleteRoom.bind(this);
-    this.request=this.request.bind(this);
     this.inputValueChange= this.inputValueChange.bind(this);
     this.addRooms=this.addRooms.bind(this);
+    this.deleteRoom=this.deleteRoom.bind(this);
+    this.request=this.request.bind(this);
   }
 
   handleChange(date){
@@ -164,6 +165,7 @@ class FormHotel extends React.Component {
                                     inputValueChange={this.inputValueChange}
                                     delete={this.deleteRoom}
                                     object={key}
+                                    input={this.state.rooms[key].child}
                                   />)}
             {/*ANADIR OTRA HABITACION*/}
             <div>
