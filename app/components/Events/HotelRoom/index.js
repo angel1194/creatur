@@ -22,14 +22,22 @@ const NameRoom = styled(H3) `
   font-size:20px;
 `;
 
+const Divider=styled.div`
+  width:100%;
+  border:1px solid #58ACFA ;
+`;
+
 class HotelRoom extends React.Component {
 
   render(){
+    let element = this.props.elements
+
     return (
       <ContainerRoom>
+        {console.log(element)}
         <RoomImg>
           <NameRoom>Name</NameRoom>
-          <Img src={this.props.elements.image} width='250' />
+          <Img src={this.props.elements.room0} width='250' />
         </RoomImg>
         <DetailsRoom>
           <Label>Capacidad para 3 personas</Label>
@@ -50,6 +58,7 @@ class HotelRoom extends React.Component {
             </Link>
           </ContainerButtonGreen>
         </ContainerPrice>
+        <Divider/>
       </ContainerRoom>
     );
   }

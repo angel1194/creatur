@@ -3,13 +3,23 @@ const state = {
     '123':{
       'room0':{
         id:'001',
+        image:'',
+        description:'DOBLE STANDARD',
+        price:'234',
+        capacity:0,
+        type:'STANDARD'
       },
       'room1':{
         id:'002'
       }
     },
-    '345':{
-
+    '456':{
+      'room3':{
+        id:'001',
+      },
+      'room4':{
+        id:'002'
+      }
     }
   },
   hotels: {
