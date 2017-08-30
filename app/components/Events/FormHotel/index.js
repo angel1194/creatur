@@ -93,7 +93,7 @@ class FormHotel extends React.Component {
   //   .then((recurso) => {
   //     console.log(recurso);
   //   })
-    console.log(request);
+    // console.log(request);
  }
 
   render() {
@@ -109,8 +109,7 @@ class FormHotel extends React.Component {
             <Header as='h1' className='titleFormHotel'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-               {/*FORM LOCATION */}
-                <SearchForm location="Merida" idLocation='location'/>
+                <SearchForm location="Merida"/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -119,7 +118,6 @@ class FormHotel extends React.Component {
                     </a>
                   </div>
                 </div>
-               {/*FECHA */}
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>
                    <label htmlFor="checkin" className='fecha'>Fecha de llegada</label>
@@ -159,7 +157,6 @@ class FormHotel extends React.Component {
                  </div>
                </div>
              </div>
-            {/*HUESPEDES*/}
             {data.map((key, i)=><AddRoomForm
                                     key={i}
                                     count={i}
@@ -168,14 +165,12 @@ class FormHotel extends React.Component {
                                     object={key}
                                     input={this.state.rooms[key].child}
                                   />)}
-            {/*ANADIR OTRA HABITACION*/}
             <div>
              <div className='linkHotel'>
               {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={this.addRooms}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
-            {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
             </Grid.Row>

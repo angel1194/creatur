@@ -28,16 +28,16 @@ class HotelRoom extends React.Component {
     return (
       <ContainerRoom>
         <RoomImg>
-          <NameRoom>{this.props.elements.type}</NameRoom>
+          <NameRoom>Name</NameRoom>
           <Img src={this.props.elements.image} width='250' />
         </RoomImg>
         <DetailsRoom>
-          <Label>Capacidad para {this.props.elements.personas} personas</Label>
+          <Label>Capacidad para 3 personas</Label>
           <Label>Regimen: Solo Habitación</Label>
         </DetailsRoom>
         <ContainerPrice>
           <Label> Por noche ${this.props.elements.price} MXN</Label>
-          <LabelA> Impuestos $100.56 usd</LabelA>
+          <LabelA> Impuestos $100.56 MXN</LabelA>
           <Title>Precio Total</Title>
           <H3>$3,089.56 <Label>USD</Label></H3>
           {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
