@@ -19,13 +19,15 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  width:300px;
-  height:30px;
-  background:white;
-  border-radius:5px;
-  margin-left:10px;
-  margin-bottom: 10px;
-  box-shadow:1px 1px 5px #000 inset;
+width:300px;
+height:35px;
+background:white;
+border-radius:5px;
+margin-left:10px;
+margin-bottom: 10px;
+box-shadow:1px 1px 5px #000 inset;
+text-align:justify;
+padding: 10px;
 `;
 
 
@@ -38,19 +40,21 @@ const Title = styled.span`
 `;
 
 const Form = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width:50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width:50%;
+  height: 65%;
 `;
 
 const Button = styled.button`
-background-color: #7db464;
-color: white;
-
-border-radius: 5px;
-height: 50px;
+width:80px;
+height:30px;
+background-color:#2b5bac;
+box-shadow:1px 1px 8px #000;
+color:white;
 `;
+
 
 
 function AddTransport() {
@@ -59,18 +63,19 @@ function AddTransport() {
       <Title>Transporte</Title>
       <Form>
         <label htmlFor='image'>Imagen:</label>
-        <Input name='image' id='image'/>
+        <Input name='image' id='image' placeholder='Agregar url'/>
         <label htmlFor='price'>Precio:</label>
-        <Input name='price' id='price'/>
-        <label htmlFor='seating'>Asiento:</label>
-        <Input name='seating' id='seating'/>
-        <label htmlFor='type'>Tipo:</label>
-        <Input name='type' id='type'/>
+        <Input name='price' id='price' placeholder='Agregar precio'/>
       </Form>
-       <div className='buttonAdmin'>
-         <Button>AGREGAR</Button>
-       </div>
-
+      <Form>
+        <label htmlFor='seating'>Asiento:</label>
+        <Input type='number' min='0' name='seating' id='seating' placeholder='Agregar asiento'/>
+        <label htmlFor='type'>Tipo:</label>
+        <Input name='type' id='type' placeholder='Agregar tipo'/>
+        <div className='buttonAdmin'>
+          <Button><p>AGREGAR</p></Button>
+        </div>
+      </Form>
     </Container>
   );
 }

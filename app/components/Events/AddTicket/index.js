@@ -18,13 +18,15 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  width:300px;
-  height:30px;
-  background:white;
-  border-radius:5px;
-  margin-left:10px;
-  margin-bottom: 10px;
-  box-shadow:1px 1px 5px #000 inset;
+width:300px;
+height:35px;
+background:white;
+border-radius:5px;
+margin-left:10px;
+margin-bottom: 10px;
+box-shadow:1px 1px 5px #000 inset;
+text-align:justify;
+padding: 10px;
 `;
 
 
@@ -37,18 +39,19 @@ const Title = styled.span`
 `;
 
 const Form = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width:50%;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+width:50%;
+height: 65%;
 `;
 
 const Button = styled.button`
-background-color: #7db464;
-color: white;
-
-border-radius: 5px;
-height: 50px;
+width:80px;
+height:30px;
+background-color:#2b5bac;
+box-shadow:1px 1px 8px #000;
+color:white;
 `;
 
 function AddTicket() {
@@ -56,19 +59,20 @@ function AddTicket() {
     <Container>
       <Title>Ticket</Title>
       <Form>
+        <label htmlFor='folio'>Folio:</label>
+        <Input type='number' name='folio' id='folio' placeholder='Agregar folio'/>
         <label htmlFor='date'>Fecha:</label>
-        <Input name='date' id='date'/>
-        <label htmlFor='key'>Key:</label>
-        <Input name='key' id='key'/>
-        <label htmlFor='price'>Precio:</label>
-        <Input name='price' id='price'/>
-        <label htmlFor='section'>Seccion:</label>
-        <Input name='section' id='section'/>
+        <Input type='date' name='date' id='date'/>
       </Form>
-       <div className='buttonAdmin'>
-         <Button>AGREGAR</Button>
-       </div>
-
+      <Form>
+        <label htmlFor='price'>Precio:</label>
+        <Input name='price' id='price' placeholder='Agregar precio'/>
+        <label htmlFor='section'>Sección:</label>
+        <Input name='section' id='section' placeholder='Agregar sección'/>
+        <div className='buttonAdmin'>
+          <Button><p>AGREGAR</p></Button>
+        </div>
+      </Form>
     </Container>
   );
 }

@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Input = styled.input`
   width:300px;
-  height:30px;
+  height:35px;
   background:white;
   border-radius:5px;
   margin-left:10px;
@@ -40,53 +40,58 @@ const Title = styled.span`
 `;
 
 const Form = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width:50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width:50%;
+  margin-top: 20px;
 `;
 
 const Button = styled.button`
-background-color: #7db464;
-color: white;
-border-radius: 5px;
-height: 50px;
+  width:80px;
+  height:30px;
+  background-color:#2b5bac;
+  box-shadow:1px 1px 8px #000;
+  color:white;
+  margin-bottom: 20px;
 `;
 
 const TextArea = styled.textarea`
-     box-shadow:1px 1px 5px #000 inset;
-     border-radius: 5px;
-     width: 60%;
-     background-color: #fff;
-     margin-left:10px;
-     height: 36%;
-     text-align:justify;
-     padding: 10px;
-     padding-top: 10px;
+  box-shadow:1px 1px 5px #000 inset;
+  border-radius: 5px;
+  width: 65%;
+  background-color: #fff;
+  margin-left:10px;
+  height: 25%;
+  text-align:justify;
+  padding: 10px;
+  padding-top: 10px;
+  resize: none;
 `;
 
 const Select = styled.select`
   margin-left: 10px;
   width:20%;
   box-shadow:1px 1px 4px #000 inset;
-  border-radius: 5px;
+  border-rad
+  ius: 5px;
   background-color: #fff
   text-align:center;
   padding-bottom: 3px;
   padding-top: 3px;
 `;
+
 function AddHotels() {
   return (
     <Container>
       <Title>Hoteles</Title>
-
       <Form>
         <label htmlFor='name'>Nombre:</label>
-        <Input type='text' name='name' id='name' placeholder='add name'/>
-        <label htmlFor='address'>Direccion:</label>
-        <Input name='address' id='address' placeholder='add address'/>
+        <Input type='text' name='name' id='name' placeholder='Agregar nombre'/>
+        <label htmlFor='address'>Dirección:</label>
+        <Input name='address' id='address' placeholder='Agregar dirección'/>
         <label htmlFor='image'>Imagen:</label>
-        <Input name='image' id='image' placeholder='add url'/>
+        <Input type='url' name='image' id='image' placeholder='Agregar url'/>
         <label htmlFor='star'>Estrellas:</label>
         <Select name="stars">
           <option value="uno">1</option>
@@ -98,18 +103,18 @@ function AddHotels() {
         </Select>
       </Form>
       <Form>
-        <label htmlFor='description'>Descripcion:</label>
-        <TextArea  type ='text' name='description' id='description' placeholder='Add description'/>
-        <label htmlFor='cancelattion'>Cancelacion:</label>
-        <TextArea name='cancelattion' id='cancelattion' placeholder='Add description'/>
+        <label htmlFor="type">Tipo</label>
+        <Input type='text' name='type' id='type' placeholder='Agregar tipo'/>
+        <label htmlFor='description'>Descripción:</label>
+        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/>
+        <label htmlFor='cancelation'>Cancelación:</label>
+        <TextArea name='cancelation' id='cancelation' placeholder='Agregar cancelación'/>
+        <div className='buttonAdmin'>
+          <Button><p>AGREGAR</p></Button>
+        </div>
       </Form>
-       <div className='buttonAdmin'>
-         <Button>AGREGAR</Button>
-       </div>
-
     </Container>
   );
 }
-
 
 export default AddHotels;

@@ -47,10 +47,10 @@ function NavEvent(props)  {
   return (
       <ContainerNav>
         <Body>
-          <IconLabel Text='Hotel' Icon='building'  />
-          <Link style={linkStyle} to=''><IconLabel Text='Transporte' Icon='car' /></Link>
-          <Link style={linkStyle} to=''><IconLabel Text='Tickets' Icon='ticket'  /></Link>
-          <Link style={linkStyle} to=''><IconLabel Text='Sales' Icon='history' /></Link>
+          <Link style={linkStyle} ><IconLabel Text='Hotel' Icon='building'  /></Link>
+          <Link style={linkStyle} to='manzanero/admin'><IconLabel Text='Transporte' Icon='car' /></Link>
+          <Link style={linkStyle} to='#'><IconLabel Text='Tickets' Icon='ticket'  /></Link>
+          <Link style={linkStyle} to='#'><IconLabel Text='Sales' Icon='history' /></Link>
         </Body>
       </ContainerNav>
   );
