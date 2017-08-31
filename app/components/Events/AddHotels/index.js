@@ -6,6 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import TableAdmin from '../TableAdmin';
 
 const Container = styled.div`
   width:90%;
@@ -55,14 +56,13 @@ const Button = styled.button`
   color:white;
   margin-bottom: 20px;
 `;
-
 const TextArea = styled.textarea`
   box-shadow:1px 1px 5px #000 inset;
   border-radius: 5px;
   width: 65%;
   background-color: #fff;
   margin-left:10px;
-  height: 25%;
+  height: 30%;
   text-align:justify;
   padding: 10px;
   padding-top: 10px;
@@ -73,16 +73,28 @@ const Select = styled.select`
   margin-left: 10px;
   width:20%;
   box-shadow:1px 1px 4px #000 inset;
-  border-rad
-  ius: 5px;
-  background-color: #fff
+  border-radius: 5px;
+  background-color: #fff ;
   text-align:center;
   padding-bottom: 3px;
   padding-top: 3px;
 `;
 
+const ContainerTable = styled.div`
+  margin-top: 10px;
+  width:90%;
+  height: auto;
+  background:#E6E6E6;
+  padding:25px;
+  border-radius:6px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+`;
+
 function AddHotels() {
   return (
+    <div>
     <Container>
       <Title>Hoteles</Title>
       <Form>
@@ -103,8 +115,6 @@ function AddHotels() {
         </Select>
       </Form>
       <Form>
-        <label htmlFor="type">Tipo</label>
-        <Input type='text' name='type' id='type' placeholder='Agregar tipo'/>
         <label htmlFor='description'>Descripción:</label>
         <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/>
         <label htmlFor='cancelation'>Cancelación:</label>
@@ -114,6 +124,19 @@ function AddHotels() {
         </div>
       </Form>
     </Container>
+
+     <ContainerTable>
+       <TableAdmin />
+     </ContainerTable>
+
+  </div>
+
+
+
+
+
+
+
   );
 }
 

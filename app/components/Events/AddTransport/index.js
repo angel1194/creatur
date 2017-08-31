@@ -6,6 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import FormTableAdmin from '../FormTableAdmin';
 
 const Container = styled.div`
   width:90%;
@@ -55,10 +56,21 @@ box-shadow:1px 1px 8px #000;
 color:white;
 `;
 
-
+const ContainerTable = styled.div`
+  margin-top: 10px;
+  width:90%;
+  height: auto;
+  background:#E6E6E6;
+  padding:25px;
+  border-radius:6px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+`;
 
 function AddTransport() {
   return (
+    <div>
     <Container>
       <Title>Transporte</Title>
       <Form>
@@ -77,6 +89,23 @@ function AddTransport() {
         </div>
       </Form>
     </Container>
+    <ContainerTable>
+      <FormTableAdmin
+         row='Imagen'
+         rowtwo='Precio'
+         rowthree='Asiento'
+         rowfour='Tipo'
+         rowfive='Eliminar'
+         rowsix='Editar'
+         rowseven='Agregar'
+         tdata= ''
+         tdatatwo= ''
+         tdatathree= ''
+         tdatafour= ''
+
+         />
+    </ContainerTable>
+  </div>
   );
 }
 

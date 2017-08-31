@@ -6,6 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import FormTableAdmin from '../FormTableAdmin';
+
 const Container = styled.div`
   width:90%;
   height:400px;
@@ -54,8 +56,21 @@ box-shadow:1px 1px 8px #000;
 color:white;
 `;
 
+const ContainerTable = styled.div`
+  margin-top: 10px;
+  width:90%;
+  height: auto;
+  background:#E6E6E6;
+  padding:25px;
+  border-radius:6px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+`;
+
 function AddTicket() {
   return (
+    <div>
     <Container>
       <Title>Ticket</Title>
       <Form>
@@ -74,6 +89,25 @@ function AddTicket() {
         </div>
       </Form>
     </Container>
+
+    <ContainerTable>
+      <FormTableAdmin
+         row='Folio'
+         rowtwo='Fecha'
+         rowthree='Precio'
+         rowfour='Sección'
+         rowfive='Eliminar'
+         rowsix='Editar'
+         rowseven='Agregar'
+         tdata=''
+         tdata= ''
+         tdatatwo= ''
+         tdatathree= ''
+         tdatafour= ''
+
+         />
+    </ContainerTable>
+  </div>
   );
 }
 
