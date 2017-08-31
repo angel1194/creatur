@@ -29,19 +29,18 @@ function ScoreHotel(props) {
   return (
     <ContainerScore>
       <DivButton>
-        <NameHotel>Best Western Maya Yucatán</NameHotel>
+        <NameHotel>City Express Mérida</NameHotel>
       </DivButton>
-      <StarRating NumStart={4} />
+      <StarRating NumStart={4.5} />
       <AddressLabel>
-        Mérida
+        Mérida, 
       </AddressLabel>
-      <br/>
       <AddressLabel>
-        Calle 58 #483 por 55 Y 57 Centro Historico Merida YUC
+        Calle 45 No 332 Por calle 54 y calle 56 Col. Benito Juarez Norte Merida YUC
       </AddressLabel>
       <ContTrip>
         <TripAd />
-        <LocationLabel Title="Mérida"/>
+        <LocationLabel Title="Mérida, a 1.9 km de: Centro de Convenciones Yucatán Siglo XXI"/>
       </ContTrip>
     </ContainerScore>
   );

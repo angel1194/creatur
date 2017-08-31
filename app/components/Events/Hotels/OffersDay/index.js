@@ -12,7 +12,6 @@ function OffersDay(props) {
 
   return (
     <WrapperTrans>
-      {console.log(item)}
       <Div>
         <AddButton text="habitaciones" setShowRooms={()=>props.setShowRooms()} state={props.state}/>
         {props.state === false ? '' :
@@ -20,13 +19,13 @@ function OffersDay(props) {
             item[items].id == hotels ?
             <Row>
               <Column>
-                <AddCheckList id={'1'} text={item[items].id == hotels  ? item[items].description : ''}/>
+                <AddCheckList id={i} text={item[items].description}/>
                 <Reg>
                   <Subtitle GlobalText={"Regimen: SOLO HABITACION"}/>
                 </Reg>
               </Column>
               <Price>
-                <Subtitle GlobalText={"desde $"+item[items].price}/>
+                <Subtitle GlobalText={"desde $"+item[items].price+" MXN"}/>
               </Price>
             </Row> : ''
           )
