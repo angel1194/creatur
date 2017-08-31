@@ -10,17 +10,38 @@ const state = {
         type:'STANDARD'
       },
       'room1':{
-        id:'002'
-      }
-    },
-    '456':{
-      'room3':{
         id:'001',
+        image:'',
+        description:'TRIPLE STANDARD',
+        price:'678',
+        capacity:0,
+        type:'STANDARD'
+      },
+      'room3':{
+        id:'002',
+        image:'',
+        description:'TRIPLE STANDARD',
+        price:'678',
+        capacity:0,
+        type:'STANDARD'
       },
       'room4':{
-        id:'002'
+        id:'003',
+        image:'',
+        description:'DOBLE STANDARD',
+        price:'1245',
+        capacity:0,
+        type:'STANDARD'
       }
-    }
+    },
+    // '456':{
+    //   'room3':{
+    //     id:'001',
+    //   },
+    //   'room4':{
+    //     id:'002'
+    //   }
+    // }
   },
   hotels: {
     '001':{

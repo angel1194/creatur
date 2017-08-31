@@ -46,6 +46,7 @@ class Hotels extends React.Component {
   }
 
   render() {
+    let night = this.props.stateNight
     return (
       <Container>
         <Column>
@@ -70,7 +71,15 @@ class Hotels extends React.Component {
               </ColumMarginRight>
             </Row>
           </Wrapper>
-          <OffersDay setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse} state={this.state.showRooms} elements={this.props.stateNight}/>
+        {Object.keys(night).map((item,i)=>
+          <OffersDay
+            key={i}
+            setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse}
+            state={this.state.showRooms}
+            hotels={this.props.stateHotels}
+            item={night[item]}
+          />
+        )}
         </Column>
       </Container>
     );

@@ -21,7 +21,7 @@ class MainHotels extends React.Component {
         <Container>
           <Div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels key={i} elements={hotels[item]} stateNight={night}/>)}
+              {Object.keys(hotels).map((item, i)=><Hotels key={i} elements={hotels[item]} stateNight={night} stateHotels={[item]}/>)}
             </DivHotels>
             <div>
               <MapView/>
