@@ -27,7 +27,7 @@ class Hotels extends React.Component {
   constructor(){
     super();
     this.state = {
-      showRooms: false
+      showRooms: false,
     }
     this.setShowRooms=this.setShowRooms.bind(this)
     this.setFalse=this.setFalse.bind(this)
@@ -65,7 +65,7 @@ class Hotels extends React.Component {
                 <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
                 {/* <AddCheckList id={this.props.elements.key} JustifyContent="flex-end" Margin="20px" text={"DOBLE 2 CAMAS STANDARD Hasta 2 Personas"}/> */}
                 <br/><br/><br/>
-                <Link to="/manzanero/rooms">
+                <Link to="/manzanero/rooms" onClick={()=>console.log('hola')}>
                   <Button Title="Reservar" Color="Blue" />
                 </Link>
               </ColumMarginRight>

@@ -34,10 +34,9 @@ class HotelRoom extends React.Component {
 
     return (
       <ContainerRoom>
-        {console.log(element)}
         <RoomImg>
           <NameRoom>Name</NameRoom>
-          <Img src={this.props.elements.room0} width='250' />
+          <Img src='' width='250' />
         </RoomImg>
         <DetailsRoom>
           <Label>Capacidad para 3 personas</Label>

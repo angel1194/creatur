@@ -17,9 +17,9 @@ function OffersDay(props) {
         {props.state === false ? '' :
           Object.keys(item).map((items,i)=>
             item[items].id == hotels ?
-            <Row>
+            <Row key={i}>
               <Column>
-                <AddCheckList id={i} text={item[items].description}/>
+                <AddCheckList id={'room'+i} text={item[items].description}/>
                 <Reg>
                   <Subtitle GlobalText={"Regimen: SOLO HABITACION"}/>
                 </Reg>
