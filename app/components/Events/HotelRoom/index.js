@@ -35,11 +35,12 @@ class HotelRoom extends React.Component {
     return (
       <ContainerRoom>
         <RoomImg>
-          <NameRoom>Name</NameRoom>
-          <Img src='' width='250' />
+          <NameRoom>STANDARD</NameRoom>
+          <Img src='https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg'/>
         </RoomImg>
         <DetailsRoom>
-          <Label>Capacidad para 3 personas</Label>
+          <Label>Capacidad para 4 personas</Label>
+          <Label>Habitación estándar, 2 camas dobles</Label>
           <Label>Regimen: Solo Habitación</Label>
         </DetailsRoom>
         <ContainerPrice>

@@ -16,7 +16,7 @@ function OffersDay(props) {
         <AddButton text="habitaciones" setShowRooms={()=>props.setShowRooms()} state={props.state}/>
         {props.state === false ? '' :
           Object.keys(item).map((items,i)=>
-            item[items].id == hotels ?
+            item[items].idHotel == hotels ?
             <Row key={i}>
               <Column>
                 <AddCheckList id={'room'+i} text={item[items].description}/>

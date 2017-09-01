@@ -13,22 +13,23 @@ class MainHotels extends React.Component {
     // this.getRooms=this.getRooms.bind(this)
   }
 
-  // getRooms(){
-  //   let state = this.state.night
-  //   let key = Object.keys(state)
-  //
-  //   for (var i = 0; i <= key.length; i++) {
-  //     return key[i]
-  //   }
-  // }
+  getRooms(){
+    let state = this.state.night
+    let key = Object.keys(state)
+
+    for (var i = 0; i <= key.length; i++) {
+      return key[i]
+    }
+  }
 
   render() {
     const {hotels, night} = this.state
-    // const items = this.getRooms()
+    const items = this.getRooms()
 
     return (
       <div>
         <Container>
+          {console.log(items)}
           <Div>
             <DivHotels>
               {Object.keys(hotels).map((item, i)=><Hotels key={i} elements={hotels[item]} stateNight={night} stateHotels={item}/>)}

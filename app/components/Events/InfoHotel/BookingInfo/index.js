@@ -22,7 +22,7 @@ function BookingInfo() {
       <LabelBooking>Doble </LabelBooking>
       <br/>
       <Subtitle>Zona:</Subtitle>
-      <LabelBooking>Cerca del aeropuerto </LabelBooking>
+      <LabelBooking>A 1.9 km de: Centro de Convenciones Yucatán Siglo XXI</LabelBooking>
       <ContainerCheck>
         <div>
           <Title>Check in:</Title>

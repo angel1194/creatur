@@ -2,7 +2,7 @@ const state = {
   night:{
     '123':{
       'room0':{
-        id:'001',
+        idHotel:'001',
         image:'https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg',
         description:'Habitación estándar, 2 camas dobles',
         price:'1106',
@@ -10,7 +10,7 @@ const state = {
         type:'STANDARD'
       },
       'room1':{
-        id:'001',
+        idHotel:'001',
         image:'https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_64_z.jpg',
         description:'Habitación estándar, 1 cama de matrimonio',
         price:'1006',
@@ -18,7 +18,7 @@ const state = {
         type:'STANDARD'
       },
       'room2':{
-        id:'002',
+        idHotel:'002',
         image:'https://images.trvl-media.com/hotels/5000000/4040000/4036200/4036138/4036138_134_z.jpg',
         description:'Habitación, 2 camas dobles, no fumadores',
         price:'1100',
@@ -26,7 +26,7 @@ const state = {
         type:'STANDARD'
       },
       'room3':{
-        id:'003',
+        idHotel:'003',
         image:'https://images.trvl-media.com/hotels/12000000/11630000/11628400/11628374/11628374_15_z.jpg',
         description:'Habitación, 1 cama de matrimonio y sofá cama, frigorífico',
         price:'999',
@@ -34,7 +34,7 @@ const state = {
         type:'STANDARD'
       },
       'room4':{
-        id:'004',
+        idHotel:'004',
         image:'https://www.ahstatic.com/photos/6928_rodbc_00_p_1024x768.jpg',
         description:'HABITACION STANDARD CON 1 CAMA DOBLE',
         price:'629.29',

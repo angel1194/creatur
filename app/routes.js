@@ -330,14 +330,28 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       }
     },
-{
-  path: '*',
-    name: 'notfound',
+    // ruta del carrito de compras para eventos
+    {
+      path: '/manzanero/pay',
       getComponent(nextState, cb) {
-        import('containers/NotFoundPage')
-      .then(loadModule(cb))
-      .catch(errorLoading);
-  },
-},
+        const importModules = Promise.all([
+          import('containers/Events/Payments'),
+        ]);
+        const renderRoute = loadModule(cb);
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+        importModules.catch(errorLoading);
+      }
+    },
+    {
+      path: '*',
+        name: 'notfound',
+          getComponent(nextState, cb) {
+            import('containers/NotFoundPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
   ];
 }
