@@ -16,8 +16,8 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment('2017-10-5'),
-      endDate:moment().add(1, "days"),
+      startDate:moment('05/10/2017'),
+      endDate:moment('06/10/2017'),
       roomsUI:{
         room0:{
           adult:0,
@@ -35,9 +35,11 @@ class FormHotel extends React.Component {
   }
 
   handleChange(date){
+    console.log(date);
     this.setState({
-      startDate:date
+      startDate:moment(date),
     })
+    console.log('startDate',this.state.startDate);
   }
 
 
@@ -50,7 +52,7 @@ class FormHotel extends React.Component {
   inputValueChange(father,input){
     let name = input.target.name
     let value= input.target.value
-    const rooms = this.state.rooms
+    const rooms = this.state.roomsUI
     rooms[father][name]=value
     this.setState({
       roomsUI:rooms
@@ -91,15 +93,14 @@ class FormHotel extends React.Component {
       hotels:res.val()
     })
   )
-
-  let nightRooms = Object.keys(this.state.rooms)
-  let momentNight = nightRooms.map((night)=> console.log(moment.unix(night).format('YYYY/MM/DD HH:mm')))
-  console.log(momentNight);
+  console.log(this.state);
+  // let nightRooms = Object.keys(this.state.rooms)
+  // let momentNight = nightRooms.map((night)=> console.log(moment(night, 'YYYY/MM/DD HH:mm').unix()))
+  // console.log(momentNight);
  }
 
   render() {
     let data = Object.keys(this.state.roomsUI)
-    console.log(data);
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
@@ -131,7 +132,7 @@ class FormHotel extends React.Component {
                          selected={this.state.startDate}
                          onChange={this.handleChange}
                          minDate={moment('2017-10-02')}
-                         maxDate={moment('2017-10-09')}
+                         maxDate={moment('2017-10-08')}
                        />
                      </div>
                    </div>
@@ -145,8 +146,8 @@ class FormHotel extends React.Component {
                          id="checkout"
                          selected={this.state.endDate}
                          onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate)}
-                         maxDate={moment("2017-09-16").add(3, "days")}
+                         minDate={moment(this.state.startDate).add(1,'days')}
+                         maxDate={moment("2017-10-08")}
                        />
                      </div>
                    </div>
