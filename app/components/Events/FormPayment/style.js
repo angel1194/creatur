@@ -36,4 +36,39 @@ const InputContainer = styled.div`
   border-radius: 0px 0px 6px 6px;
 `;
 
-export {Container, Message, TextM, InputContainer}
+// input
+
+const Containers = styled.div`
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    height:80px;
+`;
+
+const input ={
+  inputC:{
+    'width': '50%',
+    'display': 'flex',
+    'flexDirection': 'column',
+    'alignItems': 'flexStart',
+    'paddingRight': '30px'
+  },
+  label:{
+    color: '#2b5bac',
+    fontFamily: 'Montserrat',
+    fontSize: '14px',
+    fontWeight: '400'
+  },
+  inputMain:{
+    width: '100%',
+    boxShadow: 'inset 1px 1px 2px #ccc',
+    height: '35px',
+    border: '1px solid #eaeff3',
+    paddinLeft: '10px',
+    borderRadius: '6px',
+    outline: '0'
+  }
+}
+
+export {Container, Message, TextM, InputContainer,input}

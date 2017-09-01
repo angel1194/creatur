@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 import InputGuests from '../../InputGuests';
-import {Container, Message, TextM, InputContainer} from './style';
+import {Container, Message, TextM, InputContainer,input} from './style';
 
 const Icon = styled(FontAwesome) `
   margin-left:20px;
@@ -19,8 +19,12 @@ function FormPayment() {
         <Icon name='check-circle'/>
       </Message>
       <InputContainer>
-        <InputGuests Titulo='Titular Nombre (s)' IdFirst='Titular' IdSecond='LastTitular' SubTitle='Apellidos'/>
-        <InputGuests Titulo='2do pasajero Nombre (s)' IdFirst='Dos' IdSecond='LastDos' SubTitle='Apellidos'/>
+        <InputGuests Titulo='Nombre (s)' IdFirst='Titular' IdSecond='LastTitular' SubTitle='Apellidos'/>
+        <InputGuests Titulo='Telefono' IdFirst='Dos' IdSecond='LastDos' SubTitle='Correo Electronico'/>
+        <div style={input.inputC}>
+          <label style={input.label} htmlFor="">Nombre</label>
+          <input style={input.inputMain} type="text" id=""/>
+        </div>
       </InputContainer>
     </Container>
   );

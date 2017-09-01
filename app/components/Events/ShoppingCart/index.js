@@ -40,7 +40,6 @@ class ShoppingCart extends Component {
               <Title>Total $0.00</Title>
             </DivTitle>
           </FlexRow>
-
         </Container>
       </div>
     );
