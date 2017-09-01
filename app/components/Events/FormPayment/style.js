@@ -1,58 +1,49 @@
 import styled from 'styled-components'
 
 const Container=styled.div`
-  width:100%;
-  display:flex;
-  height:250px;
-  flex-direction:column;
-  flex-wrap:wrap;
+  width: 100%;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const Message=styled.div`
-  width:100%;
-  padding-left:20px;
-  background-color:#F2F2F2;
-  height:50px;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  color:#2b5bac;
+  width: 100%;
+  padding-left: 20px;
+  background-color: #F2F2F2;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #2b5bac;
   border-radius: 6px 6px 0px 0px;
 `;
 
 const TextM = styled.label`
-  font-size:25px;
-  font-family:Montserrat !important;
-  font-weight:bold;
+  font-size: 25px;
+  font-family: Montserrat !important;
+  font-weight: bold;
 `;
 
-const InputContainer = styled.div`
-  width:100%;
-  height:200px;
-  border: 1px solid #eaeff3;
-  padding:25px 40px 0px 25px;
-  display:flex;
-  flex-direction:column;
-  border-radius: 0px 0px 6px 6px;
-`;
-
-// input
-
-const Containers = styled.div`
-    width:100%;
-    display:flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-    height:80px;
-`;
-
-const input ={
-  inputC:{
-    'width': '50%',
-    'display': 'flex',
-    'flexDirection': 'column',
-    'alignItems': 'flexStart',
-    'paddingRight': '30px'
+const styles ={
+  form:{
+    width: '100%',
+    height: 'auto',
+    border: '1px solid #eaeff3',
+    padding:'20px',
+    borderRadius: '0px 0px 6px 6px',
+    display:'flex',
+    flexDirection:'column'
+  },
+  container:{
+    width: '100%',
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  inputlabel:{
+    width: '49%'
   },
   label:{
     color: '#2b5bac',
@@ -60,15 +51,18 @@ const input ={
     fontSize: '14px',
     fontWeight: '400'
   },
-  inputMain:{
+  input:{
     width: '100%',
     boxShadow: 'inset 1px 1px 2px #ccc',
-    height: '35px',
+    padding: '10px',
     border: '1px solid #eaeff3',
-    paddinLeft: '10px',
     borderRadius: '6px',
-    outline: '0'
+    outline: '0',
+    marginBottom: '10px'
+  },
+  target:{
+    width: '23%'
   }
 }
 
-export {Container, Message, TextM, InputContainer,input}
+export {Container, Message, TextM,styles}
