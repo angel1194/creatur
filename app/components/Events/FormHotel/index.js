@@ -25,14 +25,13 @@ class FormHotel extends React.Component {
           child:{}
         }
       }
-
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
-    this.deleteRoom=this.deleteRoom.bind(this);
-    this.request=this.request.bind(this);
     this.inputValueChange= this.inputValueChange.bind(this);
     this.addRooms=this.addRooms.bind(this);
+    this.deleteRoom=this.deleteRoom.bind(this);
+    this.request=this.request.bind(this);
   }
 
   handleChange(date){
@@ -100,6 +99,7 @@ class FormHotel extends React.Component {
 
   render() {
     let data = Object.keys(this.state.roomsUI)
+    console.log(data);
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
@@ -111,8 +111,7 @@ class FormHotel extends React.Component {
             <Header as='h1' className='titleFormHotel'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-               {/*FORM LOCATION */}
-                <SearchForm location="Merida" idLocation='location'/>
+                <SearchForm location="Merida"/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -121,7 +120,6 @@ class FormHotel extends React.Component {
                     </a>
                   </div>
                 </div>
-               {/*FECHA */}
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>
                    <label htmlFor="checkin" className='fecha'>Fecha de llegada</label>
@@ -144,10 +142,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                         selected={moment(this.state.startDate).add(1,'days')}
+                         id="checkout"
+                         selected={this.state.endDate}
                          onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate).add(1, "days")}
-                         maxDate={moment('2017-10-9')}
+                         minDate={moment(this.state.startDate)}
+                         maxDate={moment("2017-09-16").add(3, "days")}
                        />
                      </div>
                    </div>
@@ -159,22 +158,20 @@ class FormHotel extends React.Component {
                  </div>
                </div>
              </div>
-            {/*HUESPEDES*/}
             {data.map((key, i)=><AddRoomForm
                                     key={i}
                                     count={i}
                                     inputValueChange={this.inputValueChange}
                                     delete={this.deleteRoom}
                                     object={key}
+                                    input={this.state.roomsUI[key].child}
                                   />)}
-            {/*ANADIR OTRA HABITACION*/}
             <div>
              <div className='linkHotel'>
               {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={this.addRooms}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
-            {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
             </Grid.Row>

@@ -37,6 +37,7 @@ const Input = styled.input`
   border:1px solid #eaeff3;
   padding-left:10px;
   border-radius: 6px;
+  outline: 0;
 `;
 
 function InputGuests(props) {

@@ -22,22 +22,30 @@ const NameRoom = styled(H3) `
   font-size:20px;
 `;
 
+const Divider=styled.div`
+  width:100%;
+  border:1px solid #58ACFA ;
+`;
+
 class HotelRoom extends React.Component {
 
   render(){
+    let element = this.props.elements
+
     return (
       <ContainerRoom>
         <RoomImg>
-          <NameRoom>{this.props.elements.type}</NameRoom>
-          <Img src={this.props.elements.image} width='250' />
+          <NameRoom>STANDARD</NameRoom>
+          <Img src='https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg'/>
         </RoomImg>
         <DetailsRoom>
-          <Label>Capacidad para {this.props.elements.personas} personas</Label>
+          <Label>Capacidad para 4 personas</Label>
+          <Label>Habitación estándar, 2 camas dobles</Label>
           <Label>Regimen: Solo Habitación</Label>
         </DetailsRoom>
         <ContainerPrice>
           <Label> Por noche ${this.props.elements.price} MXN</Label>
-          <LabelA> Impuestos $100.56 usd</LabelA>
+          <LabelA> Impuestos $100.56 MXN</LabelA>
           <Title>Precio Total</Title>
           <H3>$3,089.56 <Label>USD</Label></H3>
           {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
@@ -50,6 +58,7 @@ class HotelRoom extends React.Component {
             </Link>
           </ContainerButtonGreen>
         </ContainerPrice>
+        <Divider/>
       </ContainerRoom>
     );
   }

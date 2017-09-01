@@ -10,28 +10,18 @@ class MainHotels extends React.Component {
     super(props);
     this.state = InicialState
 
-    this.test=this.test.bind(this)
-  }
-
-  test(key, items){
-    const state = this.state
-    console.log('key de hotels', key);
-    console.log('items de hotels', items);
-    this.setState({
-      hotels:state.hotels[key]
-    })
-    console.log('setHotels', state.hotels[key]);
+    // this.getRooms=this.getRooms.bind(this)
   }
 
   render() {
-    const {hotels} = this.state
+    const {hotels, night} = this.state
 
     return (
       <div>
         <Container>
           <Div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels key={i} elements={hotels[item]} id={hotels[item].length+=1} test={this.test}/>)}
+              {Object.keys(hotels).map((item, i)=><Hotels key={i} elements={hotels[item]} stateNight={night} stateHotels={item}/>)}
             </DivHotels>
             <div>
               <MapView/>

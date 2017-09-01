@@ -9,17 +9,25 @@ class AddRoomForm extends React.Component {
       input: []
     };
   this.addAgeInput = this.addAgeInput.bind(this)
+  this.inputChild=this.inputChild.bind(this)
   }
 
   addAgeInput(e){
     let input = []
-    let currentValue = e.currentTarget.value
-    for (let i = 1; i <= currentValue; i++) {
-      input.push(<InputKids key={i} Menor={i} name={this.props.count}/>)
+    let value = e.target.value
+    for (let i = 1; i <= value; i++) {
+      input.push(<InputKids key={i} Menor={i} id={this.props.count} inputChild={this.inputChild} object={this.props.object}/>)
     }
     this.setState({
       input:input
     })
+  }
+
+  inputChild(obj,count,e){
+    if (this.props.object === obj) {
+      this.props.input['Age'+count] = e.target.value
+      return
+    }
   }
 
   render() {
