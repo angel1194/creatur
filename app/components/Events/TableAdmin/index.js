@@ -13,14 +13,14 @@ const Container = styled.div`
   display:flex;
   flex-direction: row;
   justify-content:space-between;
-  
+
 `;
 
 class TableAdmin extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
     <Container>
-      <table className='adminStyled'>
+      <table>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -28,7 +28,7 @@ class TableAdmin extends React.Component { // eslint-disable-line react/prefer-s
             <th>Imagen</th>
             <th>Estrella</th>
             <th>Descripción</th>
-            <th>Cancelacion</th>
+            <th>Cancelación</th>
             <th>Eliminar</th>
             <th>Editar</th>
             <th>Agregar</th>
@@ -40,8 +40,8 @@ class TableAdmin extends React.Component { // eslint-disable-line react/prefer-s
              <td>Tabasco 2000</td>
              <td>imagen</td>
              <td> 5</td>
-             <td> Descripcion</td>
-             <td>Cancelacion</td>
+             <td> Descripción</td>
+             <td>Cancelación</td>
              <td><span className='fa-trash'></span></td>
              <td><span className='fa-pencil-square'></span></td>
              <td><span className='fa-plus-square-o '></span></td>

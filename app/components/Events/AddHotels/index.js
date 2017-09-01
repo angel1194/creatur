@@ -46,15 +46,17 @@ const Form = styled.form`
   flex-direction: column;
   width:50%;
   margin-top: 20px;
+  font-size: 16px;
 `;
 
-const Button = styled.button`
+const Button = styled.input`
   width:80px;
   height:30px;
   background-color:#2b5bac;
   box-shadow:1px 1px 8px #000;
   color:white;
   margin-bottom: 20px;
+  font-size: 12px
 `;
 const TextArea = styled.textarea`
   box-shadow:1px 1px 5px #000 inset;
@@ -116,11 +118,11 @@ function AddHotels() {
       </Form>
       <Form>
         <label htmlFor='description'>Descripción:</label>
-        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/>
+        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/><br/>
         <label htmlFor='cancelation'>Cancelación:</label>
         <TextArea name='cancelation' id='cancelation' placeholder='Agregar cancelación'/>
         <div className='buttonAdmin'>
-          <Button><p>AGREGAR</p></Button>
+          <Button type='submit' value='AGREGAR'/>
         </div>
       </Form>
     </Container>
@@ -128,7 +130,6 @@ function AddHotels() {
      <ContainerTable>
        <TableAdmin />
      </ContainerTable>
-
   </div>
 
 

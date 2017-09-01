@@ -15,8 +15,8 @@ const Logo= styled.img`
 
 /*Componentes del body */
 const Body = styled.div`
-  width:25%;
-  height:500px;
+  width:15%;
+  height:220px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -31,8 +31,9 @@ const Container = styled.div`
   display:flex;
   flex-direction: row;
   justify-content:space-between;
+  padding-left:30px
 `;
-  
+
 const FormContainer = styled.div`
   width:100%;
 `;
@@ -80,7 +81,7 @@ class AdminHotels extends Component{
     return(
       <Container>
         <Body>
-          <Link style={linkStyle} onClick={()=>{this.changeLocation('hotel')}}><IconLabel Text='Hotel' Icon='building'  /></Link>
+          <Link style={linkStyle} onClick={()=>{this.changeLocation('hotel')}}><IconLabel Text='Hotel' Icon='building'/></Link>
           <Link style={linkStyle} onClick={()=>{this.changeLocation('transporte')}}><IconLabel Text='Transporte' Icon='car' /></Link>
           <Link style={linkStyle} onClick={()=>{this.changeLocation('ticket')}}><IconLabel Text='Tickets' Icon='ticket'  /></Link>
           <Link style={linkStyle} to='manzanero/admin'><IconLabel Text='Sales' Icon='history' /></Link>
