@@ -8,6 +8,7 @@ var config = {
   storageBucket: "hotel-fa344.appspot.com",
   messagingSenderId: "447002908387"
 };
+
 firebase.initializeApp(config);
 
-export default firebase;
+export default firebase

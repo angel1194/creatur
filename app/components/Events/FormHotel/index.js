@@ -9,14 +9,16 @@ import ButtonFormSearch from '../ButtonFormSearch';
 import Cama from './cama.png';
 import AddRoomForm from './AddRoomForm'
 import InputKids from './InputKids';
+import {setRooms,setHotels} from '../../../containers/Events/Firebase/firebase'
+
 
 class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment(),
+      startDate:moment('2017-10-5'),
       endDate:moment().add(1, "days"),
-      rooms:{
+      roomsUI:{
         room0:{
           adult:0,
           baby:0,
@@ -39,6 +41,7 @@ class FormHotel extends React.Component {
     })
   }
 
+
   handleChangeEnd(date) {
     this.setState({
       endDate: date
@@ -51,7 +54,7 @@ class FormHotel extends React.Component {
     const rooms = this.state.rooms
     rooms[father][name]=value
     this.setState({
-      rooms:rooms
+      roomsUI:rooms
     })
   }
 
@@ -59,7 +62,7 @@ class FormHotel extends React.Component {
     const rooms =this.state.rooms
     rooms[Date.now()] = {adult:0, baby:0,child:{}}
     this.setState({
-      rooms:rooms
+      roomsUI:rooms
     })
   }
 
@@ -71,32 +74,32 @@ class FormHotel extends React.Component {
 
  request(event){
    event.preventDefault()
-
-   let checkin = this.state.startDate.format('YYYY-MM-DD')
-   let checkout = this.state.endDate.format('YYYY-MM-DD')
-   let rooms = this.state.rooms
-
+   const{startDate,endDate,rooms} = this.state
    let request = {
-     checkin: checkin,
-     checkout: checkout,
-     rooms
+     startDate,
+     endDate,
+     rooms,
    }
 
-  //  fetch('',{
-  //     method: 'post',
-  //     body: JSON.stringify(request)
-  //   })
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((recurso) => {
-  //     console.log(recurso);
-  //   })
-    console.log(request);
+   setRooms().then(
+     res => this.setState({
+       rooms: res.val()
+     })
+   )
+
+  setHotels().then(
+    res=>this.setState({
+      hotels:res.val()
+    })
+  )
+
+  let nightRooms = Object.keys(this.state.rooms)
+  let momentNight = nightRooms.map((night)=> console.log(moment.unix(night).format('YYYY/MM/DD HH:mm')))
+  console.log(momentNight);
  }
 
   render() {
-    let data = Object.keys(this.state.rooms)
+    let data = Object.keys(this.state.roomsUI)
     const startDate = this.state.startDate.format('DD')
     const endDate = this.state.endDate.format('DD')
     let count = endDate-startDate
@@ -127,11 +130,10 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                        //  openToDate={moment("1993-09-28")}
                          selected={this.state.startDate}
                          onChange={this.handleChange}
-                         minDate={moment().subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment('2017-10-02')}
+                         maxDate={moment('2017-10-09')}
                        />
                      </div>
                    </div>
@@ -142,10 +144,10 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                         selected={this.state.endDate}
+                         selected={moment(this.state.startDate).add(1,'days')}
                          onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate).subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment(this.state.startDate).add(1, "days")}
+                         maxDate={moment('2017-10-9')}
                        />
                      </div>
                    </div>
