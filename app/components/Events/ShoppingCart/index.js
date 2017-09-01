@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import { Link } from 'react-router';
-import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen} from './style';
+import FormPayment from '../FormPayment';
+import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow} from './style';
 
 
 class ShoppingCart extends Component {
@@ -18,7 +19,7 @@ class ShoppingCart extends Component {
             <Subtitle>- Sugerencias.</Subtitle>
             <Subtitle>Para agregar una reservacion a tu carrito,
               empieza por buscar y navegar a traves de las reservaciones que desee.
-              Cuando encuentres algo que te guste, da clic al botón...</Subtitle>
+              Cuando encuentres algo que te guste, da clic al botón...</Subtitle><br/>
               <ContainerButtonGreen>
                 <ButtonGreen>
                   Añadir al carrito
@@ -31,11 +32,14 @@ class ShoppingCart extends Component {
               </Link>
             </FlexEnd>
           </ContainerCart>
-          <FlexEnd>
+          <FlexRow>
+            <DivPay>
+              <FormPayment/>
+            </DivPay>
             <DivTitle>
               <Title>Total $0.00</Title>
             </DivTitle>
-          </FlexEnd>
+          </FlexRow>
         </Container>
       </div>
     );

@@ -27,7 +27,7 @@ class Hotels extends React.Component {
   constructor(){
     super();
     this.state = {
-      showRooms: false
+      showRooms: false,
     }
     this.setShowRooms=this.setShowRooms.bind(this)
     this.setFalse=this.setFalse.bind(this)
@@ -46,6 +46,7 @@ class Hotels extends React.Component {
   }
 
   render() {
+    let night = this.props.stateNight
     return (
       <Container>
         <Column>
@@ -53,8 +54,8 @@ class Hotels extends React.Component {
             <Row>
               <Img src={this.props.elements.image} Width="200px" Height="156px" />
               <ColumMarginTop>
-                <Title>{this.props.elements.title}</Title>
-                <StarRating key={this.props.id} NumStart={this.props.elements.numStart} />
+                <Title>{this.props.elements.nameHotel}</Title>
+                <StarRating key={this.props.elements.key} NumStart={this.props.elements.numStart} />
                 <TripAdvisor Calification='0' />
                 <LocationLabel Title={this.props.elements.location} />
               </ColumMarginTop>
@@ -62,15 +63,23 @@ class Hotels extends React.Component {
             <Row>
               <ColumMarginRight>
                 <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
-                {/* <AddCheckList id={this.props.id.toString()} JustifyContent="flex-end" Margin="20px" /> */}
-                <br/><br/><br/><br/>
-                <Link onClick={() => this.props.test(this.props.elements.key, this.props.elements.items)} to="/manzanero/rooms">
+                {/* <AddCheckList id={this.props.elements.key} JustifyContent="flex-end" Margin="20px" text={"DOBLE 2 CAMAS STANDARD Hasta 2 Personas"}/> */}
+                <br/><br/><br/>
+                <Link to="/manzanero/rooms" onClick={()=>console.log('hola')}>
                   <Button Title="Reservar" Color="Blue" />
                 </Link>
               </ColumMarginRight>
             </Row>
           </Wrapper>
-          <OffersDay setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse} state={this.state.showRooms}/>
+        {Object.keys(night).map((item,i)=>
+          <OffersDay
+            key={i}
+            setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse}
+            state={this.state.showRooms}
+            hotels={this.props.stateHotels}
+            item={night[item]}
+          />
+        )}
         </Column>
       </Container>
     );

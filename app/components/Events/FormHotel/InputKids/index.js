@@ -8,8 +8,8 @@ class InputKids extends React.Component {
       <div className="section-dad">
         <div>
           <div className="section-child">
-            <label htmlFor="">Menor {this.props.Menor}</label>
-            <input className="inputs" type="number" min="0" placeholder="0" name={this.props.Menor+'Menor'+this.props.name}/>
+            <label htmlFor={this.props.Menor+'Menor'+this.props.id}>Menor {this.props.Menor}</label>
+            <input className="inputs" type="number" onChange={(e)=>this.props.inputChild(this.props.object,this.props.Menor,e)} id={this.props.Menor+'Menor'+this.props.id} min="0" max="17" placeholder="0"/>
           </div>
         </div>
       </div>

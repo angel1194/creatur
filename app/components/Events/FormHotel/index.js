@@ -14,23 +14,24 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment(),
-      endDate:moment().add(1, "days"),
+      startDate:moment("2017-09-16"),
+      endDate:moment("2017-09-16").add(1, "days"),
       rooms:{
         room0:{
           adult:0,
           baby:0,
-          child:{}
+          child:{
+
+          }
         }
       }
-
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
-    this.deleteRoom=this.deleteRoom.bind(this);
-    this.request=this.request.bind(this);
     this.inputValueChange= this.inputValueChange.bind(this);
     this.addRooms=this.addRooms.bind(this);
+    this.deleteRoom=this.deleteRoom.bind(this);
+    this.request=this.request.bind(this);
   }
 
   handleChange(date){
@@ -92,7 +93,7 @@ class FormHotel extends React.Component {
   //   .then((recurso) => {
   //     console.log(recurso);
   //   })
-    console.log(request);
+    // console.log(request);
  }
 
   render() {
@@ -108,8 +109,7 @@ class FormHotel extends React.Component {
             <Header as='h1' className='titleFormHotel'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-               {/*FORM LOCATION */}
-                <SearchForm location="Merida" idLocation='location'/>
+                <SearchForm location="Merida"/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>
@@ -118,7 +118,6 @@ class FormHotel extends React.Component {
                     </a>
                   </div>
                 </div>
-               {/*FECHA */}
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>
                    <label htmlFor="checkin" className='fecha'>Fecha de llegada</label>
@@ -127,11 +126,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                        //  openToDate={moment("1993-09-28")}
+                         id="checkin"
                          selected={this.state.startDate}
                          onChange={this.handleChange}
-                         minDate={moment().subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment("2017-09-16").subtract(3, "days")}
+                         maxDate={moment("2017-09-16").add(3, "days")}
                        />
                      </div>
                    </div>
@@ -142,10 +141,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
+                         id="checkout"
                          selected={this.state.endDate}
                          onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate).subtract(3, "days")}
-                         maxDate={moment().add(3, "days")}
+                         minDate={moment(this.state.startDate)}
+                         maxDate={moment("2017-09-16").add(3, "days")}
                        />
                      </div>
                    </div>
@@ -157,22 +157,20 @@ class FormHotel extends React.Component {
                  </div>
                </div>
              </div>
-            {/*HUESPEDES*/}
             {data.map((key, i)=><AddRoomForm
                                     key={i}
                                     count={i}
                                     inputValueChange={this.inputValueChange}
                                     delete={this.deleteRoom}
                                     object={key}
+                                    input={this.state.rooms[key].child}
                                   />)}
-            {/*ANADIR OTRA HABITACION*/}
             <div>
              <div className='linkHotel'>
               {data.length <= 2 ? <i className="fa fa-plus-circle fa-lg" aria-hidden="true"></i> : ''}
               <a onClick={this.addRooms}>{data.length <= 2 ? 'Añadir otra habitación' : ''}</a>
              </div>
             </div>
-            {/*BOTON BUSQUEDA*/}
             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
             </Grid.Row>
