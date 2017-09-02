@@ -5,7 +5,7 @@ import FormPayment from '../FormPayment';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow} from './style';
 
 
-class ShoppingCart extends Component {
+class ShoppingCart extends React.Component {
   render() {
     return (
       <div>

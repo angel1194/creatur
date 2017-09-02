@@ -62,6 +62,22 @@ const styles ={
   },
   target:{
     width: '23%'
+  },
+  addres:{
+    width: '35%',
+  },
+  address:{
+    width: '15%',
+    margin: '0px 10px 0px 10px'
+  },
+  button:{
+    background: '#2b5bac',
+    color: '#fff',
+    fontFamily: 'Montserrat',
+    outline:'0',
+    padding: '10px',
+    width: '80px',
+    borderRadius: '6px'
   }
 }
 
