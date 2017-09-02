@@ -34,16 +34,18 @@ const styles ={
     padding:'20px',
     borderRadius: '0px 0px 6px 6px',
     display:'flex',
-    flexDirection:'column'
+    flexDirection:'column',
   },
   container:{
     width: '100%',
     flexDirection: 'row',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
   inputlabel:{
-    width: '49%'
+    flex: '1',
+    margin: '0px 5px 0px 5px'
   },
   label:{
     color: '#2b5bac',
@@ -58,17 +60,20 @@ const styles ={
     border: '1px solid #eaeff3',
     borderRadius: '6px',
     outline: '0',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    color: '#777'
   },
-  target:{
-    width: '23%'
+  inputBig:{
+    flex: '3',
+    margin: '0px 5px 0px 5px'
   },
-  addres:{
-    width: '35%',
+  inputMedium:{
+    flex: '3',
+    margin: '0px 5px 0px 5px'
   },
-  address:{
-    width: '15%',
-    margin: '0px 10px 0px 10px'
+  inputSmall:{
+    flex: '1',
+    margin: '0px 5px 0px 5px'
   },
   button:{
     background: '#2b5bac',
@@ -77,7 +82,8 @@ const styles ={
     outline:'0',
     padding: '10px',
     width: '80px',
-    borderRadius: '6px'
+    borderRadius: '6px',
+    alignItems: 'center'
   }
 }
 
