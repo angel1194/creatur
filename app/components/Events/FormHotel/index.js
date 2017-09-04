@@ -73,7 +73,7 @@ class FormHotel extends React.Component {
 
  request(event){
    event.preventDefault()
-   const{startDate,endDate,roomsUI} = this.state
+   const {startDate,endDate,roomsUI} = this.state
    let request = {
      roomsUI,
    }
