@@ -11,9 +11,17 @@ const Icon = styled(FontAwesome) `
 class FormPayment extends React.Component {
   constructor(){
     super();
-    this.state = {}
+    this.state = {deviceSessionId: '', validation: [], request: {}}
 
     this.request = this.request.bind(this)
+  }
+
+  componentDidMount(){
+    const openpay = window.OpenPay
+    const deviceSessionId = openpay.deviceData.setup('payment', 'deviceIdHiddenFieldName')
+    this.setState({
+      deviceSessionId:deviceSessionId
+    })
   }
 
   request(event){
@@ -35,6 +43,11 @@ class FormPayment extends React.Component {
     let state = this.refs.state.value
     let countryCode = this.refs.country_code.value
 
+    const openpay = window.OpenPay
+    openpay.setId('mxvvjiqmnh5lhpdhogvo');
+    openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
+    openpay.setSandboxMode(true);
+
     let token = {
       "card_number": cardNumber,
       "holder_name": holderName,
@@ -55,6 +68,43 @@ class FormPayment extends React.Component {
       }
     }
     console.log(token);
+    openpay.token.create(token, (e)=>this.onSuccess(e, token),(err)=>this.onError(err, token));
+  }
+
+  onSuccess(res, token){
+    const state = this.state
+
+    let request = {
+      'source_id': res.data.id,
+      'method': 'card',
+      'amount': "",
+      'currency': 'MXN',
+      'description': 'Cargo inicial a mi cuenta',
+      'order_id': 'CMV-',
+      'device_session_id' : state.deviceSessionId,
+      'customer': {
+        'name': token.holder_name,
+        'last_name': token.last_name,
+        'phone_number': token.phone_number,
+        'email': token.email
+      }
+    }
+    fetch('',{
+      method: 'post',
+      body: JSON.stringify(request)
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((recurso) => {
+      console.log(recurso);
+    })
+
+    console.log(request);
+  }
+
+  onError(err, token){
+    alert(err.data.description)
   }
 
   render(){

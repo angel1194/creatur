@@ -87,8 +87,12 @@ const state = {
       cantidad:0
     }
   },
-  Rooms:{
-
+  car:{
+    items:{
+      
+    },
+    total:0,
+    id:0
   }
 }
 

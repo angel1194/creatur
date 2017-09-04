@@ -31,6 +31,7 @@ class HotelRoom extends React.Component {
 
   render(){
     let element = this.props.elements
+    // let elements = element.map((item, i)=> element[item])
 
     return (
       <ContainerRoom>
@@ -50,12 +51,12 @@ class HotelRoom extends React.Component {
           <H3>$3,089.56 <Label>USD</Label></H3>
           {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
           <ContainerButtonGreen>
-            <Link to="/manzanero/rooms">
-              <ButtonGreen>
+            {/* <Link to="#"> */}
+              <ButtonGreen onClick={()=> this.props.addCar(element)}>
                 Añadir al carrito
               <Space name='shopping-cart' />
               </ButtonGreen>
-            </Link>
+            {/* </Link> */}
           </ContainerButtonGreen>
         </ContainerPrice>
         <Divider/>
