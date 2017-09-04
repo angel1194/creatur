@@ -7,9 +7,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconLabel from '../IconLabel';
+import RowAdmin from '../RowAdmin';
 
 const Container = styled.div`
-  width:100%;
+  width:90%;
   display:flex;
   flex-direction: row;
   justify-content:space-between;
@@ -22,32 +23,18 @@ class TableAdmin extends React.Component { // eslint-disable-line react/prefer-s
     <Container>
       <table>
         <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Imagen</th>
-            <th>Estrella</th>
-            <th>Descripción</th>
-            <th>Cancelación</th>
-            <th>Eliminar</th>
-            <th>Editar</th>
-            <th>Agregar</th>
+          <tr className='thTable'>
+            <th className='thTable'>Nombre</th>
+            <th className='thTable'>Dirección</th>
+            <th className='thTable'>Imagen</th>
+            <th className='thTable'>Estrella</th>
+            <th className='thTable'>Descripción</th>
+            <th className='thTable'>Cancelación</th>
+            <th className='thTable'>Eliminar</th>
+            <th className='thTable'>Editar</th>
+            <th className='thTable'>Agregar</th>
           </tr>
         </thead>
-         <tbody>
-           <tr>
-             <td>Juan </td>
-             <td>Tabasco 2000</td>
-             <td>imagen</td>
-             <td> 5</td>
-             <td> Descripción</td>
-             <td>Cancelación</td>
-             <td><span className='fa-trash'></span></td>
-             <td><span className='fa-pencil-square'></span></td>
-             <td><span className='fa-plus-square-o '></span></td>
-           </tr>
-         </tbody>
-
 
       </table>
     </Container>

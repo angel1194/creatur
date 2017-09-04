@@ -47,6 +47,7 @@ const Form = styled.form`
   width:50%;
   margin-top: 20px;
   font-size: 16px;
+  padding-bottom: 10px;
 `;
 
 const Button = styled.input`
@@ -118,18 +119,26 @@ function AddHotels() {
       </Form>
       <Form>
         <label htmlFor='description'>Descripción:</label>
-        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/><br/>
-        <label htmlFor='cancelation'>Cancelación:</label>
-        <TextArea name='cancelation' id='cancelation' placeholder='Agregar cancelación'/>
+        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/>
+        <label htmlFor='cancellation'>Cancelación:</label>
+        <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación'/>
         <div className='buttonAdmin'>
           <Button type='submit' value='AGREGAR'/>
         </div>
       </Form>
     </Container>
 
-     <ContainerTable>
-       <TableAdmin />
-     </ContainerTable>
+    {/* <ContainerTable>
+       <TableAdmin
+         name='sdgf'
+         address='sdgf'
+         image='sdgf'
+         stars='sdgf'
+         description='sdgf'
+         cancellation='sdgf'
+       />
+     </ContainerTable>*/}
+
   </div>
 
 

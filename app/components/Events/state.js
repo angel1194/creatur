@@ -7,12 +7,6 @@ const state = {
       numStart:4,
       location:'Mérida',
       key:'001',
-      items:{
-        image:"https://images.trvl-media.com/hotels/2000000/1790000/1781400/1781314/412853a8_z.jpg",
-        type:'Doble Standard',
-        personas:3,
-        price:245.00,
-      }
     },
     '002':{
       image:"https://images.bestday.com/_lib/vimages/Merida_Yucatan/Hotels/Hotel-Casa-Lucia/Fachada_t.jpg",
@@ -29,7 +23,7 @@ const state = {
       numStart:3,
       location:'Mérida',
       key:'003',
-    }
+    },
   },
   transport:{
     '001':{

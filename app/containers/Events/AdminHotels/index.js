@@ -7,6 +7,8 @@ import AddTicket from '../../../components/Events/AddTicket'
 import styled from 'styled-components'
 import firebase from '../Firebase'
 import IconLabel from '../../../components/Events/IconLabel';
+import RowAdmin from '../../../components/Events/RowAdmin';
+import TableAdmin from '../../../components/Events/TableAdmin';
 import {Link} from 'react-router';
 
 const Logo= styled.img`
@@ -42,7 +44,7 @@ class AdminHotels extends Component{
   constructor(props){
     super(props)
     this.state= {
-      ui:'hotel'
+      ui:'hotel',
     }
     this.changeLocation=this.changeLocation.bind(this);
   }
@@ -55,16 +57,27 @@ class AdminHotels extends Component{
     })
   }
 
+  componentDidMount(){
+  let database = firebase.database().ref().child('hotels')
+  database.on('value',snap=>{
+    this.setState({
+      hotels:snap.val()
+    })
+  })
+
+  }
+
   changeLocation(ubicacion){
     this.setState({
       ui:ubicacion
     })
   }
 
+
    renderForm(){
-     if(this.state.ui==='hotel'){
+     if(this.state.ui==='hotel' ){
        return(
-        <AddHotels/>
+         <AddHotels/>
        )
      }else if (this.state.ui=='transporte') {
        return(
@@ -78,6 +91,7 @@ class AdminHotels extends Component{
    }
   render(){
     const ubicacion= this.state.ui
+    const database= this.state.hotels
     return(
       <Container>
         <Body>
@@ -89,11 +103,28 @@ class AdminHotels extends Component{
         <Container>
         <FormContainer>
         {this.renderForm()}
+        <TableAdmin />
+
+   {Object.keys(database).map((data,i)=>
+      <RowAdmin
+        key={i}
+        name={database[data].name}
+        address={database[data].address}
+        image={database[data].image}
+        stars={database[data].star}
+        description={database[data].description}
+        cancellation={database[data].cancellation}
+      />
+    ) }
         </FormContainer>
+
+
        </Container>
       </Container>
     );
-  }
+
+}
+
 }
 
 export default AdminHotels;
