@@ -52,7 +52,7 @@ class HotelRoom extends React.Component {
           {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
           <ContainerButtonGreen>
             {/* <Link to="#"> */}
-              <ButtonGreen onClick={()=> this.props.addCar(element)}>
+              <ButtonGreen onClick={()=> this.props.addCar(element, this.props.elements.room0['idHotel'])}>
                 Añadir al carrito
               <Space name='shopping-cart' />
               </ButtonGreen>

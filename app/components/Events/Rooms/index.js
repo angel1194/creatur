@@ -15,11 +15,14 @@ class Rooms extends React.Component {
 
   addCar(rooms){
     const state = this.state.car
-    const night = this.state.night
 
-    state.items[rooms] = rooms
+    for (var i in rooms) {
+      state.items[Date.now()] = rooms[i]
+    }
+
+    // state.items[Date.now()] = rooms
     this.setState(state)
-    console.log(night);
+    console.log(state);
   }
 
   render() {
