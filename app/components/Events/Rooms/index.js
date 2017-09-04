@@ -14,15 +14,17 @@ class Rooms extends React.Component {
   }
 
   addCar(rooms){
-    const state = this.state.car
-
-    for (var i in rooms) {
-      state.items[Date.now()] = rooms[i]
-    }
-
-    // state.items[Date.now()] = rooms
-    this.setState(state)
-    console.log(state);
+    console.log(rooms['room0']);
+    // const {items}= this.state.car
+    //
+    //
+    // items[Date.now()] = rooms[0]
+    //
+    //
+    // this.setState({
+    //   car:items
+    // })
+    // console.log(this.state);
   }
 
   render() {

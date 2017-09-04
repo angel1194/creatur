@@ -9,7 +9,7 @@ function InfoHotel(props) {
       <Row>
         <Img src="https://imgec.trivago.com/partnerimages/11/11/111168560_x.jpeg"/>
         <ScoreHotel/>
-        <BookingInfo/>
+        {/* <BookingInfo/> */}
       </Row>
     </ContainerHotel>
   );

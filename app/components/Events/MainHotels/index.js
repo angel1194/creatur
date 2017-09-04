@@ -9,8 +9,6 @@ class MainHotels extends React.Component {
   constructor(props){
     super(props);
     this.state = InicialState
-
-    // this.getRooms=this.getRooms.bind(this)
   }
 
   render() {

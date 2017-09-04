@@ -18,6 +18,7 @@ function OffersDay(props) {
           Object.keys(item).map((items,i)=>
             item[items].idHotel == hotels ?
             <Row key={i}>
+              {console.log('items de los rooms',item[items])}
               <Column>
                 <AddCheckList id={'room'+i} text={item[items].description}/>
                 <Reg>
