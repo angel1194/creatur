@@ -16,8 +16,8 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment('05/10/2017'),
-      endDate:moment('06/10/2017'),
+      startDate:moment(new Date('2017-10-05')),
+      endDate:moment(new Date('2017-10-06')),
       roomsUI:{
         room0:{
           adult:0,
@@ -35,17 +35,15 @@ class FormHotel extends React.Component {
   }
 
   handleChange(date){
-    console.log(date);
     this.setState({
-      startDate:moment(date),
+      startDate:moment(date['_d'])
     })
-    console.log('startDate',this.state.startDate);
   }
 
 
   handleChangeEnd(date) {
     this.setState({
-      endDate: date
+      endDate: moment(date['_d'])
     })
   }
 
@@ -75,11 +73,9 @@ class FormHotel extends React.Component {
 
  request(event){
    event.preventDefault()
-   const{startDate,endDate,rooms} = this.state
+   const{startDate,endDate,roomsUI} = this.state
    let request = {
-     startDate,
-     endDate,
-     rooms,
+     roomsUI,
    }
 
    setRooms().then(
@@ -93,11 +89,21 @@ class FormHotel extends React.Component {
       hotels:res.val()
     })
   )
-  console.log(this.state);
-  // let nightRooms = Object.keys(this.state.rooms)
-  // let momentNight = nightRooms.map((night)=> console.log(moment(night, 'YYYY/MM/DD HH:mm').unix()))
-  // console.log(momentNight);
+  // Convirtiendo las noches en objetos moment()
+  console.log('antes del object');
+  let nights= Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
+  console.log('despues del object');
+  // Buscando las fechas en el rango marcado
+  let roomsBetween = nights.filter((night)=> this.filterNight(night,startDate,endDate))
+  console.log(roomsBetween);
  }
+
+ filterNight(night,startDate,endDate){
+   if (moment(night).isBetween(moment(startDate),moment(endDate),null,'[]')) {
+     return night
+   }
+ }
+
 
   render() {
     let data = Object.keys(this.state.roomsUI)
@@ -131,8 +137,8 @@ class FormHotel extends React.Component {
                        <DatePicker
                          selected={this.state.startDate}
                          onChange={this.handleChange}
-                         minDate={moment('2017-10-02')}
-                         maxDate={moment('2017-10-08')}
+                         minDate={moment(new Date('10/05/2017')).subtract(3,'days')}
+                         maxDate={moment(new Date('10/05/2017')).add(3,'days')}
                        />
                      </div>
                    </div>
@@ -143,11 +149,11 @@ class FormHotel extends React.Component {
                      <div className='selectFormSearch'>
                        <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
                        <DatePicker
-                         id="checkout"
-                         selected={this.state.endDate}
-                         onChange={this.handleChangeEnd}
-                         minDate={moment(this.state.startDate).add(1,'days')}
-                         maxDate={moment("2017-10-08")}
+                        id="checkout"
+                        selected={this.state.endDate}
+                        onChange={this.handleChangeEnd}
+                        minDate={moment(this.state.startDate).add(1,'days')}
+                        maxDate={moment(new Date('10/08/2017'))}
                        />
                      </div>
                    </div>
