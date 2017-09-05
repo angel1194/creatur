@@ -46,7 +46,7 @@ class FormPayment extends React.Component {
     let countryCode = this.refs.country_code.value
 
     this.validateCard(cvv2, cardNumber)
-    this.validateExpiry()
+    this.validateExpiry(Month,Year)
 
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
@@ -73,6 +73,7 @@ class FormPayment extends React.Component {
       }
     }
     openpay.token.create(token, (e)=>this.onSuccess(e, token),(err)=>this.onError(err, token));
+    console.log(token);
   }
 
   onSuccess(e, token){
@@ -106,8 +107,8 @@ class FormPayment extends React.Component {
   }
 
   onError(err, token){
-    let message = err.message
-    let response = message.replace(err.message, "Error de solicitud, verifique que los datos sean correctos")
+    let message = err.data.description
+    let response = message.replace(message, 'Error de solicitud: '+message)
     alert(response)
   }
 
@@ -123,11 +124,16 @@ class FormPayment extends React.Component {
     return validation
   }
 
-  validateExpiry(){
+  validateExpiry(Month, Year){
     const openpay = window.OpenPay
 
-    let validation = openpay.card.validateExpiry('01', '2017');
-    console.log('soy validacion de expiracion',validation);
+    let validation = openpay.card.validateExpiry(Month, "20"+Year);
+    if (validation === true) {
+      console.log('soy validacion de expiracion',validation);
+    }else {
+      alert('Tarjeta invalida, verifique su expiracion')
+    }
+    return validation
   }
 
   render(){
