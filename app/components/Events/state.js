@@ -93,9 +93,6 @@ const state = {
     },
     total:0,
     id:0
-  },
-  header:{
-    validation: true
   }
 }
 

@@ -11,9 +11,11 @@ const Icon = styled(FontAwesome) `
 class FormPayment extends React.Component {
   constructor(){
     super();
-    this.state = {deviceSessionId: '', validation: [], request: {}}
+    this.state = {deviceSessionId: ''}
 
     this.request = this.request.bind(this)
+    this.validateCard = this.validateCard.bind(this)
+    this.validateExpiry = this.validateExpiry.bind(this)
   }
 
   componentDidMount(){
@@ -43,6 +45,9 @@ class FormPayment extends React.Component {
     let state = this.refs.state.value
     let countryCode = this.refs.country_code.value
 
+    this.validateCard(cvv2, cardNumber)
+    this.validateExpiry()
+
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
     openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
@@ -67,15 +72,14 @@ class FormPayment extends React.Component {
          "country_code": countryCode
       }
     }
-    console.log(token);
     openpay.token.create(token, (e)=>this.onSuccess(e, token),(err)=>this.onError(err, token));
   }
 
-  onSuccess(res, token){
+  onSuccess(e, token){
     const state = this.state
 
     let request = {
-      'source_id': res.data.id,
+      'source_id': e.data.id,
       'method': 'card',
       'amount': "",
       'currency': 'MXN',
@@ -99,12 +103,31 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
-
-    console.log(request);
   }
 
   onError(err, token){
-    alert(err.data.description)
+    let message = err.message
+    let response = message.replace(err.message, "Error de solicitud, verifique que los datos sean correctos")
+    alert(response)
+  }
+
+  validateCard(cvv2, cardNumber){
+    const openpay = window.OpenPay
+
+    let validation = openpay.card.validateCVC(cvv2,cardNumber);
+    if (validation === true) {
+      // console.log('soy validate card',validation);
+    }else {
+      alert('Numero de Tarjeta Invalida')
+    }
+    return validation
+  }
+
+  validateExpiry(){
+    const openpay = window.OpenPay
+
+    let validation = openpay.card.validateExpiry('01', '2017');
+    console.log('soy validacion de expiracion',validation);
   }
 
   render(){
@@ -131,7 +154,7 @@ class FormPayment extends React.Component {
           <div style={styles.container}>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Telefono</label>
-              <input style={styles.input} type="text" id="" ref="phone_number"/>
+              <input style={styles.input} type="tel" id="" ref="phone_number"/>
             </div>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Correo Electronico</label>
@@ -188,7 +211,7 @@ class FormPayment extends React.Component {
             </div>
             <div style={styles.inputSmall}>
               <label style={styles.label} htmlFor="">Código de país:</label>
-              <input style={styles.input} type="text" id="" ref="country_code" defaultValue="MX"/>
+              <input style={styles.input} type="text" id="" ref="country_code" value="MX" readOnly/>
             </div>
           </div>
           <button style={styles.button}>Pagar</button>
