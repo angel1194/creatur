@@ -17,16 +17,16 @@ class FormTableAdmin extends React.Component { // eslint-disable-line react/pref
   render() {
     return (
       <Container>
-        <table className='adminStyled'>
+        <table>
           <thead>
             <tr>
               <th>{this.props.row}</th>
               <th>{this.props.rowtwo}</th>
               <th>{this.props.rowthree}</th>
               <th>{this.props.rowfour}</th>
-              <th>{this.props.rowfive}</th>
-              <th>{this.props.rowsix}</th>
-              <th>{this.props.rowseven}</th>
+              <th>Eliminar</th>
+              <th>Editar</th>
+              <th>Agregar</th>
             </tr>
           </thead>
            <tbody>

@@ -93,22 +93,6 @@ function AddTicket() {
       </Form>
     </Container>
 
-    <ContainerTable>
-      <FormTableAdmin
-         row='Folio'
-         rowtwo='Fecha'
-         rowthree='Precio'
-         rowfour='Sección'
-         rowfive='Eliminar'
-         rowsix='Editar'
-         rowseven='Agregar'
-         tdata=''
-         tdata= ''
-         tdatatwo= ''
-         tdatathree= ''
-         tdatafour= ''
-         />
-    </ContainerTable>
   </div>
   );
 }

@@ -10,7 +10,7 @@ import IconLabel from '../IconLabel';
 import RowAdmin from '../RowAdmin';
 
 const Container = styled.div`
-  width:90%;
+  width:100%;
   display:flex;
   flex-direction: row;
   justify-content:space-between;

@@ -92,21 +92,7 @@ function AddTransport() {
         </div>
       </Form>
     </Container>
-    <ContainerTable>
-      <FormTableAdmin
-         row='Imagen'
-         rowtwo='Precio'
-         rowthree='Asiento'
-         rowfour='Tipo'
-         rowfive='Eliminar'
-         rowsix='Editar'
-         rowseven='Agregar'
-         tdata= ''
-         tdatatwo= ''
-         tdatathree= ''
-         tdatafour= ''
-         />
-    </ContainerTable>
+  
   </div>
   );
 }

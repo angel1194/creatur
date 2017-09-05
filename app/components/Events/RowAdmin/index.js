@@ -15,7 +15,7 @@ class RowAdmin extends React.Component { // eslint-disable-line react/prefer-sta
       <tbody>
         <tr>
           <td>{this.props.name}</td>
-          <td className='row'>{this.props.address}</td>
+          <td>{this.props.address}</td>
           <td><img src={this.props.image} alt="imagen" width='100'/></td>
           <td> {this.props.stars}</td>
           <td> {this.props.description}</td>

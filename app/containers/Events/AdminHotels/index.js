@@ -9,6 +9,7 @@ import firebase from '../Firebase'
 import IconLabel from '../../../components/Events/IconLabel';
 import RowAdmin from '../../../components/Events/RowAdmin';
 import TableAdmin from '../../../components/Events/TableAdmin';
+import FormTableAdmin from '../../../components/Events/FormTableAdmin';
 import {Link} from 'react-router';
 
 const Logo= styled.img`
@@ -39,6 +40,19 @@ const Container = styled.div`
 const FormContainer = styled.div`
   width:100%;
 `;
+
+const ContainerTable = styled.div`
+  margin-top: 10px;
+  width:90%;
+  height: auto;
+  background:#E6E6E6;
+  padding:25px;
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+  padding-top: 19px;
+  `;
 
 class AdminHotels extends Component{
   constructor(props){
@@ -75,23 +89,62 @@ class AdminHotels extends Component{
 
 
    renderForm(){
+
+     const database= this.state.hotels
+
      if(this.state.ui==='hotel' ){
        return(
+         <div>
          <AddHotels/>
+         <ContainerTable>
+           <TableAdmin />
+
+          {Object.keys(database).map((data,i)=>
+          <RowAdmin
+            key={i}
+            name={database[data].name}
+            address={database[data].address}
+            image={database[data].image}
+            stars={database[data].star}
+            description={database[data].description}
+            cancellation={database[data].cancellation}
+           />
+          ) }
+        </ContainerTable>
+       </div>
        )
      }else if (this.state.ui=='transporte') {
        return(
-        <AddTransport/>
+         <div>
+           <AddTransport/>
+           <ContainerTable>
+              <FormTableAdmin
+                row='Imagen'
+                rowtwo='Precio'
+                rowthree='Asiento'
+                rowfour='Tipo'
+              />
+           </ContainerTable>
+         </div>
        )
      }else if (this.state.ui=='ticket') {
        return(
-         <AddTicket/>
+         <div>
+           <AddTicket/>
+           <ContainerTable>
+              <FormTableAdmin
+                row='Fecha'
+                rowtwo='Key'
+                rowthree='Precio'
+                rowfour='Sección'
+              />
+           </ContainerTable>
+         </div>
        )
      }
    }
   render(){
     const ubicacion= this.state.ui
-    const database= this.state.hotels
     return(
       <Container>
         <Body>
@@ -103,28 +156,12 @@ class AdminHotels extends Component{
         <Container>
         <FormContainer>
         {this.renderForm()}
-        <TableAdmin />
-
-   {Object.keys(database).map((data,i)=>
-      <RowAdmin
-        key={i}
-        name={database[data].name}
-        address={database[data].address}
-        image={database[data].image}
-        stars={database[data].star}
-        description={database[data].description}
-        cancellation={database[data].cancellation}
-      />
-    ) }
         </FormContainer>
-
-
        </Container>
       </Container>
     );
 
 }
-
 }
 
 export default AdminHotels;
