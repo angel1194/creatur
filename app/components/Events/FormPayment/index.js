@@ -45,6 +45,10 @@ class FormPayment extends React.Component {
     let state = this.refs.state.value
     let countryCode = this.refs.country_code.value
 
+    if (holderName === '') {
+      document.getElementById('name').innerHTML = 'Rellena el campo'
+    }
+
     this.validateCard(cvv2, cardNumber)
     this.validateExpiry(Month,Year)
 
@@ -150,6 +154,7 @@ class FormPayment extends React.Component {
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Nombre (s)</label>
               <input style={styles.input} type="text" id="" ref="holder_name"/>
+              <p style={styles.message} id="name"></p>
             </div>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Apellidos</label>

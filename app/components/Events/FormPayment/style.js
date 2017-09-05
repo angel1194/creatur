@@ -84,6 +84,12 @@ const styles ={
     width: '80px',
     borderRadius: '6px',
     alignItems: 'center'
+  },
+  message:{
+    color: '#e74c3c',
+    margin: '-5px 0px 5px 5px',
+    fontSize: '10px',
+    fontFamily: 'Montserrat'
   }
 }
 
