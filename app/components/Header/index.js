@@ -25,8 +25,8 @@ class Header extends React.Component {
     return(
       <header className="header">
         <Container>
-          <Navigation cart="Mi Carrito" count={count.length} icon="shopping-cart"/>
-          {/* <Navigation service="Servicio" reserv="Mi reserva" travel="Mi Viaje" login="Inicia Sesion"/> */}
+          {/* <Navigation cart="Mi Carrito" count={count.length} icon="shopping-cart"/> */}
+          <Navigation service="Servicio" reserv="Mi reserva" travel="Mi Viaje" login="Inicia Sesion"/>
         </Container>
       </header>
     )
