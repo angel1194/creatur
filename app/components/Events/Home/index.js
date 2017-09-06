@@ -9,13 +9,12 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents/>
+      container:<MainEvents location={()=>this.location(<HotelsManzanero location={this.location}/>)}/>
     }
     this.location = this.location.bind(this)
   }
 
   location(container){
-    console.log('ejecutando location');
     this.setState({
       container,
     })
@@ -25,7 +24,7 @@ class Home extends React.Component {
     return (
       <div>
         {this.state.container}
-        <button onClick={()=>this.location(<HotelsManzanero location={this.location}/>)}>Hoteles</button>
+        {/* <button onClick={()=>this.location(<HotelsManzanero location={this.location}/>)}>Hoteles</button> */}
       </div>
     );
   }
