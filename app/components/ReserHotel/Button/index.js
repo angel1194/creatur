@@ -15,7 +15,7 @@ import Rooms from '../../../containers/Events/Rooms';
 function Button(props) {
   return (
     <div>
-      <ButtonStyled onClick={props.setHotels ? ()=>props.setHotels() : ()=>props.location(<Rooms/>)}>
+      <ButtonStyled onClick={props.setHotels ? ()=>props.setHotels() : ()=>props.location(<Rooms/>, 3)}>
         <Wrapper>
           <Title>{props.Title}</Title>
 

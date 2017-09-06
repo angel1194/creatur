@@ -11,9 +11,19 @@ class Trailcrumb extends React.Component {
     return (
       <Div>
         <Ul>
-          <Li>Inicio</Li>
-          <Li><FontAwesome name='angle-double-right'></FontAwesome> Hoteles</Li>
-          <Li><FontAwesome name='angle-double-right'></FontAwesome> Reservar</Li>
+          <Li onClick={()=> this.props.location(<MainEvents location={()=>this.props.location(<HotelsManzanero location={this.props.location}/>, 2)}/>, 1)}>
+            Inicio
+          </Li>
+          {this.props.nameContainer >=2?
+            <Li onClick={()=> this.props.location(<HotelsManzanero location={this.props.location}/>, 2)}>
+               <FontAwesome name='angle-double-right'></FontAwesome> Hoteles
+            </Li>
+          : ''}
+          {this.props.nameContainer === 3?
+            <Li onClick={()=> this.props.location(<Rooms/>, 3)}>
+              <FontAwesome name='angle-double-right'></FontAwesome> Habitaciones
+            </Li>
+          : ''}
         </Ul>
         <Car onClick={()=> this.props.location(<Cart/>)}>Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome></Car>
         <Count>{0}</Count>
