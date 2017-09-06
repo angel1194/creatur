@@ -10,6 +10,7 @@ import PriceLabel from '../../ReserHotel/PriceLabel';
 import Button from '../../ReserHotel/Button';
 import AddCheckList from '../../AddCheckList';
 import OffersDay from './OffersDay';
+import Rooms from '../../../containers/Events/Rooms';
 
 const ColumMarginRight = styled(Column) `
   margin-right: 10px;
@@ -24,8 +25,8 @@ const ColumMarginTop = styled(Column) `
 `;
 
 class Hotels extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       showRooms: false,
     }
@@ -46,6 +47,7 @@ class Hotels extends React.Component {
   }
 
   render() {
+    console.log('Componente Hotel',this.props.location);
     let night = this.props.stateNight
     return (
       <Container>
@@ -65,9 +67,7 @@ class Hotels extends React.Component {
                 <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
                 {/* <AddCheckList id={this.props.elements.key} JustifyContent="flex-end" Margin="20px" text={"DOBLE 2 CAMAS STANDARD Hasta 2 Personas"}/> */}
                 <br/><br/><br/>
-                <Link to="/manzanero/rooms" onClick={()=>console.log('hola')}>
-                  <Button Title="Reservar" Color="Blue" />
-                </Link>
+                  <Button Title="Reservar" Color="Blue" location={this.props.location}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>
