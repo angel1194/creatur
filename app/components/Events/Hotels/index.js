@@ -47,7 +47,6 @@ class Hotels extends React.Component {
   }
 
   render() {
-    console.log('Componente Hotel',this.props.location);
     let night = this.props.stateNight
     return (
       <Container>

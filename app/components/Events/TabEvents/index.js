@@ -35,7 +35,7 @@ class TabEvents extends React.Component {
    renderForm(){
      if(this.state.ubicacion==='hotel'){
        return(
-         <FormHotel title='Bienvenido'/>
+         <FormHotel title='Bienvenido' location={this.props.location}/>
        )
      }else if(this.state.ubicacion==='car'){
        return(
