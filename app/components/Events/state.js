@@ -39,7 +39,7 @@ const state = {
         description:'HABITACION STANDARD CON 1 CAMA DOBLE',
         price:'629.29',
         capacity:2,
-        type:'STANDARD'
+        type:'STANDARD',
       }
     },
     // '456':{
@@ -60,7 +60,7 @@ const state = {
       price:'1006',
       numStart:4.5,
       location:'Mérida, a 1.9 km de: Centro de Convenciones Yucatán Siglo XXI',
-      cantidad:0
+      cantidad:0,
     },
     '002':{
       image:"https://imgec.trivago.com/partnerimages/14/15/141535832_x.jpeg",
@@ -87,8 +87,12 @@ const state = {
       cantidad:0
     }
   },
-  Rooms:{
+  car:{
+    items:{
 
+    },
+    total:0,
+    id:0
   }
 }
 

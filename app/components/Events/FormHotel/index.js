@@ -58,7 +58,7 @@ class FormHotel extends React.Component {
   }
 
   addRooms(){
-    const rooms =this.state.rooms
+    const rooms =this.state.roomsUI
     rooms[Date.now()] = {adult:0, baby:0,child:{}}
     this.setState({
       roomsUI:rooms
@@ -66,7 +66,7 @@ class FormHotel extends React.Component {
   }
 
  deleteRoom(e){
-   var state = this.state.rooms
+   var state = this.state.roomsUI
    delete state[e]
    this.setState(state)
  }
