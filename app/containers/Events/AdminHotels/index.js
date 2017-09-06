@@ -10,6 +10,8 @@ import IconLabel from '../../../components/Events/IconLabel';
 import RowAdmin from '../../../components/Events/RowAdmin';
 import TableAdmin from '../../../components/Events/TableAdmin';
 import FormTableAdmin from '../../../components/Events/FormTableAdmin';
+import RowTransport from '../../../components/Events/RowTransport';
+import RowTicket from '../../../components/Events/RowTicket';
 import {Link} from 'react-router';
 
 const Logo= styled.img`
@@ -72,14 +74,31 @@ class AdminHotels extends Component{
   }
 
   componentDidMount(){
-  let database = firebase.database().ref().child('hotels')
-  database.on('value',snap=>{
+    let rootRef = firebase.database().ref()
+    let hotels=rootRef.child('hotels')
+    let transport = rootRef.child('transport')
+    let tickets = rootRef.child('tickets')
+
+  hotels.on('value',snap=>{
     this.setState({
       hotels:snap.val()
     })
   })
 
+  transport.on('value', snap=>{
+    this.setState({
+      transport:snap.val()
+    })
+  })
+
+  tickets.on('value', snap=>{
+    this.setState({
+      tickets:snap.val()
+    })
+  })
+
   }
+
 
   changeLocation(ubicacion){
     this.setState({
@@ -90,7 +109,9 @@ class AdminHotels extends Component{
 
    renderForm(){
 
-     const database= this.state.hotels
+     const dataHotels= this.state.hotels
+     const dataTransport= this.state.transport
+     const dataTickets= this.state.tickets
 
      if(this.state.ui==='hotel' ){
        return(
@@ -99,15 +120,15 @@ class AdminHotels extends Component{
          <ContainerTable>
            <TableAdmin />
 
-          {Object.keys(database).map((data,i)=>
+          {Object.keys(dataHotels).map((data,i)=>
           <RowAdmin
             key={i}
-            name={database[data].name}
-            address={database[data].address}
-            image={database[data].image}
-            stars={database[data].star}
-            description={database[data].description}
-            cancellation={database[data].cancellation}
+            name={dataHotels[data].name}
+            address={dataHotels[data].address}
+            image={dataHotels[data].image}
+            stars={dataHotels[data].star}
+            description={dataHotels[data].description}
+            cancellation={dataHotels[data].cancellation}
            />
           ) }
         </ContainerTable>
@@ -124,6 +145,16 @@ class AdminHotels extends Component{
                 rowthree='Asiento'
                 rowfour='Tipo'
               />
+
+              {Object.keys(dataTransport).map((data,i)=>
+               <RowTransport
+                key={i}
+                image={dataTransport[data].image}
+                price={dataTransport[data].price}
+                seating={dataTransport[data].seating}
+                type={dataTransport[data].type}
+               />
+              )}
            </ContainerTable>
          </div>
        )
@@ -138,6 +169,16 @@ class AdminHotels extends Component{
                 rowthree='Precio'
                 rowfour='Sección'
               />
+              {Object.keys(dataTickets).map((data,i)=>
+                <RowTicket
+                  key={i}
+                  date={dataTickets[data].date}
+                  id={dataTickets[data].key}
+                  price={dataTickets[data].price}
+                  section={dataTickets[data].section}
+
+                />
+              )}
            </ContainerTable>
          </div>
        )
