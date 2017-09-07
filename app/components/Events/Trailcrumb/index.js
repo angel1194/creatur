@@ -3,7 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
 import Rooms from '../../../containers/Events/Rooms';
-import Cart from '../../../containers/Events/Cart';
+import ShoppingCart from '../ShoppingCart';
 import {Ul, Li, Div, Car, Count} from './style';
 import initialState from '../state'
 
@@ -33,7 +33,9 @@ class Trailcrumb extends React.Component {
             </Li>
           : ''}
         </Ul>
-        <Car onClick={()=> this.props.location(<Cart/>)}>Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome></Car>
+        <Car onClick={()=> this.props.location(<ShoppingCart location={()=> this.props.location(<MainEvents location={()=>this.props.location(<HotelsManzanero location={this.props.location}/>, 2)}/>, 1)}/>)}>
+          Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome>
+        </Car>
         <Count>{count.length}</Count>
       </Div>
     )

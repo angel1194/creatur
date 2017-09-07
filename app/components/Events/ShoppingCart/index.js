@@ -38,16 +38,13 @@ class ShoppingCart extends React.Component {
               </div>
               : '' }
             <FlexEnd>
-              <Link to="/manzanero">
-                <LinkA>Nueva busqueda</LinkA>
-              </Link>
+              <LinkA onClick={this.props.location}>Nueva busqueda</LinkA>
             </FlexEnd>
           </ContainerCart>
           <FlexRow>
-            {carLength.length >= 1 ?
-              <DivPay>
-                <FormPayment/>
-              </DivPay> : ''}
+            <DivPay>
+              {carLength.length >= 1 ? <FormPayment/> : ''}
+            </DivPay>
             <DivTitle>
               <Title>Total $0.00</Title>
             </DivTitle>

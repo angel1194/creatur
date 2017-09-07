@@ -46,6 +46,7 @@ class Hotels extends React.Component {
     })
   }
 
+
   render() {
     return (
       <Container>
@@ -73,6 +74,7 @@ class Hotels extends React.Component {
             setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse}
             state={this.state.showRooms}
             rooms={this.props.elements.rooms}
+            addRooms={(rooms)=>this.props.addRooms(rooms)}
           />
         </Column>
       </Container>

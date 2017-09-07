@@ -9,18 +9,6 @@ class Rooms extends React.Component {
   constructor(){
     super();
     this.state = InicialState
-
-    this.addCar=this.addCar.bind(this)
-  }
-
-  addCar(rooms){
-    let state = this.state.car
-
-    state.items[Date.now()] = rooms['room0'];
-    this.setState({
-      car:state
-    })
-    console.log(this.state);
   }
 
   render() {

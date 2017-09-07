@@ -9,6 +9,15 @@ class MainHotels extends React.Component {
   constructor(props){
     super(props);
     this.state = InicialState
+
+    this.addRooms=this.addRooms.bind(this)
+  }
+
+  addRooms(rooms){
+    const state = this.state.car
+    state.items[Date.now()] = rooms
+    this.setState(state)
+    console.log(state);
   }
 
   render() {
@@ -19,7 +28,7 @@ class MainHotels extends React.Component {
         <Container>
           <Div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels location={this.props.location} key={i} elements={hotels[item]}/>)}
+              {Object.keys(hotels).map((item, i)=><Hotels location={this.props.location} addRooms={this.addRooms} key={i} elements={hotels[item]}/>)}
             </DivHotels>
             <div>
               <MapView/>

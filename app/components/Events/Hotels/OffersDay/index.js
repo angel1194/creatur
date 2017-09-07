@@ -21,7 +21,7 @@ function OffersDay(props) {
                 <Subtitle GlobalText={"Regimen: SOLO HABITACION"}/>
               </Reg>
             </Column>
-            <Price>
+            <Price onClick={()=>props.addRooms(rooms[item])}>
               <Subtitle GlobalText={"desde "+rooms[item].price+" MXN"}/>
             </Price>
           </Row>
