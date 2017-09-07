@@ -2,10 +2,7 @@ import React from 'react';
 import {Container} from 'semantic-ui-react'
 import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
-import Rooms from '../../../containers/Events/Rooms';
-import Cart from '../../../containers/Events/Cart';
 import Trailcrumb from '../Trailcrumb'
-// import styled from 'styled-components';
 
 class Home extends React.Component {
   constructor(props){
@@ -22,7 +19,6 @@ class Home extends React.Component {
       container,
       location,
     })
-    // console.log('ubicacion',location);
   }
 
   render() {
@@ -32,7 +28,6 @@ class Home extends React.Component {
           <Trailcrumb location={this.location} nameContainer={this.state.location}/>
         </Container>
         {this.state.container}
-        {/* <button onClick={()=>this.location(<HotelsManzanero location={this.location}/>)}>Hoteles</button> */}
       </div>
     );
   }
