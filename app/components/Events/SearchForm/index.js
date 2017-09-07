@@ -11,7 +11,7 @@ function SearchForm(props) {
    <div className='gridCenter'>
     <div className='selectFormSearch'>
      <span className="input-group-addon-standar"><i className="fa fa-globe"></i></span>
-     <input type="text" defaultValue={props.location}/>
+     <input type="text" value={props.location} readOnly/>
     </div>
    </div>
   </Grid>

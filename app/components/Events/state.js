@@ -62,13 +62,14 @@ const state = {
       location:'Mérida, a 1.9 km de: Centro de Convenciones Yucatán Siglo XXI',
       cantidad:0,
       rooms:{
-        room0:{
+        'room0':{
           idHotel:'001',
-          image:'https://www.ahstatic.com/photos/6928_rodbc_00_p_1024x768.jpg',
-          description:'HABITACION STANDARD CON 1 CAMA DOBLE',
-          price:'629.29',
-          capacity:2,
+          image:'https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg',
+          description:'Habitación estándar, 2 camas dobles',
+          price:'1106',
+          capacity:4,
           type:'STANDARD',
+          key:'room0'
         },
         'room1':{
           idHotel:'001',
@@ -76,8 +77,9 @@ const state = {
           description:'Habitación estándar, 1 cama de matrimonio',
           price:'1006',
           capacity:2,
-          type:'STANDARD'
-        }
+          type:'STANDARD',
+          key:'room1'
+        },
       }
     },
     '002':{
@@ -94,7 +96,8 @@ const state = {
           description:'Habitación, 2 camas dobles, no fumadores',
           price:'1100',
           capacity:4,
-          type:'STANDARD'
+          type:'STANDARD',
+          key:'room2'
         }
       }
     },
@@ -112,7 +115,8 @@ const state = {
           description:'Habitación, 1 cama de matrimonio y sofá cama, frigorífico',
           price:'999',
           capacity:3,
-          type:'STANDARD'
+          type:'STANDARD',
+          key:'room3'
         }
       }
     },
@@ -131,6 +135,7 @@ const state = {
           price:'629.29',
           capacity:2,
           type:'STANDARD',
+          key:'room4'
         }
       }
     }

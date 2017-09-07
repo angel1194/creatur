@@ -10,30 +10,45 @@ class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
     this.state = initialState
+
+    this.removeRooms=this.removeRooms.bind(this)
+  }
+
+  removeRooms(item){
+    const {car} = this.state
+    delete car.items[item]
+    this.setState(car)
+    this.subtractTotalAmount(item)
+  }
+
+  subtractTotalAmount(item){
+    const {car} = this.state
+    let price = Number(item.price)
+    let total = car['total'] - price
+    car['total'] = total
+
+    this.setState(car)
   }
 
   render() {
     const {car} = this.state
-    let carLength = Object.keys(car.items)
+    let cart = Object.keys(car.items)
+
     return (
       <div>
         <Container>
           <FlexStart>
             <DivTitle>
-              <Title>{carLength.length === 0 ? 'Tu Carrito de Compras esta vacío' : 'Tu Carrito de Compras'}</Title>
+              <Title>{cart.length === 0 ? 'Tu Carrito de Compras esta vacío' : 'Tu Carrito de Compras'}</Title>
             </DivTitle>
           </FlexStart>
           <ContainerCart>
-            {carLength.length === 0 ?
+            {cart.length === 0 ?
               <div>
                 <Subtitle>- Sugerencias.</Subtitle>
                 <Subtitle>Para agregar una reservacion a tu carrito,
                   empieza por buscar y navegar a traves de las reservaciones que desee.
                   Cuando encuentres algo que te guste, da clic al botón...</Subtitle><br/>
-                  <ContainerItem>
-                    <Itemcar id='1'/>
-                    <Itemcar id='2'/>
-                  </ContainerItem>
                   <ContainerButtonGreen>
                     <ButtonGreen>
                       Añadir al carrito
@@ -41,17 +56,21 @@ class ShoppingCart extends React.Component {
                     </ButtonGreen>
                   </ContainerButtonGreen>
               </div>
-              : '' }
+            :
+              <ContainerItem>
+                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.removeRooms}/>)}
+              </ContainerItem>
+            }
             <FlexEnd>
               <LinkA onClick={this.props.location}>Nueva busqueda</LinkA>
             </FlexEnd>
           </ContainerCart>
           <FlexRow>
             <DivPay>
-              {carLength.length >= 1 ? <FormPayment/> : ''}
+              {cart.length >= 1 ? <FormPayment/> : ''}
             </DivPay>
             <DivTitle>
-              <Title>Total $0.00</Title>
+              <Title>Total ${car.total} MXN</Title>
             </DivTitle>
           </FlexRow>
         </Container>

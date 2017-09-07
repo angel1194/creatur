@@ -15,9 +15,18 @@ class MainHotels extends React.Component {
 
   addRooms(rooms){
     const state = this.state.car
-    state.items[Date.now()] = rooms
+    state.items[rooms.key] = rooms
     this.setState(state)
-    console.log(state);
+    this.totalAmount(rooms)
+  }
+
+  totalAmount(rooms){
+    const {car} = this.state
+    let price = Number(rooms.price)
+    let total = price + car['total']
+    car['total'] = total
+
+    this.setState(car)
   }
 
   render() {

@@ -78,7 +78,7 @@ const Cart = styled.div`
 `;
 
 const DivPay = styled.div`
-  width: 84%;
+  width: 78%;
 `;
 
 const FlexRow = styled.div`
