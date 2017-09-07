@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FormTableAdmin from '../FormTableAdmin';
+import RowTransport from '../RowTransport';
 
 const Container = styled.div`
   width:90%;
@@ -44,9 +45,10 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width:50%;
+  width:100%;
   height: 65%;
   font-size: 16px;
+
   `;
 
   const Button = styled.input`
@@ -56,22 +58,24 @@ const Form = styled.form`
     box-shadow:1px 1px 8px #000;
     color:white;
     margin-bottom: 20px;
-    font-size: 12px
+    font-size: 12px;
   `;
 
-const ContainerTable = styled.div`
-  margin-top: 10px;
-  width:90%;
-  height: auto;
-  background:#E6E6E6;
-  padding:25px;
-  border-radius:6px;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  `;
+  const ContainerTable = styled.div`
+    margin-top: 10px;
+    width:90%;
+    height: auto;
+    background:#E6E6E6;
+    padding:25px;
+    border-radius:6px;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    padding-top: 19px;
+    `;
 
-function AddTransport() {
+
+function AddTransport(props) {
   return (
     <div>
     <Container>
@@ -81,24 +85,33 @@ function AddTransport() {
         <Input name='image' id='image' placeholder='Agregar url'/>
         <label htmlFor='price'>Precio:</label>
         <Input name='price' id='price' placeholder='Agregar precio'/>
-      </Form>
-      <Form>
-        <label htmlFor='seating'>Asiento:</label>
-        <Input type='number' min='0' name='seating' id='seating' placeholder='Agregar asiento'/>
-        <label htmlFor='type'>Tipo:</label>
-        <Input name='type' id='type' placeholder='Agregar tipo'/>
+        <div className='formTransport'>
+        <label htmlFor='seating'>Asiento:</label><br/>
+        <Input type='number' min='0' name='seating' id='seating' placeholder='Agregar asiento'/><br/>
+        <label htmlFor='type'>Tipo:</label><br/>
+        <Input name='type' id='type' placeholder='Agregar tipo'/><br/>
         <div className='buttonAdmin'>
             <Button type='submit' value='AGREGAR'/>
         </div>
+      </div>
       </Form>
     </Container>
-  
+    <ContainerTable>
+       <FormTableAdmin
+         row='Imagen'
+         rowtwo='Precio'
+         rowthree='Asiento'
+         rowfour='Tipo'
+       />
+       {Object.keys(props.databaseTransport).map((data,i)=>
+        <RowTransport
+         key={i}
+         Transport={props.databaseTransport[data]}
+        />
+       )}
+    </ContainerTable>
   </div>
   );
 }
-
-AddTransport.propTypes = {
-
-};
 
 export default AddTransport;

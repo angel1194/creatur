@@ -14,24 +14,22 @@ const Container = styled.div`
   justify-content:space-between;
 `;
 
-class RowTransport extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
+function RowTransport (props) { // eslint-disable-line react/prefer-stateless-function
     return (
-      <Container>
+      <table>
         <tbody>
           <tr>
-            <td className='bodyRow'><img src={this.props.image} alt="imagen de transporte" width='100'/> </td>
-            <td className='bodyRow'>{this.props.price}</td>
-            <td className='bodyRow'>{this.props.seating}</td>
-            <td className='bodyRow'> {this.props.type}</td>
+            <td className='bodyRow'><img src={props.Transport.image} alt="imagen de transporte" width='100'/> </td>
+            <td className='bodyRow'>{props.Transport.price}</td>
+            <td className='bodyRow'>{props.Transport.seating}</td>
+            <td className='bodyRow'> {props.Transport.type}</td>
             <td className='bodyRow'><span className='fa-trash'></span></td>
             <td className='bodyRow'><span className='fa-pencil-square'></span></td>
             <td className='bodyRow'><span className='fa-plus-square-o'></span></td>
           </tr>
         </tbody>
-       </Container>
+      </table>
     );
-  }
 }
 
 

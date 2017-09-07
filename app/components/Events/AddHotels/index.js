@@ -4,9 +4,10 @@
 *
 */
 
-import React from 'react';
+import React,{Component} from 'react';
 import styled from 'styled-components';
 import TableAdmin from '../TableAdmin';
+import RowAdmin from '../RowAdmin';
 
 const Container = styled.div`
   width:90%;
@@ -44,15 +45,15 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width:50%;
-  margin-top: 20px;
+  width: 100%;
+  height: 70%;
   font-size: 16px;
-  padding-bottom: 10px;
+
 `;
 
-const Button = styled.input`
-  width:80px;
-  height:30px;
+const Button = styled.button`
+  width:auto;
+  height:40px;
   background-color:#2b5bac;
   box-shadow:1px 1px 8px #000;
   color:white;
@@ -65,7 +66,7 @@ const TextArea = styled.textarea`
   width: 65%;
   background-color: #fff;
   margin-left:10px;
-  height: 30%;
+  height: 90px;
   text-align:justify;
   padding: 10px;
   padding-top: 10px;
@@ -91,63 +92,73 @@ const ContainerTable = styled.div`
   padding:25px;
   border-radius:6px;
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   flex-wrap:wrap;
-`;
+  padding-top: 19px;
+  `;
 
-function AddHotels() {
-  return (
-    <div>
-    <Container>
-      <Title>Hoteles</Title>
-      <Form>
-        <label htmlFor='name'>Nombre:</label>
-        <Input type='text' name='name' id='name' placeholder='Agregar nombre'/>
-        <label htmlFor='address'>Dirección:</label>
-        <Input name='address' id='address' placeholder='Agregar dirección'/>
-        <label htmlFor='image'>Imagen:</label>
-        <Input type='url' name='image' id='image' placeholder='Agregar url'/>
-        <label htmlFor='star'>Estrellas:</label>
-        <Select name="stars">
-          <option value="uno">1</option>
-          <option value="dos">2</option>
-          <option value="tres">3</option>
-          <option value="cuatro">4</option>
-          <option value="cinco">5</option>
-          <option value="seis">6</option>
-        </Select>
-      </Form>
-      <Form>
-        <label htmlFor='description'>Descripción:</label>
-        <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/>
-        <label htmlFor='cancellation'>Cancelación:</label>
-        <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación'/>
-        <div className='buttonAdmin'>
-          <Button type='submit' value='AGREGAR'/>
-        </div>
-      </Form>
-    </Container>
+class AddHotels extends Component {
+  constructor(props){
+    super(props)
+    this.submitForm = this.submitForm.bind(this)
+  }
 
-    {/* <ContainerTable>
-       <TableAdmin
-         name='sdgf'
-         address='sdgf'
-         image='sdgf'
-         stars='sdgf'
-         description='sdgf'
-         cancellation='sdgf'
-       />
-     </ContainerTable>*/}
+  submitForm(event){
+    event.preventDefault()
 
-  </div>
+   }
+
+  render(){
+    console.log(this.props);
 
 
+    return (
+      <div>
+        <Container>
+          <Title>Hoteles</Title>
+          <Form onSubmit={this.submitForm}>
+            <label htmlFor='name'>Nombre:</label>
+            <Input type='text' name='name' id='name' ref={this.props.name} placeholder='Agregar nombre'/>
+            <label htmlFor='address'>Dirección:</label>
+            <Input name='address' id='address' placeholder='Agregar dirección'/>
+            <label htmlFor='image'>Imagen:</label>
+            <Input type='url' name='image' id='image' placeholder='Agregar url'/>
+            <label htmlFor='star'>Estrellas:</label>
+            <Select name="stars">
+              <option value="uno">1</option>
+              <option value="dos">2</option>
+              <option value="tres">3</option>
+              <option value="cuatro">4</option>
+              <option value="cinco">5</option>
+              <option value="seis">6</option>
+            </Select>
+            <div className='formTransport'>
+              <label htmlFor='description'>Descripción:</label><br/>
+              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/><br/>
+              <label htmlFor='cancellation'>Cancelación:</label><br/>
+              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación'/>
+              <div className='buttonAdmin'>
+                <Button>AGREGAR</Button>
+              </div>
+            </div>
+          </Form>
+        </Container>
 
+        <ContainerTable>
+          <TableAdmin />
+          <table>
+            {Object.keys(this.props.database).map((data,i)=>
+              <RowAdmin
+                key={i}
+                Hotels={this.props.database[data]}
+              />
+            ) }
+          </table>
+        </ContainerTable>
+      </div>
 
-
-
-
-  );
+    );
+  }
 }
 
 export default AddHotels;

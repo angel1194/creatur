@@ -55,15 +55,20 @@ const ContainerTable = styled.div`
   flex-wrap:wrap;
   padding-top: 19px;
   `;
+let rootRef = firebase.database().ref()
 
 class AdminHotels extends Component{
   constructor(props){
     super(props)
     this.state= {
       ui:'hotel',
+      hotels:{}
     }
     this.changeLocation=this.changeLocation.bind(this);
+    this.addHotel=this.addHotel.bind(this);
+
   }
+
 
   componentWillMount(){
     firebase.auth().onAuthStateChanged(firebaseUser=>{
@@ -71,31 +76,29 @@ class AdminHotels extends Component{
         browserHistory.push('/manzanero/admin')
       }
     })
+    let hotels=rootRef.child('hotels')
+    hotels.on('value',snap=>{
+      this.setState({
+        hotels:snap.val()
+      })
+    })
   }
 
   componentDidMount(){
-    let rootRef = firebase.database().ref()
-    let hotels=rootRef.child('hotels')
     let transport = rootRef.child('transport')
     let tickets = rootRef.child('tickets')
 
-  hotels.on('value',snap=>{
-    this.setState({
-      hotels:snap.val()
+    transport.on('value', snap=>{
+      this.setState({
+        transport:snap.val()
+      })
     })
-  })
 
-  transport.on('value', snap=>{
-    this.setState({
-      transport:snap.val()
+    tickets.on('value', snap=>{
+      this.setState({
+        tickets:snap.val()
+      })
     })
-  })
-
-  tickets.on('value', snap=>{
-    this.setState({
-      tickets:snap.val()
-    })
-  })
 
   }
 
@@ -106,6 +109,9 @@ class AdminHotels extends Component{
     })
   }
 
+  addHotel(){
+    console.log('ejecutando addhotel');
+  }
 
    renderForm(){
 
@@ -115,77 +121,25 @@ class AdminHotels extends Component{
 
      if(this.state.ui==='hotel' ){
        return(
-         <div>
-         <AddHotels/>
-         <ContainerTable>
-           <TableAdmin />
-
-          {Object.keys(dataHotels).map((data,i)=>
-          <RowAdmin
-            key={i}
-            name={dataHotels[data].name}
-            address={dataHotels[data].address}
-            image={dataHotels[data].image}
-            stars={dataHotels[data].star}
-            description={dataHotels[data].description}
-            cancellation={dataHotels[data].cancellation}
-           />
-          ) }
-        </ContainerTable>
+       <div>
+         <AddHotels database={dataHotels} addHotel={this.addHotel}/>
        </div>
        )
      }else if (this.state.ui=='transporte') {
        return(
          <div>
-           <AddTransport/>
-           <ContainerTable>
-              <FormTableAdmin
-                row='Imagen'
-                rowtwo='Precio'
-                rowthree='Asiento'
-                rowfour='Tipo'
-              />
-
-              {Object.keys(dataTransport).map((data,i)=>
-               <RowTransport
-                key={i}
-                image={dataTransport[data].image}
-                price={dataTransport[data].price}
-                seating={dataTransport[data].seating}
-                type={dataTransport[data].type}
-               />
-              )}
-           </ContainerTable>
+           <AddTransport databaseTransport={dataTransport} handleSubmit={this.handleSubmit}/>
          </div>
        )
      }else if (this.state.ui=='ticket') {
        return(
          <div>
-           <AddTicket/>
-           <ContainerTable>
-              <FormTableAdmin
-                row='Fecha'
-                rowtwo='Key'
-                rowthree='Precio'
-                rowfour='Sección'
-              />
-              {Object.keys(dataTickets).map((data,i)=>
-                <RowTicket
-                  key={i}
-                  date={dataTickets[data].date}
-                  id={dataTickets[data].key}
-                  price={dataTickets[data].price}
-                  section={dataTickets[data].section}
-
-                />
-              )}
-           </ContainerTable>
+           <AddTicket databaseTicket={dataTickets} handleSubmit={this.handleSubmit}/>
          </div>
        )
      }
    }
   render(){
-    const ubicacion= this.state.ui
     return(
       <Container>
         <Body>
@@ -196,7 +150,7 @@ class AdminHotels extends Component{
         </Body>
         <Container>
         <FormContainer>
-        {this.renderForm()}
+           {this.renderForm()}
         </FormContainer>
        </Container>
       </Container>

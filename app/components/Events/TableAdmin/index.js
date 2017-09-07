@@ -17,8 +17,7 @@ const Container = styled.div`
 
 `;
 
-class TableAdmin extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
+function TableAdmin() { // eslint-disable-line react/prefer-stateless-function
     return (
     <Container>
       <table>
@@ -35,15 +34,10 @@ class TableAdmin extends React.Component { // eslint-disable-line react/prefer-s
             <th className='thTable'>Agregar</th>
           </tr>
         </thead>
-
       </table>
     </Container>
     );
-  }
 }
 
-TableAdmin.propTypes = {
-
-};
 
 export default TableAdmin;

@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FormTableAdmin from '../FormTableAdmin';
+import RowTicket from '../RowTicket';
 
 const Container = styled.div`
   width:90%;
@@ -44,7 +45,7 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width:50%;
+  width:100%;
   height: 65%;
   font-size: 16px;
 `;
@@ -67,11 +68,13 @@ const ContainerTable = styled.div`
   padding:25px;
   border-radius:6px;
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   flex-wrap:wrap;
-`;
+  padding-top: 19px;
+  `;
 
-function AddTicket() {
+
+function AddTicket(props) {
   return (
     <div>
     <Container>
@@ -81,24 +84,35 @@ function AddTicket() {
         <Input type='number' name='folio' id='folio' placeholder='Agregar folio'/>
         <label htmlFor='date'>Fecha:</label>
         <Input type='date' name='date' id='date'/>
-      </Form>
-      <Form>
-        <label htmlFor='price'>Precio:</label>
-        <Input name='price' id='price' placeholder='Agregar precio'/>
-        <label htmlFor='section'>Sección:</label>
-        <Input name='section' id='section' placeholder='Agregar sección'/>
+      <div className='formTransport'>
+        <label htmlFor='price'>Precio:</label><br/>
+        <Input name='price' id='price' placeholder='Agregar precio'/><br/>
+        <label htmlFor='section'>Sección:</label><br/>
+        <Input name='section' id='section' placeholder='Agregar sección'/><br/>
         <div className='buttonAdmin'>
           <Button type='submit' value='AGREGAR'/>
         </div>
-      </Form>
+      </div>
+    </Form>
     </Container>
 
+
+    <ContainerTable>
+       <FormTableAdmin
+         row='Fecha'
+         rowtwo='Key'
+         rowthree='Precio'
+         rowfour='Sección'
+       />
+       {Object.keys(props.databaseTicket).map((data,i)=>
+         <RowTicket
+           key={i}
+           Tickets={props.databaseTicket[data]}
+         />
+       )}
+    </ContainerTable>
   </div>
   );
 }
-
-AddTicket.propTypes = {
-
-};
 
 export default AddTicket;
