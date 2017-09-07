@@ -87,5 +87,10 @@ const FlexRow = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 `
+const ContainerItem = styled.div`
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
-export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow};
+export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow, ContainerItem};

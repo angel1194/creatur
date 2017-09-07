@@ -2,8 +2,9 @@ import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import { Link } from 'react-router';
 import FormPayment from '../FormPayment';
-import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow} from './style';
-import initialState from '../state'
+import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem} from './style';
+import initialState from '../state';
+import Itemcar from '../Itemcar';
 
 class ShoppingCart extends React.Component {
   constructor(props){
@@ -29,6 +30,10 @@ class ShoppingCart extends React.Component {
                 <Subtitle>Para agregar una reservacion a tu carrito,
                   empieza por buscar y navegar a traves de las reservaciones que desee.
                   Cuando encuentres algo que te guste, da clic al botón...</Subtitle><br/>
+                  <ContainerItem>
+                    <Itemcar id='1'/>
+                    <Itemcar id='2'/>
+                  </ContainerItem>
                   <ContainerButtonGreen>
                     <ButtonGreen>
                       Añadir al carrito
