@@ -16,15 +16,16 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment(new Date('2017-10-05')),
-      endDate:moment(new Date('2017-10-06')),
+      startDate:moment(new Date('10-10-2017')),
+      endDate:moment(new Date('10-11-2017')),
       roomsUI:{
         room0:{
           adult:0,
           baby:0,
           child:{}
         }
-      }
+      },
+      change:false
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
@@ -32,6 +33,20 @@ class FormHotel extends React.Component {
     this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
     this.request=this.request.bind(this);
+  }
+
+  componentWillMount(){
+    setRooms().then(
+      res => this.setState({
+        rooms: res.val()
+      })
+    )
+
+   setHotels().then(
+     res=>this.setState({
+       hotels:res.val()
+     })
+   )
   }
 
   handleChange(date){
@@ -78,25 +93,30 @@ class FormHotel extends React.Component {
      roomsUI,
    }
 
-   setRooms().then(
-     res => this.setState({
-       rooms: res.val()
-     })
-   )
-
-  setHotels().then(
-    res=>this.setState({
-      hotels:res.val()
-    })
-  )
   // Convirtiendo las noches en objetos moment()
-  console.log('antes del object');
-  let nights= Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
-  console.log('despues del object');
+  let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)).add(1,'days'))
   // Buscando las fechas en el rango marcado
   let roomsBetween = nights.filter((night)=> this.filterNight(night,startDate,endDate))
   console.log(roomsBetween);
+  //Obteniendo la cantidad de personas por habitacion
+  let aryRoom=[]
+  let totalByRoom = Object.keys(request.roomsUI).map( key => {
+    var count=0;
+    Object.keys(request.roomsUI[key]).map(item=>{
+      // si el key es child mapear para obtener la cantidad de ninos
+      if(item == 'child'){
+        count += Object.keys(request.roomsUI[key][item]).length
+      }
+      else{
+        count += parseInt(request.roomsUI[key][item])
+      }
+
+    })
+    aryRoom.push(count)
+    console.log(aryRoom);
+  })
  }
+
 
  filterNight(night,startDate,endDate){
    if (moment(night).isBetween(moment(startDate),moment(endDate),null,'[]')) {
@@ -104,6 +124,9 @@ class FormHotel extends React.Component {
    }
  }
 
+ occupancyRooms(object,totalRoom){
+
+ }
 
   render() {
     let data = Object.keys(this.state.roomsUI)
@@ -137,8 +160,8 @@ class FormHotel extends React.Component {
                        <DatePicker
                          selected={this.state.startDate}
                          onChange={this.handleChange}
-                         minDate={moment(new Date('10/05/2017')).subtract(3,'days')}
-                         maxDate={moment(new Date('10/05/2017')).add(3,'days')}
+                         minDate={moment(new Date('10/10/2017')).subtract(3,'days')}
+                         maxDate={moment(new Date('10/10/2017')).add(3,'days')}
                        />
                      </div>
                    </div>
@@ -153,7 +176,7 @@ class FormHotel extends React.Component {
                         selected={this.state.endDate}
                         onChange={this.handleChangeEnd}
                         minDate={moment(this.state.startDate).add(1,'days')}
-                        maxDate={moment(new Date('10/08/2017'))}
+                        maxDate={moment(new Date('10/13/2017'))}
                        />
                      </div>
                    </div>
@@ -180,7 +203,7 @@ class FormHotel extends React.Component {
              </div>
             </div>
             <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO" location={this.props.location}/>
+              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO" />
             </Grid.Row>
             </Grid>
           </div>

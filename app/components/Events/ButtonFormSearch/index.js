@@ -12,9 +12,7 @@ import { Link } from 'react-router';
 function ButtonFormSearch(props) {
     return (
       <div className='divButtonCar'>
-        <Link>
-          <Button className="buttonCar" onClick={()=>props.location()}>¡{props.title}!</Button>
-        </Link>
+          <Button className="buttonCar">¡{props.title}!</Button>
       </div>
     );
   }
