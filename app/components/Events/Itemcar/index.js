@@ -2,8 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import AddCheckList from '../../AddCheckList';
 import room from './room.jpg';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 class Itemcar extends React.Component {
+
+  submit(){
+    confirmAlert({
+      title: 'La reservacion se eliminará',
+      message: '¿Estás seguro de hacer esto?',
+      confirmLabel: 'Aceptar',
+      cancelLabel: 'Cancelar',
+      onConfirm: ()=>this.props.removeRooms(this.props.elements.key),
+      // onCancel: () => alert('Cancel'),
+    })
+  }
 
   render() {
     return (
@@ -32,7 +45,7 @@ class Itemcar extends React.Component {
         <div className='section-item-rigth'>
           <div className='img-item'>
             <img src={this.props.elements.image} alt=""/>
-            <span className='fa fa-trash' onClick={()=>this.props.removeRooms(this.props.elements.key)}></span>
+            <span className='fa fa-trash' onClick={this.submit.bind(this)}></span>
           </div>
         </div>
       </div>

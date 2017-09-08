@@ -67,7 +67,7 @@ class ShoppingCart extends React.Component {
           </ContainerCart>
           <FlexRow>
             <DivPay>
-              {cart.length >= 1 ? <FormPayment/> : ''}
+              {cart.length >= 1 ? <FormPayment total={car.total}/> : ''}
             </DivPay>
             <DivTitle>
               <Title>Total ${car.total} MXN</Title>

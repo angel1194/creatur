@@ -45,12 +45,12 @@ class FormPayment extends React.Component {
     let state = this.refs.state.value
     let countryCode = this.refs.country_code.value
 
-    if (holderName === '') {
-      document.getElementById('name').innerHTML = 'Rellena el campo'
-    }
+    let validateCard = this.validateCard(cvv2, cardNumber)
+    let validateExpiry = this.validateExpiry(Month,Year)
 
-    this.validateCard(cvv2, cardNumber)
-    this.validateExpiry(Month,Year)
+    if (validateCard === false || validateExpiry === false) {
+      alert('La Validacion de tarjeta es incorrecta')
+    }
 
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
@@ -86,7 +86,7 @@ class FormPayment extends React.Component {
     let request = {
       'source_id': e.data.id,
       'method': 'card',
-      'amount': "",
+      'amount': this.props.total,
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
       'order_id': 'CMV-',
@@ -108,6 +108,7 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
+    console.log(request);
   }
 
   onError(err, token){
@@ -118,25 +119,15 @@ class FormPayment extends React.Component {
 
   validateCard(cvv2, cardNumber){
     const openpay = window.OpenPay
-
     let validation = openpay.card.validateCVC(cvv2,cardNumber);
-    if (validation === true) {
-      // console.log('soy validate card',validation);
-    }else {
-      alert('Numero de Tarjeta Invalida')
-    }
+
     return validation
   }
 
   validateExpiry(Month, Year){
     const openpay = window.OpenPay
-
     let validation = openpay.card.validateExpiry(Month, "20"+Year);
-    if (validation === true) {
-      console.log('soy validacion de expiracion',validation);
-    }else {
-      alert('Tarjeta invalida, verifique su expiracion')
-    }
+
     return validation
   }
 
@@ -153,42 +144,42 @@ class FormPayment extends React.Component {
           <div style={styles.container}>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Nombre (s)</label>
-              <input style={styles.input} type="text" id="" ref="holder_name"/>
+              <input style={styles.input} type="text" id="" ref="holder_name" required/>
               <p style={styles.message} id="name"></p>
             </div>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Apellidos</label>
-              <input style={styles.input} type="text" id="" ref="last_name"/>
+              <input style={styles.input} type="text" id="" ref="last_name" required/>
             </div>
           </div>
 
           <div style={styles.container}>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Telefono</label>
-              <input style={styles.input} type="tel" id="" ref="phone_number"/>
+              <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introdusca solo 10 digitos" required/>
             </div>
             <div style={styles.inputlabel}>
               <label style={styles.label} htmlFor="">Correo Electronico</label>
-              <input style={styles.input} type="email" id="" ref="email"/>
+              <input style={styles.input} type="email" id="" ref="email" required/>
             </div>
           </div>
 
           <div style={styles.container}>
             <div style={styles.inputMedium}>
               <label style={styles.label} htmlFor="">Número de tarjeta:</label>
-              <input style={styles.input} type="text" id="" ref="card_number"/>
+              <input style={styles.input} type="text" id="" ref="card_number" required/>
             </div>
             <div style={styles.inputMedium}>
               <label style={styles.label} htmlFor="">Año de vencimiento:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_year"/>
+              <input style={styles.input} type="text" id="" ref="expiration_year" required/>
             </div>
             <div style={styles.inputMedium}>
               <label style={styles.label} htmlFor="">Mes de expiración:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_month"/>
+              <input style={styles.input} type="text" id="" ref="expiration_month" required/>
             </div>
             <div style={styles.inputSmall}>
               <label style={styles.label} htmlFor="">cvv2:</label>
-              <input style={styles.input} type="text" id="" ref="cvv2"/>
+              <input style={styles.input} type="text" id="" ref="cvv2" required/>
             </div>
           </div>
 
@@ -214,17 +205,18 @@ class FormPayment extends React.Component {
           <div style={styles.container}>
             <div style={styles.inputBig}>
               <label style={styles.label} htmlFor="">Ciudad:</label>
-              <input style={styles.input} type="text" id="" ref="city"/>
+              <input style={styles.input} type="text" id="" ref="city" required/>
             </div>
             <div style={styles.inputBig}>
               <label style={styles.label} htmlFor="">Estado:</label>
-              <input style={styles.input} type="text" id="" ref="state"/>
+              <input style={styles.input} type="text" id="" ref="state" required/>
             </div>
             <div style={styles.inputSmall}>
               <label style={styles.label} htmlFor="">Código de país:</label>
               <input style={styles.input} type="text" id="" ref="country_code" value="MX" readOnly/>
             </div>
           </div>
+          <input hidden id="deviceIdHiddenFieldName"/><br/>
           <button style={styles.button}>Pagar</button>
         </form>
       </Container>
