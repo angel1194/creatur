@@ -66,7 +66,7 @@ class Hotels extends React.Component {
                 <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
                 {/* <AddCheckList id={this.props.elements.key} JustifyContent="flex-end" Margin="20px" text={"DOBLE 2 CAMAS STANDARD Hasta 2 Personas"}/> */}
                 <br/><br/><br/>
-                <Button Title="Reservar" Color="Blue" location={this.props.location}/>
+                <Button Title="Comparar" Color="Blue" location={this.props.location}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>

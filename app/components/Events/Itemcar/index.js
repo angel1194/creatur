@@ -22,6 +22,7 @@ class Itemcar extends React.Component {
     return (
       <div className='main-item'>
         <div className='type-room'>
+          <h2>{this.props.nameHotel[this.props.elements.idHotel].nameHotel}</h2>
           <p>{this.props.elements.description}</p>
         </div>
         <div className='section-item-left'>

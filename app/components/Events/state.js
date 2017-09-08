@@ -144,6 +144,8 @@ const state = {
     items:{
 
     },
+    checkin:'',
+    checkout:'',
     total:0,
     id:0
   }

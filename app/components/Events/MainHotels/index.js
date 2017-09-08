@@ -15,9 +15,11 @@ class MainHotels extends React.Component {
 
   addRooms(rooms){
     const state = this.state.car
-    state.items[rooms.key] = rooms
-    this.setState(state)
-    this.totalAmount(rooms)
+    if (!(rooms.key in state.items)) {
+      state.items[rooms.key] = rooms
+      this.setState(state)
+      this.totalAmount(rooms)
+    }
   }
 
   totalAmount(rooms){

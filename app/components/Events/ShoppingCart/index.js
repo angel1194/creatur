@@ -31,7 +31,7 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {car} = this.state
+    const {car,hotels} = this.state
     let cart = Object.keys(car.items)
 
     return (
@@ -58,7 +58,7 @@ class ShoppingCart extends React.Component {
               </div>
             :
               <ContainerItem>
-                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.removeRooms}/>)}
+                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.removeRooms} nameHotel={hotels}/>)}
               </ContainerItem>
             }
             <FlexEnd>

@@ -30,34 +30,37 @@ const Divider=styled.div`
 class HotelRoom extends React.Component {
 
   render(){
-    let element = this.props.elements
+    let element = Object.keys(this.props.elements)
 
     return (
-      <ContainerRoom>
-        <RoomImg>
-          <NameRoom>STANDARD</NameRoom>
-          <Img src='https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg'/>
-        </RoomImg>
-        <DetailsRoom>
-          <Label>Capacidad para 4 personas</Label>
-          <Label>Habitación estándar, 2 camas dobles</Label>
-          <Label>Regimen: Solo Habitación</Label>
-        </DetailsRoom>
-        <ContainerPrice>
-          <Label> Por noche ${this.props.elements.price} MXN</Label>
-          <LabelA> Impuestos $100.56 MXN</LabelA>
-          <Title>Precio Total</Title>
-          <H3>$3,089.56 <Label>USD</Label></H3>
-          {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
-          <ContainerButtonGreen>
-            <ButtonGreen onClick={()=> 'hola'}>
-              Añadir al carrito
-            <Space name='shopping-cart' />
-            </ButtonGreen>
-          </ContainerButtonGreen>
-        </ContainerPrice>
-        <Divider/>
-      </ContainerRoom>
+      <div>
+      {element.map((item, i)=>
+        <ContainerRoom key={i}>
+          <RoomImg>
+            <NameRoom>STANDARD</NameRoom>
+            <Img src='https://images.trvl-media.com/hotels/5000000/4460000/4454800/4454770/4454770_62_z.jpg'/>
+          </RoomImg>
+          <DetailsRoom>
+            <Label>Capacidad para 4 personas</Label>
+            <Label>Habitación estándar, 2 camas dobles</Label>
+            <Label>Regimen: Solo Habitación</Label>
+          </DetailsRoom>
+          <ContainerPrice>
+            <Label> Por noche ${this.props.elements.price} MXN</Label>
+            <LabelA> Impuestos $100.56 MXN</LabelA>
+            <Title>Precio Total</Title>
+            <H3>$3,089.56 <Label>USD</Label></H3>
+            {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
+            <ContainerButtonGreen>
+              <ButtonGreen onClick={()=> console.log('hola')}>
+                Añadir al carrito
+              <Space name='shopping-cart' />
+              </ButtonGreen>
+            </ContainerButtonGreen>
+          </ContainerPrice>
+          <Divider/>
+        </ContainerRoom>)}
+      </div>
     );
   }
 }
