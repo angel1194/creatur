@@ -98,16 +98,27 @@ class FormHotel extends React.Component {
   // Buscando las fechas en el rango marcado
   let roomsBetween = nights.filter((night)=> this.filterNight(night,startDate,endDate))
   console.log(roomsBetween);
-  // // //Obteniendo la cantidad de personas
-  // let roomsUIKey = Object.keys(request.roomsUI)
-  // let countRooms = roomsUIKey.length
+  //Obteniendo la cantidad de personas por habitacion
+  let aryRoom=[]
+  let totalByRoom = Object.keys(request.roomsUI).map( key => {
+    var count=0;
+    Object.keys(request.roomsUI[key]).map(item=>{
+      // si el key es child mapear para obtener la cantidad de ninos
+      if(item == 'child'){
+        count += Object.keys(request.roomsUI[key][item]).length
+      }
+      else{
+        count += parseInt(request.roomsUI[key][item])
+      }
 
+    })
+    aryRoom.push(count)
+    console.log(aryRoom);
+  })
  }
 
 
  filterNight(night,startDate,endDate){
-   console.log(night);
-
    if (moment(night).isBetween(moment(startDate),moment(endDate),null,'[]')) {
      return night
    }
