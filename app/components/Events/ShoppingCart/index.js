@@ -15,15 +15,15 @@ class ShoppingCart extends React.Component {
   }
 
   removeRooms(item){
+    this.subtractTotalAmount(item)
     const {car} = this.state
     delete car.items[item]
     this.setState(car)
-    this.subtractTotalAmount(item)
   }
 
   subtractTotalAmount(item){
     const {car} = this.state
-    let price = Number(item.price)
+    let price = Number(car.items[item].price)
     let total = car['total'] - price
     car['total'] = total
 

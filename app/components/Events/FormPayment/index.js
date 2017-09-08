@@ -98,7 +98,7 @@ class FormPayment extends React.Component {
         'email': token.email
       }
     }
-    fetch('',{
+    fetch('http://192.168.1.38:1337/payment',{
       method: 'post',
       body: JSON.stringify(request)
     })
