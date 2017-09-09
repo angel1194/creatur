@@ -11,10 +11,9 @@ const Icon = {
 
 const Line = styled.div`
   background-color: #70a0ec;
-  width: 80%;
+  width: 90%;
   height: 3px;
-  margin: auto;
-  margin-bottom: 5px;
+  margin: 0px 0px 10px 30px;
 `;
 
 const AddInputs = styled.div`

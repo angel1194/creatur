@@ -171,11 +171,11 @@ class FormPayment extends React.Component {
             </div>
             <div style={styles.inputMedium}>
               <label style={styles.label} htmlFor="">Año de vencimiento:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_year" required/>
+              <input style={styles.input} type="text" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/>
             </div>
             <div style={styles.inputMedium}>
               <label style={styles.label} htmlFor="">Mes de expiración:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_month" required/>
+              <input style={styles.input} type="text" id="" ref="expiration_month" pattern="[0-9]{2}" title="Los meses de expiraciones válidos son de 01 a 12" required/>
             </div>
             <div style={styles.inputSmall}>
               <label style={styles.label} htmlFor="">cvv2:</label>
@@ -198,7 +198,7 @@ class FormPayment extends React.Component {
             </div>
             <div style={styles.inputSmall}>
               <label style={styles.label} htmlFor="">Código postal:</label>
-              <input style={styles.input} type="text" id="" ref="postal_code"/>
+              <input style={styles.input} type="text" id="" ref="postal_code" required/>
             </div>
           </div>
 

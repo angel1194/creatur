@@ -44,7 +44,7 @@ class FormTransport extends React.PureComponent {
             <Header as='h1' className='titleForm'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-                <label htmlFor="checkin" className='salida'>Salida</label>
+                <label htmlFor="checkin" className='salida'></label>
                 <SearchForm location='SIGLO XXI'/>
               <div className='dateAndTime'>
                <label htmlFor="checkin" className='fecha'>Fecha</label>
