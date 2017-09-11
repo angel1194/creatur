@@ -9,7 +9,7 @@ import ButtonFormSearch from '../ButtonFormSearch';
 import Cama from './cama.png';
 import AddRoomForm from './AddRoomForm'
 import InputKids from './InputKids';
-import {setRooms,setHotels} from '../../../containers/Events/Firebase/firebase'
+
 
 
 class FormHotel extends React.Component {
@@ -25,7 +25,6 @@ class FormHotel extends React.Component {
           child:{}
         }
       },
-      change:false
     }
     this.handleChange= this.handleChange.bind(this);
     this.handleChangeEnd= this.handleChangeEnd.bind(this);
@@ -33,20 +32,6 @@ class FormHotel extends React.Component {
     this.addRooms=this.addRooms.bind(this);
     this.deleteRoom=this.deleteRoom.bind(this);
     this.request=this.request.bind(this);
-  }
-
-  componentWillMount(){
-    setRooms().then(
-      res => this.setState({
-        rooms: res.val()
-      })
-    )
-
-   setHotels().then(
-     res=>this.setState({
-       hotels:res.val()
-     })
-   )
   }
 
   handleChange(date){
@@ -87,46 +72,13 @@ class FormHotel extends React.Component {
  }
 
  request(event){
-   event.preventDefault()
-   const {startDate,endDate,roomsUI} = this.state
-   let request = {
-     roomsUI,
-   }
-
-  // Convirtiendo las noches en objetos moment()
-  let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)).add(1,'days'))
-  // Buscando las fechas en el rango marcado
-  let roomsBetween = nights.filter((night)=> this.filterNight(night,startDate,endDate))
-  console.log(roomsBetween);
-  //Obteniendo la cantidad de personas por habitacion
-  let aryRoom=[]
-  let totalByRoom = Object.keys(request.roomsUI).map( key => {
-    var count=0;
-    Object.keys(request.roomsUI[key]).map(item=>{
-      // si el key es child mapear para obtener la cantidad de ninos
-      if(item == 'child'){
-        count += Object.keys(request.roomsUI[key][item]).length
-      }
-      else{
-        count += parseInt(request.roomsUI[key][item])
-      }
-
-    })
-    aryRoom.push(count)
-    console.log(aryRoom);
-  })
+  event.preventDefault()
+  const {startDate,endDate,roomsUI} = this.state
+  this.props.setHotels(startDate, endDate, roomsUI)
  }
 
 
- filterNight(night,startDate,endDate){
-   if (moment(night).isBetween(moment(startDate),moment(endDate),null,'[]')) {
-     return night
-   }
- }
 
- occupancyRooms(object,totalRoom){
-
- }
 
   render() {
     let data = Object.keys(this.state.roomsUI)
