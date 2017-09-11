@@ -48,6 +48,8 @@ class FormHotel extends React.Component {
   }
 
   inputValueChange(father,input){
+    console.log(father);
+    console.log(input.target);
     let name = input.target.name
     let value= input.target.value
     const rooms = this.state.roomsUI
@@ -73,6 +75,7 @@ class FormHotel extends React.Component {
 
  request(event){
   event.preventDefault()
+  console.log('ejecutando peticion');
   const {startDate,endDate,roomsUI} = this.state
   this.props.setHotels(startDate, endDate, roomsUI)
  }
@@ -155,8 +158,7 @@ class FormHotel extends React.Component {
              </div>
             </div>
             <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO" location={this.props.location}/>
-              {/* <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/> */}
+              <ButtonFormSearch title="BUSCAR EL MEJOR PRECIO"/>
             </Grid.Row>
             </Grid>
           </div>

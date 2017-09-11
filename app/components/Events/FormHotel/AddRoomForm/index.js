@@ -37,8 +37,8 @@ class AddRoomForm extends React.Component {
         <div className="dad-reservHotel">
           <div className="childHotel">
             <label htmlFor={'Adulto'+this.props.count}>Adultos (18+)</label>
-            {/* <input className="inputs" id={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='adult'/> */}
-            <select className="inputs" id={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)}>
+            {/*<input className="inputs" id={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='adult'/>*/}
+            <select className="inputs" name={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)}>
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -49,12 +49,12 @@ class AddRoomForm extends React.Component {
               <option>7</option>
               <option>8</option>
               <option>9</option>
-            </select>
+              </select>
           </div>
           <div className="childHotel">
             <label htmlFor={'Cuna'+this.props.count}>Cunas</label>
-            {/* <input className="inputs" id={'Cuna'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='baby'/> */}
-            <select className="inputs" id={'Cuna'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)}>
+            {/* <input className="inputs" name={'Cuna'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='baby'/> */}
+            <select className="inputs" name={'Cuna'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)}>
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -62,8 +62,8 @@ class AddRoomForm extends React.Component {
           </div>
           <div className="childHotel">
             <label htmlFor={'Ninos'+this.props.count}>Niños (0-17)</label>
-            {/* <input className="inputs" id={'Ninos'+this.props.count} onChange={this.addAgeInput} type="number" min="0" max="2" placeholder="0" name={'Ninos'+this.props.count}/> */}
-            <select className="inputs" id={'Ninos'+this.props.count} onChange={this.addAgeInput}>
+            {/* <input className="inputs" name={'Ninos'+this.props.count} onChange={this.addAgeInput} type="number" min="0" max="2" placeholder="0" name={'Ninos'+this.props.count}/> */}
+            <select className="inputs" name={'Ninos'+this.props.count} onChange={this.addAgeInput}>
               <option>0</option>
               <option>1</option>
               <option>2</option>

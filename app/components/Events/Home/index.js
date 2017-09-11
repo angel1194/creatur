@@ -102,9 +102,6 @@ class Home extends React.Component {
    this.setState({
      available:hotels,
    })
-   this.setState({
-     change:true
-   })
 
     this.location(<HotelsManzanero location={this.location}/>, 2)
   }
