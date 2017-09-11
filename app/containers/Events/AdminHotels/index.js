@@ -65,8 +65,6 @@ class AdminHotels extends Component{
       hotels:{}
     }
     this.changeLocation=this.changeLocation.bind(this);
-    this.addHotel=this.addHotel.bind(this);
-
   }
 
 
@@ -109,11 +107,6 @@ class AdminHotels extends Component{
     })
   }
 
-  addHotel(){
-    console.log('ejecutando addhotel');
-
-
-  }
 
    renderForm(){
 
@@ -124,24 +117,25 @@ class AdminHotels extends Component{
      if(this.state.ui==='hotel' ){
        return(
        <div>
-         <AddHotels database={dataHotels} addHotel={this.addHotel}/>
+         <AddHotels Hotels={dataHotels} />
        </div>
        )
      }else if (this.state.ui=='transporte') {
        return(
          <div>
-           <AddTransport databaseTransport={dataTransport} handleSubmit={this.handleSubmit}/>
+           <AddTransport Transport={dataTransport} handleSubmit={this.handleSubmit}/>
          </div>
        )
      }else if (this.state.ui=='ticket') {
        return(
          <div>
-           <AddTicket databaseTicket={dataTickets} handleSubmit={this.handleSubmit}/>
+           <AddTicket Tickets={dataTickets} handleSubmit={this.handleSubmit}/>
          </div>
        )
      }
    }
   render(){
+
     return(
       <Container>
         <Body>

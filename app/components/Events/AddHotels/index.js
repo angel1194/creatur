@@ -104,6 +104,7 @@ class AddHotels extends Component {
     super(props)
 
     this.submitForm = this.submitForm.bind(this)
+    this.delete = this.delete.bind(this)
 }
   submitForm(event){
     event.preventDefault()
@@ -128,8 +129,12 @@ class AddHotels extends Component {
 
 }
 
+delete(key){
+  let rootRef = firebase.database().ref()
+  const desertRef = rootRef.child('hotels').child(key).remove()
+}
+
   render(){
-    console.log(this.props);
     return (
       <div>
         <Container>
@@ -164,10 +169,13 @@ class AddHotels extends Component {
         <ContainerTable>
           <TableAdmin />
           <table>
-            {Object.keys(this.props.database).map((data,i)=>
+            {Object.keys(this.props.Hotels).map((data,i)=>
               <RowAdmin
                 key={i}
-                Hotels={this.props.database[data]}
+                keyHotel={data}
+                Hotels={this.props.Hotels[data]}
+                delete={this.delete}
+
               />
             ) }
           </table>

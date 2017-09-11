@@ -5,10 +5,12 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 
-function RowAdmin(props)  { // eslint-disable-line react/prefer-stateless-function
+function RowAdmin(props)  {
+  console.log(props, '<------');
+  // eslint-disable-line react/prefer-stateless-functio
     return (
       <tbody>
         <tr>
@@ -18,9 +20,9 @@ function RowAdmin(props)  { // eslint-disable-line react/prefer-stateless-functi
           <td> {props.Hotels.star}</td>
           <td> {props.Hotels.description}</td>
           <td>{props.Hotels.cancellation}</td>
-          <td><span className='fa-trash'></span></td>
-          <td><span className='fa-pencil-square'></span></td>
-          <td><span className='fa-plus-square-o '></span></td>
+          <td><button onClick={()=>props.delete(props.keyHotel)} className='fa-trash'/></td>
+          <td><button  className='fa-pencil-square'/></td>
+          <td><button  className='fa-plus-square-o '/></td>
         </tr>
       </tbody>
     );

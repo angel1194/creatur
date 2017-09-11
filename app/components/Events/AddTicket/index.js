@@ -101,6 +101,8 @@ class AddTicket extends Component{
      firebase.database().ref().child('tickets').child(key).set(ticket)
 
 }
+
+
   render(){
   return (
     <div>
