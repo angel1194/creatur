@@ -8,6 +8,8 @@ import React,{Component} from 'react';
 import styled from 'styled-components';
 import TableAdmin from '../TableAdmin';
 import RowAdmin from '../RowAdmin';
+import firebase from '../../../containers/Events/Firebase';
+import moment from 'moment';
 
 const Container = styled.div`
   width:90%;
@@ -100,50 +102,65 @@ const ContainerTable = styled.div`
 class AddHotels extends Component {
   constructor(props){
     super(props)
-    this.submitForm = this.submitForm.bind(this)
-  }
 
+    this.submitForm = this.submitForm.bind(this)
+}
   submitForm(event){
     event.preventDefault()
 
-   }
+     const Name = event.target.elements['name'].value
+     const Image = event.target.elements['image'].value
+     const Address = event.target.elements['address'].value
+     const Stars = event.target.elements['stars'].value
+     const Description = event.target.elements['description'].value
+     const Cancellation= event.target.elements['cancellation'].value
+
+    let key = moment().format('X')
+    let hotel= {
+      address:Address,
+      cancellation:Cancellation,
+      description:Description,
+      image:Image,
+      name:Name,
+      star:Stars
+    }
+     firebase.database().ref().child('hotels').child(key).set(hotel)
+
+}
 
   render(){
     console.log(this.props);
-
-
     return (
       <div>
         <Container>
           <Title>Hoteles</Title>
           <Form onSubmit={this.submitForm}>
             <label htmlFor='name'>Nombre:</label>
-            <Input type='text' name='name' id='name' ref={this.props.name} placeholder='Agregar nombre'/>
+            <Input type='text' name='name' id='name' ref='name' placeholder='Agregar nombre'/>
             <label htmlFor='address'>Dirección:</label>
-            <Input name='address' id='address' placeholder='Agregar dirección'/>
+            <Input name='address' id='address' placeholder='Agregar dirección' ref='address'/>
             <label htmlFor='image'>Imagen:</label>
-            <Input type='url' name='image' id='image' placeholder='Agregar url'/>
+            <Input type='url' name='image' id='image' placeholder='Agregar url' ref='image'/>
             <label htmlFor='star'>Estrellas:</label>
-            <Select name="stars">
-              <option value="uno">1</option>
-              <option value="dos">2</option>
-              <option value="tres">3</option>
-              <option value="cuatro">4</option>
-              <option value="cinco">5</option>
-              <option value="seis">6</option>
+            <Select name="stars" ref='stars'>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
             </Select>
             <div className='formTransport'>
               <label htmlFor='description'>Descripción:</label><br/>
-              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción'/><br/>
+              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción' ref='description'/><br/>
               <label htmlFor='cancellation'>Cancelación:</label><br/>
-              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación'/>
+              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación' ref='cancellation'/>
               <div className='buttonAdmin'>
                 <Button>AGREGAR</Button>
               </div>
             </div>
           </Form>
         </Container>
-
         <ContainerTable>
           <TableAdmin />
           <table>

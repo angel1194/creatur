@@ -4,10 +4,12 @@
 *
 */
 
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import FormTableAdmin from '../FormTableAdmin';
 import RowTransport from '../RowTransport';
+import firebase from '../../../containers/Events/Firebase';
+import moment from 'moment';
 
 const Container = styled.div`
   width:90%;
@@ -75,12 +77,36 @@ const Form = styled.form`
     `;
 
 
-function AddTransport(props) {
+class AddTransport extends Component{
+  constructor (props){
+    super(props)
+    this.submitForm = this.submitForm.bind(this)
+  }
+
+  submitForm(event){
+    event.preventDefault()
+
+     const Image = event.target.elements['image'].value
+     const Price = event.target.elements['price'].value
+     const Seating = event.target.elements['seating'].value
+     const Type = event.target.elements['type'].value
+
+     let key = moment().format('X')
+     let transport= {
+       image:Image,
+       price:Price,
+       seating:Seating,
+       type:Type
+    }
+    firebase.database().ref().child('transport').child(key).set(transport)
+}
+
+  render(){
   return (
     <div>
     <Container>
       <Title>Transporte</Title>
-      <Form>
+      <Form onSubmit={this.submitForm}>
         <label htmlFor='image'>Imagen:</label>
         <Input name='image' id='image' placeholder='Agregar url'/>
         <label htmlFor='price'>Precio:</label>
@@ -103,15 +129,16 @@ function AddTransport(props) {
          rowthree='Asiento'
          rowfour='Tipo'
        />
-       {Object.keys(props.databaseTransport).map((data,i)=>
+       {Object.keys(this.props.databaseTransport).map((data,i)=>
         <RowTransport
          key={i}
-         Transport={props.databaseTransport[data]}
+         Transport={this.props.databaseTransport[data]}
         />
        )}
     </ContainerTable>
   </div>
   );
+}
 }
 
 export default AddTransport;

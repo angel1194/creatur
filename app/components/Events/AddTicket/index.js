@@ -4,10 +4,12 @@
 *
 */
 
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import FormTableAdmin from '../FormTableAdmin';
 import RowTicket from '../RowTicket';
+import firebase from '../../../containers/Events/Firebase';
+import moment from 'moment';
 
 const Container = styled.div`
   width:90%;
@@ -74,12 +76,37 @@ const ContainerTable = styled.div`
   `;
 
 
-function AddTicket(props) {
+class AddTicket extends Component{
+  constructor(props){
+    super(props)
+    this.submitForm = this.submitForm.bind(this)
+  }
+
+  submitForm(event){
+    event.preventDefault()
+
+     const date = event.target.elements['date'].value
+     const Folio = event.target.elements['folio'].value
+     const Price = event.target.elements['price'].value
+     const Section = event.target.elements['section'].value
+
+
+    let key = moment().format('X')
+    let ticket= {
+      date:date,
+      key:Folio,
+      price:Price,
+      section:Section
+    }
+     firebase.database().ref().child('tickets').child(key).set(ticket)
+
+}
+  render(){
   return (
     <div>
     <Container>
       <Title>Ticket</Title>
-      <Form>
+      <Form onSubmit={this.submitForm}>
         <label htmlFor='folio'>Folio:</label>
         <Input type='number' name='folio' id='folio' placeholder='Agregar folio'/>
         <label htmlFor='date'>Fecha:</label>
@@ -104,15 +131,16 @@ function AddTicket(props) {
          rowthree='Precio'
          rowfour='Sección'
        />
-       {Object.keys(props.databaseTicket).map((data,i)=>
+       {Object.keys(this.props.databaseTicket).map((data,i)=>
          <RowTicket
            key={i}
-           Tickets={props.databaseTicket[data]}
+           Tickets={this.props.databaseTicket[data]}
          />
        )}
     </ContainerTable>
   </div>
   );
+}
 }
 
 export default AddTicket;

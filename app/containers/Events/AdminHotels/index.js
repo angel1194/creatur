@@ -111,6 +111,8 @@ class AdminHotels extends Component{
 
   addHotel(){
     console.log('ejecutando addhotel');
+
+
   }
 
    renderForm(){
