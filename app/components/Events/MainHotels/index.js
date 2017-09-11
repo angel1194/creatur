@@ -38,7 +38,6 @@ class MainHotels extends React.Component {
     const {comparisonRoom} = this.state
     comparisonRoom[item] = item
     this.setState({comparisonRoom})
-    console.log(item);
   }
 
   render() {

@@ -141,7 +141,7 @@ class FormHotel extends React.Component {
             <Header as='h1' className='titleFormHotel'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-                <SearchForm location="Merida"/>
+                <SearchForm location="Mérida"/>
                 <div className='searchMap'>
                   <div>
                     <a id='search' href=''>

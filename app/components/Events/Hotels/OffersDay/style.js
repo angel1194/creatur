@@ -22,6 +22,7 @@ const Price = styled.div`
   text-align: center;
   margin: 0px 0px 12px 0px;
   padding: 3px 0px 0px 0px;
+  cursor: pointer;
 `;
 
 const Reg = styled.div`

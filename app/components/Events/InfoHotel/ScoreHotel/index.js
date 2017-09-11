@@ -32,9 +32,9 @@ function ScoreHotel(props) {
         <NameHotel>{props.elements.nameHotel}</NameHotel>
       </DivButton>
       <StarRating NumStart={props.elements.numStart} />
-      <AddressLabel>
+      {/* <AddressLabel>
         Mérida,
-      </AddressLabel>
+      </AddressLabel> */}
       <AddressLabel>
         {props.elements.address}
       </AddressLabel>

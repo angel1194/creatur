@@ -58,7 +58,7 @@ const state = {
           description:'Habitación estándar, 2 camas dobles',
           price:'1106',
           capacity:4,
-          type:'STANDARD',
+          type:'HABITACION STANDARD',
           key:'room0'
         },
         'room1':{
@@ -67,7 +67,7 @@ const state = {
           description:'Habitación estándar, 1 cama de matrimonio',
           price:'1006',
           capacity:2,
-          type:'STANDARD',
+          type:'HABITACION STANDARD',
           key:'room1'
         },
       }
@@ -78,7 +78,7 @@ const state = {
       price:'988',
       numStart:4,
       location:'Mérida, a 0.3 km de: Centro de Convenciones Yucatán Siglo XXI',
-      address:'',
+      address:'Calle 20A, 300A por 3C y 5A Merida YUC',
       rooms:{
         'room2':{
           idHotel:'002',
@@ -86,7 +86,7 @@ const state = {
           description:'Habitación, 2 camas dobles, no fumadores',
           price:'1100',
           capacity:4,
-          type:'STANDARD',
+          type:'HABITACION STANDARD',
           key:'room2'
         }
       }
@@ -97,7 +97,7 @@ const state = {
       price:'999',
       numStart:3,
       location:'Mérida, a 0.4 km de: Centro de Convenciones Yucatán Siglo XXI',
-      address:'',
+      address:'Calle 20-A #288, x 5-a Colonia Xcumpich Merida YUC',
       rooms:{
         'room3':{
           idHotel:'003',
@@ -105,7 +105,7 @@ const state = {
           description:'Habitación, 1 cama de matrimonio y sofá cama, frigorífico',
           price:'999',
           capacity:3,
-          type:'STANDARD',
+          type:'HABITACION STANDARD',
           key:'room3'
         }
       }
@@ -116,15 +116,15 @@ const state = {
       price:'700',
       numStart:3,
       location:'Mérida, a 5.0 km de: Centro de Convenciones Yucatán Siglo XXI',
-      address:'',
+      address:'Calle 58 A 495 Merida YUC',
       rooms:{
         'room4':{
           idHotel:'004',
           image:'https://www.ahstatic.com/photos/6928_rodbc_00_p_1024x768.jpg',
-          description:'HABITACION STANDARD CON 1 CAMA DOBLE',
+          description:'Habitación estándar, 1 cama doble',
           price:'629.29',
           capacity:2,
-          type:'STANDARD',
+          type:'HABITACION STANDARD',
           key:'room4'
         }
       }
@@ -140,7 +140,7 @@ const state = {
     id:0
   },
   comparisonRoom:{
-    
+
   }
 }
 
