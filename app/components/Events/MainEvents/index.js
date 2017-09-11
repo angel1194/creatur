@@ -25,6 +25,7 @@ function MainEvents (props){
             iconTicket='fa fa-ticket'
             iconTransport='icon-bus'
             location={props.location}
+            setHotels={props.setHotels}
            />
          </div>
         </Container>
