@@ -7,8 +7,8 @@ function InfoHotel(props) {
   return (
     <ContainerHotel>
       <Row>
-        <Img src="https://imgec.trivago.com/partnerimages/11/11/111168560_x.jpeg"/>
-        <ScoreHotel/>
+        <Img src={props.elements.image}/>
+        <ScoreHotel elements={props.elements}/>
         {/* <BookingInfo/> */}
       </Row>
     </ContainerHotel>

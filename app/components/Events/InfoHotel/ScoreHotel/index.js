@@ -29,18 +29,18 @@ function ScoreHotel(props) {
   return (
     <ContainerScore>
       <DivButton>
-        <NameHotel>City Express Mérida</NameHotel>
+        <NameHotel>{props.elements.nameHotel}</NameHotel>
       </DivButton>
-      <StarRating NumStart={4.5} />
+      <StarRating NumStart={props.elements.numStart} />
       <AddressLabel>
-        Mérida, 
+        Mérida,
       </AddressLabel>
       <AddressLabel>
-        Calle 45 No 332 Por calle 54 y calle 56 Col. Benito Juarez Norte Merida YUC
+        {props.elements.address}
       </AddressLabel>
       <ContTrip>
         <TripAd />
-        <LocationLabel Title="Mérida, a 1.9 km de: Centro de Convenciones Yucatán Siglo XXI"/>
+        <LocationLabel Title={props.elements.location}/>
       </ContTrip>
     </ContainerScore>
   );

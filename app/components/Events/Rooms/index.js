@@ -12,14 +12,14 @@ class Rooms extends React.Component {
   }
 
   render() {
-    const {hotels} = this.state
+    const {comparisonRoom} = this.state
 
     return (
       <div>
         <Container>
-          <InfoHotel/>
+          {Object.keys(comparisonRoom).map((item , i)=><InfoHotel key={i} elements={comparisonRoom[item]}/>)}
           <HeaderTable/>
-          {Object.keys(hotels).map((item, i)=><HotelRoom key={i} elements={hotels[item]} addCar={this.addCar}/>)}
+          {Object.keys(comparisonRoom).map((item, i)=><HotelRoom key={i} elements={comparisonRoom[item]}/>)}
         </Container>
       </div>
     );

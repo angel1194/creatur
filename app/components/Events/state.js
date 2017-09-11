@@ -41,17 +41,7 @@ const state = {
         capacity:2,
         type:'STANDARD',
       }
-    },
-    // '456':{
-    //   'room5':{
-    //     idHotel:'001',
-    //   },
-    // },
-    // '789':{
-    //   'room6':{
-    //     idHotel:'004'
-    //   }
-    // }
+    }
   },
   hotels: {
     '001':{
@@ -60,7 +50,7 @@ const state = {
       price:'1006',
       numStart:4.5,
       location:'Mérida, a 1.9 km de: Centro de Convenciones Yucatán Siglo XXI',
-      cantidad:0,
+      address:'Calle 45 No 332 Por calle 54 y calle 56 Col. Benito Juarez Norte Merida YUC',
       rooms:{
         'room0':{
           idHotel:'001',
@@ -88,7 +78,7 @@ const state = {
       price:'988',
       numStart:4,
       location:'Mérida, a 0.3 km de: Centro de Convenciones Yucatán Siglo XXI',
-      cantidad:0,
+      address:'',
       rooms:{
         'room2':{
           idHotel:'002',
@@ -107,7 +97,7 @@ const state = {
       price:'999',
       numStart:3,
       location:'Mérida, a 0.4 km de: Centro de Convenciones Yucatán Siglo XXI',
-      cantidad:0,
+      address:'',
       rooms:{
         'room3':{
           idHotel:'003',
@@ -126,7 +116,7 @@ const state = {
       price:'700',
       numStart:3,
       location:'Mérida, a 5.0 km de: Centro de Convenciones Yucatán Siglo XXI',
-      cantidad:0,
+      address:'',
       rooms:{
         'room4':{
           idHotel:'004',
@@ -148,6 +138,9 @@ const state = {
     checkout:'',
     total:0,
     id:0
+  },
+  comparisonRoom:{
+    
   }
 }
 

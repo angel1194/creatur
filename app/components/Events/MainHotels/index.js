@@ -4,6 +4,7 @@ import Hotels from '../Hotels';
 import MapView from '../../ReserHotel/MapView';
 import InicialState from '../state';
 import {Div, DivHotels} from './style';
+import Rooms from '../../../containers/Events/Rooms';
 
 class MainHotels extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class MainHotels extends React.Component {
     this.state = InicialState
 
     this.addRooms=this.addRooms.bind(this)
+    this.addComparison=this.addComparison.bind(this)
   }
 
   addRooms(rooms){
@@ -31,6 +33,14 @@ class MainHotels extends React.Component {
     this.setState(car)
   }
 
+  addComparison(item){
+    this.props.location(<Rooms/>, 3)
+    const {comparisonRoom} = this.state
+    comparisonRoom[item] = item
+    this.setState({comparisonRoom})
+    console.log(item);
+  }
+
   render() {
     const {hotels, night} = this.state
 
@@ -39,7 +49,7 @@ class MainHotels extends React.Component {
         <Container>
           <Div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels location={this.props.location} addRooms={this.addRooms} key={i} elements={hotels[item]}/>)}
+              {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.addRooms} addComparison={this.addComparison} key={i} elements={hotels[item]}/>)}
             </DivHotels>
             <div>
               <MapView/>
