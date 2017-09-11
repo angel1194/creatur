@@ -49,15 +49,16 @@ class Hotels extends React.Component {
   render() {
     return (
       <Container>
+        {console.log(this.props.elements)}
         <Column>
           <Wrapper>
             <Row>
               <Img src={this.props.elements.image} Width="200px" Height="156px" />
               <ColumMarginTop>
-                <Title>{this.props.elements.nameHotel}</Title>
-                <StarRating key={this.props.elements.key} NumStart={this.props.elements.numStart} />
+                <Title>{this.props.elements.name}</Title>
+                <StarRating key={this.props.elements.key} NumStart={this.props.elements.star} />
                 <TripAdvisor Calification='0' />
-                <LocationLabel Title={this.props.elements.location} />
+                <LocationLabel Title={this.props.elements.address} />
               </ColumMarginTop>
             </Row>
             <Row>

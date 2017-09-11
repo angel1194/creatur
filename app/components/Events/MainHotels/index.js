@@ -42,13 +42,15 @@ class MainHotels extends React.Component {
 
   render() {
     const {hotels, night} = this.state
+    const available = this.props.state
 
     return (
       <div>
         <Container>
+          {console.log('state available',available)}
           <Div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.addRooms} addComparison={this.addComparison} key={i} elements={hotels[item]}/>)}
+              {Object.keys(available).map((item, i)=><Hotels addRooms={this.addRooms} addComparison={this.addComparison} key={i} elements={available[item]}/>)}
             </DivHotels>
             <div>
               <MapView/>

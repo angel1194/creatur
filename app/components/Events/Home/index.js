@@ -2,6 +2,7 @@ import React from 'react';
 import {Container} from 'semantic-ui-react'
 import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
+import MainHotels from '../MainHotels'
 import Trailcrumb from '../Trailcrumb'
 import {setRooms,setHotels} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment'
@@ -11,9 +12,9 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents setHotels={this.setHotels.bind(this)} location={()=>this.location(<HotelsManzanero location={this.location}/>, 2)}/>,
-    location: 1,
-    available:{}
+      container:<MainEvents setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels location={this.location}/>, 2)}/>,
+      location: 1,
+      available:{}
     }
     this.location = this.location.bind(this)
 
@@ -103,7 +104,7 @@ class Home extends React.Component {
      available:hotels,
    })
 
-    this.location(<HotelsManzanero location={this.location}/>, 2)
+    this.location(<MainHotels state={hotels} location={this.location}/>, 2)
   }
 
   filterNight(night,startDate,endDate){
