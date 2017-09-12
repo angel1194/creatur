@@ -7,37 +7,14 @@ import initialState from '../state';
 import Itemcar from '../Itemcar';
 
 class ShoppingCart extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = this.props.state
-
-    this.removeRooms=this.removeRooms.bind(this)
-  }
-
-  removeRooms(item){
-    this.subtractTotalAmount(item)
-    const {car} = this.state
-    delete car.items[item]
-    this.setState(car)
-  }
-
-  subtractTotalAmount(item){
-    const {car} = this.state
-    let price = Number(car.items[item].price)
-    let total = car['total'] - price
-    car['total'] = total
-
-    this.setState(car)
-  }
 
   render() {
-    let {car} = this.state
+    let car = this.props.car
     let cart = Object.keys(car.items)
 
     return (
       <div>
         <Container>
-          {console.log(this.state)}
           <FlexStart>
             <DivTitle>
               <Title>{cart.length === 0 ? 'Tu Carrito de Compras esta vacío' : 'Tu Carrito de Compras'}</Title>
@@ -59,7 +36,7 @@ class ShoppingCart extends React.Component {
               </div>
             :
               <ContainerItem>
-                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.removeRooms} nameHotel={hotels}/>)}
+                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.props.removeRooms} />)}
               </ContainerItem>
             }
             <FlexEnd>

@@ -2,7 +2,6 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import MainEvents from '../MainEvents';
 import MainHotels from '../MainHotels';
-import HotelsManzanero from '../../../containers/Events/Hotels'
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import {Ul, Li, Div, Car, Count} from './style';
@@ -15,7 +14,7 @@ class Trailcrumb extends React.Component {
   }
 
   render(){
-    const {car} = this.state
+    const car = this.props.car
     let count = Object.keys(car.items)
     return (
       <Div>
@@ -34,7 +33,10 @@ class Trailcrumb extends React.Component {
             </Li>
           : ''}
         </Ul>
-        <Car onClick={()=> this.props.location(<ShoppingCart state={this.props.stateCar} location={()=> this.props.location(<MainEvents setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}/>)}>
+        <Car onClick={()=> this.props.location(<ShoppingCart
+                                                removeRooms={this.props.removeRooms}
+                                                car={this.props.car}
+                                                location={()=> this.props.location(<MainEvents setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}/>)}>
           Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome>
         </Car>
         <Count>{count.length}</Count>

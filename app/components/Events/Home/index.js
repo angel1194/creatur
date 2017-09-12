@@ -30,6 +30,7 @@ class Home extends React.Component {
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
     this.addRooms = this.addRooms.bind(this)
+    this.removeRooms = this.removeRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
   }
 
@@ -153,6 +154,22 @@ class Home extends React.Component {
     this.setState({comparation})
   }
 
+  removeRooms(item){
+    this.subtractTotalAmount(item)
+    const {car} = this.state
+    delete car.items[item]
+    this.setState(car)
+  }
+
+  subtractTotalAmount(item){
+    const {car} = this.state
+    let price = Number(car.items[item].price)
+    let total = car['total'] - price
+    car['total'] = total
+
+    this.setState(car)
+  }
+
 
   render() {
     return (
@@ -164,8 +181,10 @@ class Home extends React.Component {
             nameContainer={this.state.location}
             setHotels={this.setHotels}
             addRooms={this.addRooms}
+            removeRooms={this.removeRooms}
             addComparation={this.addComparation}
             comparation={this.state.comparation}
+            car={this.state.car}
           />
         </Container>
         {this.state.container}

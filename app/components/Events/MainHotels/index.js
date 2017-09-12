@@ -11,7 +11,6 @@ class MainHotels extends React.Component {
     return (
       <div>
         <Container>
-          {console.log('state available',this.state)}
           <Div>
             <DivHotels>
               {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}

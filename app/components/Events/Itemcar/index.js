@@ -13,7 +13,7 @@ class Itemcar extends React.Component {
       message: '¿Estás seguro de hacer esto?',
       confirmLabel: 'Aceptar',
       cancelLabel: 'Cancelar',
-      onConfirm: ()=>this.props.removeRooms(this.props.elements.key),
+      onConfirm: ()=>this.props.removeRooms(this.props.elements.idHotel),
       // onCancel: () => alert('Cancel'),
     })
   }
@@ -22,7 +22,7 @@ class Itemcar extends React.Component {
     return (
       <div className='main-item'>
         <div className='type-room'>
-          <h2>{this.props.nameHotel[this.props.elements.idHotel].name}</h2>
+          <h2>Nombre del Hotel</h2>
           <p>{this.props.elements.description}</p>
         </div>
         <div className='section-item-left'>
@@ -37,7 +37,7 @@ class Itemcar extends React.Component {
             <p>20/02/2017</p>
           </div>
           <div className='item-check'>
-            <AddCheckList id={this.props.id} text='confirmacion Inmediata'/>
+            <AddCheckList id={this.props.idHotel} text='confirmacion Inmediata'/>
           </div>
           <div className='item-price'>
             <p>MXN ${this.props.elements.price}</p>
