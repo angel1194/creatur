@@ -44,7 +44,7 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
-
+    let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
    // Buscando las fechas en el rango marcado
@@ -101,6 +101,7 @@ class Home extends React.Component {
 
    this.setState({
      available:hotels,
+     totalNight:totalNight
    })
 
     this.location(<HotelsManzanero location={this.location}/>, 2)
