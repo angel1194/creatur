@@ -29,19 +29,18 @@ function ScoreHotel(props) {
   return (
     <ContainerScore>
       <DivButton>
-        <NameHotel>Best Western Maya Yucatán</NameHotel>
+        <NameHotel>{props.elements.nameHotel}</NameHotel>
       </DivButton>
-      <StarRating NumStart={4} />
+      <StarRating NumStart={props.elements.numStart} />
+      {/* <AddressLabel>
+        Mérida,
+      </AddressLabel> */}
       <AddressLabel>
-        Mérida
-      </AddressLabel>
-      <br/>
-      <AddressLabel>
-        Calle 58 #483 por 55 Y 57 Centro Historico Merida YUC
+        {props.elements.address}
       </AddressLabel>
       <ContTrip>
         <TripAd />
-        <LocationLabel Title="Mérida"/>
+        <LocationLabel Title={props.elements.location}/>
       </ContTrip>
     </ContainerScore>
   );

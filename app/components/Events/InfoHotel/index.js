@@ -7,9 +7,9 @@ function InfoHotel(props) {
   return (
     <ContainerHotel>
       <Row>
-        <Img src="http://cdn.precioyviajes.com/00/13/40/00134083_gp.jpg"/>
-        <ScoreHotel/>
-        <BookingInfo/>
+        <Img src={props.elements.image}/>
+        <ScoreHotel elements={props.elements}/>
+        {/* <BookingInfo/> */}
       </Row>
     </ContainerHotel>
   );

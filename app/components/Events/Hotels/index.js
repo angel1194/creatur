@@ -10,6 +10,7 @@ import PriceLabel from '../../ReserHotel/PriceLabel';
 import Button from '../../ReserHotel/Button';
 import AddCheckList from '../../AddCheckList';
 import OffersDay from './OffersDay';
+import Rooms from '../../../containers/Events/Rooms';
 
 const ColumMarginRight = styled(Column) `
   margin-right: 10px;
@@ -24,10 +25,10 @@ const ColumMarginTop = styled(Column) `
 `;
 
 class Hotels extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      showRooms: false
+      showRooms: false,
     }
     this.setShowRooms=this.setShowRooms.bind(this)
     this.setFalse=this.setFalse.bind(this)
@@ -53,24 +54,27 @@ class Hotels extends React.Component {
             <Row>
               <Img src={this.props.elements.image} Width="200px" Height="156px" />
               <ColumMarginTop>
-                <Title>{this.props.elements.title}</Title>
-                <StarRating key={this.props.id} NumStart={this.props.elements.numStart} />
+                <Title>{this.props.elements.nameHotel}</Title>
+                <StarRating key={this.props.elements.key} NumStart={this.props.elements.numStart} />
                 <TripAdvisor Calification='0' />
                 <LocationLabel Title={this.props.elements.location} />
               </ColumMarginTop>
             </Row>
             <Row>
               <ColumMarginRight>
-                <PriceLabel Tam="Com" Since={this.props.elements.price} Currency="MX" Total='1736' />
-                {/* <AddCheckList id={this.props.id.toString()} JustifyContent="flex-end" Margin="20px" /> */}
-                <br/><br/><br/><br/>
-                <Link onClick={() => this.props.test(this.props.elements.key, this.props.elements.items)} to="/manzanero/rooms">
-                  <Button Title="Reservar" Color="Blue" />
-                </Link>
+                <PriceLabel Since={this.props.elements.price} Currency="MXN" Total={this.props.elements.price} />
+                <AddCheckList id={"id" + 1} JustifyContent="flex-end" text={""}/>
+                <br/><br/><br/>
+                <Button Title="Comparar" Color="Blue" addComparison={this.props.addComparison} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>
-          <OffersDay setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse} state={this.state.showRooms}/>
+          <OffersDay
+            setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse}
+            state={this.state.showRooms}
+            rooms={this.props.elements.rooms}
+            addRooms={(rooms)=>this.props.addRooms(rooms)}
+          />
         </Column>
       </Container>
     );

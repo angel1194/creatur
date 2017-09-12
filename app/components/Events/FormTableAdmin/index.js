@@ -19,14 +19,14 @@ class FormTableAdmin extends React.Component { // eslint-disable-line react/pref
       <Container>
         <table>
           <thead>
-            <tr>
-              <th className='thTable'>{this.props.row}</th>
-              <th className='thTable'>{this.props.rowtwo}</th>
-              <th className='thTable'>{this.props.rowthree}</th>
-              <th className='thTable'>{this.props.rowfour}</th>
-              <th className='thTable'>Eliminar</th>
-              <th className='thTable'>Editar</th>
-              <th className='thTable'>Agregar</th>
+            <tr className='thtableAdmin'>
+              <th className='thtableAdmin'>{this.props.row}</th>
+              <th className='thtableAdmin'>{this.props.rowtwo}</th>
+              <th className='thtableAdmin'>{this.props.rowthree}</th>
+              <th className='thtableAdmin'>{this.props.rowfour}</th>
+              <th className='thtableAdmin'>Eliminar</th>
+              <th className='thtableAdmin'>Editar</th>
+              <th className='thtableAdmin'>Agregar</th>
             </tr>
           </thead>
         </table>

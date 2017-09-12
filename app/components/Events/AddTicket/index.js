@@ -102,6 +102,11 @@ class AddTicket extends Component{
 
 }
 
+delete(key){
+  let rootRef = firebase.database().ref()
+  const desertRef = rootRef.child('tickets').child(key).remove()
+}
+
 
   render(){
   return (
@@ -133,10 +138,12 @@ class AddTicket extends Component{
          rowthree='Precio'
          rowfour='Sección'
        />
-       {Object.keys(this.props.databaseTicket).map((data,i)=>
+       {Object.keys(this.props.Tickets).map((data,i)=>
          <RowTicket
            key={i}
-           Tickets={this.props.databaseTicket[data]}
+           keyTicket={data}
+           Tickets={this.props.Tickets[data]}
+           delete={this.delete}
          />
        )}
     </ContainerTable>

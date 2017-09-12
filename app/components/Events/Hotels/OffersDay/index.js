@@ -6,22 +6,26 @@ import AddCheckList from '../../../AddCheckList';
 import {Div, Row, Column, Price, Reg, WrapperTrans} from './style'
 
 function OffersDay(props) {
+  let rooms = props.rooms
+
   return (
     <WrapperTrans>
       <Div>
         <AddButton text="habitaciones" setShowRooms={()=>props.setShowRooms()} state={props.state}/>
         {props.state === false ? '' :
-        <Row>
-          <Column>
-            <AddCheckList id={'1'} text={"DOBLE 2 CAMAS STANDARD Hasta 2 Personas"} />
-            <Reg>
-              <Subtitle GlobalText={"Regimen: SOLO HABITACION"} />
-            </Reg>
-          </Column>
-          <Price>
-            <Subtitle GlobalText={"desde $454.72"} />
-          </Price>
-        </Row>
+          Object.keys(rooms).map((item, i)=>
+          <Row key={i}>
+            <Column>
+              <AddCheckList id={rooms[item].idHotel+i} text={rooms[item].description}/>
+              <Reg>
+                <Subtitle GlobalText={"Regimen: SOLO HABITACION"}/>
+              </Reg>
+            </Column>
+            <Price onClick={()=>props.addRooms(rooms[item])}>
+              <Subtitle GlobalText={"desde $"+rooms[item].price+" MXN"}/>
+            </Price>
+          </Row>
+          )
         }
       </Div>
     </WrapperTrans>

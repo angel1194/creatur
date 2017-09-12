@@ -101,6 +101,12 @@ class AddTransport extends Component{
     firebase.database().ref().child('transport').child(key).set(transport)
 }
 
+delete(key){
+  let rootRef = firebase.database().ref()
+  const desertRef = rootRef.child('transport').child(key).remove()
+}
+
+
   render(){
   return (
     <div>
@@ -129,10 +135,12 @@ class AddTransport extends Component{
          rowthree='Asiento'
          rowfour='Tipo'
        />
-       {Object.keys(this.props.databaseTransport).map((data,i)=>
+       {Object.keys(this.props.Transport).map((data,i)=>
         <RowTransport
          key={i}
-         Transport={this.props.databaseTransport[data]}
+         Transport={this.props.Transport[data]}
+         keyTransport={data}
+         delete={this.delete}
         />
        )}
     </ContainerTable>

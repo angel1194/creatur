@@ -2072,7 +2072,7 @@ footer
 /*style class div edad
 
 .edadCLIENTES
-  margin-left: 2em
+  margin-left: 2.5em
   color: #fff
   font-family: Montserrat !important
   h4
@@ -2270,12 +2270,15 @@ footer
     align-items: center
     color: white !important
     width: 50%
-
     label
       font-family: Montserrat !important
+      margin-left: -15px
     .inputs
-      width: 75% !important
+      width: 63px !important
       border-radius: 5px !important
+      height: 38px
+      margin: 0px 25px 0px 10px
+      outline: 0
 
 .linkHotel
   margin: 0px 0px 0px 50px
@@ -2352,7 +2355,92 @@ footer
     font-family: sans-serif !important
     margin: 1px 0px 0px 5px !important
     cursor: pointer
-//para que funcionara el contador del carrito
+
+    /*esilos para ItemCar*/
+
+.main-item
+  border: 3px solid #e2e2e0
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap !important
+  justify-content: center
+  width: 43%
+  margin: 5px
+  padding: 5px
+  .type-room
+    text-align: center
+    h2
+      font-family: Montserrat !important
+      color: #2b5bac !important
+    p
+      font-family: Montserrat !important
+
+  .section-item-left
+    margin: auto
+    .item-fecha
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      padding-top: 10px
+      padding-bottom: 10px
+      span
+        margin-right: 2px
+        padding-left: 15px
+      .icon-fechain
+        color: #87b672
+      .icon-fechaout
+        color : #2b5bac
+    .icon-person
+      text-align: center
+      padding-top: 5px
+      padding-bottom: 5px
+      .item-person
+       font-size: 2em
+       padding-right: 5px
+       color: #2b5bac
+
+    .item-check
+      padding: 5px 30px 5px 25px
+
+    .item-price
+      font-family: Montserrat !important
+      text-align: center
+      font-weight: bold
+      font-size: 18px
+
+  .section-item-rigth
+   margin: 5px 5px 0px 10px
+   flex: 1
+   flex-wrap: wrap
+  .img-item
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    margin: 5px
+    img
+      width: 200px
+      height: 156px
+      border-radius: 5px
+      margin-bottom: 4px
+    span
+      display: flex
+      justify-content: flex-end
+      flex-wrap: wrap
+      font-size: 20px
+      color: #d82d2d
+      margin: 5px 15px 0px 0px
+      cursor: pointer
+
+//alerta eliminar events
+.react-confirm-alert
+  text-align: center !important
+  h1
+    color: #666 !important
+.react-confirm-alert-button-group
+  display: flex !important
+  justify-content: space-around !important
+
+//funcionara el contador del carrito
 p
   line-height: 1em
   margin: 0 0 .2em
@@ -2442,6 +2530,10 @@ tbody
 
 .thTable
   width: 154px
+  border: 0px
+
+.thtableAdmin
+  width: 212px
   border: 0px
 
 .bodyRow

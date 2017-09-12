@@ -52,7 +52,7 @@ function generateStarts(num) {
 
     num = parseInt(num);
     let ArrStar = addStar(num);
-    ArrStar.push(<FontA name='star-half' />);
+    ArrStar.push(<FontA name='star-half' key={num}/>);
     return ArrStar;
   }
 

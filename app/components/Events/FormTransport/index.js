@@ -10,7 +10,7 @@ class FormTransport extends React.PureComponent {
   constructor(props){
     super(props);
       this.state = {
-        startDate:moment()
+        startDate:moment("2017-09-16")
       }
       this.handleChange= this.handleChange.bind(this);
       this.request=this.request.bind(this);
@@ -25,18 +25,15 @@ class FormTransport extends React.PureComponent {
   request(event){
     event.preventDefault()
 
-    let location = document.getElementById('location').value
     let date = this.state.startDate.format('YYYY-MM-DD')
     let hours = this.refs.hours.value
     let tickets = this.refs.tickets.value
 
     let request = {
-      location:location,
       date:date,
       hours:hours,
       ticket:tickets,
     }
-    console.log(request);
   }
 
   render() {
@@ -47,23 +44,23 @@ class FormTransport extends React.PureComponent {
             <Header as='h1' className='titleForm'>{this.props.title}</Header>
             <Grid>
               <div className='containerFormHotel'>
-               {/*FORM SALIDA */}
-
-                <label htmlFor="checkin" className='salida'>Salida</label>
-                <SearchForm location='SIGLO XXI' idLocation='location'/>
-
-               {/*FECHA Y HORA  */}
+                <label htmlFor="checkin" className='salida'></label>
+                <SearchForm location='SIGLO XXI'/>
               <div className='dateAndTime'>
                <label htmlFor="checkin" className='fecha'>Fecha</label>
                <label htmlFor="" className='hora'>Hora</label>
               </div>
-
               <div className='formsDateTime'>
                 <Grid className='gridAutocompleteForm'>
                  <div className='gridCenterDate'>
                   <div className='selectFormSearch'>
                     <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                    <DatePicker selected={this.state.startDate} onChange={this.handleChange} minDate={moment()}/>
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      minDate={moment("2017-09-16").subtract(3, "days")}
+                      maxDate={moment("2017-09-16").add(3, "days")}
+                    />
                   </div>
                 </div>
                </Grid>
@@ -76,7 +73,6 @@ class FormTransport extends React.PureComponent {
                </Grid>
               </div>
              </div>
-            {/*BOLETOS*/}
              <div className="ticket">
               <label htmlFor='boletos' className='fecha'>Asientos</label>
               <div className='selectFormSearchTransport'>
@@ -84,7 +80,6 @@ class FormTransport extends React.PureComponent {
                 <input type="number" min="0" placeholder="0" ref='tickets'/>
               </div>
              </div>
-           {/*BOTON BUSQUEDA*/}
              <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="AGREGAR AL CARRITO"/>
              </Grid.Row>

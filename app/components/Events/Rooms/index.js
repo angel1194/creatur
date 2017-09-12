@@ -3,7 +3,6 @@ import {Container} from 'semantic-ui-react';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../HotelRoom';
 import InfoHotel from '../InfoHotel';
-import {Divider} from './style';
 import InicialState from '../state';
 
 class Rooms extends React.Component {
@@ -12,20 +11,15 @@ class Rooms extends React.Component {
     this.state = InicialState
   }
 
-
-
   render() {
-    const {hotels} = this.state
-    let test = Object.keys(hotels['001'])
+    const {comparisonRoom} = this.state
 
     return (
       <div>
         <Container>
-          {console.log(test['items'])}
-          <InfoHotel/>
+          {Object.keys(comparisonRoom).map((item , i)=><InfoHotel key={i} elements={comparisonRoom[item]}/>)}
           <HeaderTable/>
-          {Object.keys(hotels).map((item, i)=><HotelRoom key={i} elements={hotels[item]}/>)}
-          <Divider/>
+          {Object.keys(comparisonRoom).map((item, i)=><HotelRoom key={i} elements={comparisonRoom[item]}/>)}
         </Container>
       </div>
     );

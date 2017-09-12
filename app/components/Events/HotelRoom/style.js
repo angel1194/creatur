@@ -68,6 +68,8 @@ const LabelA = styled(Label) `
 
 const Img = styled.img `
   border-radius: 6px;
+  width: 250px;
+  height: 156px;
 `;
 
 export {ContainerRoom, RoomImg, DetailsRoom, Label, LinkA, ContainerPrice, ContainerButtonGreen, ButtonGreen, LabelA, Img};

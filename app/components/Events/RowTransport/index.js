@@ -23,9 +23,9 @@ function RowTransport (props) { // eslint-disable-line react/prefer-stateless-fu
             <td className='bodyRow'>{props.Transport.price}</td>
             <td className='bodyRow'>{props.Transport.seating}</td>
             <td className='bodyRow'> {props.Transport.type}</td>
-            <td className='bodyRow'><span className='fa-trash'></span></td>
-            <td className='bodyRow'><span className='fa-pencil-square'></span></td>
-            <td className='bodyRow'><span className='fa-plus-square-o'></span></td>
+            <td><button onClick={()=>props.delete(props.keyTransport)}  className='fa-trash'/></td>
+            <td><button className='fa-pencil-square'/></td>
+            <td><button className='fa-plus-square-o'/></td>
           </tr>
         </tbody>
       </table>

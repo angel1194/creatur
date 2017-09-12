@@ -24,17 +24,8 @@ function MainEvents (props){
             iconHotel='icon-hotel'
             iconTicket='fa fa-ticket'
             iconTransport='icon-bus'
-            saveRoomsAdult={props.saveRoomsAdult}
-            saveDataHotel={props.saveDataHotel}
-            setLocation={props.setLocation}
-            type={props.type}
-            tabChange={props.tabChange}
-            dataUI={props.dataUI}
-            loading={props.loading}
-            resetState={props.resetState}
-            loadingTrue={props.loadingTrue}
-            saveDate={props.saveDate}
-            saveLocation={props.saveLocation}
+            location={props.location}
+            setHotels={props.setHotels}
            />
          </div>
         </Container>

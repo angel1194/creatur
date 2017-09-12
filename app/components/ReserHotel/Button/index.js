@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { ButtonStyled, Title, Line, Arrow, Wrapper } from './StyledButton/ButtonStyled';
-
+import Rooms from '../../../containers/Events/Rooms';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -15,7 +15,7 @@ import { ButtonStyled, Title, Line, Arrow, Wrapper } from './StyledButton/Button
 function Button(props) {
   return (
     <div>
-      <ButtonStyled onClick={props.setHotels ? ()=>props.setHotels() : ''}>
+      <ButtonStyled onClick={props.addComparison ? ()=>props.addComparison(props.item) : ''}>
         <Wrapper>
           <Title>{props.Title}</Title>
 
