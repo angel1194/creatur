@@ -9,7 +9,7 @@ import Itemcar from '../Itemcar';
 class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
-    this.state = initialState
+    this.state = this.props.state
 
     this.removeRooms=this.removeRooms.bind(this)
   }
@@ -31,12 +31,13 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {car,hotels} = this.state
+    let {car} = this.state
     let cart = Object.keys(car.items)
 
     return (
       <div>
         <Container>
+          {console.log(this.state)}
           <FlexStart>
             <DivTitle>
               <Title>{cart.length === 0 ? 'Tu Carrito de Compras esta vacío' : 'Tu Carrito de Compras'}</Title>

@@ -49,7 +49,6 @@ class Hotels extends React.Component {
   render() {
     return (
       <Container>
-        {console.log(this.props.elements)}
         <Column>
           <Wrapper>
             <Row>
@@ -66,7 +65,7 @@ class Hotels extends React.Component {
                 <PriceLabel Since={this.props.elements.price} Currency="MXN" Total={this.props.elements.price} />
                 <AddCheckList id={"id" + 1} JustifyContent="flex-end" text={""}/>
                 <br/><br/><br/>
-                <Button Title="Comparar" Color="Blue" addComparison={this.props.addComparison} item={this.props.elements}/>
+                <Button Title="Comparar" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>

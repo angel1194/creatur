@@ -5,19 +5,32 @@ import HotelsManzanero from '../../../containers/Events/Hotels'
 import MainHotels from '../MainHotels'
 import Trailcrumb from '../Trailcrumb'
 import {setRooms,setHotels} from '../../../containers/Events/Firebase/firebase'
-import moment from 'moment'
+import moment from 'moment';
+import Rooms from '../Rooms';
 // import styled from 'styled-components';
 
 class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels location={this.location}/>, 2)}/>,
+      container:<MainEvents setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
-      available:{}
+      available:{},
+      car:{
+        items:{
+
+        },
+        total:0,
+        id:1
+      },
+      comparation:{
+
+      }
     }
     this.location = this.location.bind(this)
-
+    this.setHotels = this.setHotels.bind(this)
+    this.addRooms = this.addRooms.bind(this)
+    this.addComparation = this.addComparation.bind(this)
   }
 
     componentWillMount(){
@@ -104,7 +117,7 @@ class Home extends React.Component {
      available:hotels,
    })
 
-    this.location(<MainHotels state={hotels} location={this.location}/>, 2)
+    this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
   }
 
   filterNight(night,startDate,endDate){
@@ -113,12 +126,47 @@ class Home extends React.Component {
     }
   }
 
+  addRooms(rooms){
+    const state = this.state.car
+    if (!(rooms.idHotel in state.items)) {
+      state.items[rooms.idHotel] = rooms
+
+      this.setState(state)
+      this.totalAmount(rooms)
+    }
+  }
+
+  totalAmount(rooms){
+    const {car} = this.state
+    let price = Number(rooms.price)
+    let total = price + car['total']
+    car['total'] = total
+
+    this.setState(car)
+  }
+
+  addComparation(item){
+    this.location(<Rooms comparation={this.state.comparation}/>, 3)
+    const {comparation} = this.state
+    comparation[item] = item
+
+    this.setState({comparation})
+  }
+
 
   render() {
     return (
       <div>
         <Container>
-          <Trailcrumb location={this.location} nameContainer={this.state.location}/>
+          <Trailcrumb
+            hotels={this.state.available}
+            location={this.location}
+            nameContainer={this.state.location}
+            setHotels={this.setHotels}
+            addRooms={this.addRooms}
+            addComparation={this.addComparation}
+            comparation={this.state.comparation}
+          />
         </Container>
         {this.state.container}
       </div>

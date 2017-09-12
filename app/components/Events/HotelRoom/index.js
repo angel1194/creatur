@@ -42,7 +42,7 @@ class HotelRoom extends React.Component {
             <Img src={this.props.elements.rooms[item].image}/>
           </RoomImg>
           <DetailsRoom>
-            <Label>Capacidad para {this.props.elements.rooms[item].capacity} personas</Label>
+            <Label>Capacidad para {this.props.elements.rooms[item].occupancy} personas</Label>
             <Label>{this.props.elements.rooms[item].description}</Label>
             <Label>Regimen: Solo Habitación</Label>
           </DetailsRoom>

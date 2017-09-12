@@ -15,7 +15,7 @@ import Rooms from '../../../containers/Events/Rooms';
 function Button(props) {
   return (
     <div>
-      <ButtonStyled onClick={props.addComparison ? ()=>props.addComparison(props.item) : ''}>
+      <ButtonStyled onClick={props.addComparation ? ()=> props.addComparation(props.item) : ''}>
         <Wrapper>
           <Title>{props.Title}</Title>
 
