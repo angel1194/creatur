@@ -10,6 +10,8 @@ import FormTableAdmin from '../FormTableAdmin';
 import RowTransport from '../RowTransport';
 import firebase from '../../../containers/Events/Firebase';
 import moment from 'moment';
+import ReactConfirmAlert , { confirmAlert }from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const Container = styled.div`
   width:90%;
@@ -99,11 +101,25 @@ class AddTransport extends Component{
        type:Type
     }
     firebase.database().ref().child('transport').child(key).set(transport)
+
+    event.target.elements['image'].value=''
+    event.target.elements['price'].value=''
+    event.target.elements['seating'].value=''
+    event.target.elements['type'].value=''
 }
+
 
 delete(key){
   let rootRef = firebase.database().ref()
-  const desertRef = rootRef.child('transport').child(key).remove()
+
+  confirmAlert({
+    title: 'Confirmación',
+    message: '¿Estás seguro de eliminar el transporte?',
+    confirmLabel: 'Confirmar',
+    cancelLabel: 'Cancelar',
+    onConfirm: () => rootRef.child('transport').child(key).remove(),
+    onCancel: () => '',
+  })
 }
 
 
@@ -114,14 +130,14 @@ delete(key){
       <Title>Transporte</Title>
       <Form onSubmit={this.submitForm}>
         <label htmlFor='image'>Imagen:</label>
-        <Input name='image' id='image' placeholder='Agregar url'/>
+        <Input name='image' id='image' placeholder='Agregar url' required/>
         <label htmlFor='price'>Precio:</label>
-        <Input name='price' id='price' placeholder='Agregar precio'/>
+        <Input name='price' id='price' placeholder='Agregar precio' required/>
         <div className='formTransport'>
         <label htmlFor='seating'>Asiento:</label><br/>
-        <Input type='number' min='0' name='seating' id='seating' placeholder='Agregar asiento'/><br/>
+        <Input type='number' min='0' name='seating' id='seating' placeholder='Agregar asiento' required/><br/>
         <label htmlFor='type'>Tipo:</label><br/>
-        <Input name='type' id='type' placeholder='Agregar tipo'/><br/>
+        <Input name='type' id='type' placeholder='Agregar tipo' required/><br/>
         <div className='buttonAdmin'>
             <Button type='submit' value='AGREGAR'/>
         </div>

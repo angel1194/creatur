@@ -10,6 +10,8 @@ import FormTableAdmin from '../FormTableAdmin';
 import RowTicket from '../RowTicket';
 import firebase from '../../../containers/Events/Firebase';
 import moment from 'moment';
+import ReactConfirmAlert , { confirmAlert }from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const Container = styled.div`
   width:90%;
@@ -100,13 +102,30 @@ class AddTicket extends Component{
     }
      firebase.database().ref().child('tickets').child(key).set(ticket)
 
+     event.target.elements['date'].value=''
+     event.target.elements['folio'].value=''
+     event.target.elements['price'].value=''
+     event.target.elements['section'].value=''
+
 }
 
 delete(key){
   let rootRef = firebase.database().ref()
-  const desertRef = rootRef.child('tickets').child(key).remove()
+
+  confirmAlert({
+    title: 'Confirmación',
+    message: '¿Estás seguro de eliminar el ticket?',
+    confirmLabel: 'Confirmar',
+    cancelLabel: 'Cancelar',
+    onConfirm: () => rootRef.child('tickets').child(key).remove(),
+    onCancel: () => '',
+  })
 }
 
+update(key){
+
+console.log(key);
+}
 
   render(){
   return (
@@ -115,21 +134,20 @@ delete(key){
       <Title>Ticket</Title>
       <Form onSubmit={this.submitForm}>
         <label htmlFor='folio'>Folio:</label>
-        <Input type='number' name='folio' id='folio' placeholder='Agregar folio'/>
+        <Input type='number' min='0' name='folio' id='folio' placeholder='Agregar folio' required/>
         <label htmlFor='date'>Fecha:</label>
-        <Input type='date' name='date' id='date'/>
-      <div className='formTransport'>
+        <Input type='date' name='date' id='date' required/>
+        <div className='formTransport'>
         <label htmlFor='price'>Precio:</label><br/>
-        <Input name='price' id='price' placeholder='Agregar precio'/><br/>
+        <Input name='price' id='price' placeholder='Agregar precio' required/><br/>
         <label htmlFor='section'>Sección:</label><br/>
-        <Input name='section' id='section' placeholder='Agregar sección'/><br/>
+        <Input name='section' id='section' placeholder='Agregar sección' required/><br/>
         <div className='buttonAdmin'>
           <Button type='submit' value='AGREGAR'/>
         </div>
       </div>
     </Form>
     </Container>
-
 
     <ContainerTable>
        <FormTableAdmin
@@ -144,6 +162,7 @@ delete(key){
            keyTicket={data}
            Tickets={this.props.Tickets[data]}
            delete={this.delete}
+           update={this.update}
          />
        )}
     </ContainerTable>

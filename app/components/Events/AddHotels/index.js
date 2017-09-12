@@ -10,6 +10,8 @@ import TableAdmin from '../TableAdmin';
 import RowAdmin from '../RowAdmin';
 import firebase from '../../../containers/Events/Firebase';
 import moment from 'moment';
+import ReactConfirmAlert , { confirmAlert }from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const Container = styled.div`
   width:90%;
@@ -127,12 +129,28 @@ class AddHotels extends Component {
     }
      firebase.database().ref().child('hotels').child(key).set(hotel)
 
+     event.target.elements['name'].value=''
+     event.target.elements['image'].value=''
+     event.target.elements['address'].value=''
+     event.target.elements['stars'].value=''
+     event.target.elements['description'].value=''
+     event.target.elements['cancellation'].value=''
 }
+
 
 delete(key){
   let rootRef = firebase.database().ref()
-  const desertRef = rootRef.child('hotels').child(key).remove()
+
+  confirmAlert({
+    title: 'Confirmación',
+    message: '¿Estás seguro de eliminar el hotel?',
+    confirmLabel: 'Confirmar',
+    cancelLabel: 'Cancelar',
+    onConfirm: () => rootRef.child('hotels').child(key).remove(),
+    onCancel: () => '',
+  })
 }
+
 
   render(){
     return (
@@ -141,11 +159,11 @@ delete(key){
           <Title>Hoteles</Title>
           <Form onSubmit={this.submitForm}>
             <label htmlFor='name'>Nombre:</label>
-            <Input type='text' name='name' id='name' ref='name' placeholder='Agregar nombre'/>
+            <Input type='text' name='name' id='name' ref='name' placeholder='Agregar nombre' required/>
             <label htmlFor='address'>Dirección:</label>
-            <Input name='address' id='address' placeholder='Agregar dirección' ref='address'/>
+            <Input name='address' id='address' placeholder='Agregar dirección' ref='address' required/>
             <label htmlFor='image'>Imagen:</label>
-            <Input type='url' name='image' id='image' placeholder='Agregar url' ref='image'/>
+            <Input type='url' name='image' id='image' placeholder='Agregar url' ref='image' required/>
             <label htmlFor='star'>Estrellas:</label>
             <Select name="stars" ref='stars'>
               <option value="1">1</option>
@@ -157,9 +175,9 @@ delete(key){
             </Select>
             <div className='formTransport'>
               <label htmlFor='description'>Descripción:</label><br/>
-              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción' ref='description'/><br/>
+              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción' ref='description' required/><br/>
               <label htmlFor='cancellation'>Cancelación:</label><br/>
-              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación' ref='cancellation'/>
+              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación' ref='cancellation' required/>
               <div className='buttonAdmin'>
                 <Button>AGREGAR</Button>
               </div>
@@ -175,7 +193,6 @@ delete(key){
                 keyHotel={data}
                 Hotels={this.props.Hotels[data]}
                 delete={this.delete}
-
               />
             ) }
           </table>

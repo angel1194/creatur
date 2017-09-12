@@ -19,10 +19,10 @@ function RowTransport (props) { // eslint-disable-line react/prefer-stateless-fu
       <table>
         <tbody>
           <tr>
-            <td className='bodyRow'><img src={props.Transport.image} alt="imagen de transporte" width='100'/> </td>
-            <td className='bodyRow'>{props.Transport.price}</td>
-            <td className='bodyRow'>{props.Transport.seating}</td>
-            <td className='bodyRow'> {props.Transport.type}</td>
+            <td><img src={props.Transport.image} alt="imagen de transporte" width='100'/> </td>
+            <td>{props.Transport.price}</td>
+            <td>{props.Transport.seating}</td>
+            <td> {props.Transport.type}</td>
             <td><button onClick={()=>props.delete(props.keyTransport)}  className='fa-trash'/></td>
             <td><button className='fa-pencil-square'/></td>
             <td><button className='fa-plus-square-o'/></td>
