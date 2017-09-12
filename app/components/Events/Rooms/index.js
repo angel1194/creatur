@@ -14,7 +14,7 @@ class Rooms extends React.Component {
         <Container>
           {Object.keys(comparation).map((item , i)=><InfoHotel key={i} elements={comparation[item]}/>)}
           <HeaderTable/>
-          {Object.keys(comparation).map((item, i)=><HotelRoom key={i} elements={comparation[item]}/>)}
+          {Object.keys(comparation).map((item, i)=><HotelRoom key={i} elements={comparation[item]} addRooms={this.props.addRooms}/>)}
         </Container>
       </div>
     );

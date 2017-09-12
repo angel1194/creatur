@@ -7,6 +7,29 @@ import initialState from '../state';
 import Itemcar from '../Itemcar';
 
 class ShoppingCart extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = this.props.carState
+
+    this.removeRooms = this. removeRooms.bind(this)
+  }
+
+  removeRooms(item){
+    this.subtractTotalAmount(item)
+    const {car} = this.state
+    delete car.items[item]
+    this.setState(car)
+  }
+
+  subtractTotalAmount(item){
+    const {car} = this.state
+    let price = Number(car.items[item].price)
+    let total = car['total'] - price
+    car['total'] = total
+
+    this.setState(car)
+  }
+
 
   render() {
     let car = this.props.car
@@ -24,9 +47,9 @@ class ShoppingCart extends React.Component {
             {cart.length === 0 ?
               <div>
                 <Subtitle>- Sugerencias.</Subtitle>
-                <Subtitle>Para agregar una reservacion a tu carrito,
-                  empieza por buscar y navegar a traves de las reservaciones que desee.
-                  Cuando encuentres algo que te guste, da clic al botón...</Subtitle><br/>
+                <Subtitle>Para agregar una reservacion a tu carrito, empieza por buscar los hoteles disponibles en la fecha
+                  seleccionada de llegada y salida, puede comparar las habitaciones disponibles de cada hotel.
+                  Cuando encuentre algo que le agrade, da clic al botón...</Subtitle><br/>
                   <ContainerButtonGreen>
                     <ButtonGreen>
                       Añadir al carrito
@@ -36,7 +59,15 @@ class ShoppingCart extends React.Component {
               </div>
             :
               <ContainerItem>
-                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.props.removeRooms} />)}
+                {cart.map((item, i)=><Itemcar
+                                      key={i} id={'checked'+i}
+                                      elements={car.items[item]}
+                                      removeRooms={this.removeRooms}
+                                      item={this.state.hotels}
+                                      checkin={this.state.checkin}
+                                      checkout={this.state.checkout}
+                                    />
+                )}
               </ContainerItem>
             }
             <FlexEnd>

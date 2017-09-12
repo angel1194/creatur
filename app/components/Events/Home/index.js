@@ -30,7 +30,7 @@ class Home extends React.Component {
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
     this.addRooms = this.addRooms.bind(this)
-    this.removeRooms = this.removeRooms.bind(this)
+    // this.removeRooms = this.removeRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
   }
 
@@ -118,6 +118,12 @@ class Home extends React.Component {
      available:hotels,
    })
 
+
+   this.setState({
+     checkin:startDate.format('DD-MM-YYYY'),
+     checkout:endDate.format('DD-MM-YYYY')
+   })
+
     this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
   }
 
@@ -147,28 +153,28 @@ class Home extends React.Component {
   }
 
   addComparation(item){
-    this.location(<Rooms comparation={this.state.comparation}/>, 3)
+    this.location(<Rooms addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
     const {comparation} = this.state
     comparation[item] = item
 
     this.setState({comparation})
   }
 
-  removeRooms(item){
-    this.subtractTotalAmount(item)
-    const {car} = this.state
-    delete car.items[item]
-    this.setState(car)
-  }
-
-  subtractTotalAmount(item){
-    const {car} = this.state
-    let price = Number(car.items[item].price)
-    let total = car['total'] - price
-    car['total'] = total
-
-    this.setState(car)
-  }
+  // removeRooms(item){
+  //   this.subtractTotalAmount(item)
+  //   const {car} = this.state
+  //   delete car.items[item]
+  //   this.setState(car)
+  // }
+  //
+  // subtractTotalAmount(item){
+  //   const {car} = this.state
+  //   let price = Number(car.items[item].price)
+  //   let total = car['total'] - price
+  //   car['total'] = total
+  //
+  //   this.setState(car)
+  // }
 
 
   render() {
@@ -185,6 +191,7 @@ class Home extends React.Component {
             addComparation={this.addComparation}
             comparation={this.state.comparation}
             car={this.state.car}
+            carState={this.state}
           />
         </Container>
         {this.state.container}

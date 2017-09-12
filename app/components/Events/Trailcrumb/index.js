@@ -5,13 +5,8 @@ import MainHotels from '../MainHotels';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import {Ul, Li, Div, Car, Count} from './style';
-import initialState from '../state'
 
 class Trailcrumb extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = initialState
-  }
 
   render(){
     const car = this.props.car
@@ -36,6 +31,7 @@ class Trailcrumb extends React.Component {
         <Car onClick={()=> this.props.location(<ShoppingCart
                                                 removeRooms={this.props.removeRooms}
                                                 car={this.props.car}
+                                                carState={this.props.carState}
                                                 location={()=> this.props.location(<MainEvents setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}/>)}>
           Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome>
         </Car>

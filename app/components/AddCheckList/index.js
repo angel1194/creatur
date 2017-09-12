@@ -23,7 +23,7 @@ function AddCheckList(props) {
 
   return (
     <AddElement className="check-box">
-      <input type="checkbox" id={props.id} name={props.name} />
+      <input type="checkbox" id={props.id} name={props.name} checked={props.checked ? true : null}/>
       <label htmlFor={props.id}></label>{props.text}
     </AddElement>
   );
