@@ -134,6 +134,11 @@ delete(key){
   const desertRef = rootRef.child('hotels').child(key).remove()
 }
 
+addRoom(keyHotel,Room){
+  console.log(keyHotel);
+  console.log(Room);
+}
+
   render(){
     return (
       <div>
