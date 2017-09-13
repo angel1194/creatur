@@ -63,19 +63,19 @@ class Hotels extends React.Component {
             </Row>
             <Row>
               <ColumMarginRight>
-                <PriceLabel Since={'980'} Currency="MXN" Total={'3920'} />
-                <AddCheckList id={"id" + this.props.elements.name} JustifyContent="flex-end" text={"Por 4 noches"}/>
+                <PriceLabel Since={'980'} Currency="MXN" Total={''} />
+                {/* <AddCheckList id={"id" + this.props.elements.name} JustifyContent="flex-end" text={"Por 4 noches"}/> */}
                 <br/><br/><br/>
-                <Button Title="Comparar" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
+                <Button Title="Habitaciones" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>
-          <OffersDay
+          {/* <OffersDay
             setShowRooms={this.state.showRooms === false ? this.setShowRooms : this.setFalse}
             state={this.state.showRooms}
             rooms={this.props.elements.rooms}
             addRooms={(rooms)=>this.props.addRooms(rooms)}
-          />
+          /> */}
         </Column>
       </Container>
     );

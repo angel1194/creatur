@@ -57,7 +57,7 @@ class HotelRoom extends React.Component {
             {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
             <ContainerButtonGreen>
               <ButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item])}>
-                Añadir al carrito
+                Reservar
               <Space name='shopping-cart' />
               </ButtonGreen>
             </ContainerButtonGreen>

@@ -12,12 +12,12 @@ class MainHotels extends React.Component {
       <div>
         <Container>
           <Div>
-            <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}
-            </DivHotels>
             <div>
               <MapView/>
             </div>
+            <DivHotels>
+              {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}
+            </DivHotels>
           </Div>
         </Container>
       </div>

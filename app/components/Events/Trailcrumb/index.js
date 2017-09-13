@@ -33,7 +33,7 @@ class Trailcrumb extends React.Component {
                                                 car={this.props.car}
                                                 carState={this.props.carState}
                                                 location={()=> this.props.location(<MainEvents setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}/>)}>
-          Mi Carrito <FontAwesome name='shopping-cart'></FontAwesome>
+          Mi Reserva <FontAwesome name='shopping-cart'></FontAwesome>
         </Car>
         <Count>{count.length}</Count>
       </Div>
