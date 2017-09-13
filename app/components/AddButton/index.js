@@ -14,6 +14,7 @@ const AddElement = styled.div`
   flex-direction:row;
   flex-wrap:nowrap;
   justify-content: flex-end;
+  margin-bottom: 3px;
 `;
 
 

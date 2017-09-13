@@ -17,3 +17,11 @@ export function setHotels(){
     return snap.val()
   })
 }
+
+
+export function setTransport() {
+  let transportRef = rootRef.child('transport')
+  return transportRef.once('value',snap => {
+    return snap.val()
+  })
+}

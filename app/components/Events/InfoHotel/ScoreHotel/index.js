@@ -29,18 +29,18 @@ function ScoreHotel(props) {
   return (
     <ContainerScore>
       <DivButton>
-        <NameHotel>{props.elements.nameHotel}</NameHotel>
+        <NameHotel>{props.elements.name}</NameHotel>
       </DivButton>
-      <StarRating NumStart={props.elements.numStart} />
+      <StarRating NumStart={props.elements.star} />
       {/* <AddressLabel>
         Mérida,
       </AddressLabel> */}
       <AddressLabel>
-        {props.elements.address}
+        {props.elements.description}
       </AddressLabel>
       <ContTrip>
         <TripAd />
-        <LocationLabel Title={props.elements.location}/>
+        <LocationLabel Title={props.elements.address}/>
       </ContTrip>
     </ContainerScore>
   );

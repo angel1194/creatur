@@ -32,6 +32,9 @@ class HotelRoom extends React.Component {
 
   render(){
     let element = Object.keys(this.props.elements.rooms)
+    let checkin = [this.props.night.checkin]
+    let checkout = [this.props.night.checkout]
+    let count = parseInt(checkout) - parseInt(checkin)
 
     return (
       <div>
@@ -42,18 +45,18 @@ class HotelRoom extends React.Component {
             <Img src={this.props.elements.rooms[item].image}/>
           </RoomImg>
           <DetailsRoom>
-            <Label>Capacidad para {this.props.elements.rooms[item].capacity} personas</Label>
+            <Label>Capacidad para {this.props.elements.rooms[item].occupancy} personas</Label>
             <Label>{this.props.elements.rooms[item].description}</Label>
             <Label>Regimen: Solo Habitación</Label>
           </DetailsRoom>
           <ContainerPrice>
             <Label> Por noche ${this.props.elements.rooms[item].price} MXN</Label>
-            <LabelA> Impuestos $100.56 MXN</LabelA>
+            <LabelA>{count} noches</LabelA>
             <Title>Precio Total</Title>
-            <H3>$3,089.56 <Label>MXN</Label></H3>
+            <H3>${this.props.elements.rooms[item].price * count} <Label>MXN</Label></H3>
             {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
             <ContainerButtonGreen>
-              <ButtonGreen onClick={()=> console.log('hola')}>
+              <ButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item])}>
                 Añadir al carrito
               <Space name='shopping-cart' />
               </ButtonGreen>

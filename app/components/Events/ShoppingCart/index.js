@@ -9,9 +9,9 @@ import Itemcar from '../Itemcar';
 class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
-    this.state = initialState
+    this.state = this.props.carState
 
-    this.removeRooms=this.removeRooms.bind(this)
+    this.removeRooms = this. removeRooms.bind(this)
   }
 
   removeRooms(item){
@@ -30,8 +30,9 @@ class ShoppingCart extends React.Component {
     this.setState(car)
   }
 
+
   render() {
-    const {car,hotels} = this.state
+    let car = this.props.car
     let cart = Object.keys(car.items)
 
     return (
@@ -46,9 +47,9 @@ class ShoppingCart extends React.Component {
             {cart.length === 0 ?
               <div>
                 <Subtitle>- Sugerencias.</Subtitle>
-                <Subtitle>Para agregar una reservacion a tu carrito,
-                  empieza por buscar y navegar a traves de las reservaciones que desee.
-                  Cuando encuentres algo que te guste, da clic al botón...</Subtitle><br/>
+                <Subtitle>Para agregar una reservacion a tu carrito, empieza por buscar los hoteles disponibles en la fecha
+                  seleccionada de llegada y salida, puede comparar las habitaciones disponibles de cada hotel.
+                  Cuando encuentre algo que le agrade, da clic al botón...</Subtitle><br/>
                   <ContainerButtonGreen>
                     <ButtonGreen>
                       Añadir al carrito
@@ -58,7 +59,15 @@ class ShoppingCart extends React.Component {
               </div>
             :
               <ContainerItem>
-                {cart.map((item, i)=><Itemcar key={i} id={'checked'+i} elements={car.items[item]} removeRooms={this.removeRooms} nameHotel={hotels}/>)}
+                {cart.map((item, i)=><Itemcar
+                                      key={i} id={'checked'+i}
+                                      elements={car.items[item]}
+                                      removeRooms={this.removeRooms}
+                                      item={this.state.hotels}
+                                      checkin={this.state.checkin}
+                                      checkout={this.state.checkout}
+                                    />
+                )}
               </ContainerItem>
             }
             <FlexEnd>
