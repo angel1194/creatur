@@ -23,7 +23,7 @@ class Trailcrumb extends React.Component {
             </Li>
           : ''}
           {this.props.nameContainer === 3 ?
-            <Li onClick={()=> this.props.location(<Rooms comparation={this.props.comparation}/>, 3)}>
+            <Li onClick={()=> this.props.location(<Rooms stateAll={this.props.stateAll} comparation={this.props.comparation}/>, 3)}>
               <FontAwesome name='angle-double-right'></FontAwesome> Habitaciones
             </Li>
           : ''}

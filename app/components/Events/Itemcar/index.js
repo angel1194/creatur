@@ -41,7 +41,7 @@ class Itemcar extends React.Component {
               <AddCheckList id={this.props.elements.idHotel} text='confirmacion Inmediata' checked={true}/>
             </div>
             <div className='item-price'>
-              <p>MXN ${this.props.elements.price}</p>
+              <p>${this.props.elements.price} MXN</p>
             </div>
           </div>
           <div className='section-item-rigth'>

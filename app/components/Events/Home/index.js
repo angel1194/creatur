@@ -167,7 +167,7 @@ class Home extends React.Component {
   }
 
   addComparation(item){
-    this.location(<Rooms addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
+    this.location(<Rooms stateAll={this.state} addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
     const {comparation} = this.state
     comparation[item] = item
 
@@ -194,6 +194,7 @@ class Home extends React.Component {
             comparation={this.state.comparation}
             car={this.state.car}
             carState={this.state}
+            stateAll={this.state.checkin}
           />
         </Container>
         {this.state.container}
