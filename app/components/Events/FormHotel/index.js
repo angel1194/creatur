@@ -95,12 +95,12 @@ class FormHotel extends React.Component {
               <div className='containerFormHotel'>
                 <SearchForm location="Mérida"/>
                 <div className='searchMap'>
-                  <div>
+                  {/* <div>
                     <a id='search' href=''>
                       <i className='fa fa-search fa-lg' aria-hidden='true'>
                       </i> Buscar en Mapa
                     </a>
-                  </div>
+                  </div> */}
                 </div>
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>

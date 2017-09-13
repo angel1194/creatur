@@ -4,16 +4,17 @@ import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
 import MainHotels from '../MainHotels'
 import Trailcrumb from '../Trailcrumb'
-import {setRooms,setHotels} from '../../../containers/Events/Firebase/firebase'
+import {setRooms,setHotels, setTransport} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
+
 // import styled from 'styled-components';
 
 class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
+      container:<MainEvents changesLocation={this.changesLocation.bind(this)} addTransport={this.addTransport} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
       available:{},
       car:{
@@ -25,30 +26,43 @@ class Home extends React.Component {
       },
       comparation:{
 
-      }
+      },
+      ubicacion:'hotel',
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
     this.addRooms = this.addRooms.bind(this)
-    // this.removeRooms = this.removeRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
+    this.addTransport = this.addTransport.bind(this)
   }
 
-    componentWillMount(){
-      //seteando las Noches en el state con la funcion de Firebase(Metodo once, devuelve promesa)
-      setRooms().then(
-        res => this.setState({
-          rooms: res.val()
-        })
-      )
+  componentWillMount(){
+    //seteando las Noches en el state con la funcion de Firebase(Metodo once, devuelve promesa)
+    setRooms().then(
+      res => this.setState({
+        rooms: res.val()
+      })
+    )
 
-      //seteando los hoteles en el state con la funcion de Firebase(Metodo once, devuelve promesa)
-     setHotels().then(
-       res=>this.setState({
-         hotels:res.val()
-       })
-     )
-    }
+    //seteando los hoteles en el state con la funcion de Firebase(Metodo once, devuelve promesa)
+   setHotels().then(
+     res=>this.setState({
+       hotels:res.val()
+     })
+   )
+
+   setTransport().then(
+     res=>this.setState({
+       transport:res.val()
+     })
+   )
+  }
+
+  changesLocation(ubicacion){
+    this.setState({
+      ubicacion:ubicacion,
+    })
+  }
 
 
   location(container, location){
@@ -160,22 +174,10 @@ class Home extends React.Component {
     this.setState({comparation})
   }
 
-  // removeRooms(item){
-  //   this.subtractTotalAmount(item)
-  //   const {car} = this.state
-  //   delete car.items[item]
-  //   this.setState(car)
-  // }
-  //
-  // subtractTotalAmount(item){
-  //   const {car} = this.state
-  //   let price = Number(car.items[item].price)
-  //   let total = car['total'] - price
-  //   car['total'] = total
-  //
-  //   this.setState(car)
-  // }
-
+  addTransport(){
+    const state = this.state
+    console.log('Mi state',state);
+  }
 
   render() {
     return (
