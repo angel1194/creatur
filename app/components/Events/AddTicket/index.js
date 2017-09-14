@@ -104,7 +104,7 @@ update(key,dataTickets){
         <label htmlFor='section'>Sección:</label><br/>
         <input style={InpuT} name='section' ref='section'  placeholder='Agregar sección' required/><br/>
         <div className='buttonAdmin'>
-          <button style={Button} >Agregar</button>
+          <button style={Button} >AGREGAR</button>
         </div>
       </div>
     </form>

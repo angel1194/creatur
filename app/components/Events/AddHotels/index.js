@@ -42,7 +42,7 @@ class AddHotels extends Component {
         description:Description,
         image:Image,
         name:Name,
-        star:Stars
+        star:Number(Stars)
       }
       firebase.database().ref().child('hotels').child(Key).set(hotel)
       this.refs.name.value=''
@@ -61,7 +61,7 @@ class AddHotels extends Component {
         description:Description,
         image:Image,
         name:Name,
-        star:Stars
+        star:Number(Stars)
       }
       firebase.database().ref().child('hotels').child(key).set(hotel)
       this.refs.name.value=''
