@@ -26,10 +26,19 @@ class Itemcar extends React.Component {
           <p>{this.props.elements.description}</p>
         </div>
         <div className="bodyItemShopping">
+          <div className='section-item-rigth'>
+            <div className='img-item'>
+              <img src={this.props.elements.image} alt=""/>
+
+            </div>
+          </div>
           <div className='section-item-left'>
-            <div className='icon-person'>
+            {/* <div className='icon-person'>
               <span className='item-person'><i className='fa fa-male'></i></span>
               <span className='item-person'><i className='fa fa-male'></i></span>
+            </div> */}
+            <div className='item-check'>
+              <p>4 noches de estancia</p>
             </div>
             <div className='item-fecha'>
               <span className='icon-fechain'><i className='fa fa-sign-in'></i></span>
@@ -37,20 +46,13 @@ class Itemcar extends React.Component {
               <span className='icon-fechaout'><i className='fa fa-sign-out'></i></span>
               <p>{this.props.checkout}</p>
             </div>
-            <div className='item-check'>
-              <AddCheckList id={this.props.elements.idHotel} text='confirmacion Inmediata' checked={true}/>
-            </div>
             <div className='item-price'>
               <p>${this.props.elements.price} MXN</p>
-            </div>
-          </div>
-          <div className='section-item-rigth'>
-            <div className='img-item'>
-              <img src={this.props.elements.image} alt=""/>
-              <span className='fa fa-trash' onClick={this.submit.bind(this)}></span>
+              <p className='night'>por noches</p>
             </div>
           </div>
         </div>
+        <span className='fa fa-trash' onClick={this.submit.bind(this)}></span>
       </div>
     );
   }

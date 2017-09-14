@@ -56,7 +56,7 @@ class Hotels extends React.Component {
               <Img src={this.props.elements.image} Width="200px" Height="156px" />
               <ColumMarginTop>
                 <Title>{this.props.elements.name}</Title>
-                <StarRating key={this.props.elements.key} NumStart={this.props.elements.star}/><br/>
+                <StarRating key={this.props.elements.key} NumStart={Number(this.props.elements.star)}/><br/>
                 <TripAdvisor Calification='0'/>
                 <LocationLabel Title={this.props.elements.address}/>
               </ColumMarginTop>

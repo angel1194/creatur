@@ -20,6 +20,7 @@ const Title = styled.p`
 const Subtitle = styled.p`
   color: #b2b2b2;
   font-size: 16px;
+  font-weight: 200;
   font-family: Montserrat;
 `;
 
@@ -58,7 +59,7 @@ const Space = styled(FontAwesome) `
 `;
 
 const ContainerButtonGreen = styled.div`
-  width: 160px;
+  width: 110px;
   margin-bottom: 20px;
   background: #87b672;
   color: white;

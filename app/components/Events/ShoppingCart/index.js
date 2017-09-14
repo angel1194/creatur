@@ -40,19 +40,19 @@ class ShoppingCart extends React.Component {
         <Container>
           <FlexStart>
             <DivTitle>
-              <Title>{cart.length === 0 ? 'Tu Carrito de Compras esta vacío' : 'Tu Carrito de Compras'}</Title>
+              <Title>{cart.length === 0 ? 'Aun no has hecho una reservacion' : 'Mis reservaciones'}</Title>
             </DivTitle>
           </FlexStart>
           <ContainerCart>
             {cart.length === 0 ?
               <div>
                 <Subtitle>- Sugerencias.</Subtitle>
-                <Subtitle>Para agregar una reservacion a tu carrito, empieza por buscar los hoteles disponibles en la fecha
+                <Subtitle>Para realizar una reservacion, empieza por buscar los hoteles disponibles en la fecha
                   seleccionada de llegada y salida, puede comparar las habitaciones disponibles de cada hotel.
                   Cuando encuentre algo que le agrade, da clic al botón...</Subtitle><br/>
                   <ContainerButtonGreen>
                     <ButtonGreen>
-                      Añadir al carrito
+                      Reservar
                     <Space name='shopping-cart' />
                     </ButtonGreen>
                   </ContainerButtonGreen>
@@ -79,7 +79,7 @@ class ShoppingCart extends React.Component {
               {cart.length >= 1 ? <FormPayment total={car.total}/> : ''}
             </DivPay>
             <DivTitle>
-              <Title>Total ${car.total} MXN</Title>
+              <Title>Total ${car.total*4} MXN</Title>
             </DivTitle>
           </FlexRow>
         </Container>
