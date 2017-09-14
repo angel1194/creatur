@@ -12,129 +12,66 @@ import firebase from '../../../containers/Events/Firebase';
 import moment from 'moment';
 import ReactConfirmAlert , { confirmAlert }from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import {InpuT,Container,Title,Button,TextArea,Select, ContainerTable, Form} from './styles'
 
-const Container = styled.div`
-  width:90%;
-  height:400px;
-  background:#E6E6E6;
-  padding:25px;
-  border-radius:6px;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-`;
-
-const Input = styled.input`
-  width:300px;
-  height:35px;
-  background:white;
-  border-radius:5px;
-  margin-left:10px;
-  margin-bottom: 10px;
-  box-shadow:1px 1px 5px #000 inset;
-  text-align:justify;
-  padding: 10px;
-`;
-
-
-const Title = styled.span`
-  width:100%;
-  font-size:20px;
-  height:0px;
-  font-family:Montserrat;
-  color:black;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 100%;
-  height: 70%;
-  font-size: 16px;
-
-`;
-
-const Button = styled.button`
-  width:auto;
-  height:40px;
-  background-color:#2b5bac;
-  box-shadow:1px 1px 8px #000;
-  color:white;
-  margin-bottom: 20px;
-  font-size: 12px
-`;
-const TextArea = styled.textarea`
-  box-shadow:1px 1px 5px #000 inset;
-  border-radius: 5px;
-  width: 65%;
-  background-color: #fff;
-  margin-left:10px;
-  height: 90px;
-  text-align:justify;
-  padding: 10px;
-  padding-top: 10px;
-  resize: none;
-`;
-
-const Select = styled.select`
-  margin-left: 10px;
-  width:20%;
-  box-shadow:1px 1px 4px #000 inset;
-  border-radius: 5px;
-  background-color: #fff ;
-  text-align:center;
-  padding-bottom: 3px;
-  padding-top: 3px;
-`;
-
-const ContainerTable = styled.div`
-  margin-top: 10px;
-  width:90%;
-  height: auto;
-  background:#E6E6E6;
-  padding:25px;
-  border-radius:6px;
-  display:flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  padding-top: 19px;
-  `;
 
 class AddHotels extends Component {
   constructor(props){
     super(props)
 
+
     this.submitForm = this.submitForm.bind(this)
     this.delete = this.delete.bind(this)
+    this.update = this.update.bind(this)
+
+
 }
   submitForm(event){
     event.preventDefault()
-
-     const Name = event.target.elements['name'].value
-     const Image = event.target.elements['image'].value
-     const Address = event.target.elements['address'].value
-     const Stars = event.target.elements['stars'].value
-     const Description = event.target.elements['description'].value
-     const Cancellation= event.target.elements['cancellation'].value
-
-    let key = moment().format('X')
-    let hotel= {
-      address:Address,
-      cancellation:Cancellation,
-      description:Description,
-      image:Image,
-      name:Name,
-      star:Stars
+    const Name = this.refs.name.value
+    const Image = this.refs.image.value
+    const Address = this.refs.address.value
+    const Stars = this.refs.stars.value
+    const Description = this.refs.description.value
+    const Cancellation= this.refs.cancellation.value
+    const Key = this.refs.id.value
+    if(Key != ''){
+      let hotel= {
+        address:Address,
+        cancellation:Cancellation,
+        description:Description,
+        image:Image,
+        name:Name,
+        star:Stars
+      }
+      firebase.database().ref().child('hotels').child(Key).set(hotel)
+      this.refs.name.value=''
+      this.refs.address.value=''
+      this.refs.image.value=''
+      this.refs.stars.value=''
+      this.refs.description.value=''
+      this.refs.cancellation.value=''
+      this.refs.id.value=''
     }
-     firebase.database().ref().child('hotels').child(key).set(hotel)
-
-     event.target.elements['name'].value=''
-     event.target.elements['image'].value=''
-     event.target.elements['address'].value=''
-     event.target.elements['stars'].value=''
-     event.target.elements['description'].value=''
-     event.target.elements['cancellation'].value=''
+    else {
+      let key = moment().format('X')
+      let hotel= {
+        address:Address,
+        cancellation:Cancellation,
+        description:Description,
+        image:Image,
+        name:Name,
+        star:Stars
+      }
+      firebase.database().ref().child('hotels').child(key).set(hotel)
+      this.refs.name.value=''
+      this.refs.address.value=''
+      this.refs.image.value=''
+      this.refs.stars.value=''
+      this.refs.description.value=''
+      this.refs.cancellation.value=''
+      this.refs.id.value=''
+    }
 }
 
 
@@ -151,40 +88,51 @@ delete(key){
   })
 }
 
+update(key,dataHotel){
+  this.refs.id.value=key
+  this.refs.name.value=dataHotel.name
+  this.refs.address.value=dataHotel.address
+  this.refs.image.value=dataHotel.image
+  this.refs.stars.value=dataHotel.star
+  this.refs.description.value=dataHotel.description
+  this.refs.cancellation.value=dataHotel.cancellation
+
+}
 
   render(){
     return (
       <div>
-        <Container>
-          <Title>Hoteles</Title>
-          <Form onSubmit={this.submitForm}>
-            <label htmlFor='name'>Nombre:</label>
-            <Input type='text' name='name' id='name' ref='name' placeholder='Agregar nombre' required/>
+        <div style={Container}>
+          <span style={Title}>Hoteles</span>
+          <form style={Form} onSubmit={this.submitForm}>
+            <input type="text" name='key' ref='id'  hidden/>
+            <label htmlFor='name'> Nombre:</label>
+            <input style={InpuT} type='text' name='name'  ref='name'   placeholder='Agregar nombre' required/>
             <label htmlFor='address'>Dirección:</label>
-            <Input name='address' id='address' placeholder='Agregar dirección' ref='address' required/>
+            <input style={InpuT} type='text' name='address'  ref='address' placeholder='Agregar dirección'  required/>
             <label htmlFor='image'>Imagen:</label>
-            <Input type='url' name='image' id='image' placeholder='Agregar url' ref='image' required/>
+            <input style={InpuT} type='url' name='image'  placeholder='Agregar url' ref='image' required/>
             <label htmlFor='star'>Estrellas:</label>
-            <Select name="stars" ref='stars'>
+            <select style={Select} name="stars" ref='stars'>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
-            </Select>
+            </select>
             <div className='formTransport'>
               <label htmlFor='description'>Descripción:</label><br/>
-              <TextArea  type ='text' name='description' id='description' placeholder='Agregar descripción' ref='description' required/><br/>
+              <textarea style={TextArea} type ='text' ref='description' name='description'  placeholder='Agregar descripción' required/><br/>
               <label htmlFor='cancellation'>Cancelación:</label><br/>
-              <TextArea name='cancellation' id='cancellation' placeholder='Agregar cancelación' ref='cancellation' required/>
+              <textarea style={TextArea} name='cancellation' ref='cancellation'  placeholder='Agregar cancelación'  required/>
               <div className='buttonAdmin'>
-                <Button>AGREGAR</Button>
+                <button style={Button}>AGREGAR</button>
               </div>
             </div>
-          </Form>
-        </Container>
-        <ContainerTable>
+          </form>
+        </div>
+        <div style={ContainerTable}>
           <TableAdmin />
           <table>
             {Object.keys(this.props.Hotels).map((data,i)=>
@@ -193,10 +141,11 @@ delete(key){
                 keyHotel={data}
                 Hotels={this.props.Hotels[data]}
                 delete={this.delete}
+                update={this.update}
               />
             ) }
           </table>
-        </ContainerTable>
+        </div>
       </div>
 
     );

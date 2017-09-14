@@ -9,7 +9,6 @@ import styled from 'styled-components';
 
 
 function RowAdmin(props)  {
-  console.log(props, '<------');
   // eslint-disable-line react/prefer-stateless-functio
     return (
       <tbody>
@@ -21,7 +20,7 @@ function RowAdmin(props)  {
           <td> {props.Hotels.description}</td>
           <td>{props.Hotels.cancellation}</td>
           <td><button onClick={()=>props.delete(props.keyHotel)} className='fa-trash'/></td>
-          <td><button  className='fa-pencil-square'/></td>
+          <td><button onClick={()=>props.update(props.keyHotel,props.Hotels)} className='fa-pencil-square'/></td>
           <td><button  className='fa-plus-square-o '/></td>
         </tr>
       </tbody>

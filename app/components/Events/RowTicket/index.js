@@ -24,7 +24,7 @@ function RowTicket (props){ // eslint-disable-line react/prefer-stateless-functi
             <td>{props.Tickets.price}</td>
             <td>{props.Tickets.section}</td>
             <td><button onClick={()=>props.delete(props.keyTicket)} className='fa-trash'/></td>
-            <td><button onClick={()=>props.update(props.keyTicket)} className='fa-pencil-square'/></td>
+            <td><button onClick={()=>props.update(props.keyTicket, props.Tickets)} className='fa-pencil-square'/></td>
             <td><button className='fa-plus-square-o'/></td>
           </tr>
         </tbody>
