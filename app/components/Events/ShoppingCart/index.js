@@ -34,6 +34,9 @@ class ShoppingCart extends React.Component {
   render() {
     let car = this.props.car
     let cart = Object.keys(car.items)
+    let checkin = parseInt(this.state.checkin)
+    let checkout = parseInt(this.state.checkout)
+    let count = checkout - checkin
 
     return (
       <div>
@@ -66,6 +69,7 @@ class ShoppingCart extends React.Component {
                                       item={this.state.hotels}
                                       checkin={this.state.checkin}
                                       checkout={this.state.checkout}
+                                      count={count}
                                     />
                 )}
               </ContainerItem>
@@ -79,7 +83,7 @@ class ShoppingCart extends React.Component {
               {cart.length >= 1 ? <FormPayment total={car.total}/> : ''}
             </DivPay>
             <DivTitle>
-              <Title>Total ${car.total*4} MXN</Title>
+              <Title>Total ${car.total * count} MXN</Title>
             </DivTitle>
           </FlexRow>
         </Container>

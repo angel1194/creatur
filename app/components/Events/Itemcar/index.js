@@ -38,7 +38,7 @@ class Itemcar extends React.Component {
               <span className='item-person'><i className='fa fa-male'></i></span>
             </div> */}
             <div className='item-check'>
-              <p>4 noches de estancia</p>
+              <p>{this.props.count} noches de estancia</p>
             </div>
             <div className='item-fecha'>
               <span className='icon-fechain'><i className='fa fa-sign-in'></i></span>
