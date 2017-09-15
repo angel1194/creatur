@@ -62,7 +62,8 @@ class AdminHotels extends Component{
     super(props)
     this.state= {
       ui:'hotel',
-      hotels:{}
+      hotels:{},
+      rooms:{}
     }
     this.changeLocation=this.changeLocation.bind(this);
   }
@@ -78,6 +79,13 @@ class AdminHotels extends Component{
     hotels.on('value',snap=>{
       this.setState({
         hotels:snap.val()
+      })
+    })
+
+    let rooms= rootRef.child('nightsHotels')
+    rooms.on('value', snap=>{
+      this.setState({
+        rooms:snap.val()
       })
     })
   }
@@ -97,7 +105,6 @@ class AdminHotels extends Component{
         tickets:snap.val()
       })
     })
-
   }
 
 
@@ -107,10 +114,30 @@ class AdminHotels extends Component{
     })
   }
 
+  // roomsByHotel(){
+  //   let hotels = {}
+  //   Object.keys(this.state.hotels).map((keyHotel)=>{
+  //     hotels[keyHotel]=this.state.hotels[keyHotel]
+  //     hotels[keyHotel]['rooms']=[]
+  //     Object.keys(this.state.rooms).map((night)=>{
+  //       Object.keys(this.state.rooms[night]).map((room)=>{
+  //         let keyRoom = {}
+  //         if(keyHotel == this.state.rooms[night][room].idHotel){
+  //           keyRoom[room]=this.state.rooms[night][room]
+  //           hotels[keyHotel]['rooms'].push(keyRoom)
+  //         }
+  //       })
+  //     })
+  //   })
+  //   this.setState({
+  //     hotelsWithRooms:hotels
+  //   })
+  // }
+
 
    renderForm(){
 
-     const dataHotels= this.state.hotels
+     const dataHotels = this.state.hotels
      const dataTransport= this.state.transport
      const dataTickets= this.state.tickets
 
@@ -151,7 +178,6 @@ class AdminHotels extends Component{
        </Container>
       </Container>
     );
-
 }
 }
 

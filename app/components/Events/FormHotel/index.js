@@ -113,7 +113,7 @@ class FormHotel extends React.Component {
                          selected={this.state.startDate}
                          onChange={this.handleChange}
                          minDate={moment(new Date('10/10/2017')).subtract(3,'days')}
-                         maxDate={moment(new Date('10/10/2017')).add(3,'days')}
+                         maxDate={moment(new Date('10/10/2017'))}
                        />
                      </div>
                    </div>

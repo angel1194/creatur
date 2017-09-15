@@ -52,7 +52,6 @@ const Form = styled.form`
   width: 100%;
   height: 70%;
   font-size: 16px;
-
 `;
 
 const Button = styled.button`
@@ -107,16 +106,18 @@ class AddHotels extends Component {
 
     this.submitForm = this.submitForm.bind(this)
     this.delete = this.delete.bind(this)
-}
+  }
+
+
   submitForm(event){
     event.preventDefault()
 
-     const Name = event.target.elements['name'].value
-     const Image = event.target.elements['image'].value
-     const Address = event.target.elements['address'].value
-     const Stars = event.target.elements['stars'].value
-     const Description = event.target.elements['description'].value
-     const Cancellation= event.target.elements['cancellation'].value
+    const Name = event.target.elements['name'].value
+    const Image = event.target.elements['image'].value
+    const Address = event.target.elements['address'].value
+    const Stars = event.target.elements['stars'].value
+    const Description = event.target.elements['description'].value
+    const Cancellation= event.target.elements['cancellation'].value
 
     let key = moment().format('X')
     let hotel= {
@@ -127,34 +128,29 @@ class AddHotels extends Component {
       name:Name,
       star:Stars
     }
-     firebase.database().ref().child('hotels').child(key).set(hotel)
+    firebase.database().ref().child('hotels').child(key).set(hotel)
 
-     event.target.elements['name'].value=''
-     event.target.elements['image'].value=''
-     event.target.elements['address'].value=''
-     event.target.elements['stars'].value=''
-     event.target.elements['description'].value=''
-     event.target.elements['cancellation'].value=''
-}
+    event.target.elements['name'].value=''
+    event.target.elements['image'].value=''
+    event.target.elements['address'].value=''
+    event.target.elements['stars'].value=''
+    event.target.elements['description'].value=''
+    event.target.elements['cancellation'].value=''
+   }
 
 
-delete(key){
-  let rootRef = firebase.database().ref()
+  delete(key){
+    let rootRef = firebase.database().ref()
 
-  confirmAlert({
-    title: 'Confirmación',
-    message: '¿Estás seguro de eliminar el hotel?',
-    confirmLabel: 'Confirmar',
-    cancelLabel: 'Cancelar',
-    onConfirm: () => rootRef.child('hotels').child(key).remove(),
-    onCancel: () => '',
-  })
-}
-
-addRoom(keyHotel,Room){
-  console.log(keyHotel);
-  console.log(Room);
-}
+    confirmAlert({
+      title: 'Confirmación',
+      message: '¿Estás seguro de eliminar el hotel?',
+      confirmLabel: 'Confirmar',
+      cancelLabel: 'Cancelar',
+      onConfirm: () => rootRef.child('hotels').child(key).remove(),
+      onCancel: () => '',
+    })
+  }
 
   render(){
     return (
@@ -191,14 +187,15 @@ addRoom(keyHotel,Room){
         <ContainerTable>
           <TableAdmin />
           <table>
-            {Object.keys(this.props.Hotels).map((data,i)=>
+            {Object.keys(this.props.Hotels).map( (data,i) =>
               <RowAdmin
                 key={i}
                 keyHotel={data}
-                Hotels={this.props.Hotels[data]}
+                Hotel={this.props.Hotels}
                 delete={this.delete}
               />
-            ) }
+            )
+          }
           </table>
         </ContainerTable>
       </div>
