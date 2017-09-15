@@ -31,6 +31,7 @@ class AddTicket extends Component{
     const Folio = this.refs.folio.value
     const Price = this.refs.price.value
     const Section = this.refs.section.value
+    const Seating = this.refs.seating.value
     const Key = this.refs.id.value
 
     if(Key != ''){
@@ -38,7 +39,8 @@ class AddTicket extends Component{
         date:date,
         key:Folio,
         price:Price,
-        section:Section
+        section:Section,
+        seating:Seating
       }
       firebase.database().ref().child('tickets').child(Key).set(ticket)
 
@@ -47,6 +49,7 @@ class AddTicket extends Component{
       this.refs.price.value=''
       this.refs.section.value=''
       this.refs.id.value=''
+      this.refs.seating.value=''
 
     }
     else{
@@ -55,7 +58,8 @@ class AddTicket extends Component{
       date:date,
       key:Folio,
       price:Price,
-      section:Section
+      section:Section,
+      seating:Seating
     }
     firebase.database().ref().child('tickets').child(key).set(ticket)
     this.refs.date.value=''
@@ -63,6 +67,7 @@ class AddTicket extends Component{
     this.refs.price.value=''
     this.refs.section.value=''
     this.refs.id.value=''
+    this.refs.seating.value=''
   }
 }
 
@@ -85,6 +90,7 @@ update(key,dataTickets){
   this.refs.folio.value=dataTickets.key
   this.refs.price.value=dataTickets.price
   this.refs.section.value=dataTickets.section
+  this.refs.seating.value=dataTickets.seating
 }
 
   render(){
@@ -98,6 +104,9 @@ update(key,dataTickets){
         <input style={InpuT} type='number' min='0' ref='folio' name='folio' id='folio' placeholder='Agregar folio' required/>
         <label htmlFor='date'>Fecha:</label>
         <input style={InpuT} type='date' name='date' ref='date' required/>
+        <label htmlFor='asiento'>Asiento:</label>
+        <input style={InpuT} name='asiento' ref='seating'  placeholder='Agregar asiento' required/><br/>
+
         <div className='formTransport'>
         <label htmlFor='price'>Precio:</label><br/>
         <input style={InpuT} name='price' ref='price' placeholder='Agregar precio' required/><br/>
@@ -116,6 +125,7 @@ update(key,dataTickets){
          rowtwo='Key'
          rowthree='Precio'
          rowfour='Sección'
+         rowFive='Asiento'
        />
        {Object.keys(this.props.Tickets).map((data,i)=>
          <RowTicket

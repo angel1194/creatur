@@ -25,7 +25,6 @@ function RowTransport (props) { // eslint-disable-line react/prefer-stateless-fu
             <td> {props.Transport.type}</td>
             <td><button onClick={()=>props.delete(props.keyTransport)}  className='fa-trash'/></td>
             <td><button onClick={()=>props.update(props.keyTransport,props.Transport)} className='fa-pencil-square'/></td>
-            <td><button className='fa-plus-square-o'/></td>
           </tr>
         </tbody>
       </table>
