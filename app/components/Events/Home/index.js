@@ -7,6 +7,7 @@ import Trailcrumb from '../Trailcrumb'
 import {setRooms,setHotels, setTransport} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
+import ShoppingCart from '../ShoppingCart';
 
 // import styled from 'styled-components';
 
@@ -149,6 +150,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
+    this.location(<ShoppingCart car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     if (!(rooms.idHotel in state.items)) {
       state.items[rooms.idHotel] = rooms
@@ -193,9 +195,8 @@ class Home extends React.Component {
             removeRooms={this.removeRooms}
             addComparation={this.addComparation}
             comparation={this.state.comparation}
-            car={this.state.car}
-            carState={this.state}
             stateAll={this.state.checkin}
+            stateRoom={this.state}
           />
         </Container>
         {this.state.container}
