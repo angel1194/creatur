@@ -33,7 +33,7 @@ class FormEvent extends React.Component{
               <option>Boleto Normal</option>
               <option>1</option>
             </select>
-            <input style={style.select2} value="Boleto Normal"/>
+            <input style={style.select2} value="Boleto Normal" readOnly/>
           </div>
           <div style={style.container}>
             <label style={style.label}>PRECIO/SECCIÓN</label>
@@ -41,7 +41,7 @@ class FormEvent extends React.Component{
               <option>Mejor lugar disponible</option>
               <option>1</option>
             </select>
-            <input style={style.select3} value="MXN $1250.00"/>
+            <input style={style.select3} value="MXN $1250.00" readOnly/>
           </div>
           <button style={style.button}>Buscar Boletos</button>
         </Container>
