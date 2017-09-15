@@ -48,8 +48,6 @@ class FormHotel extends React.Component {
   }
 
   inputValueChange(father,input){
-    console.log(father);
-    console.log(input.target);
     let name = input.target.name
     let value= input.target.value
     const rooms = this.state.roomsUI
@@ -75,7 +73,6 @@ class FormHotel extends React.Component {
 
  request(event){
   event.preventDefault()
-  console.log('ejecutando peticion');
   const {startDate,endDate,roomsUI} = this.state
   this.props.setHotels(startDate, endDate, roomsUI)
  }
@@ -98,12 +95,12 @@ class FormHotel extends React.Component {
               <div className='containerFormHotel'>
                 <SearchForm location="Mérida"/>
                 <div className='searchMap'>
-                  <div>
+                  {/* <div>
                     <a id='search' href=''>
                       <i className='fa fa-search fa-lg' aria-hidden='true'>
                       </i> Buscar en Mapa
                     </a>
-                  </div>
+                  </div> */}
                 </div>
                <div className='dad-datesHotel'>
                  <div className='datesHotel'>

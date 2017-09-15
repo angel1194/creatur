@@ -12,15 +12,8 @@ class FormTransport extends React.PureComponent {
       this.state = {
         startDate:moment("2017-09-16")
       }
-      this.handleChange= this.handleChange.bind(this);
       this.request=this.request.bind(this);
     }
-
-  handleChange(date){
-    this.setState({
-      startDate:date
-    })
-  }
 
   request(event){
     event.preventDefault()
@@ -39,7 +32,7 @@ class FormTransport extends React.PureComponent {
   render() {
     return (
       <div id='inputSearchDisplay'>
-        <form onSubmit={this.request}>
+        <div>
           <div className='ui form'>
             <Header as='h1' className='titleForm'>{this.props.title}</Header>
             <Grid>
@@ -55,19 +48,14 @@ class FormTransport extends React.PureComponent {
                  <div className='gridCenterDate'>
                   <div className='selectFormSearch'>
                     <span className="input-group-addon-standar"><i className='fa fa-calendar fa-lg' aria-hidden='true'></i></span>
-                    <DatePicker
-                      selected={this.state.startDate}
-                      onChange={this.handleChange}
-                      minDate={moment("2017-09-16").subtract(3, "days")}
-                      maxDate={moment("2017-09-16").add(3, "days")}
-                    />
+                    <input type="text" value="10/10/2017" readOnly/>
                   </div>
                 </div>
                </Grid>
                 <Grid className='gridAutocompleteForm'>
                  <div className='gridCenterTime'>
                   <div className='selectFormSearch'>
-                    <input type="time" className='inputTime' ref='hours'/>
+                    <input type="text" value="10:30 am" className='inputTime' ref='hours' readOnly/>
                   </div>
                  </div>
                </Grid>
@@ -81,11 +69,11 @@ class FormTransport extends React.PureComponent {
               </div>
              </div>
              <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch title="AGREGAR AL CARRITO"/>
+              <ButtonFormSearch addTransport={this.props.addTransport} title="AGREGAR AL CARRITO"/>
              </Grid.Row>
          </Grid>
         </div>
-      </form>
+      </div>
      </div>
     );
   }

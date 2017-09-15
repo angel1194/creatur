@@ -30,6 +30,7 @@ class TabEvents extends React.Component {
      this.setState({
        ubicacion:ubicacion,
      })
+     this.props.changesLocation(ubicacion)
    }
 
    renderForm(){
@@ -43,7 +44,7 @@ class TabEvents extends React.Component {
        )
      }else if (this.state.ubicacion==='transport') {
        return(
-         <FormTransport title='Bienvenido' />
+         <FormTransport title='Bienvenido' addTransport={this.props.addTransport}/>
        )
 
      }

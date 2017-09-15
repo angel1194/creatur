@@ -24,7 +24,7 @@ class FormTableAdmin extends React.Component { // eslint-disable-line react/pref
               <th className='thtableAdmin'>{this.props.rowtwo}</th>
               <th className='thtableAdmin'>{this.props.rowthree}</th>
               <th className='thtableAdmin'>{this.props.rowfour}</th>
-            {this.props.rowFive == 'Asiento' ? <th className='thtableAdmin'>{this.props.rowFive}</th>: ''}
+              {this.props.rowFive ? <th className='thtableAdmin'>{this.props.rowFive}</th> : console.log('transporte')}
               <th className='thtableAdmin'>Eliminar</th>
               <th className='thtableAdmin'>Editar</th>
             </tr>

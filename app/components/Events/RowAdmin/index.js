@@ -6,10 +6,17 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import FontAwesome from 'react-fontawesome';
+import AddRooms from '../../../components/Events/AddRooms'
+
+const ButtonIcon=styled(FontAwesome)`
+  cursor:pointer;
+`;
 
 
-function RowAdmin(props)  {
-  // eslint-disable-line react/prefer-stateless-functio
+
+function RowAdmin (props)  {
+
     return (
       <tbody>
         <tr>
@@ -19,9 +26,10 @@ function RowAdmin(props)  {
           <td>{props.Hotels.star}</td>
           <td>{props.Hotels.description}</td>
           <td>{props.Hotels.cancellation}</td>
-          <td><button onClick={()=>props.delete(props.keyHotel)} className='fa-trash'/></td>
-          <td><button onClick={()=>props.update(props.keyHotel,props.Hotels)} className='fa-pencil-square'/></td>
-          <td><button  className='fa-plus-square-o '/></td>
+          <td><ButtonIcon onClick={()=>props.delete(props.keyHotel)} name='trash'/></td>
+          <td><ButtonIcon onClick={()=>props.update(props.keyHotel,props.Hotels)} name='pencil-square'/></td>
+          <td><AddRooms hotelName={props.Hotels.name}/></td>
+          {/*<td><ButtonIcon name='pencil-square'/></td>*/}
         </tr>
       </tbody>
     );
