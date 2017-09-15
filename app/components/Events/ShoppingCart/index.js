@@ -1,16 +1,30 @@
 import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
-import { Link } from 'react-router';
+import Icon from 'react-fontawesome';
 import FormPayment from '../FormPayment';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
-import initialState from '../state';
-import Itemcar from '../Itemcar';
-import HotelSummary from './HotelSummary'
+import HotelSummary from './HotelSummary';
+import FormEvent from './FormEvent'
 
 class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.carState
+    this.state = this.props.carState, {showEvent: false}
+
+    this.showEvent = this.showEvent.bind(this)
+    this.setshowEvent = this.setshowEvent.bind(this)
+  }
+
+  showEvent(){
+    this.setState({
+      showEvent: true
+    })
+  }
+
+  setshowEvent(){
+    this.setState({
+      showEvent: false
+    })
   }
 
   render() {
@@ -24,10 +38,11 @@ class ShoppingCart extends React.Component {
       <div>
         <Container>
           <FlexStart>
-            <ButtonEvent onClick={()=>console.log('click')}>
-              <Title>¡Añadir evento "Concierto Manzanero"!</Title>
+            <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
+              <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
             </ButtonEvent>
           </FlexStart>
+          {this.state.showEvent === false ? <FormEvent/> : ''}
           <FlexRow>
             <DivPay>
               <FormPayment total={car.total}/>

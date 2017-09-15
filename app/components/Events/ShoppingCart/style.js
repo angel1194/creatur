@@ -101,7 +101,7 @@ const ButtonEvent = styled.div`
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 15px;
-  height: 50px;
+  height: 45px;
   border-left: 3px solid #2b5bac;
   cursor: pointer;
   box-shadow: 1px 1px 2px #999;
