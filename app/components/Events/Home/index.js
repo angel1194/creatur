@@ -152,18 +152,17 @@ class Home extends React.Component {
   addRooms(rooms){
     this.location(<ShoppingCart car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
-    if (!(rooms.idHotel in state.items)) {
-      state.items[rooms.idHotel] = rooms
+    state.items['room'] = rooms
 
-      this.setState(state)
-      this.totalAmount(rooms)
-    }
+    this.setState(state)
+    this.totalAmount(rooms)
   }
 
   totalAmount(rooms){
+    let count = parseInt(this.state.checkout) - parseInt(this.state.checkin)
     const {car} = this.state
     let price = Number(rooms.price)
-    let total = price + car['total']
+    let total = price * count
     car['total'] = total
 
     this.setState(car)

@@ -28,7 +28,7 @@ class Trailcrumb extends React.Component {
           : ''}
           {this.props.nameContainer === 4 ?
             <Li>
-              <FontAwesome name='angle-double-right'></FontAwesome> Mi Reserva <FontAwesome name='shopping-cart'></FontAwesome>
+              <FontAwesome name='angle-double-right'></FontAwesome> Mi Reserva
             </Li>
           : ''}
         </Ul>

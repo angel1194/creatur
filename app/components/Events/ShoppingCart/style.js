@@ -95,4 +95,15 @@ const ContainerItem = styled.div`
   flex-wrap: wrap;
 `;
 
-export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow, ContainerItem};
+const ButtonEvent = styled.div`
+  background-color: #F2F2F2;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+  height: 50px;
+  border-left: 3px solid #2b5bac;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #999;
+`;
+export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow, ContainerItem, ButtonEvent};

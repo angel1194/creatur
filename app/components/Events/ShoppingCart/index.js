@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import { Link } from 'react-router';
 import FormPayment from '../FormPayment';
-import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem} from './style';
+import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import initialState from '../state';
 import Itemcar from '../Itemcar';
 import HotelSummary from './HotelSummary'
@@ -24,9 +24,9 @@ class ShoppingCart extends React.Component {
       <div>
         <Container>
           <FlexStart>
-            <DivTitle>
-              <Title>¡Excelente elección!</Title>
-            </DivTitle>
+            <ButtonEvent onClick={()=>console.log('click')}>
+              <Title>¡Añadir evento "Concierto Manzanero"!</Title>
+            </ButtonEvent>
           </FlexStart>
           <FlexRow>
             <DivPay>
