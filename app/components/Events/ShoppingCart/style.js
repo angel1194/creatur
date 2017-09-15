@@ -8,6 +8,7 @@ const DivTitle = styled.div`
   padding: 10px;
   margin-bottom: 15px;
   height: 50px;
+  border-left: 3px solid #2b5bac;
 `;
 
 const Title = styled.p`
@@ -79,7 +80,7 @@ const Cart = styled.div`
 `;
 
 const DivPay = styled.div`
-  width: 77%;
+  width: 75%;
 `;
 
 const FlexRow = styled.div`

@@ -13,7 +13,7 @@ class MainHotels extends React.Component {
         <Container>
           <Div>
             <div>
-              <MapView/>
+              <MapView/> 
               <Filter/>
             </div>
             <DivHotels>
