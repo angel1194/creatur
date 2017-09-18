@@ -6,7 +6,7 @@ const Div = styled.div`
   border-radius: 6px;
   margin-bottom: 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `
 
 const Container = styled.div`
@@ -22,7 +22,7 @@ const style = {
     flexDirection: 'column',
   },
   label:{
-    color: '#2b5bac',
+    color: '#2E2E2E',
     fontFamily: 'Montserrat',
     fontSize: '11px'
   },
@@ -66,4 +66,71 @@ const style = {
   }
 }
 
-export {Div, Container, style}
+const MapConcierto = styled.div`
+  border: 1px solid #f2f2f2;
+  width: 510px;
+  margin-top: 20px;
+`;
+
+const Ticket = styled.div`
+  margin: 20px 20px 0px 0px;
+`;
+
+const Search = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const THeader = styled.div`
+  background: #2b5bac;
+  color: #fff;
+  font-family: Montserrat;
+  border-radius: 6px 6px 0px 0px;
+  width: 260px;
+  padding: 10px;
+  text-align: center;
+`;
+
+const TBody = styled.div`
+  border: 1px solid #ccc;
+  width: 260px;
+  padding: 10px;
+  color: #999;
+  font-family: Montserrat;
+`;
+
+const BoletoRes = styled.div`
+  color: #2b5bac;
+`;
+
+const Count = styled.div`
+  color: #87b672;
+  margin-left: 5px;
+`;
+
+const P = styled.p`
+  font-size: 11px;
+  margin-bottom: 10px;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+`;
+
+const Pay = styled.div`
+  text-align: right;
+`
+
+const Buy = styled.div`
+  background: #87b672;
+  padding: 5px;
+  border-radius: 6px;
+  color: #fff;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+`
+
+export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy}
