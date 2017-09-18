@@ -1,9 +1,3 @@
-/**
-*
-* AddHotels
-*
-*/
-
 import React,{Component} from 'react';
 import styled from 'styled-components';
 import TableAdmin from '../TableAdmin';
@@ -139,7 +133,7 @@ update(key,dataHotel){
               <RowAdmin
                 key={i}
                 keyHotel={data}
-                Hotels={this.props.Hotels[data]}
+                Hotel={this.props.Hotels[data]}
                 delete={this.delete}
                 update={this.update}
               />
@@ -152,4 +146,4 @@ update(key,dataHotel){
   }
 }
 
-export default AddHotels;
+export default AddHotels

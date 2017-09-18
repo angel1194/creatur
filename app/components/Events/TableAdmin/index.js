@@ -31,7 +31,7 @@ function TableAdmin() { // eslint-disable-line react/prefer-stateless-function
             <th className='thTable'>Cancelación</th>
             <th className='thTable'>Eliminar</th>
             <th className='thTable'>Editar</th>
-            <th className='thTable'>Agregar</th>
+            <th className='thTable'>Habitacion</th>
           </tr>
         </thead>
       </table>

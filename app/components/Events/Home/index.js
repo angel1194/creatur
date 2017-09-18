@@ -113,11 +113,9 @@ class Home extends React.Component {
 
    //Buscando el hotel al que pertenecen las habitaciones
    let hotels= {}
-   // let aryRooms= []
    availableRoom.map(available=>{
      let hotel = available.idHotel
      if(!(hotel in hotels)){
-       // console.log(available.idHotel);
        let stateHotel = this.state.hotels[hotel]
        hotels[hotel]=stateHotel
        hotels[hotel]['rooms']=[]
