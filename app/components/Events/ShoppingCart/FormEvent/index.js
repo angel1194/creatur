@@ -2,6 +2,24 @@ import React from 'react';
 import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
 
 class FormEvent extends React.Component{
+
+  setTime(min,seg){
+		let segundo = document.getElementById("segundos");
+		let minuto = document.getElementById("minutos");
+
+		setInterval(
+			function(){
+				if(seg === 0){
+  					seg = 60;
+  					min --;
+  					minuto.innerHTML = min;
+				}
+          segundo.innerHTML = seg;
+  				seg --;
+			}
+			,1000);
+  }
+
   render(){
     return(
       <Div>
@@ -17,15 +35,6 @@ class FormEvent extends React.Component{
               <option>5</option>
               <option>6</option>
             </select>
-            {/* <select style={style.select1}>
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-            </select> */}
           </div>
           <div style={style.container}>
             <label style={style.label}>TIPO DE BOLETO</label>
@@ -44,15 +53,15 @@ class FormEvent extends React.Component{
             </select>
             {/* <input style={style.select3} value="MXN $1250.00" readOnly/> */}
           </div>
-          <button style={style.button}>Buscar Boletos</button>
+          <button style={style.button} onClick={()=>console.log('click')}>Buscar Boletos</button>
         </Container>
         <Search>
           <Ticket>
             <THeader>Mejor lugar disponible</THeader>
             <TBody>
               <Row>
-                <BoletoRes>Boletos reservados por:</BoletoRes>
-                <Count>1:30</Count>
+                <BoletoRes>Tiempo de compra:</BoletoRes>
+                <Count onLoad={this.setTime(1,30)}><span id="minutos">01</span>:<span id="segundos">30</span></Count>
               </Row>
               <p>Sección A </p>
               <P>Fila SS, Asientos 19-20</P>
