@@ -26,7 +26,7 @@ function MainEvents (props){
             iconTransport='icon-bus'
             location={props.location}
             setHotels={props.setHotels}
-            addTransport={props.addTransport}
+            // addTransport={props.addTransport}
             changesLocation={props.changesLocation}
            />
          </div>

@@ -37,6 +37,7 @@ class ShoppingCart extends React.Component {
     return (
       <div>
         <Container>
+          
           <FlexStart>
             <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
               <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>

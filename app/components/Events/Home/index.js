@@ -15,7 +15,7 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents changesLocation={this.changesLocation.bind(this)} addTransport={this.addTransport} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
+      container:<MainEvents changesLocation={this.changesLocation.bind(this)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
       available:{},
       car:{
@@ -34,7 +34,7 @@ class Home extends React.Component {
     this.setHotels = this.setHotels.bind(this)
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
-    this.addTransport = this.addTransport.bind(this)
+    // this.addTransport = this.addTransport.bind(this)
   }
 
   componentWillMount(){
@@ -176,10 +176,10 @@ class Home extends React.Component {
     this.setState({comparation})
   }
 
-  addTransport(){
-    const state = this.state
-    console.log('Mi state',state);
-  }
+  // addTransport(){
+  //   const state = this.state
+  //   console.log('Mi state',state);
+  // }
 
   render() {
     return (
