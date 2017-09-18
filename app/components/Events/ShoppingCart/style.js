@@ -8,6 +8,7 @@ const DivTitle = styled.div`
   padding: 10px;
   margin-bottom: 15px;
   height: 50px;
+  border-left: 3px solid #2b5bac;
 `;
 
 const Title = styled.p`
@@ -20,6 +21,7 @@ const Title = styled.p`
 const Subtitle = styled.p`
   color: #b2b2b2;
   font-size: 16px;
+  font-weight: 200;
   font-family: Montserrat;
 `;
 
@@ -58,7 +60,7 @@ const Space = styled(FontAwesome) `
 `;
 
 const ContainerButtonGreen = styled.div`
-  width: 160px;
+  width: 110px;
   margin-bottom: 20px;
   background: #87b672;
   color: white;
@@ -78,7 +80,7 @@ const Cart = styled.div`
 `;
 
 const DivPay = styled.div`
-  width: 77%;
+  width: 75%;
 `;
 
 const FlexRow = styled.div`
@@ -93,4 +95,15 @@ const ContainerItem = styled.div`
   flex-wrap: wrap;
 `;
 
-export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow, ContainerItem};
+const ButtonEvent = styled.div`
+  background-color: #F2F2F2;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+  height: 45px;
+  border-left: 3px solid #2b5bac;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #999;
+`;
+export {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen, Cart, DivPay, FlexRow, ContainerItem, ButtonEvent};

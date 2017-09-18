@@ -20,13 +20,13 @@ function MainEvents (props){
            <TabEvents
             hotel='Hotel'
             auto='Hotel y Tickets'
-            transport="Transport"
+            transport="Transporte"
             iconHotel='icon-hotel'
             iconTicket='fa fa-ticket'
             iconTransport='icon-bus'
             location={props.location}
             setHotels={props.setHotels}
-            addTransport={props.addTransport}
+            // addTransport={props.addTransport}
             changesLocation={props.changesLocation}
            />
          </div>

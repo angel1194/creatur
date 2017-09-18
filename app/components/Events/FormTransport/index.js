@@ -69,7 +69,7 @@ class FormTransport extends React.PureComponent {
               </div>
              </div>
              <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch addTransport={this.props.addTransport} title="AGREGAR AL CARRITO"/>
+              <ButtonFormSearch title="AGREGAR A LA RESERVACION"/>
              </Grid.Row>
          </Grid>
         </div>

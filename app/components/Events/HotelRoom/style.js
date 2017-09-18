@@ -43,7 +43,7 @@ const ContainerPrice = styled.div`
 `;
 
 const ContainerButtonGreen = styled.div`
-  width:75%;
+  width: 50%;
   margin-bottom:20px;
   background:#87b672;
   margin-left:10px;

@@ -7,6 +7,7 @@ import Trailcrumb from '../Trailcrumb'
 import {setRooms,setHotels, setTransport} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
+import ShoppingCart from '../ShoppingCart';
 
 // import styled from 'styled-components';
 
@@ -14,7 +15,7 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents changesLocation={this.changesLocation.bind(this)} addTransport={this.addTransport} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
+      container:<MainEvents changesLocation={this.changesLocation.bind(this)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
       available:{},
       car:{
@@ -33,7 +34,7 @@ class Home extends React.Component {
     this.setHotels = this.setHotels.bind(this)
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
-    this.addTransport = this.addTransport.bind(this)
+    // this.addTransport = this.addTransport.bind(this)
   }
 
   componentWillMount(){
@@ -147,19 +148,19 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
+    this.location(<ShoppingCart car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
-    if (!(rooms.idHotel in state.items)) {
-      state.items[rooms.idHotel] = rooms
+    state.items['room'] = rooms
 
-      this.setState(state)
-      this.totalAmount(rooms)
-    }
+    this.setState(state)
+    this.totalAmount(rooms)
   }
 
   totalAmount(rooms){
+    let count = parseInt(this.state.checkout) - parseInt(this.state.checkin)
     const {car} = this.state
     let price = Number(rooms.price)
-    let total = price + car['total']
+    let total = price * count
     car['total'] = total
 
     this.setState(car)
@@ -173,10 +174,10 @@ class Home extends React.Component {
     this.setState({comparation})
   }
 
-  addTransport(){
-    const state = this.state
-    console.log('Mi state',state);
-  }
+  // addTransport(){
+  //   const state = this.state
+  //   console.log('Mi state',state);
+  // }
 
   render() {
     return (
@@ -191,9 +192,8 @@ class Home extends React.Component {
             removeRooms={this.removeRooms}
             addComparation={this.addComparation}
             comparation={this.state.comparation}
-            car={this.state.car}
-            carState={this.state}
             stateAll={this.state.checkin}
+            stateRoom={this.state}
           />
         </Container>
         {this.state.container}
