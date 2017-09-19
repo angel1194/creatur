@@ -13,7 +13,7 @@
 
 import React from 'react';
 import {Container, Menu, Grid, Icon, Divider} from 'semantic-ui-react'
-import Header from '../../components/Header'
+// import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 // import MainSearch from '../../components/MainSearch'
 // import '../../assets/css/index.css'
@@ -30,7 +30,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        <Header/>
+        {/* <Header/> */}
           {React.Children.toArray(this.props.children)}
         <Footer/>
       </div>

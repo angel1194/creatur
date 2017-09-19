@@ -10,12 +10,15 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectLogin from './selectors';
 import LoginBody from '../../components/LoginContainer';
+import Header from '../../components/Header';
+
 
 
 export class Login extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Login"
           meta={[

@@ -20,6 +20,7 @@ import MostSold from '../../../components/ReserHotel/MostSold';
 import MapView from '../../../components/ReserHotel/MapView';
 import BarFilters from '../../../components/ReserHotel/BarFilters';
 import SortPrice from '../../../components/ReserHotel/SortPrice';
+import Header from '../../../components/Header';
 
 
 
@@ -76,6 +77,7 @@ export class HotelResult extends React.PureComponent { // eslint-disable-line re
     console.log(this.props);
     return (
       <div>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <ContainerBar>
           <MapView />
           <BarFilters />

@@ -16,6 +16,7 @@ import {Container} from 'semantic-ui-react'
 import SingleCar from '../../../components/SingleCar'
 import FormCar from '../../../components/FormCar'
 import NewSearch from '../../../components/NewSearch'
+import Header from '../../../components/Header';
 
 var aryCar=[]
 var carData=''
@@ -55,6 +56,7 @@ export class Quotation extends React.PureComponent { // eslint-disable-line reac
     const dataInitial = this.props.Quotation.show.selected
     return (
       <Container className='containerQuotation'>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Quotation"
           meta={[

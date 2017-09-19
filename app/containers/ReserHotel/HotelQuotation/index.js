@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import HeaderTable from '../../../components/HeaderTable'
 import HotelRoom from '../../../components/HotelRoom'
 import RadioButtonGreen from '../../../components/RadioButtonGreen'
+import Header from '../../../components/Header';
 
 const GeneralContainer = styled.div`
   width:100%;
@@ -40,6 +41,7 @@ export class HotelQuotation extends React.PureComponent { // eslint-disable-line
   render() {
     return (
       <Container>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Cotizacion de Hoteles"
           meta={[

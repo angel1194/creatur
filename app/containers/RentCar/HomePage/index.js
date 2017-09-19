@@ -12,6 +12,7 @@ import makeSelectHomePage from './selectors';
 import MainSearch from '../../../components/MainSearch'
 // import Comments from '../../components/Comments'
 import Comments from '../../../components/CommentSlide'
+import Header from '../../../components/Header';
 
 import {Container, Grid, Icon, Button} from 'semantic-ui-react'
 import { loadingTrue, saveDate, saveLocation, commentsLoaded, tabChange, setLocation, saveDataHotel, saveRoomsAdult} from './actions'
@@ -130,6 +131,7 @@ export class HomePage extends React.PureComponent {
 
     return (
       <div>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="HomePage"
           meta={[

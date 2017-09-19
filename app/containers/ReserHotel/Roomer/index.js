@@ -11,11 +11,13 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectRoomer from './selectors';
 import {Container} from 'semantic-ui-react'
 import ContainerRoomer from '../../../components/ContainerRoomer'
+import Header from '../../../components/Header';
 
 export class Roomer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Container>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Roomer"
           meta={[
