@@ -8,6 +8,7 @@ import {setRooms,setHotels, setTransport} from '../../../containers/Events/Fireb
 import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
+import Header from '../Header';
 
 // import styled from 'styled-components';
 
@@ -183,6 +184,7 @@ class Home extends React.Component {
     return (
       <div>
         <Container>
+          <Header/>
           <Trailcrumb
             hotels={this.state.available}
             location={this.location}

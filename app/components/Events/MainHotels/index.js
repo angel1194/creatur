@@ -6,14 +6,16 @@ import {Div, DivHotels} from './style';
 import Filter from './Filter';
 
 class MainHotels extends React.Component {
+
   render() {
     let hotels = this.props.hotels
+    console.log(hotels);
     return (
       <div>
         <Container>
           <Div>
             <div>
-              <MapView/> 
+              <MapView/>
               <Filter/>
             </div>
             <DivHotels>

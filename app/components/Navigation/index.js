@@ -23,8 +23,6 @@ function Navigation(props) {
         <Link href="/reserve-list"><li>{props.li_2}</li></Link>
         <Link href="#"><li>{props.li_3}</li></Link>
         <Link to='/login'><li>{props.li_4}</li></Link>
-        {/* <Link href="/manzanero/cart"><li>{props.cart}<FontAwesome name={props.icon}></FontAwesome></li></Link> */}
-        <Cart>{props.count}</Cart>
       </ul>
     </nav>
   </nav>
