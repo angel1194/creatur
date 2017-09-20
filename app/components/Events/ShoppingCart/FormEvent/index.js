@@ -3,8 +3,8 @@ import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, Bol
 
 class FormEvent extends React.Component{
 
-  setTime(min,seg){
-		let segundo = document.getElementById("segundos");
+  componentDidMount(){
+    let segundo = document.getElementById("segundos");
 		let minuto = document.getElementById("minutos");
 
 		setInterval(
@@ -61,7 +61,7 @@ class FormEvent extends React.Component{
             <TBody>
               <Row>
                 <BoletoRes>Tiempo de compra:</BoletoRes>
-                <Count onLoad={this.setTime(1,30)}><span id="minutos">01</span>:<span id="segundos">30</span></Count>
+                <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
               </Row>
               <p>Sección A </p>
               <P>Fila SS, Asientos 19-20</P>

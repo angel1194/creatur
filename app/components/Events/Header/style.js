@@ -9,6 +9,7 @@ const Nav = styled.nav`
 
 const Img = styled.img`
   margin: 10px 0px 10px 0px;
+  cursor: pointer;
 `;
 
 const Ul = styled.ul`
@@ -21,8 +22,14 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   color: #b2b2b2;
+  padding-top: 15px;
+  cursor: pointer;
 
-  
+  &:hover {
+    background: #7db464;
+    color: #fff;
+    transition: 0.3s;
+  }
 `;
 
 export {Nav, Img, Ul, Li}

@@ -6,7 +6,7 @@ function Header(props) {
     <Nav>
       <Img src="https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png"/>
       <Ul>
-        <Li>Mi reserva</Li>
+        <Li>Mi Reserva</Li>
       </Ul>
     </Nav>
   )
