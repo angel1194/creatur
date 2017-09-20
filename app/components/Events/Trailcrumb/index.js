@@ -4,7 +4,7 @@ import MainEvents from '../MainEvents';
 import MainHotels from '../MainHotels';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
-import {Ul, Li, Div, Car} from './style';
+import {Ul, Li, Div} from './style';
 
 class Trailcrumb extends React.Component {
 

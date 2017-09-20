@@ -54,12 +54,14 @@ const ContainerButtonGreen = styled.div`
   align-items:center
   padding:5px 15px;
   border-radius: 6px;
+  cursor: pointer;
 `;
 
 const ButtonGreen = styled.label`
   width:auto;
   border-bottom:1px solid white;
   color:#fff;
+  cursor: pointer;
 `;
 
 const LabelA = styled(Label) `
