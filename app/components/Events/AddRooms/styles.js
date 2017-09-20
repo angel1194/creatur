@@ -16,4 +16,17 @@ const inputOccupancy = {
   paddingLeft:'10px'
 }
 
-export { inputStyle, inputOccupancy};
+
+const TextArea ={
+  boxShadow:'1px 1px 5px #000 inset',
+  borderRadius: '5px',
+  width: '300px',
+  backgroundColor:' #fff',
+  marginLeft:'10px',
+  height: '90px',
+  textAlign:'justify',
+  paddingRight: '10px',
+  paddingTop: '10px'
+};
+
+export { inputStyle, inputOccupancy, TextArea};

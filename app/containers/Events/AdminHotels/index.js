@@ -114,37 +114,17 @@ class AdminHotels extends Component{
     })
   }
 
-  // roomsByHotel(){
-  //   let hotels = {}
-  //   Object.keys(this.state.hotels).map((keyHotel)=>{
-  //     hotels[keyHotel]=this.state.hotels[keyHotel]
-  //     hotels[keyHotel]['rooms']=[]
-  //     Object.keys(this.state.rooms).map((night)=>{
-  //       Object.keys(this.state.rooms[night]).map((room)=>{
-  //         let keyRoom = {}
-  //         if(keyHotel == this.state.rooms[night][room].idHotel){
-  //           keyRoom[room]=this.state.rooms[night][room]
-  //           hotels[keyHotel]['rooms'].push(keyRoom)
-  //         }
-  //       })
-  //     })
-  //   })
-  //   this.setState({
-  //     hotelsWithRooms:hotels
-  //   })
-  // }
-
-
    renderForm(){
 
      const dataHotels = this.state.hotels
      const dataTransport= this.state.transport
      const dataTickets= this.state.tickets
+     const dataRooms = this.state.rooms
 
      if(this.state.ui==='hotel' ){
        return(
        <div>
-         <AddHotels Hotels={dataHotels} />
+         <AddHotels Hotels={dataHotels} Rooms={dataRooms}/>
        </div>
        )
      }else if (this.state.ui=='transporte') {

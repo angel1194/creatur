@@ -5,7 +5,7 @@ import moment from 'moment'
 var rootRef = firebase.database().ref()
 
 export function setRooms(){
-  let nightHtlRef = rootRef.child('nightsHotels').orderByKey()
+  let nightHtlRef = rootRef.child('nightsHotels').orderByChild('price')
   return nightHtlRef.once('value',snap => {
     return snap.val()
   })

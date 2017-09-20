@@ -13,12 +13,9 @@ class AddHotels extends Component {
   constructor(props){
     super(props)
 
-
     this.submitForm = this.submitForm.bind(this)
     this.delete = this.delete.bind(this)
     this.update = this.update.bind(this)
-
-
 }
   submitForm(event){
     event.preventDefault()
@@ -68,6 +65,9 @@ class AddHotels extends Component {
     }
 }
 
+componentWillMount(){
+
+}
 
 delete(key){
   let rootRef = firebase.database().ref()
@@ -93,6 +93,33 @@ update(key,dataHotel){
 
 }
 
+/// Antes de estar en la forma actual, agregaba todas las habitaciones en todas las noches
+// let hotel={}
+// let nightKey;
+// let roomKey;
+// let aryRooms = []
+// Object.keys(this.props.Rooms).map( (roomsByNight)=>{
+//   nightKey=roomsByNight
+//   Object.keys(this.props.Rooms[roomsByNight]).map( (room)=>{
+//   roomKey=room
+//     if (data == this.props.Rooms[roomsByNight][room].idHotel) {
+//       aryRooms.push(this.props.Rooms[roomsByNight][room])
+//     }
+//   })
+// })
+// hotel[data]=aryRooms
+// return(
+//   <RowAdmin
+//   key={i}
+//   keyHotel={data}
+//   keyNight={nightKey}
+//   keyRoom={roomKey}
+//   Hotel={this.props.Hotels[data]}
+//   Rooms={hotel}
+//   delete={this.delete}
+//   update={this.update}
+//   />
+// )
   render(){
     return (
       <div>
@@ -129,15 +156,31 @@ update(key,dataHotel){
         <div style={ContainerTable}>
           <TableAdmin />
           <table>
-            {Object.keys(this.props.Hotels).map((data,i)=>
-              <RowAdmin
-                key={i}
-                keyHotel={data}
-                Hotel={this.props.Hotels[data]}
-                delete={this.delete}
-                update={this.update}
-              />
-            ) }
+            {Object.keys(this.props.Hotels).map((hotelKey,i) => {
+              //Mapeando los hoteles
+              let hotel={}
+              hotel[hotelKey]={}
+              //Mapeando las noches
+              Object.keys(this.props.Rooms).map((nights)=>{
+                hotel[hotelKey][nights]={}
+                //Mapeando las habitaciones
+                Object.keys(this.props.Rooms[nights]).map((room)=>{
+                  if(hotelKey== this.props.Rooms[nights][room].idHotel){
+                    hotel[hotelKey][nights][room]=this.props.Rooms[nights][room]
+                  }
+                })
+              })
+              return(
+                <RowAdmin
+                  key={i}
+                  Hotel={this.props.Hotels[hotelKey]}
+                  Rooms={hotel}
+                  delete={this.delete}
+                  update={this.update}
+                />
+              )
+            })
+          }
           </table>
         </div>
       </div>
