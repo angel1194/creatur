@@ -4,18 +4,21 @@ import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, Bol
 class FormEvent extends React.Component{
 
   componentDidMount(){
+    let m = 1;
+    let s = 30
+
     let segundo = document.getElementById("segundos");
 		let minuto = document.getElementById("minutos");
 
 		setInterval(
 			function(){
-				if(seg === 0){
-  					seg = 60;
-  					min --;
-  					minuto.innerHTML = min;
+				if(s === 0){
+  					s = 60;
+  					m --;
+  					minuto.innerHTML = m;
 				}
-          segundo.innerHTML = seg;
-  				seg --;
+          segundo.innerHTML = s;
+  				s --;
 			}
 			,1000);
   }
