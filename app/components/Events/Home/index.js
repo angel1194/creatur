@@ -36,6 +36,7 @@ class Home extends React.Component {
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
     this.addTransport = this.addTransport.bind(this)
+    this.searchTicket = this.searchTicket.bind(this)
   }
 
   componentWillMount(){
@@ -161,7 +162,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
-    this.location(<ShoppingCart ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
+    this.location(<ShoppingCart searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state.items['room'] = rooms
 
@@ -223,7 +224,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.state.transport);
     return (
       <div>
         <Container>

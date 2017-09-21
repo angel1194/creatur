@@ -50,10 +50,14 @@ class FormEvent extends React.Component{
 
    console.log(quantity);
    console.log(price);
+   let test = this.props.searchTicket(price, quantity)
+   console.log(test);
   }
 
   render(){
     let options = this.props.ticketOptions
+    let tickets = this.props.searchTicket
+
     return(
       <Div>
         <form style={style.form} onSubmit={this.request}>

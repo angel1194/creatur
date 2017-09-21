@@ -64,7 +64,7 @@ function HotelSummary(props) {
             <SubText>$350.56 c/u</SubText>
           </SRowDiv>
         </DivSubTotal>
-        <DivSubTotal>
+        {/* <DivSubTotal>
           <EventManzanero>Ticket Transporte</EventManzanero>
           <RowDiv>
             <NewSub>2 Asientos</NewSub>
@@ -72,7 +72,7 @@ function HotelSummary(props) {
           <SRowDiv>
             <SubText>$80.00 c/u</SubText>
           </SRowDiv>
-        </DivSubTotal>
+        </DivSubTotal> */}
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>

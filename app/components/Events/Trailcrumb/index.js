@@ -16,6 +16,11 @@ class Trailcrumb extends React.Component {
           <Li onClick={()=> this.props.location(<MainEvents addTransport={this.props.addTransport} changesLocation={this.props.changesLocation} setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}>
             Inicio
           </Li>
+          {this.props.nameContainer >= 5 ?
+            <Li>
+              <FontAwesome name='angle-double-right'></FontAwesome> Mi Transporte
+            </Li>
+          : ''}
           {this.props.nameContainer >= 2 ?
             <Li onClick={()=> this.props.location(<MainHotels hotels={this.props.hotels} addRooms={this.props.addRooms} addComparation={this.props.addComparation} location={this.props.location}/>, 2)}>
                <FontAwesome name='angle-double-right'></FontAwesome> Hoteles
