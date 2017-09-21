@@ -174,7 +174,8 @@ update(key,dataHotel){
                 <RowAdmin
                   key={i}
                   Hotel={this.props.Hotels[hotelKey]}
-                  Rooms={hotel}
+                  hotelKey={hotelKey}
+                  Rooms={hotel[hotelKey]}
                   delete={this.delete}
                   update={this.update}
                 />

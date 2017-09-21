@@ -16,7 +16,6 @@ const ButtonIcon=styled(FontAwesome)`
 
 
 function RowAdmin (props)  {
-  // console.log(props,'Props RowAdmin')
     return (
       <tbody>
         <tr>
@@ -28,7 +27,7 @@ function RowAdmin (props)  {
           <td>{props.Hotel.cancellation}</td>
           <td><ButtonIcon onClick={()=>props.delete(props.keyHotel)} name='trash'/></td>
           <td><ButtonIcon onClick={()=>props.update(props.keyHotel,props.Hotel)} name='pencil-square'/></td>
-          <td><AddRooms rooms={props.Rooms} /></td>
+          <td><AddRooms rooms={props.Rooms} hotelName={props.Hotel.name} hotelKey={props.hotelKey}/></td>
         </tr>
       </tbody>
     );
