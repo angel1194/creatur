@@ -159,14 +159,16 @@ update(key,dataHotel){
             {Object.keys(this.props.Hotels).map((hotelKey,i) => {
               //Mapeando los hoteles
               let hotel={}
-              hotel[hotelKey]={}
+              // hotel[hotelKey]={}
               //Mapeando las noches
               Object.keys(this.props.Rooms).map((nights)=>{
-                hotel[hotelKey][nights]={}
+                // hotel[hotelKey][nights]={}
                 //Mapeando las habitaciones
                 Object.keys(this.props.Rooms[nights]).map((room)=>{
                   if(hotelKey== this.props.Rooms[nights][room].idHotel){
-                    hotel[hotelKey][nights][room]=this.props.Rooms[nights][room]
+                    hotel[room]=this.props.Rooms[nights][room]
+                    hotel[room]['night']=nights
+                    // hotel[hotelKey][nights][room]=this.props.Rooms[nights][room]
                   }
                 })
               })
@@ -175,7 +177,7 @@ update(key,dataHotel){
                   key={i}
                   Hotel={this.props.Hotels[hotelKey]}
                   hotelKey={hotelKey}
-                  Rooms={hotel[hotelKey]}
+                  Rooms={hotel}
                   delete={this.delete}
                   update={this.update}
                 />

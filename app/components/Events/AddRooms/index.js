@@ -139,6 +139,29 @@ class AddRooms extends React.Component{
     });
   };
 
+  // Object.keys(this.props.rooms).map((night,i)=>{
+  //   console.log(this.props.rooms[night]);
+
+    // Object.keys(this.props.rooms[night]).map((room,i)=>
+    //   {
+    //     return(
+    //       <h1 key={i}>{this.props.rooms[night][room].price}</h1>
+    //     )
+    //   }
+        //
+        //   <tr>
+        //     <td><img src={this.props.rooms[this.props.hotelKey][night][room].image} alt='Habitacion' width='100'/></td>
+        //     <td>{this.props.rooms[this.props.hotelKey][night][room].description}</td>
+        //     <td>{this.props.rooms[this.props.hotelKey][night][room].price}</td>
+        //     <td>{this.props.rooms[this.props.hotelKey][night][room].occupancy}</td>
+        //     <td>{this.props.rooms[this.props.hotelKey][night][room].type}</td>
+        //     <td><ButtonIcon onClick={()=>this.updateRoom()} name='pencil-square'/></td>
+        //     <td><ButtonIcon onClick={()=>props.deleteRoom()} name='trash'/></td>
+        //   </tr>
+        //
+      // )
+  // })
+
   render(){
     return(
       <div>
@@ -211,32 +234,6 @@ class AddRooms extends React.Component{
             </Container>
             <table>
               <tbody>
-              {
-                  Object.keys(this.props.rooms).map((night,i)=>{
-                    return(
-                      <tr key={i}>this.props.rooms[night]</tr>
-                    )
-
-                    // Object.keys(this.props.rooms[night]).map((room,i)=>
-                    //   {
-                    //     return(
-                    //       <h1 key={i}>{this.props.rooms[night][room].price}</h1>
-                    //     )
-                    //   }
-                        //
-                        //   <tr>
-                        //     <td><img src={this.props.rooms[this.props.hotelKey][night][room].image} alt='Habitacion' width='100'/></td>
-                        //     <td>{this.props.rooms[this.props.hotelKey][night][room].description}</td>
-                        //     <td>{this.props.rooms[this.props.hotelKey][night][room].price}</td>
-                        //     <td>{this.props.rooms[this.props.hotelKey][night][room].occupancy}</td>
-                        //     <td>{this.props.rooms[this.props.hotelKey][night][room].type}</td>
-                        //     <td><ButtonIcon onClick={()=>this.updateRoom()} name='pencil-square'/></td>
-                        //     <td><ButtonIcon onClick={()=>props.deleteRoom()} name='trash'/></td>
-                        //   </tr>
-                        //
-                      // )
-                  })
-              }
               </tbody>
           </table>
           </ModalBody>
