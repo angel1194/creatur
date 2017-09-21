@@ -2,6 +2,14 @@ import React from 'react';
 import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
 
 class FormEvent extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      price: 'MXN $1250.00',
+      seccion:'Seccion A'
+    }
+    this.setSeccion = this.setSeccion.bind(this)
+  }
 
   componentDidMount(){
     let min = 1;
@@ -21,6 +29,21 @@ class FormEvent extends React.Component{
 				seg --;
 			}
 			,1000);
+  }
+
+  setSeccion(){
+    const state = this.state
+    let value = this.refs.price.value.split('-')
+
+    this.setState({
+      seccion: value[1],
+      price:value[0]
+    })
+  }
+
+  request(event){
+   event.preventDefault()
+   
   }
 
   render(){
@@ -49,7 +72,7 @@ class FormEvent extends React.Component{
           </div>
           <div style={style.container}>
             <label style={style.label}>PRECIO/SECCIÓN</label>
-            <select style={style.select3}>
+            <select style={style.select3} onChange={this.setSeccion} ref='price'>
               <option>MXN $1250.00 - Seccion A</option>
               <option>MXN $890.00 - Seccion B</option>
               <option>MXN $395.00 - Seccion C</option>
@@ -66,10 +89,10 @@ class FormEvent extends React.Component{
                 <BoletoRes>Tiempo de compra:</BoletoRes>
                 <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
               </Row>
-              <p>Sección A </p>
+              <p>{this.state.seccion}</p>
               <P>Fila SS, Asientos 19-20</P>
               <Pay>
-                <p>$1250.00 c/u</p>
+                <p>{this.state.price} c/u</p>
                 <Buy>comprar</Buy>
               </Pay>
             </TBody>

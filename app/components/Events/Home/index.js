@@ -55,7 +55,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    
+
     setTransport().then(
       res=>this.setState({
         transport:res.val()
@@ -190,6 +190,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.state.tickets);
     return (
       <div>
         <Container>
