@@ -23,6 +23,8 @@ class FormTransport extends React.PureComponent {
     let request = {
       ticket:tickets,
     }
+    console.log(tickets);
+    alert('Se Reservaron asientos, verifique su reserva para continuar')
   }
 
   render() {

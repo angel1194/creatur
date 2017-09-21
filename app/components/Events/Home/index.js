@@ -215,7 +215,7 @@ class Home extends React.Component {
     return (
       <div>
         <Container>
-          <Header/>
+          <Header location={this.location}/>
           <Trailcrumb
             hotels={this.state.available}
             location={this.location}
