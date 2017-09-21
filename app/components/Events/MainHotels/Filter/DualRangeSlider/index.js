@@ -1,63 +1,60 @@
-import React, { PropTypes } from 'react';
-import styled, { css } from 'styled-components';
+import React, {Component} from 'react';
+import styled from 'styled-components';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import H3 from '../../../../ReserHotel/H3';
-import { InputContainer, Wrapper } from './StyledsRange/StyledsRange';
-import FlexContainer from '../../../../ReserHotel/FlexContainer';
-import FlexItem from '../../../../ReserHotel/FlexItem';
+import Line from '../Line';
 
-const Container = styled(FlexContainer) `
-  height: 35px;
-`;
+const Form = styled.form`
+  padding: 20px 10px 30px 10px;
 
-const FlexItemleft = styled(FlexItem) `
-  text-align: left;
-  margin:0;
-  padding-top: 5px;
-`;
-
-const FlexItemright = styled(FlexItem) `
-  text-align: right;
-  padding-top: 5px;
-`;
-
-function DualRangeSlider(props) {
-  let DualR;
-
-  if (props.Mode === "Money") {
-    DualR = (
-      <Wrapper>
-        <H3>{props.Title}</H3>
-        <InputContainer>
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-        </InputContainer>
-        <Container>
-          <FlexItemleft>$372.00</FlexItemleft>
-          <FlexItemright>$1920.00</FlexItemright>
-        </Container>
-      </Wrapper>
-    );
-  } else {
-
-    DualR = (
-      <Wrapper>
-        <H3>{props.Title}</H3>
-        <InputContainer>
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-          <input type="range" step={props.Step} min={props.Min} max={props.Max} />
-        </InputContainer>
-        <Container>
-          <FlexItem>1</FlexItem>
-          <FlexItem>2</FlexItem>
-          <FlexItem>3</FlexItem>
-          <FlexItem>4</FlexItem>
-          <FlexItem>5</FlexItem>
-        </Container>
-      </Wrapper>
-    );
-
+  @media (min-width: 800px){
+    max-width: 100%;
   }
-  return DualR;
+`;
+
+class DualRangeSlider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      values: {
+        min: 650,
+        max: 1600,
+      },
+      value1: {
+        min: 2,
+        max: 4,
+      },
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <H3>{this.props.TitleStar}</H3>
+        <Form>
+          <InputRange
+          draggableTrack
+          maxValue={5}
+          minValue={1}
+          onChange={value => this.setState({ value1: value })}
+          onChangeComplete={value => console.log(value)}
+          value={this.state.value1} />
+        </Form>
+        <Line />
+        <H3>{this.props.TitlePrice}</H3>
+        <Form>
+          <InputRange
+            maxValue={1920.00}
+            minValue={372.00}
+            formatLabel={value => '$'+value}
+            value={this.state.values}
+            onChange={value => this.setState({ values: value })}
+            onChangeComplete={value => console.log(value)} />
+        </Form>
+      </div>
+    );
+  }
 }
 
 export default DualRangeSlider;

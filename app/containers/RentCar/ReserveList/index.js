@@ -9,6 +9,7 @@ import TableReserve from '../../../components/TableReserve'
 import { loadReserveList, cancelReserve, authorizationReserve, deleteReserve, printReserve } from './actions'
 import moment from 'moment'
 import ReactPaginate from 'react-paginate';
+import Header from '../../../components/Header';
 
 export class ReserveList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount(){
@@ -26,6 +27,7 @@ export class ReserveList extends React.PureComponent { // eslint-disable-line re
     const list = this.props.ReserveList.preReserve
     return (
       <Container>
+        <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Mis Reservas"
           meta={[

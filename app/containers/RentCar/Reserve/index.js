@@ -17,6 +17,7 @@ import { loadingTrue, saveDate, saveLocation } from '../HomePage/actions'
 import {  loadCarReserve, setCarReserve, saveClient } from './actions'
 import { selectHomePageState } from '../HomePage/selectors'
 import NewSearch from '../../../components/NewSearch'
+import Header from '../../../components/Header';
 
 export class Reserve extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -41,6 +42,7 @@ export class Reserve extends React.PureComponent { // eslint-disable-line react/
    const dataInitial = Object.keys(this.props.HomePage.cars)
    return (
        <Container className='containerReserve'>
+         <Header li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
          <Helmet
            title="Reserve"
            meta={[

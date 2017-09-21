@@ -68,8 +68,8 @@ class FormTransport extends React.PureComponent {
                 <input type="number" min="0" placeholder="0" ref='tickets'/>
               </div>
              </div>
-             <Grid.Row centered className='divButtonCar'>
-              <ButtonFormSearch title="AGREGAR A LA RESERVACION"/>
+             <Grid.Row onClick={()=>this.props.addTransport()} centered className='divButtonCar'>
+              <ButtonFormSearch title="Agregar a la Reservacion"/>
              </Grid.Row>
          </Grid>
         </div>

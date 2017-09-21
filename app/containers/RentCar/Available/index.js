@@ -18,6 +18,7 @@ import CardCar from '../../../components/CardCar'
 import CarCard from '../../../components/CarCard'
 import NewSearch from '../../../components/NewSearch'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import HeaderMain from '../../../components/Header';
 
 export class Available extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -62,6 +63,7 @@ export class Available extends React.PureComponent { // eslint-disable-line reac
     return (
       <div>
       <Container>
+        <HeaderMain li_1="Servicio" li_2="Mi reserva" li_3="Mi Viaje" li_4="Inicia Sesion" toLink="/"/>
         <Helmet
           title="Available"
           meta={[

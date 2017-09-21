@@ -1,9 +1,3 @@
-/**
-*
-* Header
-*
-*/
-
 import React from 'react';
 // import styled from 'styled-components';
 import {Container} from 'semantic-ui-react'
@@ -25,8 +19,7 @@ class Header extends React.Component {
     return(
       <header className="header">
         <Container>
-          {/* <Navigation cart="Mi Carrito" count={count.length} icon="shopping-cart"/> */}
-          <Navigation service="Servicio" reserv="Mi reserva" travel="Mi Viaje" login="Inicia Sesion"/>
+          <Navigation li_1={this.props.li_1} li_2={this.props.li_2} li_3={this.props.li_3} li_4={this.props.li_4} toLink={this.props.toLink}/>
         </Container>
       </header>
     )

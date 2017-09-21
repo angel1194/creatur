@@ -13,7 +13,7 @@ class Trailcrumb extends React.Component {
     return (
       <Div>
         <Ul>
-          <Li onClick={()=> this.props.location(<MainEvents setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}>
+          <Li onClick={()=> this.props.location(<MainEvents addTransport={this.props.addTransport} changesLocation={this.props.changesLocation} setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}>
             Inicio
           </Li>
           {this.props.nameContainer >= 2 ?
