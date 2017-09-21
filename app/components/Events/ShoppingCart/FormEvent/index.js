@@ -4,21 +4,21 @@ import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, Bol
 class FormEvent extends React.Component{
 
   componentDidMount(){
-    let m = 1;
-    let s = 30
+    let min = 1;
+    let seg = 30;
 
     let segundo = document.getElementById("segundos");
 		let minuto = document.getElementById("minutos");
 
-		setInterval(
+		let cron = setInterval(
 			function(){
-				if(s === 0){
-  					s = 60;
-  					m --;
-  					minuto.innerHTML = m;
+				if(seg === 0){
+  					seg = 60;
+  					min = 0;
+  					minuto.innerHTML = min;
 				}
-          segundo.innerHTML = s;
-  				s --;
+        segundo.innerHTML = seg;
+				seg --;
 			}
 			,1000);
   }
@@ -52,7 +52,7 @@ class FormEvent extends React.Component{
             <select style={style.select3}>
               <option>MXN $1250.00 - Seccion A</option>
               <option>MXN $890.00 - Seccion B</option>
-              <option><input type="checkbox"/>MXN $395.00 - Seccion C</option>
+              <option>MXN $395.00 - Seccion C</option>
             </select>
             {/* <input style={style.select3} value="MXN $1250.00" readOnly/> */}
           </div>

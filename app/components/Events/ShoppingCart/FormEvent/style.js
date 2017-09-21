@@ -45,7 +45,7 @@ const style = {
     borderRadius: '4px'
   },
   select3:{
-    width: '170px',
+    width: '200px',
     height: '30px',
     border: '2px solid #cdcdcd',
     outline: '0',
@@ -123,14 +123,21 @@ const Pay = styled.div`
   text-align: right;
 `
 
-const Buy = styled.div`
+const Buy = styled.button`
   background: #87b672;
   padding: 5px;
-  border-radius: 6px;
+  border-radius: 6px !important;
   color: #fff;
   width: 80px;
   text-align: center;
   cursor: pointer;
+  outline: 0;
+  margin-top: 10px;
+
+  &:hover {
+    background: #87b182;
+    box-shadow: 1px 1px 2px #999;
+  }
 `
 
 export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy}

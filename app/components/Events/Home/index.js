@@ -52,12 +52,14 @@ class Home extends React.Component {
        hotels:res.val()
      })
    )
+  }
 
-   setTransport().then(
-     res=>this.setState({
-       transport:res.val()
-     })
-   )
+  componentDidMount(){
+    setTransport().then(
+      res=>this.setState({
+        transport:res.val()
+      })
+    )
   }
 
   changesLocation(ubicacion){
