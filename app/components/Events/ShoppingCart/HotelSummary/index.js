@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
-import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3} from './style'
+import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
 const NewSub=styled(SubText)`
   font-size:12px;
 `;
 
 const DivCancel = styled(DivSubTotal)`
-  border-bottom:none !important
-  margin-bottom:0px !important
+  border-bottom:none !important;
+  margin-bottom:0px !important;
+  margin-top:10px !important;
 `;
 
 const TextTotal= styled(Text)`
@@ -21,7 +22,7 @@ function HotelSummary(props) {
     <Container>
       <Header>
         <Title>
-          Reservación
+          Resumen de la Reservación
         </Title>
         <Line/>
       </Header>
@@ -54,14 +55,24 @@ function HotelSummary(props) {
             <SubText>${props.elements.price} MXN</SubText>
           </SRowDiv>
         </DivSubTotal>
-        <DivCancel>
+        <DivSubTotal>
+          <EventManzanero>Ticket Manzanero</EventManzanero>
           <RowDiv>
             <NewSub>Seccion A Fila SS, Asientos 19-20</NewSub>
           </RowDiv>
           <SRowDiv>
             <SubText>$350.56 c/u</SubText>
           </SRowDiv>
-        </DivCancel>
+        </DivSubTotal>
+        <DivSubTotal>
+          <EventManzanero>Ticket Transporte</EventManzanero>
+          <RowDiv>
+            <NewSub>2 Asientos</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>$80.00 c/u</SubText>
+          </SRowDiv>
+        </DivSubTotal>
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>

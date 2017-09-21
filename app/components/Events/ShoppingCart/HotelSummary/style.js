@@ -3,7 +3,7 @@ import H3 from '../../../ReserHotel/H3'
 
 const Container = styled.div`
   width:23%;
-  max-height:600px;
+  height: auto;
   border:1px solid #eaeff3;
   margin-bottom: 30px;
 `;
@@ -20,7 +20,7 @@ const Header=styled.div`
 
 const Title=styled.label`
   font-family:Montserrat;
-  font-size:18px;
+  font-size:15px;
   color:white;
 `;
 
@@ -48,6 +48,10 @@ const ReserveInfo= styled.div`
 
 const Hotel = styled(H3)`
   margin-bottom:-5px
+`;
+
+const EventManzanero = styled(H3)`
+  margin-bottom: 10px;
 `;
 
 const Label= styled.label`
@@ -135,4 +139,4 @@ const NH3 = styled(H3)`
   margin-right:5px;
 `;
 
-export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3}
+export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero}

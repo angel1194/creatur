@@ -17,6 +17,12 @@ const Container = styled.div`
 `;
 
 const style = {
+  form:{
+    width: '580px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   container:{
     display: 'flex',
     flexDirection: 'column',

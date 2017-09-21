@@ -1,5 +1,5 @@
 import React from 'react';
-import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
+import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
 
 class FormEvent extends React.Component{
   constructor(props){
@@ -9,6 +9,7 @@ class FormEvent extends React.Component{
       seccion: this.props.seccion
     }
     this.setSeccion = this.setSeccion.bind(this)
+    this.request = this.request.bind(this)
   }
 
   componentDidMount(){
@@ -22,7 +23,7 @@ class FormEvent extends React.Component{
 			function(){
 				if(seg === 0){
   					seg = 60;
-  					min = 0;
+  					min = '00';
   					minuto.innerHTML = min;
 				}
         segundo.innerHTML = seg;
@@ -44,16 +45,21 @@ class FormEvent extends React.Component{
   request(event){
    event.preventDefault()
 
+   let quantity = this.refs.quantity.value
+   let price = this.refs.price.value
+
+   console.log(quantity);
+   console.log(price);
   }
 
   render(){
     let options = this.props.ticketOptions
     return(
       <Div>
-        <Container>
+        <form style={style.form} onSubmit={this.request}>
           <div style={style.container}>
             <label style={style.label}>CANTIDAD</label>
-            <select style={style.select1}>
+            <select style={style.select1} ref='quantity'>
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -67,25 +73,22 @@ class FormEvent extends React.Component{
             <label style={style.label}>TIPO DE BOLETO</label>
             <select style={style.select2} disabled>
               <option>Boleto Normal</option>
-              {/* <option>1</option> */}
             </select>
-            {/* <input style={style.select2} value="Boleto Normal" readOnly/> */}
           </div>
           <div style={style.container}>
             <label style={style.label}>PRECIO/SECCIÓN</label>
-            <select style={style.select3}>
+            <select style={style.select3} ref='price' onChange={this.setSeccion}>
               {
                 Object.keys(options).map((option,i)=>{
                   return(
-                    <option key={i} value={option}>{'MXN $'+this.props.ticketOptions[option].price + ' -- Seccion ' + option}</option>
+                    <option key={i} value={option}>{'MXN $'+this.props.ticketOptions[option].price + ' - Seccion ' + option}</option>
                   )
                 })
               }
             </select>
-            {/* <input style={style.select3} value="MXN $1250.00" readOnly/> */}
           </div>
-          <button style={style.button} onClick={()=>console.log('click')}>Buscar Boletos</button>
-        </Container>
+          <button style={style.button}>Buscar Boletos</button>
+        </form>
         <Search>
           <Ticket>
             <THeader>Mejor lugar disponible</THeader>
@@ -98,7 +101,7 @@ class FormEvent extends React.Component{
               <P>Fila SS, Asientos 19-20</P>
               <Pay>
                 <p>{this.state.price} c/u</p>
-                <Buy>comprar</Buy>
+                <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
               </Pay>
             </TBody>
           </Ticket>
