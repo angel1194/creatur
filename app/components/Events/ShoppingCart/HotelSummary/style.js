@@ -3,7 +3,7 @@ import H3 from '../../../ReserHotel/H3'
 
 const Container = styled.div`
   width:23%;
-  max-height:600px;
+  height: auto;
   border:1px solid #eaeff3;
   margin-bottom: 30px;
 `;
@@ -20,7 +20,7 @@ const Header=styled.div`
 
 const Title=styled.label`
   font-family:Montserrat;
-  font-size:18px;
+  font-size:15px;
   color:white;
 `;
 
@@ -50,6 +50,10 @@ const Hotel = styled(H3)`
   margin-bottom:-5px
 `;
 
+const EventManzanero = styled(H3)`
+  margin-bottom: 10px;
+`;
+
 const Label= styled.label`
   font-family:Montserrat
   color:black
@@ -76,20 +80,20 @@ const CheckIn = styled.div`
   margin-top:10px;
   width:100%;
   display:flex;
-  flex-direction:row
-  flex-wrap:wrap
-  border-bottom:1px solid #ccc
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom:1px solid #ccc;
   padding-bottom:20px;
 `;
 
 const DivSubTotal = styled.div`
-    border-bottom:1px solid #ccc
-    width:100%;
-    height:80px;
-    display:flex;
-    flex-direction:row
-    flex-wrap:wrap;
-    margin-top:15px
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin-top:15px;
 `;
 
 const RowDiv=styled.div`
@@ -97,8 +101,9 @@ const RowDiv=styled.div`
   height:20px;
   display:flex;
   flex-direction:row;
-  align-items:center
-  justify-content:flex-start
+  align-items:center;
+  justify-content:flex-start;
+  margin-bottom: 25px;
 `;
 
 const SRowDiv=styled.div`
@@ -114,7 +119,7 @@ const Footer = styled.div`
   width:100%;
   background-color:#e2e2e2
   height:50px;
-  margin-top:-20px
+  margin-top:10px
   display:flex;
   align-items:center;
   justify-content:flex-end;
@@ -134,4 +139,4 @@ const NH3 = styled(H3)`
   margin-right:5px;
 `;
 
-export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3}
+export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero}
