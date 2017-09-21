@@ -2,7 +2,9 @@ import React from 'react';
 import {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
 
 class FormEvent extends React.Component{
-
+  constructor(props){
+    super(props)
+  }
   componentDidMount(){
     let min = 1;
     let seg = 30;
@@ -24,6 +26,7 @@ class FormEvent extends React.Component{
   }
 
   render(){
+    let options = this.props.ticketOptions
     return(
       <Div>
         <Container>
@@ -50,9 +53,13 @@ class FormEvent extends React.Component{
           <div style={style.container}>
             <label style={style.label}>PRECIO/SECCIÓN</label>
             <select style={style.select3}>
-              <option>MXN $1250.00 - Seccion A</option>
-              <option>MXN $890.00 - Seccion B</option>
-              <option>MXN $395.00 - Seccion C</option>
+              {
+                Object.keys(options).map((option,i)=>{
+                  return(
+                    <option key={i} value={option}>{'MXN $'+this.props.ticketOptions[option].price + ' -- Seccion ' + option}</option>
+                  )
+                })
+              }
             </select>
             {/* <input style={style.select3} value="MXN $1250.00" readOnly/> */}
           </div>

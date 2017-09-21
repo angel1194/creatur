@@ -55,7 +55,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    
+
     setTransport().then(
       res=>this.setState({
         transport:res.val()
@@ -67,12 +67,15 @@ class Home extends React.Component {
         tickets:res.val()
       })
     )
+
+
   }
 
   changesLocation(ubicacion){
     this.setState({
       ubicacion:ubicacion,
     })
+
   }
 
 
@@ -84,6 +87,7 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
+    this.priceAndSections()
     let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
@@ -102,7 +106,6 @@ class Home extends React.Component {
        // si no es child sumar
          count += parseInt(rooms[key][item])
        }
-
      })
      aryRoom.push(count)
    })
@@ -158,7 +161,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
-    this.location(<ShoppingCart car={this.state.car} carState={this.state}/>, 4)
+    this.location(<ShoppingCart ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state.items['room'] = rooms
 
@@ -187,6 +190,25 @@ class Home extends React.Component {
   addTransport(){
     const state = this.state.transport
     console.log('State transport',state);
+  }
+
+  searchTicket(price,type,section,quantity){
+
+  }
+
+  priceAndSections(){
+    let tickets =  this.state.tickets
+    let options = {}
+    Object.keys(tickets).map((ticket)=>{
+      if (!(tickets[ticket].section in options)) {
+        options[tickets[ticket].section]={
+                                          price:tickets[ticket].price
+                                        }
+      }
+    })
+    this.setState({
+      ticketOptions:options
+    })
   }
 
   render() {
