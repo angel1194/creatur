@@ -4,7 +4,7 @@ import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
 import MainHotels from '../MainHotels'
 import Trailcrumb from '../Trailcrumb'
-import {setRooms,setHotels, setTransport} from '../../../containers/Events/Firebase/firebase'
+import {setRooms,setHotels, setTransport, setTicket} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
@@ -55,9 +55,16 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
+    
     setTransport().then(
       res=>this.setState({
         transport:res.val()
+      })
+    )
+
+    setTicket().then(
+      res=>this.setState({
+        tickets:res.val()
       })
     )
   }

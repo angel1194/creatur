@@ -26,7 +26,7 @@ export function setTransport() {
   })
 }
 
-export function setTciket() {
+export function setTicket() {
   let ticketRef = rootRef.child('tickets')
   return ticketRef.once('value',snap => {
     return snap.val()
