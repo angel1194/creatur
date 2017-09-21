@@ -18,20 +18,18 @@ class FormTransport extends React.PureComponent {
   request(event){
     event.preventDefault()
 
-    let date = this.state.startDate.format('YYYY-MM-DD')
-    let hours = this.refs.hours.value
     let tickets = this.refs.tickets.value
 
     let request = {
-      date:date,
-      hours:hours,
       ticket:tickets,
     }
+    console.log(tickets);
+    alert('Se Reservaron asientos, verifique su reserva para continuar')
   }
 
   render() {
     return (
-      <div id='inputSearchDisplay'>
+      <form id='inputSearchDisplay' onSubmit={this.request}>
         <div>
           <div className='ui form'>
             <Header as='h1' className='titleForm'>{this.props.title}</Header>
@@ -55,10 +53,17 @@ class FormTransport extends React.PureComponent {
                 <Grid className='gridAutocompleteForm'>
                  <div className='gridCenterTime'>
                   <div className='selectFormSearch'>
-                    <input type="text" value="10:30 am" className='inputTime' ref='hours' readOnly/>
+                    <input type="text" value="10:30 am" className='inputTime' readOnly/>
                   </div>
                  </div>
                </Grid>
+              </div>
+             </div>
+             <div className="price">
+              <label htmlFor='price-label' className='fecha'>Precio</label>
+              <div className='price-transport'>
+                <span className="input-group-addon-standar"><i className='fa fa-money'></i></span>
+                <input type="text" min="0" value="$100.00" readOnly/>
               </div>
              </div>
              <div className="ticket">
@@ -68,13 +73,13 @@ class FormTransport extends React.PureComponent {
                 <input type="number" min="0" placeholder="0" ref='tickets'/>
               </div>
              </div>
-             <Grid.Row onClick={()=>this.props.addTransport()} centered className='divButtonCar'>
+             <Grid.Row centered className='divButtonCar'>
               <ButtonFormSearch title="Agregar a la Reservacion"/>
              </Grid.Row>
          </Grid>
         </div>
       </div>
-     </div>
+    </form>
     );
   }
 }

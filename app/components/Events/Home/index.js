@@ -146,7 +146,6 @@ class Home extends React.Component {
      totalNight:totalNight
    })
 
-
    this.setState({
      checkin:startDate.format('DD-MM-YYYY'),
      checkout:endDate.format('DD-MM-YYYY')
@@ -213,9 +212,9 @@ class Home extends React.Component {
     let options = {}
     Object.keys(tickets).map((ticket)=>{
       if (!(tickets[ticket].section in options)) {
-        options[tickets[ticket].section]={
-                                          price:tickets[ticket].price
-                                        }
+        options[tickets[ticket].section] = {
+          price:tickets[ticket].price
+        }
       }
     })
     this.setState({
@@ -224,10 +223,11 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.state.transport);
     return (
       <div>
         <Container>
-          <Header/>
+          <Header location={this.location}/>
           <Trailcrumb
             hotels={this.state.available}
             location={this.location}
