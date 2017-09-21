@@ -243,8 +243,6 @@ class Home extends React.Component {
             addTransport={this.addTransport}
           />
         </Container>
-        <button onClick={()=>this.searchTicket('VIP',2)}>Buscar ticket</button>
-        <button>Deshacer ticket</button>
         {this.state.container}
       </div>
     );
