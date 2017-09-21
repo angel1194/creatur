@@ -5,8 +5,8 @@ class FormEvent extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      price: 'MXN $1250.00',
-      seccion:'Seccion A'
+      price: this.props.price,
+      seccion: this.props.seccion
     }
     this.setSeccion = this.setSeccion.bind(this)
   }
@@ -43,7 +43,7 @@ class FormEvent extends React.Component{
 
   request(event){
    event.preventDefault()
-   
+
   }
 
   render(){
@@ -64,7 +64,7 @@ class FormEvent extends React.Component{
           </div>
           <div style={style.container}>
             <label style={style.label}>TIPO DE BOLETO</label>
-            <select style={style.select2}>
+            <select style={style.select2} disabled>
               <option>Boleto Normal</option>
               {/* <option>1</option> */}
             </select>

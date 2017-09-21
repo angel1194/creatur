@@ -76,20 +76,20 @@ const CheckIn = styled.div`
   margin-top:10px;
   width:100%;
   display:flex;
-  flex-direction:row
-  flex-wrap:wrap
-  border-bottom:1px solid #ccc
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom:1px solid #ccc;
   padding-bottom:20px;
 `;
 
 const DivSubTotal = styled.div`
-    border-bottom:1px solid #ccc
-    width:100%;
-    height:80px;
-    display:flex;
-    flex-direction:row
-    flex-wrap:wrap;
-    margin-top:15px
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin-top:15px;
 `;
 
 const RowDiv=styled.div`
@@ -97,8 +97,9 @@ const RowDiv=styled.div`
   height:20px;
   display:flex;
   flex-direction:row;
-  align-items:center
-  justify-content:flex-start
+  align-items:center;
+  justify-content:flex-start;
+  margin-bottom: 25px;
 `;
 
 const SRowDiv=styled.div`
@@ -114,7 +115,7 @@ const Footer = styled.div`
   width:100%;
   background-color:#e2e2e2
   height:50px;
-  margin-top:-20px
+  margin-top:10px
   display:flex;
   align-items:center;
   justify-content:flex-end;

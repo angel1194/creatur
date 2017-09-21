@@ -54,6 +54,14 @@ function HotelSummary(props) {
             <SubText>${props.elements.price} MXN</SubText>
           </SRowDiv>
         </DivSubTotal>
+        <DivCancel>
+          <RowDiv>
+            <NewSub>Seccion A Fila SS, Asientos 19-20</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>$350.56 c/u</SubText>
+          </SRowDiv>
+        </DivCancel>
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
