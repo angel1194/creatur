@@ -9,7 +9,7 @@ import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
-
+import firebase from '../../../containers/Events/Firebase'
 // import styled from 'styled-components';
 
 class Home extends React.Component {
@@ -39,6 +39,7 @@ class Home extends React.Component {
   }
 
   componentWillMount(){
+
     //seteando las Noches en el state con la funcion de Firebase(Metodo once, devuelve promesa)
     setRooms().then(
       res => this.setState({
@@ -55,24 +56,27 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    
+
     setTransport().then(
       res=>this.setState({
         transport:res.val()
       })
     )
 
-    setTicket().then(
-      res=>this.setState({
-        tickets:res.val()
+
+    let refTicket = firebase.database().ref().child('tickets')
+    refTicket.on('value', snap => {
+      this.setState({
+        tickets:snap.val()
       })
-    )
+    })
   }
 
   changesLocation(ubicacion){
     this.setState({
       ubicacion:ubicacion,
     })
+
   }
 
 
@@ -84,6 +88,7 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
+    this.priceAndSections()
     let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
@@ -102,7 +107,6 @@ class Home extends React.Component {
        // si no es child sumar
          count += parseInt(rooms[key][item])
        }
-
      })
      aryRoom.push(count)
    })
@@ -158,7 +162,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
-    this.location(<ShoppingCart car={this.state.car} carState={this.state}/>, 4)
+    this.location(<ShoppingCart ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state.items['room'] = rooms
 
@@ -189,6 +193,36 @@ class Home extends React.Component {
     console.log('State transport',state);
   }
 
+  searchTicket(section,quantity){
+    let aryTicket = {}
+    let ticketRef = firebase.database().ref().child('tickets')
+    for (var i = 1; i <= quantity; i++) {
+      Object.keys(this.state.tickets).map( ticket => {
+        if (section === this.state.tickets[ticket].section) {
+          firebase.database().ref().child('temp').child(ticket).set(this.state.tickets[ticket])
+          aryTicket[ticket]=this.state.tickets[ticket]
+          ticketRef.child(ticket).remove()
+        }
+      })
+    }
+    return aryTicket
+  }
+
+  priceAndSections(){
+    let tickets =  this.state.tickets
+    let options = {}
+    Object.keys(tickets).map((ticket)=>{
+      if (!(tickets[ticket].section in options)) {
+        options[tickets[ticket].section]={
+                                          price:tickets[ticket].price
+                                        }
+      }
+    })
+    this.setState({
+      ticketOptions:options
+    })
+  }
+
   render() {
     return (
       <div>
@@ -209,6 +243,8 @@ class Home extends React.Component {
             addTransport={this.addTransport}
           />
         </Container>
+        <button onClick={()=>this.searchTicket('VIP',2)}>Buscar ticket</button>
+        <button>Deshacer ticket</button>
         {this.state.container}
       </div>
     );
