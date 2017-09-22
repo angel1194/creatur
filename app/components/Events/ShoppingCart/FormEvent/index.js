@@ -5,30 +5,40 @@ class FormEvent extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      tickets:{}
+      tickets:{},
+      section:'',
+      minutes: 1,
+      seconds: 40
     }
     this.request = this.request.bind(this)
+    this.timer = this.timer.bind(this)
   }
 
-  setTime(){
-    let min = 1;
-    let seg = 30;
-
-    let segundo = document.getElementById("segundos");
-		let minuto = document.getElementById("minutos");
-
-		let cron = setInterval(
-			function(){
-				if(seg === 0){
-  					seg = 60;
-  					min = '00';
-  					minuto.innerHTML = min;
-				}
-        segundo.innerHTML = seg;
-				seg --;
-			}
-			,1000);
+  timer() {
+    this.setState({
+      seconds: this.state.seconds - 1
+    })
+    if(this.state.seconds < 1) {
+      this.setState({
+        minutes: 0
+      })
+      this.setState({
+        seconds: 60
+      })
+      clearInterval(this.intervalId);
+    }
+    // else if ((this.state.seconds < 1) && (this.state.minutes < 1)) {
+    //   clearInterval(this.intervalId);
+    // }
   }
+  setTimer() {
+    this.intervalId = setInterval(this.timer, 1000);
+  }
+  // componentWillUnmount(){
+  //   clearInterval(this.intervalId);
+  // }
+
+
 
   request(event){
    event.preventDefault()
@@ -39,9 +49,10 @@ class FormEvent extends React.Component{
    let ticket = this.props.searchTicket(seccion, quantity)
 
    this.setState({
-     tickets:ticket
+     tickets:ticket,
+     section:seccion,
    })
-   this.setTime()
+   this.setTimer()
   }
 
   render(){
@@ -49,7 +60,6 @@ class FormEvent extends React.Component{
     let tickets = this.props.searchTicket
     let state = this.state.tickets
     let keyState = Object.keys(state)
-    console.log(keyState);
 
     return(
       <Div>
@@ -57,13 +67,13 @@ class FormEvent extends React.Component{
           <div style={style.container}>
             <label style={style.label}>CANTIDAD</label>
             <select style={style.select1} ref='quantity'>
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
+              <option value={0}>0</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
             </select>
           </div>
           <div style={style.container}>
@@ -93,12 +103,12 @@ class FormEvent extends React.Component{
               <TBody>
                 <Row>
                   <BoletoRes>Tiempo de compra:</BoletoRes>
-                  <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
+                  <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
                 </Row>
-                <p>Seccion {keyState.length >= 1 ? state[keyState].section : ''}</p>
+                <p>Seccion {this.state.section}</p>
                 <P>Fila SS, Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
                 <Pay>
-                  <Price>MXN ${keyState.length >= 1 ? state[keyState].price : ''} c/u</Price>
+                  <Price>MXN ${options[this.state.section].price} c/u</Price>
                   <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
                 </Pay>
               </TBody>

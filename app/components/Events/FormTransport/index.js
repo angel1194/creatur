@@ -20,11 +20,7 @@ class FormTransport extends React.PureComponent {
 
     let tickets = this.refs.tickets.value
 
-    let request = {
-      ticket:tickets,
-    }
     console.log(tickets);
-    alert('Se Reservaron asientos, verifique su reserva para continuar')
   }
 
   render() {

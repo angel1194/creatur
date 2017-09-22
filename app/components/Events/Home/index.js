@@ -36,16 +36,11 @@ class Home extends React.Component {
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
     this.addTransport = this.addTransport.bind(this)
-<<<<<<< HEAD
     this.searchTicket = this.searchTicket.bind(this)
-    this.starFilter = this.starFilter.bind(this)
     this.priceAndSections = this.priceAndSections.bind(this)
-=======
->>>>>>> f3febc09562a9c45faa70b56df8e3108dddcf8f5
   }
 
   componentWillMount(){
-
     //seteando las Noches en el state con la funcion de Firebase(Metodo once, devuelve promesa)
     setRooms().then(
       res => this.setState({
@@ -69,17 +64,12 @@ class Home extends React.Component {
       })
     )
 
-
     let refTicket = firebase.database().ref().child('tickets')
     refTicket.on('value', snap => {
       this.setState({
         tickets:snap.val()
       })
     })
-
-
-
-
   }
 
   changesLocation(ubicacion){
@@ -98,6 +88,7 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
+    this.priceAndSections()
     let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
@@ -191,7 +182,7 @@ class Home extends React.Component {
   addComparation(item){
     this.location(<Rooms stateAll={this.state} addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
     const {comparation} = this.state
-    comparation[item] = item
+    comparation['hotel'] = item
 
     this.setState({comparation})
   }

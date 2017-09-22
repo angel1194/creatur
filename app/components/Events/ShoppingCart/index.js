@@ -19,7 +19,6 @@ class ShoppingCart extends React.Component {
     this.setState({
       showEvent: true
     })
-    this.props.priceAndSections()
   }
 
   setshowEvent(){
