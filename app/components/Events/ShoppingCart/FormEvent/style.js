@@ -73,9 +73,10 @@ const style = {
 }
 
 const MapConcierto = styled.div`
-  border: 1px solid #f2f2f2;
-  width: 510px;
-  margin-top: 20px;
+  ${'' /* border: 1px solid #f2f2f2; */}
+  ${'' /* width: 510px; */}
+  margin: auto;
+  padding-top: 25px;
 `;
 
 const Ticket = styled.div`

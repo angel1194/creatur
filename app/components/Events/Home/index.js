@@ -36,11 +36,8 @@ class Home extends React.Component {
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
     this.addTransport = this.addTransport.bind(this)
-<<<<<<< HEAD
     this.searchTicket = this.searchTicket.bind(this)
-=======
     this.starFilter = this.starFilter.bind(this)
->>>>>>> f35a70a2532d33eca7d7b3bc4ebce82578899529
   }
 
   componentWillMount(){

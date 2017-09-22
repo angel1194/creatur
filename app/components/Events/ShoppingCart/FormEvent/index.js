@@ -10,7 +10,7 @@ class FormEvent extends React.Component{
     this.request = this.request.bind(this)
   }
 
-  componentDidMount(){
+  setTime(){
     let min = 1;
     let seg = 30;
 
@@ -41,6 +41,7 @@ class FormEvent extends React.Component{
    this.setState({
      tickets:ticket
    })
+   this.setTime()
   }
 
   render(){
@@ -48,7 +49,7 @@ class FormEvent extends React.Component{
     let tickets = this.props.searchTicket
     let state = this.state.tickets
     let keyState = Object.keys(state)
-    console.log(state);
+    console.log(keyState);
 
     return(
       <Div>
@@ -85,7 +86,8 @@ class FormEvent extends React.Component{
           </div>
           <button style={style.button}>Buscar Boletos</button>
         </form>
-          <Search>
+        <Search>
+          {keyState.length >= 1 ?
             <Ticket>
               <THeader>Mejor lugar disponible</THeader>
               <TBody>
@@ -93,17 +95,17 @@ class FormEvent extends React.Component{
                   <BoletoRes>Tiempo de compra:</BoletoRes>
                   <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
                 </Row>
-                {/* <p>{state['004'].section}</p> */}
+                <p>Seccion {keyState.length >= 1 ? state[keyState].section : ''}</p>
                 <P>Fila SS, Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
                 <Pay>
-                  <Price>MXN ${keyState.map((item, i)=><p key={i}>{state[item].price}</p>)} c/u</Price>
+                  <Price>MXN ${keyState.length >= 1 ? state[keyState].price : ''} c/u</Price>
                   <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
                 </Pay>
               </TBody>
             </Ticket>
-            <MapConcierto>Mapa del concierto</MapConcierto>
-          </Search>
-
+          : ''}
+          <MapConcierto><img src='https://www.eticket.mx/imagenes/Acomodos/2774_COLISEO2774.gif' width='300px'/></MapConcierto>
+        </Search>
       </Div>
     )
   }
