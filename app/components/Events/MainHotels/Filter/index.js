@@ -15,12 +15,12 @@ const DivBorder = styled.div`
   width: 240px
 `;
 
-function Filter() {
+function Filter(props) {
   return (
     <DivBorder>
       <Title Title="Filtrar Resultados"/>
       <WP>
-        <DualRangeSlider TitleStar="Número de estrellas" TitlePrice="Precio por noche"/>
+        <DualRangeSlider TitleStar="Número de estrellas" TitlePrice="Precio por noche" starFilter={props.starFilter}/>
       </WP>
     </DivBorder>
 
