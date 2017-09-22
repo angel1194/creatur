@@ -20,7 +20,7 @@ function Filter(props) {
     <DivBorder>
       <Title Title="Filtrar Resultados"/>
       <WP>
-        <DualRangeSlider TitleStar="Número de estrellas" TitlePrice="Precio por noche" starFilter={props.starFilter}/>
+        <DualRangeSlider TitleStar="Número de estrellas" TitlePrice="Precio por noche" starFilter={props.starFilter} priceFilter={props.priceFilter}/>
       </WP>
     </DivBorder>
 
