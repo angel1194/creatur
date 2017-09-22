@@ -17,7 +17,7 @@ class DualRangeSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: {
+      star: {
         min: 650,
         max: 1600,
       },
@@ -34,12 +34,12 @@ class DualRangeSlider extends React.Component {
         <H3>{this.props.TitleStar}</H3>
         <Form>
           <InputRange
-          draggableTrack
-          maxValue={5}
-          minValue={1}
-          onChange={value => this.setState({ value1: value })}
-          onChangeComplete={value => this.props.starFilter(value)}
-          value={this.state.value1} />
+            maxValue={5}
+            minValue={1}
+            onChange={value => this.setState({ value1: value })}
+            onChangeComplete={value => this.props.starFilter(value)}
+            value={this.state.value1}
+          />
         </Form>
         <Line />
         <H3>{this.props.TitlePrice}</H3>
@@ -48,9 +48,9 @@ class DualRangeSlider extends React.Component {
             maxValue={1920.00}
             minValue={372.00}
             formatLabel={value => '$'+value}
-            value={this.state.values}
-            onChange={value => this.setState({ values: value })}
-            onChangeComplete={value => console.log(value)} />
+            value={this.state.star}
+            onChange={value => this.setState({ star: value })}
+            onChangeComplete={value => this.props.priceFilter(value)} />
         </Form>
       </div>
     );
