@@ -36,7 +36,11 @@ class Home extends React.Component {
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
     this.addTransport = this.addTransport.bind(this)
+<<<<<<< HEAD
     this.searchTicket = this.searchTicket.bind(this)
+=======
+    this.starFilter = this.starFilter.bind(this)
+>>>>>>> f35a70a2532d33eca7d7b3bc4ebce82578899529
   }
 
   componentWillMount(){
@@ -152,7 +156,11 @@ class Home extends React.Component {
      checkout:endDate.format('DD-MM-YYYY')
    })
 
-    this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
+    this.location(<MainHotels starFilter={this.starFilter} addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
+  }
+
+  starFilter(dataObject){
+    console.log(this.state.available);
   }
 
   filterNight(night,startDate,endDate){
@@ -196,16 +204,15 @@ class Home extends React.Component {
   searchTicket(section,quantity){
     let aryTicket = {}
     let ticketRef = firebase.database().ref().child('tickets')
-    for (var i = 1; i <= quantity; i++) {
-      Object.keys(this.state.tickets).map( ticket => {
-        if (section === this.state.tickets[ticket].section) {
+    Object.keys(this.state.tickets).map((ticket,i)=>{
+      if (Object.keys(aryTicket).length < quantity) {
+        if (section == this.state.tickets[ticket].section) {
           firebase.database().ref().child('temp').child(ticket).set(this.state.tickets[ticket])
           aryTicket[ticket]=this.state.tickets[ticket]
-          ticketRef.child(ticket).remove()
+           ticketRef.child(ticket).remove()
         }
-      })
-    }
-
+      }
+    })
     return aryTicket
   }
 

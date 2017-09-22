@@ -15,7 +15,7 @@ class MainHotels extends React.Component {
           <Div>
             <div>
               <MapView/>
-              <Filter/>
+              <Filter starFilter={this.props.starFilter}/>
             </div>
             <DivHotels>
               {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}

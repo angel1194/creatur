@@ -39,7 +39,6 @@ class AddRoomForm extends React.Component {
             <label htmlFor={'Adulto'+this.props.count}>Adultos (18+)</label>
             {/*<input className="inputs" id={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)} type="number" min="0" placeholder="0" name='adult'/>*/}
             <select className="inputs" name={'Adulto'+this.props.count} onChange={(e)=>this.props.inputValueChange(this.props.object,e)}>
-              <option>0</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>

@@ -38,7 +38,7 @@ class DualRangeSlider extends React.Component {
           maxValue={5}
           minValue={1}
           onChange={value => this.setState({ value1: value })}
-          onChangeComplete={value => console.log(value)}
+          onChangeComplete={value => this.props.starFilter(value)}
           value={this.state.value1} />
         </Form>
         <Line />
