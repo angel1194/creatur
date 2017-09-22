@@ -38,6 +38,7 @@ class Home extends React.Component {
     this.addTransport = this.addTransport.bind(this)
     this.searchTicket = this.searchTicket.bind(this)
     this.starFilter = this.starFilter.bind(this)
+    this.priceAndSections = this.priceAndSections.bind(this)
   }
 
   componentWillMount(){
@@ -90,7 +91,6 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
-    this.priceAndSections()
     let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
@@ -167,7 +167,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
-    this.location(<ShoppingCart searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
+    this.location(<ShoppingCart priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state.items['room'] = rooms
 
