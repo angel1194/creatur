@@ -30,6 +30,7 @@ class FormEvent extends React.Component{
     // else if ((this.state.seconds < 1) && (this.state.minutes < 1)) {
     //   clearInterval(this.intervalId);
     // }
+    
   }
   setTimer() {
     this.intervalId = setInterval(this.timer, 1000);
