@@ -117,6 +117,8 @@ const Count = styled.div`
 const P = styled.p`
   font-size: 11px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
 `;
 
 const Row = styled.div`
@@ -126,7 +128,9 @@ const Row = styled.div`
 `;
 
 const Pay = styled.div`
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `
 
 const Buy = styled.button`
@@ -144,6 +148,11 @@ const Buy = styled.button`
     background: #87b182;
     box-shadow: 1px 1px 2px #999;
   }
+`;
+
+const Price = styled.p`
+  display: flex;
+  flex-direction: row;
 `
 
-export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy}
+export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price}

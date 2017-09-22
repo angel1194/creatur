@@ -1,14 +1,12 @@
 import React from 'react';
-import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy} from './style';
+import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price} from './style';
 
 class FormEvent extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      price: this.props.price,
-      seccion: this.props.seccion
+      tickets:{}
     }
-    this.setSeccion = this.setSeccion.bind(this)
     this.request = this.request.bind(this)
   }
 
@@ -32,31 +30,25 @@ class FormEvent extends React.Component{
 			,1000);
   }
 
-  setSeccion(){
-    const state = this.state
-    let value = this.refs.price.value.split('-')
-
-    this.setState({
-      seccion: value[1],
-      price:value[0]
-    })
-  }
-
   request(event){
    event.preventDefault()
 
    let quantity = this.refs.quantity.value
-   let price = this.refs.price.value
+   let seccion = this.refs.seccion.value
 
-   console.log(quantity);
-   console.log(price);
-   let test = this.props.searchTicket(price, quantity)
-   console.log(test);
+   let ticket = this.props.searchTicket(seccion, quantity)
+
+   this.setState({
+     tickets:ticket
+   })
   }
 
   render(){
     let options = this.props.ticketOptions
     let tickets = this.props.searchTicket
+    let state = this.state.tickets
+    let keyState = Object.keys(state)
+    console.log(state);
 
     return(
       <Div>
@@ -81,7 +73,7 @@ class FormEvent extends React.Component{
           </div>
           <div style={style.container}>
             <label style={style.label}>PRECIO/SECCIÓN</label>
-            <select style={style.select3} ref='price' onChange={this.setSeccion}>
+            <select style={style.select3} ref='seccion' onChange={this.setSeccion}>
               {
                 Object.keys(options).map((option,i)=>{
                   return(
@@ -93,24 +85,25 @@ class FormEvent extends React.Component{
           </div>
           <button style={style.button}>Buscar Boletos</button>
         </form>
-        <Search>
-          <Ticket>
-            <THeader>Mejor lugar disponible</THeader>
-            <TBody>
-              <Row>
-                <BoletoRes>Tiempo de compra:</BoletoRes>
-                <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
-              </Row>
-              <p>{this.state.seccion}</p>
-              <P>Fila SS, Asientos 19-20</P>
-              <Pay>
-                <p>{this.state.price} c/u</p>
-                <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
-              </Pay>
-            </TBody>
-          </Ticket>
-          <MapConcierto>Mapa del concierto</MapConcierto>
-        </Search>
+          <Search>
+            <Ticket>
+              <THeader>Mejor lugar disponible</THeader>
+              <TBody>
+                <Row>
+                  <BoletoRes>Tiempo de compra:</BoletoRes>
+                  <Count><span id="minutos">01</span>:<span id="segundos">30</span></Count>
+                </Row>
+                {/* <p>{state['004'].section}</p> */}
+                <P>Fila SS, Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
+                <Pay>
+                  <Price>MXN ${keyState.map((item, i)=><p key={i}>{state[item].price}</p>)} c/u</Price>
+                  <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
+                </Pay>
+              </TBody>
+            </Ticket>
+            <MapConcierto>Mapa del concierto</MapConcierto>
+          </Search>
+
       </Div>
     )
   }
