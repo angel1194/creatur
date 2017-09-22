@@ -36,7 +36,6 @@ class Home extends React.Component {
     this.addRooms = this.addRooms.bind(this)
     this.addComparation = this.addComparation.bind(this)
     this.addTransport = this.addTransport.bind(this)
-    this.starFilter = this.starFilter.bind(this)
   }
 
   componentWillMount(){
@@ -71,6 +70,10 @@ class Home extends React.Component {
         tickets:snap.val()
       })
     })
+
+
+
+
   }
 
   changesLocation(ubicacion){
@@ -152,11 +155,7 @@ class Home extends React.Component {
      checkout:endDate.format('DD-MM-YYYY')
    })
 
-    this.location(<MainHotels starFilter={this.starFilter} addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
-  }
-
-  starFilter(dataObject){
-    console.log(this.state.available);
+    this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
   }
 
   filterNight(night,startDate,endDate){

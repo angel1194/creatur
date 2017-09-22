@@ -22,8 +22,8 @@ class DualRangeSlider extends React.Component {
         max: 1600,
       },
       value1: {
-        min: 2,
-        max: 4,
+        min: 1,
+        max: 5,
       },
     };
   }
