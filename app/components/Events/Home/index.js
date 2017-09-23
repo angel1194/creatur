@@ -80,7 +80,6 @@ class Home extends React.Component {
 
   }
 
-
   location(container, location){
     this.setState({
       container,
