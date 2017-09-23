@@ -10,82 +10,88 @@ class MainHotels extends React.Component {
     super(props)
     this.state={
       hotels:this.props.hotels,
-      filterHotels:{},
-      filter:false
+      star:{
+        min:1,
+        max:5
+      },
+      price:{
+        min:300,
+        max:3000
+      }
     }
-    this.starFilter = this.starFilter.bind(this)
-    this.priceFilter = this.priceFilter.bind(this)
+    // this.starFilter = this.starFilter.bind(this)
+    // this.priceFilter = this.priceFilter.bind(this)
   }
 
-  starFilter(object){
-    let newHotels = {}
-    if (Object.keys(this.state.filterHotels).length > 0) {
-      Object.keys(this.state.filterHotels).map((hotel)=>{
-        if (this.state.filterHotels[hotel].star >= object.min && this.state.filterHotels[hotel].star <= object.max) {
-          newHotels[hotel]=this.state.filterHotels[hotel]
-        }
-      })
-      this.setState({
-        filterHotels:newHotels,
-        filter:true
-      })
-    }else {
-      Object.keys(this.state.hotels).map((hotel)=>{
-        if (this.state.hotels[hotel].star >= object.min && this.state.hotels[hotel].star <= object.max) {
-          newHotels[hotel]=this.state.hotels[hotel]
-        }
-      })
-      this.setState({
-        filterHotels:newHotels,
-        filter:true
-      })
-    }
-  }
-
-  priceFilter(object){
-    let newHotels={}
-    if (Object.keys(this.state.filterHotels).length > 0 ) {
-      Object.keys(this.state.filterHotels).map(hotelKey=>{
-        let newRooms=[]
-        let aryRooms = this.state.filterHotels[hotelKey].rooms
-        aryRooms.map((room)=>{
-          if (room.idHotel === hotelKey) {
-            if (room.price >= object.min && room.price <= object.max) {
-              newRooms.push(room)
-            }
-          }
-        })
-        if (newRooms.length > 0) {
-          newHotels[hotelKey]=this.state.filterHotels[hotelKey]
-          newHotels[hotelKey]['rooms']=newRooms
-        }
-      })
-      this.setState({
-        filterHotels:newHotels
-      })
-    }
-    else{
-      Object.keys(this.state.hotels).map(hotelKey=>{
-        let newRooms=[]
-        let aryRooms = this.state.hotels[hotelKey].rooms
-        aryRooms.map((room)=>{
-          if (room.idHotel === hotelKey) {
-            if (room.price >= object.min && room.price <= object.max) {
-              newRooms.push(room)
-            }
-          }
-        })
-        if (newRooms.length > 0) {
-          newHotels[hotelKey]=this.state.hotels[hotelKey]
-          newHotels[hotelKey]['rooms']=newRooms
-        }
-      })
-      this.setState({
-        filterHotels:newHotels,
-        filter:true
-      })
-    }
-  }
+  // starFilter(object){
+  //   let newHotels = {}
+  //   if (Object.keys(this.state.filterHotels).length > 0) {
+  //     Object.keys(this.state.filterHotels).map((hotel)=>{
+  //       if (this.state.filterHotels[hotel].star >= object.min && this.state.filterHotels[hotel].star <= object.max) {
+  //         newHotels[hotel]=this.state.filterHotels[hotel]
+  //       }
+  //     })
+  //     this.setState({
+  //       filterHotels:newHotels,
+  //       filter:true
+  //     })
+  //   }else {
+  //     Object.keys(this.state.hotels).map((hotel)=>{
+  //       if (this.state.hotels[hotel].star >= object.min && this.state.hotels[hotel].star <= object.max) {
+  //         newHotels[hotel]=this.state.hotels[hotel]
+  //       }
+  //     })
+  //     this.setState({
+  //       filterHotels:newHotels,
+  //       filter:true
+  //     })
+  //   }
+  // }
+  //
+  // priceFilter(object){
+  //   let newHotels={}
+  //   if (Object.keys(this.state.filterHotels).length > 0 ) {
+  //     Object.keys(this.state.filterHotels).map(hotelKey=>{
+  //       let newRooms=[]
+  //       let aryRooms = this.state.filterHotels[hotelKey].rooms
+  //       aryRooms.map((room)=>{
+  //         if (room.idHotel === hotelKey) {
+  //           if (room.price >= object.min && room.price <= object.max) {
+  //             newRooms.push(room)
+  //           }
+  //         }
+  //       })
+  //       if (newRooms.length > 0) {
+  //         newHotels[hotelKey]=this.state.filterHotels[hotelKey]
+  //         newHotels[hotelKey]['rooms']=newRooms
+  //       }
+  //     })
+  //     this.setState({
+  //       filterHotels:newHotels
+  //     })
+  //   }
+  //   else{
+  //     Object.keys(this.state.hotels).map(hotelKey=>{
+  //       let newRooms=[]
+  //       let aryRooms = this.state.hotels[hotelKey].rooms
+  //       aryRooms.map((room)=>{
+  //         if (room.idHotel === hotelKey) {
+  //           if (room.price >= object.min && room.price <= object.max) {
+  //             newRooms.push(room)
+  //           }
+  //         }
+  //       })
+  //       if (newRooms.length > 0) {
+  //         newHotels[hotelKey]=this.state.hotels[hotelKey]
+  //         newHotels[hotelKey]['rooms']=newRooms
+  //       }
+  //     })
+  //     this.setState({
+  //       filterHotels:newHotels,
+  //       filter:true
+  //     })
+  //   }
+  // }
 
   render() {
     let hotels = this.state.filter == false ? this.state.hotels : this.state.filterHotels
@@ -95,10 +101,10 @@ class MainHotels extends React.Component {
           <Div>
             <div>
               <MapView/>
-              <Filter starFilter={this.starFilter} priceFilter={this.priceFilter}/>
+              <Filter starFilterFunction={this.starFilter} priceFilterFunction={this.priceFilter} starFilter={this.state.star} priceFilter={this.state.price}/>
             </div>
             <DivHotels>
-              {Object.keys(hotels).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}
+              {Object.keys(hotels).filter(hotelKey=>hotels[hotelKey].rooms).map((item, i)=><Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={hotels[item]}/>)}
             </DivHotels>
           </Div>
         </Container>
