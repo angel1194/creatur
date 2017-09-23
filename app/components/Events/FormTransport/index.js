@@ -59,7 +59,7 @@ class FormTransport extends React.PureComponent {
               <label htmlFor='price-label' className='fecha'>Precio</label>
               <div className='price-transport'>
                 <span className="input-group-addon-standar"><i className='fa fa-money'></i></span>
-                <input type="text" min="0" value="$100.00" readOnly/>
+                <input type="text" min="0" value="$100.00 c/u" readOnly/>
               </div>
              </div>
              <div className="ticket">

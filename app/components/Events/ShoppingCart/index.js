@@ -48,7 +48,7 @@ class ShoppingCart extends React.Component {
               <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
             </ButtonEvent>
           </FlexStart>
-          {this.state.showEvent === false ? <FormEvent setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
+          {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
               <FormPayment total={car.total}/>

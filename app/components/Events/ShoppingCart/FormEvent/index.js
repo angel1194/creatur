@@ -55,6 +55,7 @@ class FormEvent extends React.Component{
 
     car['tickets'] = tickets
     this.props.setCar()
+    this.props.showEvent()
   }
 
   render(){
