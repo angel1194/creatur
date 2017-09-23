@@ -54,6 +54,7 @@ class ShoppingCart extends React.Component {
                                     checkin={this.state.checkin}
                                     checkout={this.state.checkout}
                                     count={count}
+                                    car={car}
                                   />
             )}
           </FlexRow>

@@ -12,6 +12,7 @@ class FormEvent extends React.Component{
     }
     this.request = this.request.bind(this)
     this.timer = this.timer.bind(this)
+    this.addTickets = this.addTickets.bind(this)
   }
 
   timer() {
@@ -20,26 +21,18 @@ class FormEvent extends React.Component{
     })
     if(this.state.seconds < 1) {
       this.setState({
-        minutes: 0
+        minutes: this.state.minutes - 1
       })
       this.setState({
         seconds: 60
       })
+    }else if (this.state.seconds === this.state.minutes) {
       clearInterval(this.intervalId);
     }
-    // else if ((this.state.seconds < 1) && (this.state.minutes < 1)) {
-    //   clearInterval(this.intervalId);
-    // }
-    
   }
   setTimer() {
     this.intervalId = setInterval(this.timer, 1000);
   }
-  // componentWillUnmount(){
-  //   clearInterval(this.intervalId);
-  // }
-
-
 
   request(event){
    event.preventDefault()
@@ -54,6 +47,14 @@ class FormEvent extends React.Component{
      section:seccion,
    })
    this.setTimer()
+  }
+
+  addTickets(){
+    const car = this.props.state.car
+    const tickets = this.state.tickets
+
+    car.items['tickets'] = tickets
+    console.log(car);
   }
 
   render(){
@@ -107,10 +108,10 @@ class FormEvent extends React.Component{
                   <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
                 </Row>
                 <p>Seccion {this.state.section}</p>
-                <P>Fila SS, Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
+                <P>Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
                 <Pay>
                   <Price>MXN ${options[this.state.section].price} c/u</Price>
-                  <Buy onClick={()=>console.log('comprar')}>comprar</Buy>
+                  <Buy onClick={this.addTickets}>comprar</Buy>
                 </Pay>
               </TBody>
             </Ticket>
