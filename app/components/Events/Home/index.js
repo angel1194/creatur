@@ -69,6 +69,7 @@ class Home extends React.Component {
       this.setState({
         tickets:snap.val()
       })
+      this.priceAndSections()
     })
   }
 
@@ -87,7 +88,6 @@ class Home extends React.Component {
   }
 
   setHotels(startDate,endDate,rooms){
-    this.priceAndSections()
     let totalNight = endDate.format('DD')-startDate.format('DD')
    // Convirtiendo las noches en objetos moment()
    let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))

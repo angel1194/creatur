@@ -13,6 +13,7 @@ class ShoppingCart extends React.Component {
 
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
+    this.setCar = this.setCar.bind(this)
   }
 
   showEvent(){
@@ -25,6 +26,11 @@ class ShoppingCart extends React.Component {
     this.setState({
       showEvent: false
     })
+  }
+
+  setCar(){
+    const {car} = this.state
+    this.setState(car)
   }
 
   render() {
@@ -42,7 +48,7 @@ class ShoppingCart extends React.Component {
               <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
             </ButtonEvent>
           </FlexStart>
-          {this.state.showEvent === false ? <FormEvent searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
+          {this.state.showEvent === false ? <FormEvent setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
               <FormPayment total={car.total}/>
