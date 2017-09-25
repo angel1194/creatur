@@ -53,8 +53,9 @@ class FormEvent extends React.Component{
     const car = this.props.state.car
     const tickets = this.state.tickets
 
-    car.items['tickets'] = tickets
-    console.log(car);
+    car['tickets'] = tickets
+    this.props.setCar(this.props.ticketOptions, this.state.section)
+    this.props.showEvent()
   }
 
   render(){

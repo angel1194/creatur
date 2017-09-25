@@ -4,6 +4,8 @@ import StarRating from '../../../ReserHotel/StarRating';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
 const NewSub=styled(SubText)`
+  display: flex;
+  flex-direction: row;
   font-size:12px;
 `;
 
@@ -17,7 +19,27 @@ const TextTotal= styled(Text)`
   font-size:16px;
 `;
 
+const P = styled.p`
+  margin-top: 3px !important;
+  color: #87b672;
+  margin-left: 3px;
+`;
+
+const Price = styled.p`
+  margin-top: 3px !important;
+  margin-left: 3px;
+  margin-right: 3px;
+`;
+
+const SubTextEvent = styled.label`
+  color:#848484;
+  display: flex;
+  flex-direction: row;
+`;
+
 function HotelSummary(props) {
+  let tickets = props.car.tickets
+
   return (
     <Container>
       <Header>
@@ -52,22 +74,24 @@ function HotelSummary(props) {
             <NewSub>Por noches de hospedaje</NewSub>
           </RowDiv>
           <SRowDiv>
-            <SubText>${props.elements.price} MXN</SubText>
+            <SubText>MXN ${props.elements.price}</SubText>
           </SRowDiv>
         </DivSubTotal>
-        {/* <DivSubTotal>
-          <EventManzanero>Ticket Manzanero</EventManzanero>
-          <RowDiv>
-            <NewSub>Seccion A Fila SS, Asientos 19-20</NewSub>
-          </RowDiv>
-          <SRowDiv>
-            <SubText>$350.56 c/u</SubText>
-          </SRowDiv>
-        </DivSubTotal> */}
+        {tickets ?
+          <DivSubTotal>
+            <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
+            <RowDiv>
+              <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
+            </RowDiv>
+            <SRowDiv>
+              <SubTextEvent>MXN ${Object.keys(tickets).map((item, i)=><Price key={i}>{tickets[item].price}</Price>)} c/u</SubTextEvent>
+            </SRowDiv>
+          </DivSubTotal>
+        : ''}
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${props.elements.price * props.count}</NH3>
+        <NH3>${props.elements.price * props.count + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
       </Footer>
     </Container>
