@@ -58,7 +58,7 @@ const Label= styled.label`
   font-family:Montserrat
   color:black
   font-size:12px
-  margin-top:-5px
+  margin-top:10px
 `;
 
 const Info = styled.div`

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import StarRating from '../../../ReserHotel/StarRating';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
 const NewSub=styled(SubText)`
@@ -37,41 +36,36 @@ const SubTextEvent = styled.label`
   flex-direction: row;
 `;
 
-function HotelSummary(props) {
+function TransportSummary(props) {
   let tickets = props.car.tickets
 
   return (
     <Container>
       <Header>
         <Title>
-          Resumen de la Reservación
+          Resumen del Transporte
         </Title>
         <Line/>
       </Header>
       <Body>
         <Img src="http://www.dbvanlocadora.com/imagens/sprinter.png"/>
         <ReserveInfo>
-          <Hotel>Tipo:</Hotel>
-          <StarRating NumStart={1}/>
-          <Label>nombre</Label>
+          <Hotel>Concierto Manzanero</Hotel>
+          <Label>Tipo de transporte: Van</Label>
         </ReserveInfo>
         <Info>
-          <Text>description</Text>
-          <Text>Estancia de 4 noches</Text>
+          <Text>Descripción</Text>
+          <Text>4 Asientos</Text>
         </Info>
         <CheckIn>
           <div>
-            <Text>Entrada:</Text>
-            <SubText>checkin</SubText>
-          </div>
-          <div>
             <Text>Salida:</Text>
-            <SubText>checkout</SubText>
+            <SubText>10:30 am</SubText>
           </div>
         </CheckIn>
         <DivSubTotal>
           <RowDiv>
-            <NewSub>Por noches de hospedaje</NewSub>
+            <NewSub>Por Asientos</NewSub>
           </RowDiv>
           <SRowDiv>
             <SubText>MXN $100</SubText>
@@ -98,8 +92,4 @@ function HotelSummary(props) {
   );
 }
 
-HotelSummary.propTypes = {
-
-};
-
-export default HotelSummary;
+export default TransportSummary;

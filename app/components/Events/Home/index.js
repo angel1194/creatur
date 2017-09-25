@@ -225,6 +225,10 @@ class Home extends React.Component {
     })
   }
 
+  // function goBack() {
+  //   window.history.back();
+  // }
+
   render() {
     return (
       <div>
