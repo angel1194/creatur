@@ -16,7 +16,6 @@ const ButtonIcon=styled(FontAwesome)`
 
 
 function RowAdmin (props)  {
-  console.log(props);
     return (
       <tbody>
         <tr>
