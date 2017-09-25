@@ -29,10 +29,11 @@ class ShoppingCart extends React.Component {
     })
   }
 
-  setCar(option, section){
+  setCar(option, section, tickets){
     const {car} = this.state
+    let ticket = Object.keys(tickets)
     let price = option[section].price
-    let total = car.total + price
+    let total = car.total + (price * ticket.length)
     car['total'] = total
     this.setState(car)
     this.setState({
