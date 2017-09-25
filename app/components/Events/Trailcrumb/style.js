@@ -23,6 +23,11 @@ const Li = styled.li`
   color : #2b5bac;;
   font-family: Roboto;
   cursor: pointer;
+`;
+
+const SubMenu = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
-export {Ul, Li, Div}
+export {Ul, Li, Div, SubMenu}

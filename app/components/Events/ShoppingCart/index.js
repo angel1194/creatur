@@ -4,6 +4,7 @@ import Icon from 'react-fontawesome';
 import FormPayment from '../FormPayment';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import HotelSummary from './HotelSummary';
+import TransportSummary from './TransportSummary';
 import FormEvent from './FormEvent'
 
 class ShoppingCart extends React.Component {
@@ -43,6 +44,7 @@ class ShoppingCart extends React.Component {
     let checkin = parseInt(this.state.checkin)
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
+    let ubicacion = this.props.ubicacion
 
     return (
       <div>
@@ -57,18 +59,27 @@ class ShoppingCart extends React.Component {
             <DivPay>
               <FormPayment total={car.total}/>
             </DivPay>
-            {cart.map((item, i)=><HotelSummary
-                                    key={i}
-                                    elements={car.items[item]}
-                                    item={this.state.hotels}
-                                    checkin={this.state.checkin}
-                                    checkout={this.state.checkout}
-                                    count={count}
-                                    car={car}
-                                    option={this.state.option}
-                                    section={this.state.section}
-                                  />
-            )}
+            {ubicacion === 'transport' ?
+            <TransportSummary
+              car={car}
+              option={this.state.option}
+              section={this.state.section}
+            />
+          :
+            cart.map((item, i)=>
+              <HotelSummary
+                key={i}
+                elements={car.items[item]}
+                item={this.state.hotels}
+                checkin={this.state.checkin}
+                checkout={this.state.checkout}
+                count={count}
+                car={car}
+                option={this.state.option}
+                section={this.state.section}
+              />
+            )
+          }
           </FlexRow>
         </Container>
       </div>

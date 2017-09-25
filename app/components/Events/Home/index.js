@@ -189,9 +189,10 @@ class Home extends React.Component {
   }
 
   addTransport(){
-    this.location(<ShoppingCart priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    const state = this.state.transport
-    console.log('State transport',state);
+    const {transport, car, ubicacion} = this.state
+    this.location(<ShoppingCart ubicacion={ubicacion} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    car['transport'] = transport
+    console.log(car);
   }
 
   searchTicket(section,quantity){

@@ -89,7 +89,7 @@ class FormPayment extends React.Component {
       'amount': this.props.total,
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
-      'order_id': 'CMV-',
+      'order_id': 'CMV-Test1',
       'device_session_id' : state.deviceSessionId,
       'customer': {
         'name': token.holder_name,
