@@ -91,7 +91,7 @@ function HotelSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${props.elements.price * props.count + (tickets ? 200 * Object.keys(tickets).length : 0)}</NH3>
+        <NH3>${props.elements.price * props.count + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
       </Footer>
     </Container>

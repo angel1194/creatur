@@ -9,7 +9,7 @@ import FormEvent from './FormEvent'
 class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.carState, {showEvent: false}
+    this.state = this.props.carState, {showEvent: false, option: '', section: ''}
 
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
@@ -28,9 +28,13 @@ class ShoppingCart extends React.Component {
     })
   }
 
-  setCar(){
+  setCar(option, section){
     const {car} = this.state
     this.setState(car)
+    this.setState({
+      option:option,
+      section:section
+    })
   }
 
   render() {
@@ -61,6 +65,8 @@ class ShoppingCart extends React.Component {
                                     checkout={this.state.checkout}
                                     count={count}
                                     car={car}
+                                    option={this.state.option}
+                                    section={this.state.section}
                                   />
             )}
           </FlexRow>
