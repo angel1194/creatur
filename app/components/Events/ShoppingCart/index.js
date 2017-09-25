@@ -42,11 +42,6 @@ class ShoppingCart extends React.Component {
     })
   }
 
-  // addPriceTicke(){
-  //   const {option, section} = this.state
-  //
-  // }
-
   render() {
     let car = this.props.car
     let cart = Object.keys(car.items)
@@ -54,7 +49,6 @@ class ShoppingCart extends React.Component {
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
     let ubicacion = this.props.ubicacion
-    console.log(this.state);
 
     return (
       <div>
