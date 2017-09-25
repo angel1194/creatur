@@ -16,7 +16,7 @@ class Trailcrumb extends React.Component {
           <Li onClick={()=> this.props.location(<MainEvents addTransport={this.props.addTransport} changesLocation={this.props.changesLocation} setHotels={this.props.setHotels} location={()=>this.props.location(<MainHotels location={this.props.location}/>, 2)}/>, 1)}>
             Inicio
           </Li>
-          {this.props.nameContainer >= 5 ?
+          {this.props.nameContainer === 5 ?
             <Li>
               <FontAwesome name='angle-double-right'></FontAwesome> Mi Transporte
             </Li>
@@ -36,6 +36,7 @@ class Trailcrumb extends React.Component {
               <FontAwesome name='angle-double-right'></FontAwesome> Mi Reserva
             </Li>
           : ''}
+
         </Ul>
 
       </Div>

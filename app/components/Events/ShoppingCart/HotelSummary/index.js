@@ -84,7 +84,7 @@ function HotelSummary(props) {
               <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
             </RowDiv>
             <SRowDiv>
-              <SubTextEvent>MXN ${Object.keys(tickets).map((item, i)=><Price key={i}>{tickets[item].price}</Price>)} c/u</SubTextEvent>
+              <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
             </SRowDiv>
           </DivSubTotal>
         : ''}

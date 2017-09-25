@@ -21,6 +21,7 @@ class FormTransport extends React.PureComponent {
     let tickets = this.refs.tickets.value
 
     console.log(tickets);
+    this.props.addTransport()
   }
 
   render() {
