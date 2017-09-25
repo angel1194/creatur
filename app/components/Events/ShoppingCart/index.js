@@ -4,6 +4,7 @@ import Icon from 'react-fontawesome';
 import FormPayment from '../FormPayment';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import HotelSummary from './HotelSummary';
+import TransportSummary from './TransportSummary';
 import FormEvent from './FormEvent'
 
 class ShoppingCart extends React.Component {
@@ -30,6 +31,9 @@ class ShoppingCart extends React.Component {
 
   setCar(option, section){
     const {car} = this.state
+    let price = option[section].price
+    let total = car.total + price
+    car['total'] = total
     this.setState(car)
     this.setState({
       option:option,
@@ -37,12 +41,19 @@ class ShoppingCart extends React.Component {
     })
   }
 
+  // addPriceTicke(){
+  //   const {option, section} = this.state
+  //
+  // }
+
   render() {
     let car = this.props.car
     let cart = Object.keys(car.items)
     let checkin = parseInt(this.state.checkin)
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
+    let ubicacion = this.props.ubicacion
+    console.log(this.state);
 
     return (
       <div>
@@ -55,20 +66,29 @@ class ShoppingCart extends React.Component {
           {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
-              <FormPayment total={car.total}/>
+              <FormPayment total={car.total} order_id={car.id}/>
             </DivPay>
-            {cart.map((item, i)=><HotelSummary
-                                    key={i}
-                                    elements={car.items[item]}
-                                    item={this.state.hotels}
-                                    checkin={this.state.checkin}
-                                    checkout={this.state.checkout}
-                                    count={count}
-                                    car={car}
-                                    option={this.state.option}
-                                    section={this.state.section}
-                                  />
-            )}
+            {ubicacion === 'transport' ?
+            <TransportSummary
+              car={car}
+              option={this.state.option}
+              section={this.state.section}
+            />
+          :
+            cart.map((item, i)=>
+              <HotelSummary
+                key={i}
+                elements={car.items[item]}
+                item={this.state.hotels}
+                checkin={this.state.checkin}
+                checkout={this.state.checkout}
+                count={count}
+                car={car}
+                option={this.state.option}
+                section={this.state.section}
+              />
+            )
+          }
           </FlexRow>
         </Container>
       </div>

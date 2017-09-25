@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import StarRating from '../../../ReserHotel/StarRating';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
 const NewSub=styled(SubText)`
@@ -37,44 +36,39 @@ const SubTextEvent = styled.label`
   flex-direction: row;
 `;
 
-function HotelSummary(props) {
+function TransportSummary(props) {
   let tickets = props.car.tickets
 
   return (
     <Container>
       <Header>
         <Title>
-          Resumen de la Reservación
+          Resumen del Transporte
         </Title>
         <Line/>
       </Header>
       <Body>
-        <Img src={props.item[props.elements.idHotel].image}/>
+        <Img src="http://www.dbvanlocadora.com/imagens/sprinter.png"/>
         <ReserveInfo>
-          <Hotel>{props.item[props.elements.idHotel].name}</Hotel>
-          <StarRating NumStart={Number(props.item[props.elements.idHotel].star)}/>
-          <Label>{props.item[props.elements.idHotel].address}</Label>
+          <Hotel>Concierto Manzanero</Hotel>
+          <Label>Tipo de transporte: Van</Label>
         </ReserveInfo>
         <Info>
-          <Text>{props.elements.description}</Text>
-          <Text>Estancia de {props.count} noches</Text>
+          <Text>Descripción</Text>
+          <Text>4 Asientos</Text>
         </Info>
         <CheckIn>
           <div>
-            <Text>Entrada:</Text>
-            <SubText>{props.checkin}</SubText>
-          </div>
-          <div>
             <Text>Salida:</Text>
-            <SubText>{props.checkout}</SubText>
+            <SubText>10:30 am</SubText>
           </div>
         </CheckIn>
         <DivSubTotal>
           <RowDiv>
-            <NewSub>Por noches de hospedaje</NewSub>
+            <NewSub>Por Asientos</NewSub>
           </RowDiv>
           <SRowDiv>
-            <SubText>MXN ${props.elements.price}</SubText>
+            <SubText>MXN $100</SubText>
           </SRowDiv>
         </DivSubTotal>
         {tickets ?
@@ -91,15 +85,11 @@ function HotelSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${props.elements.price * props.count + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
+        <NH3>${100 + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
       </Footer>
     </Container>
   );
 }
 
-HotelSummary.propTypes = {
-
-};
-
-export default HotelSummary;
+export default TransportSummary;
