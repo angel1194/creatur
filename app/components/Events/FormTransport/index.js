@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ButtonFormSearch from '../ButtonFormSearch';
 
-class FormTransport extends React.PureComponent {
+class FormTransport extends React.Component {
   constructor(props){
     super(props);
       this.state = {
@@ -17,11 +17,8 @@ class FormTransport extends React.PureComponent {
 
   request(event){
     event.preventDefault()
-
-    let tickets = this.refs.tickets.value
-
-    console.log(tickets);
-    this.props.addTransport()
+    let seat = this.refs.seat.value
+    this.props.addTransport(seat)
   }
 
   render() {
@@ -67,7 +64,7 @@ class FormTransport extends React.PureComponent {
               <label htmlFor='boletos' className='fecha'>Asientos</label>
               <div className='selectFormSearchTransport'>
                 <span className="input-group-addon-standar"><i className='fa fa-ticket'></i></span>
-                <input type="number" min="0" placeholder="0" ref='tickets'/>
+                <input type="number" min="0" placeholder="0" ref='seat'/>
               </div>
              </div>
              <Grid.Row centered className='divButtonCar'>
