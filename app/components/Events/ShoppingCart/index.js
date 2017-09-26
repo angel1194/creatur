@@ -73,6 +73,8 @@ class ShoppingCart extends React.Component {
               car={car}
               option={this.state.option}
               section={this.state.section}
+              carObject={this.props.carObject}
+              seating={this.props.seating}
             />
           :
             cart.map((item, i)=>

@@ -64,7 +64,9 @@ const Label= styled.label`
 const Info = styled.div`
   width:100%;
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 `;
 
 const Text = styled.label`

@@ -38,6 +38,7 @@ const SubTextEvent = styled.label`
 
 function TransportSummary(props) {
   let tickets = props.car.tickets
+  let carObject = props.carObject
 
   return (
     <Container>
@@ -48,19 +49,25 @@ function TransportSummary(props) {
         <Line/>
       </Header>
       <Body>
-        <Img src="http://www.dbvanlocadora.com/imagens/sprinter.png"/>
-        <ReserveInfo>
-          <Hotel>Concierto Manzanero</Hotel>
-          <Label>Tipo de transporte: Van</Label>
-        </ReserveInfo>
-        <Info>
-          <Text>Descripción</Text>
-          <Text>4 Asientos</Text>
-        </Info>
+        <Hotel>Concierto Manzanero</Hotel>
+        {Object.keys(carObject).map((item,i)=>
+          <div key={i}>
+            <Img src={carObject[item].image}/>
+            <ReserveInfo>
+              <Label>Tipo de transporte: {carObject[item].type}</Label>
+            </ReserveInfo>
+            <Info>
+              <Text>Descripción</Text>
+              <Text>{carObject[item].taken} Asientos</Text>
+            </Info>
+          </div>
+        )}
         <CheckIn>
           <div>
             <Text>Salida:</Text>
-            <SubText>10:30 am</SubText>
+            <SubText>10:30 am</SubText><br/>
+            <Text>Total de Asientos:</Text>
+            <SubText>{props.seating}</SubText>
           </div>
         </CheckIn>
         <DivSubTotal>
@@ -85,7 +92,7 @@ function TransportSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${100 * 4 + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
+        <NH3>${100 * props.seating + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
       </Footer>
     </Container>

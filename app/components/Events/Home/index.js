@@ -10,7 +10,6 @@ import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase'
-// import styled from 'styled-components';
 
 class Home extends React.Component {
   constructor(props){
@@ -196,7 +195,7 @@ class Home extends React.Component {
     for (var i = 0; i < transports.length; i++) {
       if ((transport[transports[i]].seating - transport[transports[i]].used) > 0) {
         let avail = parseInt(transport[transports[i]].used) + parseInt(data)
-        if (avail < transport[transports[i]].seating) {
+        if (avail <= transport[transports[i]].seating) {
           remaining = parseInt(data) - parseInt(taken)
           carObject[transports[i]]=transport[transports[i]]
           carObject[transports[i]]['taken']=remaining
@@ -209,8 +208,9 @@ class Home extends React.Component {
         }
       }
     }
-    this.location(<ShoppingCart ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    this.location(<ShoppingCart carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
     car['transport'] = carObject
+    console.log('este es carObject',carObject);
   }
 
   searchTicket(section,quantity){
