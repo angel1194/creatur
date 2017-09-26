@@ -75,6 +75,7 @@ class ShoppingCart extends React.Component {
               section={this.state.section}
               carObject={this.props.carObject}
               seating={this.props.seating}
+              price={this.props.price}
             />
           :
             cart.map((item, i)=>

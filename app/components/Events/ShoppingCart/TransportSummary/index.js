@@ -75,7 +75,7 @@ function TransportSummary(props) {
             <NewSub>Por Asientos</NewSub>
           </RowDiv>
           <SRowDiv>
-            <SubText>MXN ${100}</SubText>
+            <SubText>MXN ${props.price}</SubText>
           </SRowDiv>
         </DivSubTotal>
         {tickets ?
