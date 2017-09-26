@@ -191,22 +191,26 @@ class Home extends React.Component {
     const {transport, car, ubicacion} = this.state
     let carObject={}
     let transports=Object.keys(transport)
+    let remaining;
+    let taken =0;
     for (var i = 0; i < transports.length; i++) {
-      let avail = parseInt(transport[transports[i]].used) + parseInt(data)
-      if (avail <= transport[transports[i]].seating) {
-        carObject[transports[i]]=transport[transports[i]]
-        carObject[transports[i]]['taken']=avail
-        break;
-      }
-      else {
-        let remaining = avail - parseInt(transport[transports[i]].seating)
-        carObject[transports[i]]=transport[transports[i]]
+      if ((transport[transports[i]].seating - transport[transports[i]].used) > 0) {
+        let avail = parseInt(transport[transports[i]].used) + parseInt(data)
+        if (avail < transport[transports[i]].seating) {
+          remaining = parseInt(data) - parseInt(taken)
+          carObject[transports[i]]=transport[transports[i]]
+          carObject[transports[i]]['taken']=remaining
+          break;
+        }
+        else {
+          taken = parseInt(transport[transports[i]].seating) - parseInt(transport[transports[i]].used)
+          carObject[transports[i]]=transport[transports[i]]
+          carObject[transports[i]]['taken']=taken
+        }
       }
     }
-
-    console.log(carObject);
-    // this.location(<ShoppingCart ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    // car['transport'] = transport
+    this.location(<ShoppingCart ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    car['transport'] = carObject
   }
 
   searchTicket(section,quantity){
