@@ -47,7 +47,7 @@ const ReserveInfo= styled.div`
 `;
 
 const Hotel = styled(H3)`
-  margin-bottom:-5px
+  margin-bottom: 5px;
 `;
 
 const EventManzanero = styled(H3)`
