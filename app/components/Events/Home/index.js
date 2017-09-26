@@ -16,7 +16,7 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents addTransport={()=>this.addTransport()} changesLocation={(e)=>this.changesLocation(e)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
+      container:<MainEvents addTransport={(ticket)=>this.addTransport(ticket)} changesLocation={(e)=>this.changesLocation(e)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
       available:{},
       car:{
@@ -184,15 +184,33 @@ class Home extends React.Component {
     this.location(<Rooms stateAll={this.state} addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
     const {comparation} = this.state
     comparation['hotel'] = item
-
     this.setState({comparation})
   }
 
-  addTransport(){
+  addTransport(data){
     const {transport, car, ubicacion} = this.state
-    this.location(<ShoppingCart ubicacion={ubicacion} ticketOptions={this.state.ticketOptions} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    car['transport'] = transport
-    console.log(car);
+    let carObject={}
+    let transports=Object.keys(transport)
+    let remaining;
+    let taken =0;
+    for (var i = 0; i < transports.length; i++) {
+      if ((transport[transports[i]].seating - transport[transports[i]].used) > 0) {
+        let avail = parseInt(transport[transports[i]].used) + parseInt(data)
+        if (avail < transport[transports[i]].seating) {
+          remaining = parseInt(data) - parseInt(taken)
+          carObject[transports[i]]=transport[transports[i]]
+          carObject[transports[i]]['taken']=remaining
+          break;
+        }
+        else {
+          taken = parseInt(transport[transports[i]].seating) - parseInt(transport[transports[i]].used)
+          carObject[transports[i]]=transport[transports[i]]
+          carObject[transports[i]]['taken']=taken
+        }
+      }
+    }
+    this.location(<ShoppingCart ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    car['transport'] = carObject
   }
 
   searchTicket(section,quantity){

@@ -49,7 +49,6 @@ class ShoppingCart extends React.Component {
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
     let ubicacion = this.props.ubicacion
-
     return (
       <div>
         <Container>

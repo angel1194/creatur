@@ -93,33 +93,6 @@ update(key,dataHotel){
 
 }
 
-/// Antes de estar en la forma actual, agregaba todas las habitaciones en todas las noches
-// let hotel={}
-// let nightKey;
-// let roomKey;
-// let aryRooms = []
-// Object.keys(this.props.Rooms).map( (roomsByNight)=>{
-//   nightKey=roomsByNight
-//   Object.keys(this.props.Rooms[roomsByNight]).map( (room)=>{
-//   roomKey=room
-//     if (data == this.props.Rooms[roomsByNight][room].idHotel) {
-//       aryRooms.push(this.props.Rooms[roomsByNight][room])
-//     }
-//   })
-// })
-// hotel[data]=aryRooms
-// return(
-//   <RowAdmin
-//   key={i}
-//   keyHotel={data}
-//   keyNight={nightKey}
-//   keyRoom={roomKey}
-//   Hotel={this.props.Hotels[data]}
-//   Rooms={hotel}
-//   delete={this.delete}
-//   update={this.update}
-//   />
-// )
   render(){
     return (
       <div>
@@ -159,16 +132,13 @@ update(key,dataHotel){
             {Object.keys(this.props.Hotels).map((hotelKey,i) => {
               //Mapeando los hoteles
               let hotel={}
-              // hotel[hotelKey]={}
               //Mapeando las noches
               Object.keys(this.props.Rooms).map((nights)=>{
-                // hotel[hotelKey][nights]={}
                 //Mapeando las habitaciones
                 Object.keys(this.props.Rooms[nights]).map((room)=>{
                   if(hotelKey== this.props.Rooms[nights][room].idHotel){
                     hotel[room]=this.props.Rooms[nights][room]
                     hotel[room]['night']=nights
-                    // hotel[hotelKey][nights][room]=this.props.Rooms[nights][room]
                   }
                 })
               })

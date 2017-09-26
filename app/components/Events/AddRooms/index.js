@@ -5,6 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import { inputStyle, inputOccupancy, TextArea} from './styles'
 import moment from 'moment';
 import firebase from '../../../containers/Events/Firebase';
+import ReactConfirmAlert , { confirmAlert }from 'react-confirm-alert';
 
 const Body =styled(Modal)`
   .modal-content{
@@ -15,6 +16,9 @@ const Body =styled(Modal)`
 const Container = styled.div`
   .modal-dialog{
     width: 85%;
+  }
+  .modal-backdrop{
+    z-index:10 !important
   }
 `;
 
@@ -92,19 +96,33 @@ class AddRooms extends React.Component{
   addRoom(event){
     event.preventDefault()
 
-    let roomKey = this.refs.roomKey.value
-    // agregando la ultima hora del dia a la fecha seleccionada
-    let nightHour = String(this.refs.night.value) + ' 23:59:59'
-    let night = moment(nightHour).format('X')
 
-    // guardando los valores en variables con ref
+    let roomKey = this.refs.roomKey.value
+    let nightKey = this.refs.nightKey.value
     let addRoom = this.refs.addRoom.value
+    let keyHotel = this.props.hotelKey
     let type = this.refs.type.value
     let image = this.refs.image.value
     let price = this.refs.price.value
     let occupancy = this.refs.occupancy.value
     let description = this.refs.description.value
-    let keyHotel = this.props.keyHotel
+
+    if (roomKey != '' &&  nightKey != '') {
+      let room={
+        description:description,
+        idHotel:keyHotel,
+        image:image,
+        occupancy:occupancy,
+        price:price,
+        type:type
+      }
+      firebase.database().ref().child('nightsHotels').child(nightKey).child(roomKey).set(room)
+    }else{
+      // agregando la ultima hora del dia a la fecha seleccionada
+      let nightHour = String(this.refs.night.value) + ' 23:59:59'
+      let night = moment(nightHour).format('X')
+
+      // guardando los valores en variables con ref
 
       // Creando el objeto que se guardara en firebase
       for (var i = 1; i <= addRoom; i++) {
@@ -121,10 +139,39 @@ class AddRooms extends React.Component{
         }
         firebase.database().ref().child('nightsHotels').child(night).child(keyRoom).set(room)
       }
+    }
+
+    this.refs.roomKey.value = ''
+    this.refs.type.value = ''
+    this.refs.image.value = ''
+    this.refs.price.value =''
+    this.refs.occupancy.value = ''
+    this.refs.description.value = ''
+    this.refs.addRoom.value = 1
   }
 
-  updateRoom(keyNight, keyRoom, object){
-    console.log('ejecutando');
+  updateRoom(roomKey,room){
+    this.refs.nightKey.value = room.night
+    this.refs.roomKey.value = roomKey
+
+    this.refs.type.value = room.type
+    this.refs.image.value = room.image
+    this.refs.price.value = room.price
+    this.refs.occupancy.value = room.occupancy
+    this.refs.description.value = room.description
+
+  }
+
+  deleteRoom(roomKey,object){
+    let roomRef = firebase.database().ref().child('nightsHotels')
+    confirmAlert({
+      title: 'Confirmación',
+      message: '¿Estás seguro de eliminar la habitacion?',
+      confirmLabel: 'Confirmar',
+      cancelLabel: 'Cancelar',
+      onConfirm: () => roomRef.child(object.night).child(roomKey).remove(),
+      onCancel: () => '',
+    })
   }
 
   openModal(){
@@ -139,29 +186,6 @@ class AddRooms extends React.Component{
     });
   };
 
-  // Object.keys(this.props.rooms).map((night,i)=>{
-  //   console.log(this.props.rooms[night]);
-
-    // Object.keys(this.props.rooms[night]).map((room,i)=>
-    //   {
-    //     return(
-    //       <h1 key={i}>{this.props.rooms[night][room].price}</h1>
-    //     )
-    //   }
-        //
-        //   <tr>
-        //     <td><img src={this.props.rooms[this.props.hotelKey][night][room].image} alt='Habitacion' width='100'/></td>
-        //     <td>{this.props.rooms[this.props.hotelKey][night][room].description}</td>
-        //     <td>{this.props.rooms[this.props.hotelKey][night][room].price}</td>
-        //     <td>{this.props.rooms[this.props.hotelKey][night][room].occupancy}</td>
-        //     <td>{this.props.rooms[this.props.hotelKey][night][room].type}</td>
-        //     <td><ButtonIcon onClick={()=>this.updateRoom()} name='pencil-square'/></td>
-        //     <td><ButtonIcon onClick={()=>props.deleteRoom()} name='trash'/></td>
-        //   </tr>
-        //
-      // )
-  // })
-
   render(){
     return(
       <div>
@@ -173,7 +197,8 @@ class AddRooms extends React.Component{
           <ModalBody>
             <Title>{'Agregar habitacion a ' + this.props.hotelName}</Title>
             <RoomForm onSubmit={(e) => this.addRoom(e)}>
-              <input type='text' ref='roomKey' hidden/>
+              <input type='text' ref='roomKey' hidden />
+              <input type='text' ref='nightKey' hidden />
               <InputContainer>
                 <label>Dia disponible:</label>
                 <input name='night' id='night' ref='night' type='date' style={inputStyle}  />
@@ -234,6 +259,21 @@ class AddRooms extends React.Component{
             </Container>
             <table>
               <tbody>
+                {
+                  Object.keys(this.props.rooms).map((roomKey,i)=>{
+                    return(
+                      <tr key={i}>
+                        <td><img src={this.props.rooms[roomKey].image} alt='Habitacion' width='100'/></td>
+                        <td>{this.props.rooms[roomKey].description}</td>
+                        <td>{this.props.rooms[roomKey].price}</td>
+                        <td>{this.props.rooms[roomKey].occupancy}</td>
+                        <td>{this.props.rooms[roomKey].type}</td>
+                        <td><ButtonIcon onClick={()=>this.updateRoom(roomKey,this.props.rooms[roomKey])} name='pencil-square'/></td>
+                        <td><ButtonIcon onClick={()=>this.deleteRoom(roomKey,this.props.rooms[roomKey])} name='trash'/></td>
+                      </tr>
+                  )
+                })
+                }
               </tbody>
           </table>
           </ModalBody>

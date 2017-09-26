@@ -52,7 +52,8 @@ class AddTransport extends Component{
         image:Image,
         price:Price,
         seating:Seating,
-        type:Type
+        type:Type,
+        used:0
      }
      firebase.database().ref().child('transport').child(key).set(transport)
 
