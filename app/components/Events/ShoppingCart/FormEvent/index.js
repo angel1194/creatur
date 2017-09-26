@@ -1,5 +1,5 @@
 import React from 'react';
-import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price} from './style';
+import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating} from './style';
 
 class FormEvent extends React.Component{
   constructor(props){
@@ -109,7 +109,10 @@ class FormEvent extends React.Component{
                   <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
                 </Row>
                 <p>Seccion {this.state.section}</p>
-                <P>Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
+                <Seating>
+                  <P>Asientos:</P>
+                  {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
+                </Seating>
                 <Pay>
                   <Price>MXN ${options[this.state.section].price} c/u</Price>
                   <Buy onClick={this.addTickets}>comprar</Buy>

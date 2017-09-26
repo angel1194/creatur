@@ -6,6 +6,7 @@ import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, But
 import HotelSummary from './HotelSummary';
 import TransportSummary from './TransportSummary';
 import FormEvent from './FormEvent'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class ShoppingCart extends React.Component {
   constructor(props){
@@ -54,9 +55,15 @@ class ShoppingCart extends React.Component {
       <div>
         <Container>
           <FlexStart>
-            <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
-              <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
-            </ButtonEvent>
+            {this.props.ticketOptions === undefined ?
+              <ButtonEvent>
+                <Title>¡Tickets "Concierto Manzanero" Agotados!</Title>
+              </ButtonEvent>
+            :
+              <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
+                <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
+              </ButtonEvent>
+            }
           </FlexStart>
           {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>

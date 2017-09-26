@@ -190,7 +190,15 @@ class Home extends React.Component {
 
   addTransport(){
     const {transport, car, ubicacion} = this.state
-    this.location(<ShoppingCart ubicacion={ubicacion} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    this.location(<ShoppingCart
+                    ubicacion={ubicacion}
+                    ticketOptions={this.state.ticketOptions}
+                    priceAndSections={this.priceAndSections}
+                    searchTicket={this.searchTicket}
+                    ticketOptions={this.state.ticketOptions}
+                    car={this.state.car}
+                    carState={this.state}
+                  />, 5)
     car['transport'] = transport
     console.log(car);
   }
