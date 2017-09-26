@@ -2,11 +2,10 @@ import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import Icon from 'react-fontawesome';
 import FormPayment from '../FormPayment';
-import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import HotelSummary from './HotelSummary';
 import TransportSummary from './TransportSummary';
-import FormEvent from './FormEvent'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import FormEvent from './FormEvent';
+import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 
 class ShoppingCart extends React.Component {
   constructor(props){
@@ -57,7 +56,7 @@ class ShoppingCart extends React.Component {
           <FlexStart>
             {this.props.ticketOptions === undefined ?
               <ButtonEvent>
-                <Title>¡Tickets "Concierto Manzanero" Agotados!</Title>
+                <Title> ¡Tickets "Concierto Manzanero" Agotados!</Title>
               </ButtonEvent>
             :
               <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>

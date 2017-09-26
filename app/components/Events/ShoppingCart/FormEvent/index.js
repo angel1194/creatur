@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from '../../../../containers/Events/Firebase'
 import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating} from './style';
 
 class FormEvent extends React.Component{
@@ -16,19 +17,22 @@ class FormEvent extends React.Component{
   }
 
   timer() {
+    const {minutes, seconds} = this.state
+
     this.setState({
-      seconds: this.state.seconds - 1
+      seconds: seconds - 1
     })
-    if(this.state.seconds < 1) {
+    if(seconds < 1) {
       this.setState({
-        minutes: this.state.minutes - 1
+        minutes: minutes - 1
       })
       this.setState({
         seconds: 60
       })
-    }else if (this.state.seconds === this.state.minutes) {
-      clearInterval(this.intervalId);
     }
+    // else if (seconds === 0) {
+    //   clearInterval(this.intervalId);
+    // }
   }
   setTimer() {
     this.intervalId = setInterval(this.timer, 1000);
