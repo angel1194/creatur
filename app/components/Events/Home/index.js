@@ -16,7 +16,7 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      container:<MainEvents addTransport={()=>this.addTransport()} changesLocation={(e)=>this.changesLocation(e)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
+      container:<MainEvents addTransport={(ticket)=>this.addTransport(ticket)} changesLocation={(e)=>this.changesLocation(e)} setHotels={this.setHotels.bind(this)} location={()=>this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} location={this.location}/>, 2)}/>,
       location: 1,
       available:{},
       car:{
@@ -184,15 +184,29 @@ class Home extends React.Component {
     this.location(<Rooms stateAll={this.state} addRooms={this.addRooms} comparation={this.state.comparation}/>, 3)
     const {comparation} = this.state
     comparation['hotel'] = item
-
     this.setState({comparation})
   }
 
-  addTransport(){
+  addTransport(data){
     const {transport, car, ubicacion} = this.state
-    this.location(<ShoppingCart ubicacion={ubicacion} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    car['transport'] = transport
-    console.log(car);
+    let carObject={}
+    let transports=Object.keys(transport)
+    for (var i = 0; i < transports.length; i++) {
+      let avail = parseInt(transport[transports[i]].used) + parseInt(data)
+      if (avail <= transport[transports[i]].seating) {
+        carObject[transports[i]]=transport[transports[i]]
+        carObject[transports[i]]['taken']=avail
+        break;
+      }
+      else {
+        let remaining = avail - parseInt(transport[transports[i]].seating)
+        carObject[transports[i]]=transport[transports[i]]
+      }
+    }
+
+    console.log(carObject);
+    // this.location(<ShoppingCart ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    // car['transport'] = transport
   }
 
   searchTicket(section,quantity){

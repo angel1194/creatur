@@ -21,7 +21,7 @@ export function setHotels(){
 
 export function setTransport() {
   let transportRef = rootRef.child('transport')
-  return transportRef.once('value',snap => {
+  return transportRef.orderByKey().once('value',snap => {
     return snap.val()
   })
 }
