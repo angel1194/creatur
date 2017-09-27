@@ -20,7 +20,7 @@ class FormHotel extends React.Component {
       endDate:moment(new Date('10-11-2017')),
       roomsUI:{
         room0:{
-          adult:0,
+          adult:1,
           baby:0,
           child:{}
         }
@@ -50,6 +50,7 @@ class FormHotel extends React.Component {
   inputValueChange(father,input){
     let name = input.target.name
     let value= input.target.value
+    console.log(value);
     const rooms = this.state.roomsUI
     rooms[father][name]=value
     this.setState({
@@ -59,7 +60,7 @@ class FormHotel extends React.Component {
 
   addRooms(){
     const rooms =this.state.roomsUI
-    rooms[Date.now()] = {adult:0, baby:0,child:{}}
+    rooms[Date.now()] = {adult:1, baby:0,child:{}}
     this.setState({
       roomsUI:rooms
     })
