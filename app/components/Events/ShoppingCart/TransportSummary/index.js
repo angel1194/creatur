@@ -92,7 +92,7 @@ function TransportSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${100 * props.seating + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
+        <NH3>${props.price * props.seating + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
       </Footer>
     </Container>

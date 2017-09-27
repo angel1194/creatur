@@ -110,6 +110,7 @@ class FormPayment extends React.Component {
       console.log(recurso);
     })
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+    firebase.database().ref().child('transport').set()
     console.log(request);
   }
 

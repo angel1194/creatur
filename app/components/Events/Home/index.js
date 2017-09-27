@@ -221,6 +221,7 @@ class Home extends React.Component {
     let totalCar = data * transport[transports[0]].price
     car['total'] = totalCar
     this.setState(car)
+    console.log(transport[transports[1]]);
   }
 
   searchTicket(section,quantity){
