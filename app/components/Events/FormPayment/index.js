@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 import {Container, Message, TextM, InputContainer,styles} from './style';
+import firebase from '../../../containers/Events/Firebase';
 
 const Icon = styled(FontAwesome) `
   margin-left:20px;
@@ -89,7 +90,7 @@ class FormPayment extends React.Component {
       'amount': this.props.total,
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
-      'order_id': 'CMV-'+this.props.order_id,
+      'order_id': 'CMV-'+(this.props.idSales + 1),
       'device_session_id' : state.deviceSessionId,
       'customer': {
         'name': token.holder_name,
@@ -108,6 +109,7 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
+    firebase.database().ref().child('idSales').set(this.props.idSales + 1)
     console.log(request);
   }
 

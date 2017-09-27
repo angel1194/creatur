@@ -49,6 +49,7 @@ class ShoppingCart extends React.Component {
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
     let ubicacion = this.props.ubicacion
+
     return (
       <div>
         <Container>
@@ -66,7 +67,7 @@ class ShoppingCart extends React.Component {
           {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
-              <FormPayment total={car.total} order_id={car.id}/>
+              <FormPayment idSales={this.props.idSales} total={car.total} order_id={car.id}/>
             </DivPay>
             {ubicacion === 'transport' ?
             <TransportSummary

@@ -53,6 +53,13 @@ class Home extends React.Component {
        hotels:res.val()
      })
    )
+
+   let idSales = firebase.database().ref().child('idSales')
+   idSales.on('value', snap => {
+     this.setState({
+       idSales:snap.val()
+     })
+   })
   }
 
   componentDidMount(){
@@ -161,7 +168,7 @@ class Home extends React.Component {
   }
 
   addRooms(rooms){
-    this.location(<ShoppingCart priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
+    this.location(<ShoppingCart idSales={this.state.idSales} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state.items['room'] = rooms
 
@@ -187,7 +194,7 @@ class Home extends React.Component {
   }
 
   addTransport(data){
-    const {transport, car, ubicacion} = this.state
+    const {transport, car, ubicacion, idSales} = this.state
     let carObject={}
     let transports=Object.keys(transport)
     let remaining;
@@ -208,14 +215,12 @@ class Home extends React.Component {
         }
       }
     }
-    this.location(<ShoppingCart price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+    this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
     car['transport'] = carObject
     // Agregando price al state car
     let totalCar = data * transport[transports[0]].price
     car['total'] = totalCar
     this.setState(car)
-    let test = firebase.database().ref('hotels')
-    console.log(test);
   }
 
   searchTicket(section,quantity){
