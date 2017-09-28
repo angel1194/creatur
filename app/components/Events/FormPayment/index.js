@@ -115,14 +115,17 @@ class FormPayment extends React.Component {
     //Agregando el pago exitoso a ventas en firebase
     let idSale = moment().format('X')
     let car = this.props.car
+    let transport = this.props.car.transport
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
     firebase.database().ref().child('sales').child(idSale).set(car)
-    //Condicion para eliminar el pago de transport u hotels en firebase
+    //Condicion para eliminar el pago de transport u hotel en firebase
     if (this.props.ubicacion === 'hotel') {
       // Eliminar habitaciones reservadas en firebase
       firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).remove()
+    }else {
+      // Ocupar Asientos reservados en firebase
+      Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
     }
-
     console.log(request);
   }
 
