@@ -67,7 +67,7 @@ class ShoppingCart extends React.Component {
           {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
-              <FormPayment idSales={this.props.idSales} total={car.total} order_id={car.id}/>
+              <FormPayment idSales={this.props.idSales} total={car.total} car={car}/>
             </DivPay>
             {ubicacion === 'transport' ?
             <TransportSummary

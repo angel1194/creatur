@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 import {Container, Message, TextM, InputContainer,styles} from './style';
 import firebase from '../../../containers/Events/Firebase';
+import moment from 'moment';
 
 const Icon = styled(FontAwesome) `
   margin-left:20px;
@@ -109,8 +110,10 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
+    let idSale = moment().format('X')
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
-    firebase.database().ref().child('transport').set()
+    firebase.database().ref().child('sales').child(idSale).set(this.props.car)
+    // firebase.database().ref().child('transport').set()
     console.log(request);
   }
 
