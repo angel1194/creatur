@@ -23,7 +23,6 @@ class MainHotels extends React.Component {
   }
 
   setFilterValue(filter,object){
-    console.log('ejecutando');
     if (filter == 'star') {
       this.setState({
         star:object

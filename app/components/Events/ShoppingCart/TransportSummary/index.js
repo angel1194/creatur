@@ -39,7 +39,6 @@ const SubTextEvent = styled.label`
 function TransportSummary(props) {
   let tickets = props.car.tickets
   let carObject = props.carObject
-  console.log(tickets);
 
   return (
     <Container>

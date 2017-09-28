@@ -122,6 +122,8 @@ class Home extends React.Component {
      aryRoom.map(total=>{
        Object.keys(this.state.rooms[newDate]).map(room =>{
          let getRooms= this.state.rooms[newDate][room]
+         getRooms['night']=newDate
+         getRooms['keyRoom']=room
          if(getRooms.occupancy >= total){
            availableRoom.push(getRooms)
          }
@@ -217,7 +219,6 @@ class Home extends React.Component {
     let totalCar = data * transport[transports[0]].price
     car['total'] = totalCar
     this.setState(car)
-    // console.log(transport[transports[1]]);
   }
 
   searchTicket(section,quantity){
