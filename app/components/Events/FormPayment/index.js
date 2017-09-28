@@ -112,13 +112,15 @@ class FormPayment extends React.Component {
     })
     //recargar pagina al hacer el pago exitoso
     location.reload()
-    //Agregando el pago exitoso a ventas en firebase
+    //Variables
     let idSale = moment().format('X')
     let car = this.props.car
     let transport = this.props.car.transport
+    // generando order_id para el request
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+    //Agregando el pago exitoso a ventas en firebase
     firebase.database().ref().child('sales').child(idSale).set(car)
-    //Condicion para eliminar el pago de transport u hotel en firebase
+    //Condicion para eliminar el pago de hotel o transport en firebase
     if (this.props.ubicacion === 'hotel') {
       // Eliminar habitaciones reservadas en firebase
       firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).remove()
