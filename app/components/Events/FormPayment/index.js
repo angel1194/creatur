@@ -219,6 +219,7 @@ class FormPayment extends React.Component {
           <input hidden id="deviceIdHiddenFieldName"/><br/>
           <button style={styles.button}>Pagar</button>
         </form>
+
       </Container>
     );
   }
