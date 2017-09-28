@@ -18,6 +18,7 @@ class AddHotels extends Component {
     this.update = this.update.bind(this)
 }
   submitForm(event){
+
     event.preventDefault()
     const Name = this.refs.name.value
     const Image = this.refs.image.value
@@ -65,19 +66,27 @@ class AddHotels extends Component {
     }
 }
 
-componentWillMount(){
-
+deleteHotelAndRooms(keyHotel){
+  let rootRef = firebase.database().ref()
+  Object.keys(this.props.Rooms).map((night)=>{
+    Object.keys(this.props.Rooms[night]).map((room)=>{
+      if(keyHotel == this.props.Rooms[night][room].idHotel){
+        rootRef.child('nightsHotels').child(night).child(room).remove()
+      }
+    })
+  })
+  rootRef.child('hotels').child(keyHotel).remove()
 }
 
-delete(key){
-  let rootRef = firebase.database().ref()
 
+delete(key){
+  console.log(key);
   confirmAlert({
     title: 'Confirmación',
     message: '¿Estás seguro de eliminar el hotel?',
     confirmLabel: 'Confirmar',
     cancelLabel: 'Cancelar',
-    onConfirm: () => rootRef.child('hotels').child(key).remove(),
+    onConfirm: () => this.deleteHotelAndRooms(key),
     onCancel: () => '',
   })
 }
