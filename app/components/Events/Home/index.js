@@ -19,11 +19,7 @@ class Home extends React.Component {
       location: 1,
       available:{},
       car:{
-        items:{
-
-        },
-        total:0,
-        id:1
+        total:0
       },
       comparation:{
 
@@ -170,7 +166,7 @@ class Home extends React.Component {
   addRooms(rooms){
     this.location(<ShoppingCart idSales={this.state.idSales} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
-    state.items['room'] = rooms
+    state['room'] = rooms
 
     this.setState(state)
     this.totalAmount(rooms)

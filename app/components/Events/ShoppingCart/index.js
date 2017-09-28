@@ -44,7 +44,7 @@ class ShoppingCart extends React.Component {
 
   render() {
     let car = this.props.car
-    let cart = Object.keys(car.items)
+    // let cart = Object.keys(car.room)
     let checkin = parseInt(this.state.checkin)
     let checkout = parseInt(this.state.checkout)
     let count = checkout - checkin
@@ -79,19 +79,16 @@ class ShoppingCart extends React.Component {
               price={this.props.price}
             />
           :
-            cart.map((item, i)=>
-              <HotelSummary
-                key={i}
-                elements={car.items[item]}
-                item={this.state.hotels}
-                checkin={this.state.checkin}
-                checkout={this.state.checkout}
-                count={count}
-                car={car}
-                option={this.state.option}
-                section={this.state.section}
-              />
-            )
+            <HotelSummary
+              elements={car.room}
+              item={this.state.hotels}
+              checkin={this.state.checkin}
+              checkout={this.state.checkout}
+              count={count}
+              car={car}
+              option={this.state.option}
+              section={this.state.section}
+            />
           }
           </FlexRow>
         </Container>
