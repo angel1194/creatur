@@ -90,23 +90,50 @@ class Home extends React.Component {
   setHotels(startDate,endDate,rooms){
     let totalNight = endDate.format('DD')-startDate.format('DD')
     let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
-    let roomsBetween = nights.filter((night)=>this.filterNight(night,startDate))
+    let nightsBetween = nights.filter((night)=>this.filterNight(night,startDate))
+    nightsBetween = nightsBetween[0]['_i']/1000
      //Obteniendo la cantidad de personas por habitacion
-     let aryRoom=[]
-     Object.keys(rooms).map( key => {
-       var count=0;
-       Object.keys(rooms[key]).map(item=>{
-         // si el key es child contar la cantidad de ninos y sumar
-         if(item == 'child'){
-           count += Object.keys(rooms[key][item]).length
-         }
-         else{
-         // si no es child sumar
-           count += parseInt(rooms[key][item])
-         }
-       })
-       aryRoom.push(count)
-     })     
+    let aryRoom=[]
+    Object.keys(rooms).map( key => {
+     var count=0;
+     Object.keys(rooms[key]).map(item=>{
+       // si el key es child contar la cantidad de ninos y sumar
+       if(item == 'child'){
+         count += Object.keys(rooms[key][item]).length
+       }
+       else{
+       // si no es child sumar
+         count += parseInt(rooms[key][item])
+       }
+     })
+     aryRoom.push(count)
+    })
+
+    let checked=[]
+    let availableRooms=[]
+    if (aryRoom.length > 1) {
+      console.log('entrando aqui');
+    }
+    else {
+      Object.keys(this.state.rooms[nightsBetween]).map(room=>{
+        if (this.state.rooms[nightsBetween][room].occupancy >= aryRoom[0]) {
+          console.log(this.state.rooms[nightsBetween][room]);
+          availableRooms.push(this.state.rooms[nightsBetween][room])
+        }
+      })
+    }
+
+    // let checked = {}
+    // if (aryRoom.length > 1) {
+    //
+    // }
+    // else{
+    //   aryRoom.map((room)=>{
+    //     Object.keys(nightsBetween).map((night)=>{
+    //       console.log(this.state.rooms[night])
+    //     })
+    //   })
+    // }
   }
 
   // setHotels(startDate,endDate,rooms){
