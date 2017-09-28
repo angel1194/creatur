@@ -110,6 +110,9 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
+    //recargar pagina
+    location.reload()
+    //Agregando datos a firebase
     let idSale = moment().format('X')
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
     firebase.database().ref().child('sales').child(idSale).set(this.props.car)
