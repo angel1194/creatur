@@ -121,12 +121,18 @@ class Home extends React.Component {
               return this.state.rooms[nightsBetween][keyRoom]
             }
           })
+          // .every(keyRoom=>{
+          //   aryRoom.map((total)=>{
+          //     return this.state.rooms[nightsBetween][keyRoom].occupancy <= total
+          //   })
+          // })
+          firstFilter.map(roomKey=>{
+            console.log(this.state.rooms[nightsBetween][roomKey]);
+          })
           console.log('------------------------');
           console.log(firstFilter);
           console.log('------------------------');
-          firstFilter.map((keyRoom)=>{
-            this.state.rooms[nightsBetween][keyRoom]
-          })
+          // console.log(second);
 
         }
         else {
