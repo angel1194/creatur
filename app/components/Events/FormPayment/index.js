@@ -153,9 +153,15 @@ class FormPayment extends React.Component {
     return validation
   }
 
+  pdf(){
+    window.open('pdfInfoUser.pdf', '_blank', 'fullscreen=yes');
+    return false;
+  }
+
   render(){
     return (
       <Container>
+        <button onClick={()=>this.pdf()}>PDF</button>
         <Message>
           <TextM>
             ¡Estás a un click de tener tu reserva!
