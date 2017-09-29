@@ -19,7 +19,7 @@ class FormEvent extends React.Component{
   }
 
   timer() {
-    const {minutes, seconds, stopTime} = this.state
+    const {minutes, seconds, stopTime, tickets} = this.state
     this.setState({
       stopTime:stopTime + 1
     })
@@ -33,9 +33,11 @@ class FormEvent extends React.Component{
          minutes: minutes - 1,
          seconds: 59
        })
-       if (this.state.stopTime === 90) {
-         clearInterval(this.intervalId)
-       }
+    }else if (this.state.stopTime === 90) {
+      clearInterval(this.intervalId)
+      this.setState({
+        tickets: {}
+      })
     }
   }
 
@@ -65,6 +67,7 @@ class FormEvent extends React.Component{
 
     car['tickets'] = tickets
     this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
+
     this.props.showEvent()
     clearInterval(this.intervalId)
     this.setState({
@@ -78,6 +81,7 @@ class FormEvent extends React.Component{
     let tickets = this.props.searchTicket
     let state = this.state.tickets
     let keyState = Object.keys(state)
+    console.log(state);
 
     return(
       <Div>

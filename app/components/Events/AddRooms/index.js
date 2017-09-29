@@ -98,6 +98,7 @@ class AddRooms extends React.Component{
 
 
     let roomKey = this.refs.roomKey.value
+    let used = this.refs.used.value
     let nightKey = this.refs.nightKey.value
     let addRoom = this.refs.addRoom.value
     let keyHotel = this.props.hotelKey
@@ -114,7 +115,9 @@ class AddRooms extends React.Component{
         image:image,
         occupancy:occupancy,
         price:price,
-        type:type
+        type:type,
+        available:addRoom,
+        used:used
       }
       firebase.database().ref().child('nightsHotels').child(nightKey).child(roomKey).set(room)
     }else{
@@ -125,20 +128,22 @@ class AddRooms extends React.Component{
       // guardando los valores en variables con ref
 
       // Creando el objeto que se guardara en firebase
-      for (var i = 1; i <= addRoom; i++) {
-        let momentDate = moment(new Date()).format('X')
-        let keyRoom = String(Number(momentDate) + i)
 
-        let room={
-          description:description,
-          idHotel:keyHotel,
-          image:image,
-          occupancy:occupancy,
-          price:price,
-          type:type
-        }
-        firebase.database().ref().child('nightsHotels').child(night).child(keyRoom).set(room)
+      let keyRoom = moment(new Date()).format('X')
+
+
+      let room={
+        description:description,
+        idHotel:keyHotel,
+        image:image,
+        occupancy:occupancy,
+        price:price,
+        type:type,
+        available:addRoom,
+        used:0
       }
+      firebase.database().ref().child('nightsHotels').child(night).child(keyRoom).set(room)
+
     }
 
     this.refs.roomKey.value = ''
@@ -159,6 +164,8 @@ class AddRooms extends React.Component{
     this.refs.price.value = room.price
     this.refs.occupancy.value = room.occupancy
     this.refs.description.value = room.description
+    this.refs.addRoom.value= room.available
+    this.refs.used.value = room.used
 
   }
 
@@ -199,6 +206,7 @@ class AddRooms extends React.Component{
             <RoomForm onSubmit={(e) => this.addRoom(e)}>
               <input type='text' ref='roomKey' hidden />
               <input type='text' ref='nightKey' hidden />
+              <input type='text' ref='used' hidden />
               <InputContainer>
                 <label>Dia disponible:</label>
                 <input name='night' id='night' ref='night' type='date' style={inputStyle}  />
