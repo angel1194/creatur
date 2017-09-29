@@ -120,6 +120,8 @@ class FormPayment extends React.Component {
     firebase.database().ref().child('idSales').set(this.props.idSales + 1)
     //Agregando el pago exitoso a ventas en firebase
     firebase.database().ref().child('sales').child(idSale).set(car)
+    // Eliminar los tickets reservados si el pago es exitoso
+    firebase.database().child('temp')
     //Condicion para eliminar el pago de hotel o transport en firebase
     if (this.props.ubicacion === 'hotel') {
       // Eliminar habitaciones reservadas en firebase
