@@ -114,26 +114,32 @@ class Home extends React.Component {
         if (aryRoom.length > 1) {
           let firstFilter = Object.keys(this.state.rooms[nightsBetween]).filter(keyRoom=>{
             let remaining = this.state.rooms[nightsBetween][keyRoom].available-this.state.rooms[nightsBetween][keyRoom].used
-            if ((remaining + aryRoom.length) >= this.state.rooms[nightsBetween][keyRoom].available) {
-              if (true) {
-
-              }
+            if (remaining >= aryRoom.length) {
               return this.state.rooms[nightsBetween][keyRoom]
             }
           })
-          // .every(keyRoom=>{
-          //   aryRoom.map((total)=>{
-          //     return this.state.rooms[nightsBetween][keyRoom].occupancy <= total
-          //   })
-          // })
-          firstFilter.map(roomKey=>{
-            console.log(this.state.rooms[nightsBetween][roomKey]);
-          })
-          console.log('------------------------');
-          console.log(firstFilter);
-          console.log('------------------------');
-          // console.log(second);
 
+          firstFilter.map(keyRoom=>{
+            let status=[]
+            for (var i = 0; i < aryRoom.length; i++) {
+                if (this.state.rooms[nightsBetween][keyRoom].occupancy >= aryRoom[i]) {
+                  status.push(true)
+                }
+                else{
+                  status.push(false)
+                }
+            }
+            let isAvail =status.every((value)=>{
+              return value === true
+            })
+            if (isAvail === true) {
+              let roomAdded = this.state.rooms[nightsBetween][keyRoom]
+              roomAdded['night']= nightsBetween
+              roomAdded['keyRoom']=keyRoom
+              roomAdded['taken']= aryRoom.length
+              availableRooms.push(roomAdded)
+            }
+          })
         }
         else {
           Object.keys(this.state.rooms[nightsBetween]).map((keyRoom)=>{
@@ -147,127 +153,44 @@ class Home extends React.Component {
               }
             }
           })
-          availableRooms.sort((a,b)=>{
-            return parseInt(a.price) - parseInt(b.price)
-          })
-          console.log(availableRooms);
         }
+        availableRooms.sort((a,b)=>{
+          return parseInt(a.price) - parseInt(b.price)
+        })
 
+         //Buscando el hotel al que pertenecen las habitaciones
+         let hotels= {}
 
-        //  this.setState({
-        //    available:hotels,
-        //    totalNight:totalNight
-        //  })
-         //
-        //  this.setState({
-        //    checkin:startDate.format('DD-MM-YYYY'),
-        //    checkout:endDate.format('DD-MM-YYYY')
-        //  })
+         availableRooms.map(available=>{
+           let hotel = available.idHotel
+           if(!(hotel in hotels)){
+             let stateHotel = this.state.hotels[hotel]
+             hotels[hotel]=stateHotel
+             hotels[hotel]['rooms']=[]
+             hotels[hotel]['rooms'].push(available)
+           }
+           else{
+             hotels[hotel]['rooms'].push(available)
+           }
+         })
+
+         this.setState({
+           available:hotels,
+           totalNight:totalNight
+         })
+
+         this.setState({
+           checkin:startDate.format('DD-MM-YYYY'),
+           checkout:endDate.format('DD-MM-YYYY')
+         })
+        this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
     }
     else{
       alert('no hay habitaciones disponibles');
     }
-     //Obteniendo la cantidad de personas por habitacion
-    //
-    // let checked=[]
-    // let availableRooms=[]
-    //
-    // if (aryRoom.length > 1) {
-    //   aryRoom.map((quantity)=>{
-    //     console.log(quantity);
-    //   })
-    // }
-    // else {
-    //   Object.keys(this.state.rooms[nightsBetween]).map(room=>{
-    //     if (this.state.rooms[nightsBetween][room].occupancy >= aryRoom[0]) {
-    //       console.log(this.state.rooms[nightsBetween][room]);
-    //       availableRooms.push(this.state.rooms[nightsBetween][room])
-    //     }
-    //   })
-    // }
-
-    // let checked = {}
-    // if (aryRoom.length > 1) {
-    //
-    // }
-    // else{
-    //   aryRoom.map((room)=>{
-    //     Object.keys(nightsBetween).map((night)=>{
-    //       console.log(this.state.rooms[night])
-    //     })
-    //   })
-    // }
   }
 
-  // setHotels(startDate,endDate,rooms){
-  //
-  //   let totalNight = endDate.format('DD')-startDate.format('DD')
-  //  // Convirtiendo las noches en objetos moment()
-  //  let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
-  //  // Buscando las fechas en el rango marcado
-  //  let roomsBetween = nights.filter((night)=> this.filterNight(night,startDate,endDate))
-  //  //Obteniendo la cantidad de personas por habitacion
-  //  let aryRoom=[]
-  //  Object.keys(rooms).map( key => {
-  //    var count=0;
-  //    Object.keys(rooms[key]).map(item=>{
-  //      // si el key es child contar la cantidad de ninos y sumar
-  //      if(item == 'child'){
-  //        count += Object.keys(rooms[key][item]).length
-  //      }
-  //      else{
-  //      // si no es child sumar
-  //        count += parseInt(rooms[key][item])
-  //      }
-  //    })
-  //    aryRoom.push(count)
-  //  })
-  //
-  //  //Buscando la habitacion con las capacidades a buscar
-  //  let availableRoom = []
-  //  let roomAdded={}
-  //  roomsBetween.map(date => {
-  //    let newDate = date['_i']/1000
-  //    //mapeando la cantidad de habitacion y la capacidad necesaria
-  //    aryRoom.map(total=>{
-  //      Object.keys(this.state.rooms[newDate]).map(room =>{
-  //        let getRooms= this.state.rooms[newDate][room]
-  //        if(parseInt(getRooms.occupancy) >= total){
-  //          availableRoom.push(getRooms)
-  //        }
-  //      })
-  //    })
-  //  })
-  //
-  //  //Buscando el hotel al que pertenecen las habitaciones
-  //  let hotels= {}
-  //
-  //  availableRoom.map(available=>{
-  //    let hotel = available.idHotel
-  //    if(!(hotel in hotels)){
-  //      let stateHotel = this.state.hotels[hotel]
-  //      hotels[hotel]=stateHotel
-  //      hotels[hotel]['rooms']=[]
-  //      hotels[hotel]['rooms'].push(available)
-  //    }
-  //    else{
-  //      hotels[hotel]['rooms'].push(available)
-  //    }
-  //  })
-  //
-  //  console.log(hotels);
-  //  this.setState({
-  //    available:hotels,
-  //    totalNight:totalNight
-  //  })
-   //
-  //  this.setState({
-  //    checkin:startDate.format('DD-MM-YYYY'),
-  //    checkout:endDate.format('DD-MM-YYYY')
-  //  })
-   //
-  //   this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
-  // }
+
 
   filterNight(night,startDate,endDate){
     let nightFormat= moment(night).format('DD/MM/YYYY')
