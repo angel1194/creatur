@@ -125,7 +125,7 @@ class FormPayment extends React.Component {
     //Condicion para eliminar el pago de hotel o transport en firebase
     if (this.props.ubicacion === 'hotel') {
       // Eliminar habitaciones reservadas en firebase
-      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).remove()
+      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
     }else {
       // Ocupar Asientos reservados en firebase
       Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
