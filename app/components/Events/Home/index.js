@@ -91,37 +91,100 @@ class Home extends React.Component {
     let totalNight = endDate.format('DD')-startDate.format('DD')
     let nights = Object.keys(this.state.rooms).map(night => moment.unix(parseInt(night)))
     let nightsBetween = nights.filter((night)=>this.filterNight(night,startDate))
-    nightsBetween = nightsBetween[0]['_i']/1000
-     //Obteniendo la cantidad de personas por habitacion
-    let aryRoom=[]
-    Object.keys(rooms).map( key => {
-     var count=0;
-     Object.keys(rooms[key]).map(item=>{
-       // si el key es child contar la cantidad de ninos y sumar
-       if(item == 'child'){
-         count += Object.keys(rooms[key][item]).length
-       }
-       else{
-       // si no es child sumar
-         count += parseInt(rooms[key][item])
-       }
-     })
-     aryRoom.push(count)
-    })
+    if (nightsBetween.length > 0) {
+        nightsBetween = nightsBetween[0]['_i']/1000
 
-    let checked=[]
-    let availableRooms=[]
-    if (aryRoom.length > 1) {
-      console.log('entrando aqui');
-    }
-    else {
-      Object.keys(this.state.rooms[nightsBetween]).map(room=>{
-        if (this.state.rooms[nightsBetween][room].occupancy >= aryRoom[0]) {
-          console.log(this.state.rooms[nightsBetween][room]);
-          availableRooms.push(this.state.rooms[nightsBetween][room])
+        let aryRoom=[]
+        Object.keys(rooms).map( key => {
+          var count=0;
+          Object.keys(rooms[key]).map(item=>{
+            // si el key es child contar la cantidad de ninos y sumar
+            if(item == 'child'){
+              count += Object.keys(rooms[key][item]).length
+            }
+            else{
+              // si no es child sumar
+              count += parseInt(rooms[key][item])
+            }
+          })
+          aryRoom.push(count)
+        })
+
+        let availableRooms=[]
+        if (aryRoom.length > 1) {
+          let firstFilter = Object.keys(this.state.rooms[nightsBetween]).filter(keyRoom=>{
+            let remaining = this.state.rooms[nightsBetween][keyRoom].available-this.state.rooms[nightsBetween][keyRoom].used
+            if ((remaining + aryRoom.length) >= this.state.rooms[nightsBetween][keyRoom].available) {
+              if (true) {
+
+              }
+              return this.state.rooms[nightsBetween][keyRoom]
+            }
+          })
+          // .every(keyRoom=>{
+          //   aryRoom.map((total)=>{
+          //     return this.state.rooms[nightsBetween][keyRoom].occupancy <= total
+          //   })
+          // })
+          firstFilter.map(roomKey=>{
+            console.log(this.state.rooms[nightsBetween][roomKey]);
+          })
+          console.log('------------------------');
+          console.log(firstFilter);
+          console.log('------------------------');
+          // console.log(second);
+
         }
-      })
+        else {
+          Object.keys(this.state.rooms[nightsBetween]).map((keyRoom)=>{
+            if ((this.state.rooms[nightsBetween][keyRoom].available-this.state.rooms[nightsBetween][keyRoom].used) > 0) {
+              if (Number(this.state.rooms[nightsBetween][keyRoom].occupancy) >= aryRoom[0]) {
+                let roomAdded= this.state.rooms[nightsBetween][keyRoom]
+                roomAdded['night']= nightsBetween
+                roomAdded['keyRoom']=keyRoom
+                roomAdded['taken']=1
+                availableRooms.push(roomAdded)
+              }
+            }
+          })
+          availableRooms.sort((a,b)=>{
+            return parseInt(a.price) - parseInt(b.price)
+          })
+          console.log(availableRooms);
+        }
+
+
+        //  this.setState({
+        //    available:hotels,
+        //    totalNight:totalNight
+        //  })
+         //
+        //  this.setState({
+        //    checkin:startDate.format('DD-MM-YYYY'),
+        //    checkout:endDate.format('DD-MM-YYYY')
+        //  })
     }
+    else{
+      alert('no hay habitaciones disponibles');
+    }
+     //Obteniendo la cantidad de personas por habitacion
+    //
+    // let checked=[]
+    // let availableRooms=[]
+    //
+    // if (aryRoom.length > 1) {
+    //   aryRoom.map((quantity)=>{
+    //     console.log(quantity);
+    //   })
+    // }
+    // else {
+    //   Object.keys(this.state.rooms[nightsBetween]).map(room=>{
+    //     if (this.state.rooms[nightsBetween][room].occupancy >= aryRoom[0]) {
+    //       console.log(this.state.rooms[nightsBetween][room]);
+    //       availableRooms.push(this.state.rooms[nightsBetween][room])
+    //     }
+    //   })
+    // }
 
     // let checked = {}
     // if (aryRoom.length > 1) {
