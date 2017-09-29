@@ -9,29 +9,39 @@ class FormEvent extends React.Component{
       tickets:{},
       section:'',
       minutes: 1,
-      seconds: 40
+      seconds: 30,
+      stopTime:0
     }
     this.request = this.request.bind(this)
     this.addTickets = this.addTickets.bind(this)
-    // this.setTimer = this.setTimer.bind(this)
+    this.setTimer = this.setTimer.bind(this)
+    this.timer = this.timer.bind(this)
   }
 
-  // componentDidMount(){
-  //   this.interval = setInterval(this.setTimer, 1000);
-  // }
-  //
-	// setTimer() {
-	// 	const {seconds, minutes} = this.state
-  //
-	// 	minutes -= Math.trunc(seconds / 60)
-	// 	seconds = (seconds === 60) ? 0 : seconds
-	// 	seconds = seconds - 1;
-  //
-	// 	this.setState({
-	// 		seconds: seconds,
-	// 		minutes: minutes
-	// 	});
-	// }
+  timer() {
+    const {minutes, seconds, stopTime} = this.state
+    this.setState({
+      stopTime:stopTime + 1
+    })
+
+    this.setState({
+      seconds: seconds - 1
+    })
+     if(seconds < 1) {
+
+       this.setState({
+         minutes: minutes - 1,
+         seconds: 59
+       })
+       if (this.state.stopTime === 90) {
+         clearInterval(this.intervalId)
+       }
+    }
+  }
+
+  setTimer() {
+    this.intervalId = setInterval(this.timer, 1000);
+  }
 
 
   request(event){
@@ -46,7 +56,7 @@ class FormEvent extends React.Component{
      tickets:ticket,
      section:seccion,
    })
-  //  this.setTimer()
+   this.setTimer()
   }
 
   addTickets(){
@@ -56,9 +66,10 @@ class FormEvent extends React.Component{
     car['tickets'] = tickets
     this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
     this.props.showEvent()
+    clearInterval(this.intervalId)
     this.setState({
       minutes: 1,
-      seconds: 40
+      seconds: 30
     })
   }
 
