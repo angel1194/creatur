@@ -18,6 +18,10 @@ class FormEvent extends React.Component{
     this.timer = this.timer.bind(this)
   }
 
+  // componentDidMount(){
+  //   window.history.back();
+  // }
+
   timer() {
     const {minutes, seconds, stopTime, tickets} = this.state
     this.setState({
@@ -35,8 +39,12 @@ class FormEvent extends React.Component{
        })
     }else if (this.state.stopTime === 90) {
       clearInterval(this.intervalId)
+      firebase.database().ref().child('temp').remove()
+      Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
       this.setState({
-        tickets: {}
+        tickets: {},
+        minutes: 1,
+        seconds: 30
       })
     }
   }
@@ -81,7 +89,6 @@ class FormEvent extends React.Component{
     let tickets = this.props.searchTicket
     let state = this.state.tickets
     let keyState = Object.keys(state)
-    console.log(state);
 
     return(
       <Div>
