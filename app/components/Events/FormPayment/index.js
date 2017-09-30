@@ -91,7 +91,7 @@ class FormPayment extends React.Component {
       'amount': this.props.total,
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
-      'order_id': 'CMV-'+(this.props.idSales + 1),
+      'order_id': 'CMV-test'+(this.props.idSales + 1),
       'device_session_id' : state.deviceSessionId,
       'customer': {
         'name': token.holder_name,
@@ -115,12 +115,13 @@ class FormPayment extends React.Component {
       let idSale = moment().format('X')
       let car = this.props.car
       let transport = this.props.car.transport
+      let tickets = this.props.car.tickets
       // generando order_id para el request
       firebase.database().ref().child('idSales').set(this.props.idSales + 1)
       //Agregando el pago exitoso a ventas en firebase
       firebase.database().ref().child('sales').child(idSale).set(car)
       // Eliminar los tickets reservados si el pago es exitoso
-      firebase.database().ref().child('temp').remove()
+      Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
       //Condicion para eliminar el pago de hotel o transport en firebase
       if (this.props.ubicacion === 'hotel') {
         // Eliminar habitaciones reservadas en firebase
@@ -161,7 +162,6 @@ class FormPayment extends React.Component {
   render(){
     return (
       <Container>
-        <button onClick={()=>this.pdf()}>PDF</button>
         <Message>
           <TextM>
             ¡Estás a un click de tener tu reserva!
