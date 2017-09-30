@@ -235,6 +235,7 @@
     "react-dom": "15.4.1",
     "react-fontawesome": "^1.6.1",
     "react-helmet": "3.2.2",
+    "react-html-email": "^3.0.0",
     "react-image-gallery": "^0.8.2",
     "react-input-range": "^1.2.1",
     "react-intl": "2.1.5",

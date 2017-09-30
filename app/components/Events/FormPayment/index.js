@@ -154,11 +154,6 @@ class FormPayment extends React.Component {
     return validation
   }
 
-  pdf(){
-    window.open('pdfInfoUser.pdf', '_blank', 'fullscreen=yes');
-    return false;
-  }
-
   render(){
     return (
       <Container>
@@ -247,6 +242,8 @@ class FormPayment extends React.Component {
           <input hidden id="deviceIdHiddenFieldName"/><br/>
           <button style={styles.button}>Pagar</button>
         </form>
+        <div>
+        </div>
       </Container>
     );
   }
