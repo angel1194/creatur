@@ -25,6 +25,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
+      ticketEvents:{}
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
@@ -272,7 +273,12 @@ class Home extends React.Component {
         }
       }
     })
+    this.setState({
+      ticketEvents:aryTicket
+    })
+    console.log(aryTicket);
     return aryTicket
+
   }
 
   priceAndSections(){

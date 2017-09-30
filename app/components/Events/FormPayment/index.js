@@ -105,12 +105,20 @@ class FormPayment extends React.Component {
       body: JSON.stringify(request)
     })
     .then((response) => {
+      // Pruebas
+      request['sales'] = this.props.car
+      fetch('http://192.168.1.38:8000/email/',{
+        method: 'post',
+        headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify(request)
+      })
+      console.log(request);
       return response.json();
     })
     .then((recurso) => {
       console.log(recurso);
       //recargar pagina al hacer el pago exitoso
-      location.reload()
+      // location.reload()
       //Variables
       let idSale = moment().format('X')
       let car = this.props.car
@@ -131,7 +139,6 @@ class FormPayment extends React.Component {
         Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
       }
     })
-    console.log(request);
   }
 
   onError(err, token){

@@ -5,6 +5,7 @@ import FormPayment from '../FormPayment';
 import HotelSummary from './HotelSummary';
 import TransportSummary from './TransportSummary';
 import FormEvent from './FormEvent';
+import firebase from '../../../containers/Events/Firebase';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 
 class ShoppingCart extends React.Component {
@@ -21,6 +22,8 @@ class ShoppingCart extends React.Component {
     this.setState({
       showEvent: true
     })
+    Object.keys(this.state.ticketEvents).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    console.log('hola');
   }
 
   setshowEvent(){
