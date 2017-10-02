@@ -25,7 +25,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
-      aryTicket:{}
+      aryTicket:{searchTicket:{}}
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
