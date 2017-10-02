@@ -17,6 +17,26 @@ const Wrapper = styled.div`
   height: 180px;
   border: 2px solid #eaeff3;
   border-radius: 6px;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+
+  @keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
 `;
 
 const WrapperTrans = styled.div`

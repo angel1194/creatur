@@ -9,6 +9,7 @@ const Div = styled.div`
 
 const DivHotels = styled.div`
   width: 75%;
+  
 `
 
 export {Div, DivHotels};

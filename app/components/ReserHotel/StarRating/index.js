@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
+import Fade from 'react-fade-opacity'
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
@@ -67,7 +68,7 @@ function generateStarts(num) {
 function StarRating(props) {
   return (
     <Wrapper>
-      {generateStarts(props.NumStart)}
+    {generateStarts(props.NumStart)}
     </Wrapper>
   );
 }

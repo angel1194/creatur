@@ -4,6 +4,7 @@ import Hotels from '../Hotels';
 import MapView from '../../ReserHotel/MapView';
 import {Div, DivHotels} from './style';
 import Filter from './Filter';
+import { default as Fade } from 'react-fade';
 
 class MainHotels extends React.Component {
   constructor(props){
@@ -17,10 +18,27 @@ class MainHotels extends React.Component {
       price:{
         min:300,
         max:3000
-      }
+      },
+      fadeOut: false,
+    visibility: 'visible',
+    fadeDuration:1
     }
     this.setFilterValue = this.setFilterValue.bind(this)
+
   }
+
+
+
+  componentDidUpdate(nextProps, { fadeOut }) {
+
+      if (fadeOut) {
+        setTimeout(() => {
+          this.setState({
+            visibility: 'hidden'
+          })
+        }, this.state.fadeDuration)
+      }
+    }
 
   setFilterValue(filter,object){
     if (filter == 'star') {
@@ -53,23 +71,43 @@ class MainHotels extends React.Component {
         }
       }
     })
+
     return hotelsFiltered
+
+
   }
 
   render() {
     let funcion = this.starFilter()
+
     return (
       <div>
         <Container>
           <Div>
             <div>
               <MapView/>
-              <Filter setFilterValue={this.setFilterValue} star={this.state.star} price={this.state.price}/>
+
+
+              <Filter setFilterValue={this.setFilterValue} star={this.state.star} price={this.state.price} />
+
             </div>
+
             <DivHotels>
+              <Fade
+               out={this.state.fadeOut}
+               duration={this.state.fadeDuration}
+               style={{
+               visibility: this.state.visibility
+             }}>
               {
-                Object.keys(funcion).map((hotel,i) => <Hotels addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={funcion[hotel]}/>)
+                Object.keys(funcion).map((hotel,i) =>
+
+                 <Hotels  addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={funcion[hotel]}/>
+
+               )
               }
+
+              </Fade>
             </DivHotels>
           </Div>
         </Container>
@@ -77,5 +115,6 @@ class MainHotels extends React.Component {
     );
   }
 }
+
 
 export default MainHotels;
