@@ -59,17 +59,11 @@ class ShoppingCart extends React.Component {
       <div>
         <Container>
           <FlexStart>
-            {this.props.ticketOptions === undefined ?
-              <ButtonEvent>
-                <Title> ¡Tickets "Concierto Manzanero" Agotados!</Title>
-              </ButtonEvent>
-            :
-              <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
-                <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
-              </ButtonEvent>
-            }
+            <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
+              <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
+            </ButtonEvent>
           </FlexStart>
-          {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
+          {this.state.showEvent === false ? <FormEvent setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
           <FlexRow>
             <DivPay>
               <FormPayment idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion}/>

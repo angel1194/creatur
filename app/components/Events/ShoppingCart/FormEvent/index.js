@@ -83,7 +83,7 @@ class FormEvent extends React.Component{
     car['tickets'] = tickets
     this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
 
-    this.props.showEvent()
+    // this.props.showEvent()
     clearInterval(this.intervalId)
     this.setState({
       minutes: 1,
