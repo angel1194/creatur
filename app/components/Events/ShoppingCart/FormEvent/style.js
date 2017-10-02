@@ -120,6 +120,7 @@ const P = styled.p`
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
+  margin-right: 5px;
 `;
 
 const Row = styled.div`
@@ -154,6 +155,11 @@ const Buy = styled.button`
 const Price = styled.p`
   display: flex;
   flex-direction: row;
-`
+`;
 
-export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price}
+const Seating = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export {Div, Container, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating}

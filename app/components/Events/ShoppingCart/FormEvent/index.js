@@ -1,5 +1,6 @@
 import React from 'react';
-import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price} from './style';
+import firebase from '../../../../containers/Events/Firebase'
+import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating} from './style';
 
 class FormEvent extends React.Component{
   constructor(props){
@@ -8,31 +9,50 @@ class FormEvent extends React.Component{
       tickets:{},
       section:'',
       minutes: 1,
-      seconds: 40
+      seconds: 30,
+      stopTime:0
     }
     this.request = this.request.bind(this)
-    this.timer = this.timer.bind(this)
     this.addTickets = this.addTickets.bind(this)
+    this.setTimer = this.setTimer.bind(this)
+    this.timer = this.timer.bind(this)
   }
 
+  // componentDidMount(){
+  //   window.history.back();
+  // }
+
   timer() {
+    const {minutes, seconds, stopTime, tickets} = this.state
     this.setState({
-      seconds: this.state.seconds - 1
+      stopTime:stopTime + 1
     })
-    if(this.state.seconds < 1) {
+
+    this.setState({
+      seconds: seconds - 1
+    })
+     if(seconds < 1) {
+
+       this.setState({
+         minutes: minutes - 1,
+         seconds: 59
+       })
+    }else if (this.state.stopTime === 90) {
+      clearInterval(this.intervalId)
+      firebase.database().ref().child('temp').remove()
+      Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
       this.setState({
-        minutes: this.state.minutes - 1
+        tickets: {},
+        minutes: 1,
+        seconds: 30
       })
-      this.setState({
-        seconds: 60
-      })
-    }else if (this.state.seconds === this.state.minutes) {
-      clearInterval(this.intervalId);
     }
   }
+
   setTimer() {
     this.intervalId = setInterval(this.timer, 1000);
   }
+
 
   request(event){
    event.preventDefault()
@@ -54,8 +74,14 @@ class FormEvent extends React.Component{
     const tickets = this.state.tickets
 
     car['tickets'] = tickets
-    this.props.setCar(this.props.ticketOptions, this.state.section)
+    this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
+
     this.props.showEvent()
+    clearInterval(this.intervalId)
+    this.setState({
+      minutes: 1,
+      seconds: 30
+    })
   }
 
   render(){
@@ -109,7 +135,10 @@ class FormEvent extends React.Component{
                   <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
                 </Row>
                 <p>Seccion {this.state.section}</p>
-                <P>Asientos: {keyState.map((item, i)=><p key={i}>{state[item].seat + ", "}</p>)}</P>
+                <Seating>
+                  <P>Asientos:</P>
+                  {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
+                </Seating>
                 <Pay>
                   <Price>MXN ${options[this.state.section].price} c/u</Price>
                   <Buy onClick={this.addTickets}>comprar</Buy>

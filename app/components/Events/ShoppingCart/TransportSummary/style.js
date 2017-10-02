@@ -47,7 +47,7 @@ const ReserveInfo= styled.div`
 `;
 
 const Hotel = styled(H3)`
-  margin-bottom:-5px
+  margin-bottom: 5px;
 `;
 
 const EventManzanero = styled(H3)`
@@ -64,7 +64,9 @@ const Label= styled.label`
 const Info = styled.div`
   width:100%;
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 `;
 
 const Text = styled.label`

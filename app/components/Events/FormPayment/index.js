@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
 import {Container, Message, TextM, InputContainer,styles} from './style';
+import firebase from '../../../containers/Events/Firebase';
+import moment from 'moment';
 
 const Icon = styled(FontAwesome) `
   margin-left:20px;
@@ -89,7 +91,7 @@ class FormPayment extends React.Component {
       'amount': this.props.total,
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
-      'order_id': 'CMV-'+this.props.order_id,
+      'order_id': 'CMV-'+(this.props.idSales + 1),
       'device_session_id' : state.deviceSessionId,
       'customer': {
         'name': token.holder_name,
@@ -108,6 +110,26 @@ class FormPayment extends React.Component {
     .then((recurso) => {
       console.log(recurso);
     })
+    //recargar pagina al hacer el pago exitoso
+    location.reload()
+    //Variables
+    let idSale = moment().format('X')
+    let car = this.props.car
+    let transport = this.props.car.transport
+    // generando order_id para el request
+    firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+    //Agregando el pago exitoso a ventas en firebase
+    firebase.database().ref().child('sales').child(idSale).set(car)
+    // Eliminar los tickets reservados si el pago es exitoso
+    firebase.database().ref().child('temp').remove()
+    //Condicion para eliminar el pago de hotel o transport en firebase
+    if (this.props.ubicacion === 'hotel') {
+      // Eliminar habitaciones reservadas en firebase
+      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
+    }else {
+      // Ocupar Asientos reservados en firebase
+      Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
+    }
     console.log(request);
   }
 
