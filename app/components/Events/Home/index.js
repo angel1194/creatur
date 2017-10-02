@@ -25,7 +25,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
-      ticketEvents:{}
+      aryTicket:{}
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
@@ -273,10 +273,9 @@ class Home extends React.Component {
         }
       }
     })
-    this.setState({
-      ticketEvents:aryTicket
-    })
-    console.log(aryTicket);
+    // obtenirndo los tickets de la busqueda y metiendolo en un state
+    this.state.aryTicket['searchTicket']=aryTicket
+    this.setState(aryTicket)
     return aryTicket
 
   }

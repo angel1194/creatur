@@ -19,15 +19,13 @@ class ShoppingCart extends React.Component {
   }
 
   showEvent(){
-    this.test()
+    const tickets = this.state.aryTicket.searchTicket
+    Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
     this.setState({
       showEvent: true
     })
-    console.log('hola');
-  }
-
-  test(){
-      Object.keys(this.state.ticketEvents).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    console.log('Este es ShoppingCart',tickets);
   }
 
   setshowEvent(){
