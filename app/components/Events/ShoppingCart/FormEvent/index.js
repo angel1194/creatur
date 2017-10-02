@@ -20,6 +20,13 @@ class FormEvent extends React.Component{
 
   // componentDidMount(){
   //   window.history.back();
+  //   window.onbeforeunload = confirmExit;
+  //   function confirmExit()
+  //    {
+  //      console.log(2*2);
+  //      return "Ha intentado salir de esta pagina. ¿Continuar?";
+  //    }
+  //    console.log('alerta');
   // }
 
   timer() {
@@ -123,7 +130,7 @@ class FormEvent extends React.Component{
               }
             </select>
           </div>
-          <button style={style.button}>Buscar Boletos</button>
+          <button style={keyState.length >= 1 ? style.buttonDisabled : style.button} disabled={keyState.length >= 1 ? true : false}>Buscar Boletos</button>
         </form>
         <Search>
           {keyState.length >= 1 ?

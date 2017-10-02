@@ -69,6 +69,17 @@ const style = {
     marginTop: '15px',
     outline: '0',
     borderRadius: "6px !important"
+  },
+  buttonDisabled:{
+    background: '#2b5bac',
+    padding: '8px 10px 10px 10px',
+    color: '#fff',
+    fontFamily: 'Montserrat',
+    height: '35px',
+    marginTop: '15px',
+    outline: '0',
+    borderRadius: "6px !important",
+    opacity: "0.5"
   }
 }
 
