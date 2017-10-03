@@ -14,7 +14,7 @@ class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
     this.state =
-    this.props.carState, {showEvent: false, option: '', section: '', fadeOut: false, visibility: 'visible', fadeDuration:0.2 }
+    this.props.carState, {showEvent: false, option: '', section: '', fadeOut: false, visibility: 'visible', fadeDuration:1 }
 
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
