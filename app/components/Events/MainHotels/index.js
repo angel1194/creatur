@@ -99,12 +99,9 @@ class MainHotels extends React.Component {
                style={{visibility: this.state.visibility}}>
               {
                 Object.keys(funcion).map((hotel,i) =>
-
                  <Hotels  addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={funcion[hotel]}/>
-
                )
               }
-
               </Fade>
             </DivHotels>
           </Div>

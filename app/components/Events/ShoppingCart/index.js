@@ -6,11 +6,14 @@ import HotelSummary from './HotelSummary';
 import TransportSummary from './TransportSummary';
 import FormEvent from './FormEvent';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
+import { default as Fade } from 'react-fade';
+
 
 class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.carState, {showEvent: false, option: '', section: ''}
+    this.state =
+    this.props.carState, {showEvent: false, option: '', section: '', fadeOut: false, visibility: 'visible', fadeDuration:.5 }
 
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
@@ -60,11 +63,20 @@ class ShoppingCart extends React.Component {
               </ButtonEvent>
             :
               <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
+
                 <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
               </ButtonEvent>
+
             }
           </FlexStart>
-          {this.state.showEvent === false ? <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> : ''}
+          {this.state.showEvent === false ?
+            <Fade
+             out={this.state.fadeOut}
+             duration={this.state.fadeDuration}
+             style={{
+             visibility: this.state.visibility
+           }}>
+            <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/> </Fade> : ''}
           <FlexRow>
             <DivPay>
               <FormPayment idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion}/>

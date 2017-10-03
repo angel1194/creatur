@@ -6,7 +6,7 @@ const ContainerScore = styled.div`
 `;
 
 const AddressLabel=styled.label`
-  margin-top:-20px;
+  margin-top:10px;
   color:#5e5e5e;
 `;
 
