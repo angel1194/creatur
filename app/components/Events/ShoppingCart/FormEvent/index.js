@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from '../../../../containers/Events/Firebase'
 import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating} from './style';
+import { default as Fade } from 'react-fade';
 
 class FormEvent extends React.Component{
   constructor(props){
@@ -10,7 +11,8 @@ class FormEvent extends React.Component{
       section:'',
       minutes: 1,
       seconds: 30,
-      stopTime:0
+      stopTime:0,
+      fadeOut: false, visibility: 'visible', fadeDuration:1
     }
     this.request = this.request.bind(this)
     this.addTickets = this.addTickets.bind(this)
@@ -125,8 +127,16 @@ class FormEvent extends React.Component{
           </div>
           <button style={style.button}>Buscar Boletos</button>
         </form>
+
         <Search>
+
           {keyState.length >= 1 ?
+            <Fade
+             out={this.state.fadeOut}
+             duration={this.state.fadeDuration}
+             style={{
+             visibility: this.state.visibility
+           }}>
             <Ticket>
               <THeader>Mejor lugar disponible</THeader>
               <TBody>
@@ -145,9 +155,13 @@ class FormEvent extends React.Component{
                 </Pay>
               </TBody>
             </Ticket>
+             </Fade>
           : ''}
+
           <MapConcierto><img src='https://www.eticket.mx/imagenes/Acomodos/2774_COLISEO2774.gif' width='300px'/></MapConcierto>
+
         </Search>
+
       </Div>
     )
   }
