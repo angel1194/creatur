@@ -19,14 +19,9 @@ class FormEvent extends React.Component{
   }
 
   // componentDidMount(){
-  //   window.history.back();
-  //   window.onbeforeunload = confirmExit;
-  //   function confirmExit()
-  //    {
-  //      console.log(2*2);
-  //      return "Ha intentado salir de esta pagina. ¿Continuar?";
-  //    }
-  //    console.log('alerta');
+  //   window.onbeforeunload = function() {
+  //     return "¿Estás seguro que deseas salir de la actual página?"
+  //   }
   // }
 
   timer() {
@@ -83,7 +78,7 @@ class FormEvent extends React.Component{
     car['tickets'] = tickets
     this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
 
-    // this.props.showEvent()
+    this.props.showEvent()
     clearInterval(this.intervalId)
     this.setState({
       minutes: 1,
