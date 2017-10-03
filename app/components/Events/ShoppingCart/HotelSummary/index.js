@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
+
 const NewSub=styled(SubText)`
   display: flex;
   flex-direction: row;

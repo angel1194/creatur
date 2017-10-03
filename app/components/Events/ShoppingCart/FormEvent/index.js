@@ -21,7 +21,9 @@ class FormEvent extends React.Component{
   }
 
   // componentDidMount(){
-  //   window.history.back();
+  //   window.onbeforeunload = function() {
+  //     return "¿Estás seguro que deseas salir de la actual página?"
+  //   }
   // }
 
   timer() {
@@ -41,7 +43,7 @@ class FormEvent extends React.Component{
        })
     }else if (this.state.stopTime === 90) {
       clearInterval(this.intervalId)
-      firebase.database().ref().child('temp').remove()
+      Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
       Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
       this.setState({
         tickets: {},
@@ -125,46 +127,36 @@ class FormEvent extends React.Component{
               }
             </select>
           </div>
-          <button style={style.button}>Buscar Boletos</button>
+          <button style={keyState.length >= 1 ? style.buttonDisabled : style.button} disabled={keyState.length >= 1 ? true : false}>Buscar Boletos</button>
         </form>
 
         <Search>
-
           {keyState.length >= 1 ?
-            <Fade
-             out={this.state.fadeOut}
-             duration={this.state.fadeDuration}
-             style={{
-             visibility: this.state.visibility
-           }}>
-            <Ticket>
-              <THeader>Mejor lugar disponible</THeader>
-              <TBody>
-                <Row>
-                  <BoletoRes>Tiempo de compra:</BoletoRes>
-                  <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
-                </Row>
-                <p>Seccion {this.state.section}</p>
-                <Seating>
-                  <P>Asientos:</P>
-                  {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
-                </Seating>
-                
-                <Pay>
-                  <Price>MXN ${options[this.state.section].price} c/u</Price>
-                  <Buy onClick={this.addTickets}>comprar</Buy>
-                </Pay>
+            <Fade out={this.state.fadeOut} duration={this.state.fadeDuration} style={{visibility: this.state.visibility}}>
+              <Ticket>
+                <THeader>Mejor lugar disponible</THeader>
+                <TBody>
+                  <Row>
+                    <BoletoRes>Tiempo de compra:</BoletoRes>
+                    <Count><span>0{this.state.minutes}</span>:<span>{this.state.seconds}</span></Count>
+                  </Row>
+                  <p>Seccion {this.state.section}</p>
 
+                  <Seating>
+                    <P>Asientos:</P>
+                    {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
+                  </Seating>
 
-              </TBody>
-            </Ticket>
-             </Fade>
+                  <Pay>
+                    <Price>MXN ${options[this.state.section].price} c/u</Price>
+                    <Buy onClick={this.addTickets}>comprar</Buy>
+                  </Pay>
+                </TBody>
+              </Ticket>
+            </Fade>
           : ''}
-
           <MapConcierto><img src='https://www.eticket.mx/imagenes/Acomodos/2774_COLISEO2774.gif' width='300px'/></MapConcierto>
-
         </Search>
-
       </Div>
     )
   }
