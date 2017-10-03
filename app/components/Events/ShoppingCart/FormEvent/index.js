@@ -149,10 +149,13 @@ class FormEvent extends React.Component{
                   <P>Asientos:</P>
                   {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
                 </Seating>
+                
                 <Pay>
                   <Price>MXN ${options[this.state.section].price} c/u</Price>
                   <Buy onClick={this.addTickets}>comprar</Buy>
                 </Pay>
+
+
               </TBody>
             </Ticket>
              </Fade>
