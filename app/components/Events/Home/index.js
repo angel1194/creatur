@@ -9,7 +9,8 @@ import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
-import firebase from '../../../containers/Events/Firebase'
+import firebase from '../../../containers/Events/Firebase';
+// import {addMessage} from '../functions'
 
 class Home extends React.Component {
   constructor(props){
