@@ -10,7 +10,9 @@ import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
-// import {addMessage} from '../functions'
+// var myFunctions = require('../functions/index');
+
+
 
 class Home extends React.Component {
   constructor(props){
@@ -211,9 +213,12 @@ class Home extends React.Component {
     const state = this.state.car
     state['room'] = rooms
     state['hotel'] = hotels
+    state['checkin'] = this.state.checkin
+    state['checkout'] = this.state.checkout
 
     this.setState(state)
     this.totalAmount(rooms)
+    console.log(this.state.car);
   }
 
   totalAmount(rooms){
