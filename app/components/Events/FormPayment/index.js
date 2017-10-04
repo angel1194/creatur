@@ -117,27 +117,7 @@ class FormPayment extends React.Component {
     })
     .then((recurso) => {
       console.log(recurso);
-      //recargar pagina al hacer el pago exitoso
-      // location.reload()
-      //Variables
-      let idSale = moment().format('X')
-      let car = this.props.car
-      let transport = this.props.car.transport
-      let tickets = this.props.car.tickets
-      // generando order_id para el request
-      firebase.database().ref().child('idSales').set(this.props.idSales + 1)
-      //Agregando el pago exitoso a ventas en firebase
-      firebase.database().ref().child('sales').child(idSale).set(car)
-      // Eliminar los tickets reservados si el pago es exitoso
-      Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-      //Condicion para eliminar el pago de hotel o transport en firebase
-      if (this.props.ubicacion === 'hotel') {
-        // Eliminar habitaciones reservadas en firebase
-        firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
-      }else {
-        // Ocupar Asientos reservados en firebase
-        Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
-      }
+      this.setFirebase()
     })
   }
 
@@ -159,6 +139,30 @@ class FormPayment extends React.Component {
     let validation = openpay.card.validateExpiry(Month, "20"+Year);
 
     return validation
+  }
+
+  setFirebase(){
+    //Variables
+    let idSale = moment().format('X')
+    let car = this.props.car
+    let transport = this.props.car.transport
+    let tickets = this.props.car.tickets
+    // generando order_id para el request
+    firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+    //Agregando el pago exitoso a ventas en firebase
+    firebase.database().ref().child('sales').child(idSale).set(car)
+    // Eliminar los tickets reservados si el pago es exitoso
+    Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    //Condicion para eliminar el pago de hotel o transport en firebase
+    if (this.props.ubicacion === 'hotel') {
+      // Eliminar habitaciones reservadas en firebase
+      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
+    }else {
+      // Ocupar Asientos reservados en firebase
+      Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
+    }
+    //recargar pagina al hacer el pago exitoso
+    // location.reload()
   }
 
   render(){

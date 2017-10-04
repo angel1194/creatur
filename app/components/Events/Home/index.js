@@ -205,10 +205,11 @@ class Home extends React.Component {
     // }
   }
 
-  addRooms(rooms){
+  addRooms(rooms,hotels){
     this.location(<ShoppingCart idSales={this.state.idSales} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state['room'] = rooms
+    state['hotel'] = hotels
 
     this.setState(state)
     this.totalAmount(rooms)
