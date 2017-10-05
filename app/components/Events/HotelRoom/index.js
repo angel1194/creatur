@@ -32,9 +32,7 @@ class HotelRoom extends React.Component {
 
   render(){
     let element = Object.keys(this.props.elements.rooms)
-    let checkin = [this.props.night.checkin]
-    let checkout = [this.props.night.checkout]
-    let count = parseInt(checkout) - parseInt(checkin)
+    let count = this.props.night.totalNight
 
     return (
       <div>

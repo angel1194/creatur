@@ -53,11 +53,10 @@ class ShoppingCart extends React.Component {
   render() {
     let car = this.props.car
     // let cart = Object.keys(car.room)
-    let checkin = parseInt(this.state.checkin)
-    let checkout = parseInt(this.state.checkout)
-    let count = checkout - checkin
+    let checkin = this.state.checkin
+    let checkout = this.state.checkout
     let ubicacion = this.props.ubicacion
-
+    
     return (
       <div>
         <Container>
@@ -90,7 +89,7 @@ class ShoppingCart extends React.Component {
               item={this.state.hotels}
               checkin={this.state.checkin}
               checkout={this.state.checkout}
-              count={count}
+              count={this.state.totalNight}
               car={car}
               option={this.state.option}
               section={this.state.section}

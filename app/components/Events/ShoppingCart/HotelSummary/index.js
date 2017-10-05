@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
-import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
+import moment from 'moment';
+import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms} from './style'
 
 
 const NewSub=styled(SubText)`
@@ -57,22 +58,35 @@ function HotelSummary(props) {
           <Label>{props.item[props.elements.idHotel].address}</Label>
         </ReserveInfo>
         <Info>
-          <Text>{props.elements.description}</Text>
-          <Text>Estancia de {props.count} noches</Text>
+          <Text>{props.elements.taken} {props.elements.taken >=2 ? 'Habitaciones' : 'Habitación'}:</Text>
+          <SubText>{props.elements.description}</SubText>
         </Info>
         <CheckIn>
           <div>
             <Text>Entrada:</Text>
-            <SubText>{props.checkin}</SubText>
+            <SubText>{moment(props.checkin).format('LL')}</SubText>
           </div>
           <div>
             <Text>Salida:</Text>
-            <SubText>{props.checkout}</SubText>
+            <SubText>{moment(props.checkout).format('LL')}</SubText>
           </div>
+          <Text>Estancia de {props.count} noches</Text>
         </CheckIn>
         <DivSubTotal>
           <RowDiv>
-            <NewSub>Por noches de hospedaje</NewSub>
+            <Rooms>Habitación 1</Rooms>
+          </RowDiv>
+          <SRowDiv>
+            <Rooms>prom./noche</Rooms>
+          </SRowDiv>
+          <RowDiv>
+            <NewSub>{props.count} noches</NewSub>
+          </RowDiv>
+          <SRowDiv>
+            <SubText>MXN ${props.elements.price * props.count}</SubText>
+          </SRowDiv>
+          <RowDiv>
+            <NewSub>Por noche</NewSub>
           </RowDiv>
           <SRowDiv>
             <SubText>MXN ${props.elements.price}</SubText>
@@ -92,8 +106,8 @@ function HotelSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${props.elements.price * props.count + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
+        <NH3>${props.elements.price * props.count * props.elements.taken + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
       </Footer>
     </Container>
   );

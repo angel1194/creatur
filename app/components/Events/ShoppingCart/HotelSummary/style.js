@@ -102,7 +102,7 @@ const DivSubTotal = styled.div`
 
 const RowDiv=styled.div`
   width:50%
-  height:20px;
+  height:0px;
   display:flex;
   flex-direction:row;
   align-items:center;
@@ -112,7 +112,7 @@ const RowDiv=styled.div`
 
 const SRowDiv=styled.div`
   width:50%
-  height:20px;
+  height:0px;
   display:flex;
   flex-direction:row;
   align-items:center
@@ -143,4 +143,9 @@ const NH3 = styled(H3)`
   margin-right:5px;
 `;
 
-export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero}
+const Rooms = styled.label`
+  color:#7db464;
+  margin-right: 5px;
+`;
+
+export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms}

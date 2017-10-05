@@ -186,8 +186,8 @@ class Home extends React.Component {
          })
 
          this.setState({
-           checkin:startDate.format('DD-MM-YYYY'),
-           checkout:endDate.format('DD-MM-YYYY')
+           checkin:startDate.format('MM-DD-YYYY'),
+           checkout:endDate.format('MM-DD-YYYY')
          })
         this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
     }
@@ -218,11 +218,10 @@ class Home extends React.Component {
 
     this.setState(state)
     this.totalAmount(rooms)
-    console.log(this.state.car);
   }
 
   totalAmount(rooms){
-    let count = parseInt(this.state.checkout) - parseInt(this.state.checkin)
+    let count = this.state.totalNight
     const {car} = this.state
     let price = Number(rooms.price)
     let total = price * count
