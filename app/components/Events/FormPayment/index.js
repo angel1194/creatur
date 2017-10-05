@@ -117,8 +117,29 @@ class FormPayment extends React.Component {
     })
     .then((recurso) => {
       console.log(recurso);
-      this.setFirebase()
     })
+    //Variables
+    let idSale = moment().format('X')
+    let car = this.props.car
+    // generando order_id para el request
+    firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+    //Agregando el pago exitoso a ventas en firebase
+    firebase.database().ref().child('sales').child(idSale).set(car)
+    // Eliminar los tickets reservados si el pago es exitoso
+    // Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    //Condicion para eliminar el pago de hotel o transport en firebase
+    if (this.props.ubicacion === 'hotel') {
+      // Eliminar habitaciones reservadas en firebase
+      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(Number(car.room.used) + Number(car.room.taken))
+      Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    }else {
+      // Ocupar Asientos reservados en firebase
+      Object.keys(car.transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(Number(car.transport[item].used) + Number(car.transport[item].taken)))
+      Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    }
+    //recargar pagina al hacer el pago exitoso
+    location.reload()
+    alert('Pago Exitoso, Su ticket de compra fue enviado a su correo')
   }
 
   onError(err, token){
@@ -141,29 +162,27 @@ class FormPayment extends React.Component {
     return validation
   }
 
-  setFirebase(){
-    //Variables
-    let idSale = moment().format('X')
-    let car = this.props.car
-    let transport = this.props.car.transport
-    let tickets = this.props.car.tickets
-    // generando order_id para el request
-    firebase.database().ref().child('idSales').set(this.props.idSales + 1)
-    //Agregando el pago exitoso a ventas en firebase
-    firebase.database().ref().child('sales').child(idSale).set(car)
-    // Eliminar los tickets reservados si el pago es exitoso
-    Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-    //Condicion para eliminar el pago de hotel o transport en firebase
-    if (this.props.ubicacion === 'hotel') {
-      // Eliminar habitaciones reservadas en firebase
-      firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
-    }else {
-      // Ocupar Asientos reservados en firebase
-      Object.keys(transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(transport[item].used + transport[item].taken))
-    }
-    //recargar pagina al hacer el pago exitoso
-    // location.reload()
-  }
+  // setFirebase(){
+  //   //Variables
+  //   let idSale = moment().format('X')
+  //   let car = this.props.car
+  //   // generando order_id para el request
+  //   firebase.database().ref().child('idSales').set(this.props.idSales + 1)
+  //   //Agregando el pago exitoso a ventas en firebase
+  //   firebase.database().ref().child('sales').child(idSale).set(car)
+  //   // Eliminar los tickets reservados si el pago es exitoso
+  //   Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+  //   //Condicion para eliminar el pago de hotel o transport en firebase
+  //   if (this.props.ubicacion === 'hotel') {
+  //     // Eliminar habitaciones reservadas en firebase
+  //     firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(car.room.used + car.room.taken)
+  //   }else {
+  //     // Ocupar Asientos reservados en firebase
+  //     Object.keys(car.transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(car.transport[item].used + car.transport[item].taken))
+  //   }
+  //   //recargar pagina al hacer el pago exitoso
+  //   // location.reload()
+  // }
 
   render(){
     return (

@@ -24,8 +24,8 @@ class ShoppingCart extends React.Component {
   showEvent(){
     const tickets = this.state.aryTicket.searchTicket
     // Eliminando tickets ya buscados del temp de firebase y regresandolo a los tickets en ventas
-    Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-    Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
+    // Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+    // Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
     this.setState({
       showEvent: true
     })
