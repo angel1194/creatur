@@ -41,6 +41,8 @@ const SubTextEvent = styled.label`
 
 function HotelSummary(props) {
   let tickets = props.car.tickets
+  let test = props.elements
+  console.log(test);
 
   return (
     <Container>
