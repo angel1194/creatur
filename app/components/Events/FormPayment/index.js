@@ -130,12 +130,16 @@ class FormPayment extends React.Component {
       // Eliminar habitaciones reservadas en firebase
       firebase.database().ref().child('nightsHotels').child(car.room.night).child(car.room.keyRoom).child('used').set(Number(car.room.used) + Number(car.room.taken))
       // Eliminar los tickets reservados si el pago es exitoso
-      Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+      if (car.tickets) {
+        Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+      }
     }else {
       // Ocupar Asientos reservados en firebase
       Object.keys(car.transport).map((item,i)=>firebase.database().ref().child('transport').child(item).child('used').set(Number(car.transport[item].used) + Number(car.transport[item].taken)))
       // Eliminar los tickets reservados si el pago es exitoso
-      Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+      if (car.tickets) {
+        Object.keys(car.tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
+      }
     }
     //recargar pagina al hacer el pago exitoso
     location.reload()
