@@ -224,7 +224,8 @@ class Home extends React.Component {
     let count = this.state.totalNight
     const {car} = this.state
     let price = Number(rooms.price)
-    let total = price * count
+    let taken = Number(rooms.taken)
+    let total = (price * count) * taken
     car['total'] = total
 
     this.setState(car)

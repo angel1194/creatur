@@ -56,14 +56,20 @@ class ShoppingCart extends React.Component {
     let checkin = this.state.checkin
     let checkout = this.state.checkout
     let ubicacion = this.props.ubicacion
-    
+
     return (
       <div>
         <Container>
           <FlexStart>
-            <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
-              <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
-            </ButtonEvent>
+            {this.state.tickets === null ?
+              <ButtonEvent onClick={()=>alert('No hay tickets disponibles')}>
+                <Title><Icon name="plus-circle"/> ¡Comprar ticket "Concierto Manzanero"!</Title>
+              </ButtonEvent>
+              :
+              <ButtonEvent onClick={this.state.showEvent === false ? this.showEvent : this.setshowEvent}>
+                <Title><Icon name={this.state.showEvent === false ? "minus-circle" : "plus-circle"}/> ¡Comprar ticket "Concierto Manzanero"!</Title>
+              </ButtonEvent>
+            }
           </FlexStart>
           {this.state.showEvent === false ?
             <Fade out={this.state.fadeOut} duration={this.state.fadeDuration} style={{visibility: this.state.visibility}}>
