@@ -215,6 +215,7 @@ class Home extends React.Component {
     state['hotel'] = hotels
     state['checkin'] = this.state.checkin
     state['checkout'] = this.state.checkout
+    state['idSales'] = 'CMV-test'+this.state.idSales
 
     this.setState(state)
     this.totalAmount(rooms)
@@ -264,12 +265,18 @@ class Home extends React.Component {
       this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
       car['transport'] = carObject
       // Agregando price al state car
-      let totalCar = data * transport[Object.keys(carObject)].price
+      let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
       car['total'] = totalCar
+      car['idSales'] = 'CMV-test'+this.state.idSales
       this.setState(car)
     } else {
       alert('No hay asientos disponibles');
     }
+    // if (data > transport[Object.keys(carObject)].taken) {
+    //   console.log('asiento dispobleb');
+    // } else {
+    //   console.log('no alcansa el asiento');
+    // }
   }
 
   searchTicket(section,quantity){
@@ -311,6 +318,7 @@ class Home extends React.Component {
   // }
 
   render() {
+    console.log();
     return (
       <div>
         <Container>

@@ -44,7 +44,6 @@ function HotelSummary(props) {
   let taken = props.elements.taken
   let array = Object.keys(props.elements)
   let room = array.slice(0,taken)
-  console.log(room);
 
   return (
     <Container>
