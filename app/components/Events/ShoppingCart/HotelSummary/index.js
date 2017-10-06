@@ -41,8 +41,10 @@ const SubTextEvent = styled.label`
 
 function HotelSummary(props) {
   let tickets = props.car.tickets
-  let test = props.elements
-  console.log(test);
+  let taken = props.elements.taken
+  let array = Object.keys(props.elements)
+  let room = array.slice(0,taken)
+  console.log(room);
 
   return (
     <Container>
@@ -74,26 +76,29 @@ function HotelSummary(props) {
           </div>
           <Text>Estancia de {props.count} noches</Text>
         </CheckIn>
-        <DivSubTotal>
-          <RowDiv>
-            <Rooms>Habitación 1</Rooms>
-          </RowDiv>
-          <SRowDiv>
-            <Rooms>prom./noche</Rooms>
-          </SRowDiv>
-          <RowDiv>
-            <NewSub>{props.count} noches</NewSub>
-          </RowDiv>
-          <SRowDiv>
-            <SubText>MXN ${props.elements.price * props.count}</SubText>
-          </SRowDiv>
-          <RowDiv>
-            <NewSub>Por noche</NewSub>
-          </RowDiv>
-          <SRowDiv>
-            <SubText>MXN ${props.elements.price}</SubText>
-          </SRowDiv>
-        </DivSubTotal>
+        {room.map((item,i)=>
+          <DivSubTotal key={i}>
+            <RowDiv>
+              <Rooms>Habitación {i+1}</Rooms>
+            </RowDiv>
+            <SRowDiv>
+              <Rooms>prom./noche</Rooms>
+            </SRowDiv>
+            <RowDiv>
+              <NewSub>{props.count} noches</NewSub>
+            </RowDiv>
+            <SRowDiv>
+              <SubText>MXN ${props.elements.price * props.count}</SubText>
+            </SRowDiv>
+            <RowDiv>
+              <NewSub>Por noche</NewSub>
+            </RowDiv>
+            <SRowDiv>
+              <SubText>MXN ${props.elements.price}</SubText>
+            </SRowDiv>
+          </DivSubTotal>
+        )}
+
         {tickets ?
           <DivSubTotal>
             <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>

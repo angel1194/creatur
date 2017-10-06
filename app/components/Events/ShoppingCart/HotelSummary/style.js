@@ -146,6 +146,7 @@ const NH3 = styled(H3)`
 const Rooms = styled.label`
   color:#7db464;
   margin-right: 5px;
+  font-family: Montserrat;
 `;
 
 export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms}
