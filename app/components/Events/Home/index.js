@@ -192,7 +192,7 @@ class Home extends React.Component {
         this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
     }
     else{
-      alert('no hay habitaciones disponibles');
+      alert('No hay habitaciones disponibles');
     }
   }
 
@@ -259,12 +259,16 @@ class Home extends React.Component {
         }
       }
     }
-    this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    car['transport'] = carObject
-    // Agregando price al state car
-    let totalCar = data * transport[transports[0]].price
-    car['total'] = totalCar
-    this.setState(car)
+    if (Object.keys(carObject).length >= 1) {
+      this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+      car['transport'] = carObject
+      // Agregando price al state car
+      let totalCar = data * transport[Object.keys(carObject)].price
+      car['total'] = totalCar
+      this.setState(car)
+    } else {
+      alert('No hay asientos disponibles');
+    }
   }
 
   searchTicket(section,quantity){
@@ -306,7 +310,6 @@ class Home extends React.Component {
   // }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <Container>
