@@ -10,9 +10,6 @@ import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
-// var myFunctions = require('../functions/index');
-
-
 
 class Home extends React.Component {
   constructor(props){
@@ -313,12 +310,7 @@ class Home extends React.Component {
     })
   }
 
-  // function goBack() {
-  //   window.history.back();
-  // }
-
   render() {
-    console.log();
     return (
       <div>
         <Container>

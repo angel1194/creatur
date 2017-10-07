@@ -71,6 +71,9 @@ class FormEvent extends React.Component{
      section:seccion,
    })
    this.setTimer()
+
+  //  Ejecutando functions cloud de firebase
+  fetch('https://us-central1-hotel-fa344.cloudfunctions.net/addMessage')
   }
 
   addTickets(){
