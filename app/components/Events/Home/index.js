@@ -25,7 +25,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
-      aryTicket:{searchTicket:{}}
+      aryTicket:{searchTicket:{}},
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
@@ -58,16 +58,16 @@ class Home extends React.Component {
      })
    })
 
-   //seteando los tickets en el state con la funcion de Firebase(Metodo once, devuelve promesa)
-  //  setTemp().then(
-  //    res=>this.setState({
-  //      temp:res.val()
-  //    })
-  //  )
-  }
+  let ref = firebase.database().ref().child('temp')
+  ref.on('value', data => {
+    this.setState({
+      temp:data.val()
+    })
+    this.setTemp()
+  })
+}
 
   componentDidMount(){
-
     setTransport().then(
       res=>this.setState({
         transport:res.val()
@@ -304,10 +304,21 @@ class Home extends React.Component {
   }
 
   setTemp(){
-    let searchTicket = this.state.aryTicket.searchTicket
-    let tickets = Object.keys(searchTicket).map((item, i)=>firebase.database().ref().child('temp').child(item).child('time'))
+    let time = moment().format('DD-MM-YYYY H:mm:ss')
+    let timeRem = moment().subtract(10,'minutes').format('DD-MM-YYYY H:mm:ss')
+    let temp = this.state.temp
 
-    console.log('funcion setTemp', tickets);
+    let tempKey = Object.keys(temp).map((item, i)=> {
+      if (item != 'description') {
+        let timeRef = moment.unix(temp[item].time)
+        let timeRefFormat = moment(timeRef['_d']).format('DD-MM-YYYY H:mm:ss')
+        let comparation = moment(timeRefFormat).isBetween(timeRem, time, null, '[]');
+        if (comparation === false) {
+          Object.keys(temp).map((item,i)=>firebase.database().ref().child('temp').set({description:0}))
+          Object.keys(temp).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(temp[item]))
+        }
+      }
+    })
   }
 
   priceAndSections(){
@@ -329,7 +340,6 @@ class Home extends React.Component {
     return (
       <div>
         <Container>
-          <button onClick={()=>this.setTemp()}>clic</button>
           <Header location={this.location}/>
           <Trailcrumb
             hotels={this.state.available}
