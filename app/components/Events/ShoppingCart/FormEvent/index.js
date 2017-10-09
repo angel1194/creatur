@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from '../../../../containers/Events/Firebase'
 import {Div, style, MapConcierto, Ticket, Search, THeader, TBody, BoletoRes, Count, P, Row, Pay, Buy, Price, Seating} from './style';
 import { default as Fade } from 'react-fade';
+import moment from 'moment';
 
 class FormEvent extends React.Component{
   constructor(props){

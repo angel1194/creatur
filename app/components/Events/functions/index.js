@@ -3,7 +3,6 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 exports.addMessage = functions.https.onRequest((req, res) => {
-  console.log('soy request',req);
   // Grab the text parameter.
   const original = req.query.text;
   // Push the new message into the Realtime Database using the Firebase Admin SDK.

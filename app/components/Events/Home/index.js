@@ -57,6 +57,13 @@ class Home extends React.Component {
        idSales:snap.val()
      })
    })
+
+   //seteando los tickets en el state con la funcion de Firebase(Metodo once, devuelve promesa)
+  //  setTemp().then(
+  //    res=>this.setState({
+  //      temp:res.val()
+  //    })
+  //  )
   }
 
   componentDidMount(){
@@ -282,17 +289,25 @@ class Home extends React.Component {
     Object.keys(this.state.tickets).map((ticket,i)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section == this.state.tickets[ticket].section) {
+          let ticketTemp = this.state.tickets[ticket]
+          ticketTemp['time'] = moment().format('X')
           firebase.database().ref().child('temp').child(ticket).set(this.state.tickets[ticket])
           aryTicket[ticket]=this.state.tickets[ticket]
            ticketRef.child(ticket).remove()
         }
       }
     })
-    // obtenirndo los tickets de la busqueda y metiendolo en un state
+    // obteniendo los tickets de la busqueda y metiendolo en un state
     this.state.aryTicket['searchTicket']=aryTicket
     this.setState(aryTicket)
     return aryTicket
+  }
 
+  setTemp(){
+    let searchTicket = this.state.aryTicket.searchTicket
+    let tickets = Object.keys(searchTicket).map((item, i)=>firebase.database().ref().child('temp').child(item).child('time'))
+
+    console.log('funcion setTemp', tickets);
   }
 
   priceAndSections(){
@@ -314,6 +329,7 @@ class Home extends React.Component {
     return (
       <div>
         <Container>
+          <button onClick={()=>this.setTemp()}>clic</button>
           <Header location={this.location}/>
           <Trailcrumb
             hotels={this.state.available}
