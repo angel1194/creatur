@@ -314,8 +314,8 @@ class Home extends React.Component {
         let timeRefFormat = moment(timeRef['_d']).format('DD-MM-YYYY H:mm:ss')
         let comparation = moment(timeRefFormat).isBetween(timeRem, time, null, '[]');
         if (comparation === false) {
-          Object.keys(temp).map((item,i)=>firebase.database().ref().child('temp').set({description:0}))
-          Object.keys(temp).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(temp[item]))
+          firebase.database().ref().child('tickets').child(item).set(temp[item])
+          firebase.database().ref().child('temp').child(item).remove()
         }
       }
     })
