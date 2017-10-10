@@ -26,6 +26,19 @@ const TextM = styled.label`
   font-weight: bold;
 `;
 
+const Dates = styled.label`
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 5px;
+  margin-left: 5px;
+`;
+
+const Line = styled.div`
+  border-top: 1px solid #ccc;
+  margin-bottom: 10px;
+`
+
 const styles ={
   form:{
     width: '100%',
@@ -54,7 +67,7 @@ const styles ={
     fontWeight: '400'
   },
   input:{
-    width: '100%',
+    width: '95%',
     boxShadow: 'inset 1px 1px 2px #ccc',
     padding: '10px',
     border: '1px solid #eaeff3',
@@ -75,14 +88,18 @@ const styles ={
     flex: '1',
     margin: '0px 5px 0px 5px'
   },
+  inputSmall2:{
+    flex: '1.3',
+    margin: '0px 5px 0px 5px'
+  },
   button:{
-    background: '#2b5bac',
+    background: '#7db464',
     color: '#fff',
     fontFamily: 'Montserrat',
     outline:'0',
     padding: '10px',
     width: '80px',
-    borderRadius: '6px',
+    borderRadius: '6px !important',
     alignItems: 'center'
   },
   message:{
@@ -90,7 +107,41 @@ const styles ={
     margin: '-5px 0px 5px 5px',
     fontSize: '10px',
     fontFamily: 'Montserrat'
+  },
+  room:{
+    width: '100%',
+    height: 'auto',
+    border: '1px solid #eaeff3',
+    padding:'20px',
+    borderRadius: '6px',
+    display:'flex',
+    flexDirection:'column',
+    marginBottom:'15px'
+  },
+  row:{
+    display:'flex',
+    flexDirection:'row'
+  },
+  subtitle:{
+    color:'#848484',
+    fontSize:'15px',
+    marginLeft:'5px'
+  },
+  contact:{
+    width: '100%',
+    flexDirection: 'column',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    borderTop:'1px solid #ccc',
+    paddingTop:'10px'
+  },
+  textSmall:{
+    color: '#7db464',
+    fontSize: '12px',
+    fontFamily: 'Montserrat',
+    margin:'0px 100px 10px 0px'
   }
 }
 
-export {Container, Message, TextM,styles}
+export {Container, Message, TextM,styles, Dates, Line}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import FontAwesome from 'react-fontawesome';
-import {Container, Message, TextM, InputContainer,styles} from './style';
+import {Container, Message, TextM, InputContainer, styles, Dates, Line} from './style';
 import firebase from '../../../containers/Events/Firebase';
 import moment from 'moment';
 
@@ -174,90 +174,125 @@ class FormPayment extends React.Component {
   render(){
     return (
       <Container>
-        <Message>
-          <TextM>
-            ¡Estás a un click de tener tu reserva!
-          </TextM>
-          <Icon name='check-circle'/>
-        </Message>
-        <form style={styles.form} onSubmit={this.request}>
-          <div style={styles.container}>
-            <div style={styles.inputlabel}>
-              <label style={styles.label} htmlFor="">Nombre (s)</label>
-              <input style={styles.input} type="text" id="" ref="holder_name" required/>
-              <p style={styles.message} id="name"></p>
+        <form  onSubmit={this.request}>
+          <div style={styles.room}>
+            <div style={styles.row}>
+              <Dates>Habitación 1:</Dates>
+              <div style={styles.subtitle}>2 adultos 1 niño</div>
             </div>
-            <div style={styles.inputlabel}>
-              <label style={styles.label} htmlFor="">Apellidos</label>
-              <input style={styles.input} type="text" id="" ref="last_name" required/>
-            </div>
-          </div>
-
-          <div style={styles.container}>
-            <div style={styles.inputlabel}>
-              <label style={styles.label} htmlFor="">Telefono</label>
-              <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introdusca solo 10 digitos" required/>
-            </div>
-            <div style={styles.inputlabel}>
-              <label style={styles.label} htmlFor="">Correo Electronico</label>
-              <input style={styles.input} type="email" id="" ref="email" required/>
+            <div style={styles.container}>
+              <div style={styles.inputlabel}>
+                <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
+                <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
+              </div>
+              <div style={styles.inputlabel}>
+                <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
+                <input style={styles.input} type="number" id="phone" ref="" placeholder="Para que el hotel pueda comunicarse contigo" required/>
+              </div>
             </div>
           </div>
 
-          <div style={styles.container}>
-            <div style={styles.inputMedium}>
-              <label style={styles.label} htmlFor="">Número de tarjeta:</label>
-              <input style={styles.input} type="text" id="" ref="card_number" required/>
-            </div>
-            <div style={styles.inputMedium}>
-              <label style={styles.label} htmlFor="">Año de vencimiento:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/>
-            </div>
-            <div style={styles.inputMedium}>
-              <label style={styles.label} htmlFor="">Mes de expiración:</label>
-              <input style={styles.input} type="text" id="" ref="expiration_month" pattern="[0-9]{2}" title="Los meses de expiraciones válidos son de 01 a 12" required/>
-            </div>
-            <div style={styles.inputSmall}>
-              <label style={styles.label} htmlFor="">cvv2:</label>
-              <input style={styles.input} type="text" id="" ref="cvv2" required/>
-            </div>
-          </div>
+          <Message>
+            <TextM>
+              ¡Estás a un click de tener tu reserva!
+            </TextM>
+            <Icon name='check-circle'/>
+          </Message>
+          <div style={styles.form}>
 
-          <div style={styles.container}>
-            <div style={styles.inputMedium}>
-              <label style={styles.label} htmlFor="">Calle:</label>
-              <input style={styles.input} type="text" id="" ref="line1"/>
+            <Dates><FontAwesome name="credit-card-alt"/> Datos del titular de la tarjeta</Dates>
+            <div style={styles.row}>
+              <div style={styles.textSmall}>
+                <FontAwesome name="check"/>Nuestro proceso de transmisión es seguro
+              </div>
+              <div style={styles.textSmall}>
+                <FontAwesome name="check"/>Protegemos tu información personal
+              </div>
             </div>
-            <div style={styles.inputSmall}>
-              <label style={styles.label} htmlFor="">Numero:</label>
-              <input style={styles.input} type="text" id="" ref="line2"/>
-            </div>
-            <div style={styles.inputMedium}>
-              <label style={styles.label} htmlFor="">Referencias:</label>
-              <input style={styles.input} type="text" id="" ref="line3"/>
-            </div>
-            <div style={styles.inputSmall}>
-              <label style={styles.label} htmlFor="">Código postal:</label>
-              <input style={styles.input} type="text" id="" ref="postal_code" required/>
-            </div>
-          </div>
 
-          <div style={styles.container}>
-            <div style={styles.inputBig}>
-              <label style={styles.label} htmlFor="">Ciudad:</label>
-              <input style={styles.input} type="text" id="" ref="city" required/>
+            <div style={styles.container}>
+              <div style={styles.inputlabel}>
+                <label style={styles.label} htmlFor="">Nombre del titular de la tarjeta</label>
+                <input style={styles.input} type="text" id="" ref="holder_name" required/>
+              </div>
+              <div style={styles.inputlabel}>
+                <label style={styles.label} htmlFor="">Apellidos</label>
+                <input style={styles.input} type="text" id="" ref="last_name" required/>
+              </div>
             </div>
-            <div style={styles.inputBig}>
-              <label style={styles.label} htmlFor="">Estado:</label>
-              <input style={styles.input} type="text" id="" ref="state" required/>
+
+            <div style={styles.container}>
+              <div style={styles.inputMedium}>
+                <label style={styles.label} htmlFor="">Número de tarjeta:</label>
+                <input style={styles.input} type="number" id="" ref="card_number" required/>
+              </div>
+              <div style={styles.inputSmall2}>
+                <label style={styles.label} htmlFor="">Año de vencimiento:</label>
+                <input style={styles.input} type="number" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/>
+              </div>
+              <div style={styles.inputSmall2}>
+                <label style={styles.label} htmlFor="">Mes de expiración:</label>
+                <input style={styles.input} type="number" id="" ref="expiration_month" pattern="[0-9]{2}" title="Los meses de expiraciones válidos son de 01 a 12" required/>
+              </div>
+              <div style={styles.inputSmall}>
+                <label style={styles.label} htmlFor="">cvv2:</label>
+                <input style={styles.input} type="number" id="" ref="cvv2" required/>
+              </div>
             </div>
-            <div style={styles.inputSmall}>
-              <label style={styles.label} htmlFor="">Código de país:</label>
-              <input style={styles.input} type="text" id="" ref="country_code" value="MX" readOnly/>
+
+            <Line/>
+            <Dates><FontAwesome name="address-card"/> Dirección del titular de la tarjeta</Dates>
+            <div style={styles.container}>
+              <div style={styles.inputMedium}>
+                <label style={styles.label} htmlFor="">Calle:</label>
+                <input style={styles.input} type="text" id="" ref="line1"/>
+              </div>
+              <div style={styles.inputSmall}>
+                <label style={styles.label} htmlFor="">Número:</label>
+                <input style={styles.input} type="text" id="" ref="line2"/>
+              </div>
+              <div style={styles.inputMedium}>
+                <label style={styles.label} htmlFor="">Referencias:</label>
+                <input style={styles.input} type="text" id="" ref="line3"/>
+              </div>
+              <div style={styles.inputSmall2}>
+                <label style={styles.label} htmlFor="">Código postal:</label>
+                <input style={styles.input} type="text" id="" ref="postal_code" required/>
+              </div>
             </div>
+
+            <div style={styles.container}>
+              <div style={styles.inputBig}>
+                <label style={styles.label} htmlFor="">Ciudad:</label>
+                <input style={styles.input} type="text" id="" ref="city" required/>
+              </div>
+              <div style={styles.inputBig}>
+                <label style={styles.label} htmlFor="">Estado:</label>
+                <input style={styles.input} type="text" id="" ref="state" required/>
+              </div>
+              <div style={styles.inputSmall}>
+                <label style={styles.label} htmlFor="">Código de país:</label>
+                <input style={styles.input} type="text" id="" ref="country_code" value="MX" readOnly/>
+              </div>
+            </div>
+
+            <div style={styles.contact}>
+              <Dates><FontAwesome name="envelope"/> Datos de envio de confirmación</Dates>
+              <div style={styles.row}>
+                <div style={styles.inputlabel}>
+                  <label style={styles.label} htmlFor="">Teléfono</label>
+                  <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introdusca solo 10 digitos" required/>
+                </div>
+                <div style={styles.inputlabel}>
+                  <label style={styles.label} htmlFor="">Correo Electrónico</label>
+                  <input style={styles.input} type="email" id="" ref="email" required/>
+                </div>
+              </div>
+            </div>
+
+            <input hidden id="deviceIdHiddenFieldName"/><br/>
+            <button style={styles.button}>Pagar</button>
           </div>
-          <input hidden id="deviceIdHiddenFieldName"/><br/>
-          <button style={styles.button}>Pagar</button>
         </form>
       </Container>
     );
