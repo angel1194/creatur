@@ -167,7 +167,7 @@ class FormPayment extends React.Component {
       }
     }
     //recargar pagina al hacer el pago exitoso
-    location.reload()
+    // location.reload()
     alert('Pago Exitoso, Su ticket de compra fue enviado a su correo')
   }
 
@@ -180,7 +180,7 @@ class FormPayment extends React.Component {
               <Dates>Habitación 1:</Dates>
               <div style={styles.subtitle}>2 adultos 1 niño</div>
             </div>
-            <div style={styles.container}>
+            <div style={styles.containerInput}>
               <div style={styles.inputlabel}>
                 <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
                 <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
@@ -198,7 +198,8 @@ class FormPayment extends React.Component {
             </TextM>
             <Icon name='check-circle'/>
           </Message>
-          <div style={styles.form}>
+
+          <div style={styles.container}>
 
             <Dates><FontAwesome name="credit-card-alt"/> Datos del titular de la tarjeta</Dates>
             <div style={styles.row}>
@@ -210,9 +211,9 @@ class FormPayment extends React.Component {
               </div>
             </div>
 
-            <div style={styles.container}>
+            <div style={styles.containerInput}>
               <div style={styles.inputlabel}>
-                <label style={styles.label} htmlFor="">Nombre del titular de la tarjeta</label>
+                <label style={styles.label} htmlFor="">Nombre (s)</label>
                 <input style={styles.input} type="text" id="" ref="holder_name" required/>
               </div>
               <div style={styles.inputlabel}>
@@ -221,28 +222,75 @@ class FormPayment extends React.Component {
               </div>
             </div>
 
-            <div style={styles.container}>
-              <div style={styles.inputMedium}>
+            <div style={styles.containerInput}>
+              <div style={styles.inputCard}>
                 <label style={styles.label} htmlFor="">Número de tarjeta:</label>
                 <input style={styles.input} type="number" id="" ref="card_number" required/>
               </div>
-              <div style={styles.inputSmall2}>
-                <label style={styles.label} htmlFor="">Año de vencimiento:</label>
-                <input style={styles.input} type="number" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/>
+            </div>
+
+            <div style={styles.containerSelect}>
+              <div style={styles.inputSelect}>
+                <label style={styles.label} htmlFor="">Fecha de vencimiento</label>
               </div>
-              <div style={styles.inputSmall2}>
+              <div style={styles.selects}>
+                {/* <label style={styles.label} htmlFor="">Año de vencimiento:</label>
+                <input style={styles.input} type="number" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/> */}
+                {/* <label style={styles.label} htmlFor="">Año de vencimiento:</label> */}
+                <select style={styles.select} ref="expiration_year">
+                  <option>Año</option>
+                  <option value="17">2017</option>
+                  <option value="18">2018</option>
+                  <option value="19">2019</option>
+                  <option value="20">2020</option>
+                  <option value="21">2021</option>
+                  <option value="22">2022</option>
+                  <option value="23">2023</option>
+                  <option value="24">2024</option>
+                  <option value="25">2025</option>
+                  <option value="26">2026</option>
+                  <option value="27">2027</option>
+                  <option value="28">2028</option>
+                  <option value="29">2029</option>
+                  <option value="30">2030</option>
+                  <option value="31">2031</option>
+                  <option value="32">2032</option>
+                  <option value="33">2033</option>
+                  <option value="34">2034</option>
+                  <option value="35">2035</option>
+                  <option value="36">2036</option>
+                </select>
+
+                <select style={styles.select} ref="expiration_month">
+                  <option>Mes</option>
+                  <option value="01">01 - ene.</option>
+                  <option value="02">02 - feb.</option>
+                  <option value="03">03 - mar.</option>
+                  <option value="04">04 - abr.</option>
+                  <option value="05">05 - may.</option>
+                  <option value="06">06 - jun</option>
+                  <option value="07">07 - jul.</option>
+                  <option value="08">08 - ago.</option>
+                  <option value="09">09 - sep.</option>
+                  <option value="10">10 - oct.</option>
+                  <option value="11">11 - nov.</option>
+                  <option value="12">12 - dic.</option>
+                </select>
+              </div>
+              {/* <div style={styles.inputSmall}>
                 <label style={styles.label} htmlFor="">Mes de expiración:</label>
                 <input style={styles.input} type="number" id="" ref="expiration_month" pattern="[0-9]{2}" title="Los meses de expiraciones válidos son de 01 a 12" required/>
-              </div>
-              <div style={styles.inputSmall}>
-                <label style={styles.label} htmlFor="">cvv2:</label>
+                <label style={styles.label} htmlFor="">Mes de expiración:</label>
+              </div> */}
+              <div style={styles.inputSelect}>
+                <label style={styles.label} htmlFor="">Código de seguridad:</label>
                 <input style={styles.input} type="number" id="" ref="cvv2" required/>
               </div>
             </div>
 
             <Line/>
             <Dates><FontAwesome name="address-card"/> Dirección del titular de la tarjeta</Dates>
-            <div style={styles.container}>
+            <div style={styles.containerInput}>
               <div style={styles.inputMedium}>
                 <label style={styles.label} htmlFor="">Calle:</label>
                 <input style={styles.input} type="text" id="" ref="line1"/>
@@ -261,7 +309,7 @@ class FormPayment extends React.Component {
               </div>
             </div>
 
-            <div style={styles.container}>
+            <div style={styles.containerInput}>
               <div style={styles.inputBig}>
                 <label style={styles.label} htmlFor="">Ciudad:</label>
                 <input style={styles.input} type="text" id="" ref="city" required/>

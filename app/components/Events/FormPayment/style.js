@@ -40,7 +40,7 @@ const Line = styled.div`
 `
 
 const styles ={
-  form:{
+  container:{
     width: '100%',
     height: 'auto',
     border: '1px solid #eaeff3',
@@ -49,7 +49,7 @@ const styles ={
     display:'flex',
     flexDirection:'column',
   },
-  container:{
+  containerInput:{
     width: '100%',
     flexDirection: 'row',
     display: 'flex',
@@ -75,6 +75,10 @@ const styles ={
     outline: '0',
     marginBottom: '10px',
     color: '#777'
+  },
+  inputCard:{
+    width: '40%',
+    margin: '0px 5px 0px 5px'
   },
   inputBig:{
     flex: '3',
@@ -141,7 +145,37 @@ const styles ={
     fontSize: '12px',
     fontFamily: 'Montserrat',
     margin:'0px 100px 10px 0px'
-  }
+  },
+  select:{
+    width: '12%',
+    boxShadow: 'inset 1px 1px 2px #ccc',
+    padding: '10px',
+    border: '1px solid #eaeff3',
+    borderRadius: '6px',
+    outline: '0',
+    margin: '0px 30px 10px 0px',
+    color: '#777',
+    height: '37px'
+  },
+  selects:{
+    flex: '1',
+    margin: '0px 5px 0px 5px',
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  containerSelect:{
+    width: '100%',
+    flexDirection: 'column',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+  inputSelect:{
+    margin: '0px 5px 0px 5px',
+    flexDirection: 'column',
+    display: 'flex',
+    width: '20%',
+  },
 }
 
 export {Container, Message, TextM,styles, Dates, Line}
