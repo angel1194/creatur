@@ -83,21 +83,7 @@ const CheckIn = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   border-bottom:1px solid #ccc;
-  padding-bottom:20px;
-`;
-
-const DivSubTotal = styled.div`
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    margin-top:15px;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+  padding-bottom:15px;
 `;
 
 const RowDiv=styled.div`
@@ -107,7 +93,7 @@ const RowDiv=styled.div`
   flex-direction:row;
   align-items:center;
   justify-content:flex-start;
-  margin-bottom: 25px;
+  margin-bottom: 18px;
 `;
 
 const SRowDiv=styled.div`
@@ -143,10 +129,38 @@ const NH3 = styled(H3)`
   margin-right:5px;
 `;
 
+const DivSubTotal = styled.div`
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top:15px;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */
+`;
+
+const RoomsUI = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  margin-bottom: 10px;
+`;
+
 const Rooms = styled.label`
   color:#7db464;
   margin-right: 5px;
   font-family: Montserrat;
 `;
 
-export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms}
+const PriceN = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms, RoomsUI, PriceN}

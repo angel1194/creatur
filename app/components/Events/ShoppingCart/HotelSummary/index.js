@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
 import moment from 'moment';
-import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero, Rooms} from './style'
+import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text,
+  SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero,
+  Rooms, RoomsUI, PriceN} from './style';
 
 
 const NewSub=styled(SubText)`
@@ -42,8 +44,7 @@ const SubTextEvent = styled.label`
 function HotelSummary(props) {
   let tickets = props.car.tickets
   let taken = props.elements.taken
-  let array = Object.keys(props.elements)
-  let room = array.slice(0,taken)
+  let roomsUI = props.roomsUI
 
   return (
     <Container>
@@ -67,37 +68,34 @@ function HotelSummary(props) {
         <CheckIn>
           <div>
             <Text>Entrada:</Text>
-            <SubText>{moment(props.checkin).format('LL')}</SubText>
+            <SubText>{moment(props.checkin).format('ll')}</SubText>
           </div>
           <div>
             <Text>Salida:</Text>
-            <SubText>{moment(props.checkout).format('LL')}</SubText>
+            <SubText>{moment(props.checkout).format('ll')}</SubText>
           </div>
           <Text>Estancia de {props.count} noches</Text>
         </CheckIn>
-        {room.map((item,i)=>
+        {Object.keys(roomsUI).map((item, i)=>
           <DivSubTotal key={i}>
-            <RowDiv>
+            <RoomsUI>
               <Rooms>Habitación {i+1}</Rooms>
-            </RowDiv>
-            <SRowDiv>
-              <Rooms>prom./noche</Rooms>
-            </SRowDiv>
-            <RowDiv>
+              <NewSub>
+                <div>{roomsUI[item].adult} {roomsUI[item].adult >= 2 ? ' Adultos, ' : ' Adulto, '}</div>
+                {roomsUI[item].baby >= 1 ? <div>{roomsUI[item].baby} {roomsUI[item].baby >= 2 ? ' bebes' : ' bebe'},</div> : ''}
+                {Object.keys(roomsUI[item].child).length >= 1 ? <div>{Object.keys(roomsUI[item].child).length} {Object.keys(roomsUI[item].child).length >= 2 ? ' niños' : ' niño'}</div> : ''}
+              </NewSub>
+            </RoomsUI>
+            <PriceN>
               <NewSub>{props.count} noches</NewSub>
-            </RowDiv>
-            <SRowDiv>
               <SubText>MXN ${props.elements.price * props.count}</SubText>
-            </SRowDiv>
-            <RowDiv>
+            </PriceN>
+            <PriceN>
               <NewSub>Por noche</NewSub>
-            </RowDiv>
-            <SRowDiv>
               <SubText>MXN ${props.elements.price}</SubText>
-            </SRowDiv>
+            </PriceN>
           </DivSubTotal>
         )}
-
         {tickets ?
           <DivSubTotal>
             <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>

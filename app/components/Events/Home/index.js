@@ -191,8 +191,11 @@ class Home extends React.Component {
 
          this.setState({
            checkin:startDate.format('MM-DD-YYYY'),
-           checkout:endDate.format('MM-DD-YYYY')
+           checkout:endDate.format('MM-DD-YYYY'),
+           roomsUI:rooms
          })
+
+
         this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
     }
     else{

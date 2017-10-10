@@ -91,6 +91,7 @@ class ShoppingCart extends React.Component {
             />
           :
             <HotelSummary
+              roomsUI={this.state.roomsUI}
               elements={car.room}
               item={this.state.hotels}
               checkin={this.state.checkin}
