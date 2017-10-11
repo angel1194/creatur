@@ -117,9 +117,9 @@ class FormPayment extends React.Component {
     })
     .then((recurso) => {
       console.log(recurso);
+      // ejecutando funciones de firebase
+      this.setFirebase()
     })
-    // ejecutando funciones de firebase
-    this.setFirebase()
   }
 
   onError(err, token){
@@ -167,11 +167,12 @@ class FormPayment extends React.Component {
       }
     }
     //recargar pagina al hacer el pago exitoso
-    // location.reload()
+    location.reload()
     alert('Pago Exitoso, Los datos de compra fue enviado a su correo')
   }
 
   render(){
+    console.log(this.props.roomsUI);
     return (
       <Container>
         <form  onSubmit={this.request}>
