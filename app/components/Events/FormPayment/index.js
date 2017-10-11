@@ -172,29 +172,33 @@ class FormPayment extends React.Component {
   }
 
   render(){
+    let roomsUI = this.props.roomsUI
     console.log(this.props.roomsUI);
     return (
       <Container>
         <form  onSubmit={this.request}>
-          {/* {this.props.ubicacion === 'hotel' ?
-          <div style={styles.room}>
-            <div style={styles.row}>
-              <Dates>Habitación 1:</Dates>
-              <div style={styles.subtitle}>2 adultos 1 niño</div>
-            </div>
-            <div style={styles.containerInput}>
-              <div style={styles.inputlabel}>
-                <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
-                <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
+          {this.props.ubicacion === 'hotel' ?
+          <div>
+            {Object.keys(roomsUI).map((item, i)=>
+              <div style={styles.room} key={i}>
+                <div style={styles.row}>
+                  <Dates>Habitación {i+1}:</Dates>
+                  <div style={styles.subtitle}>{roomsUI[item].adult} Adulto</div>
+                </div>
+                <div style={styles.containerInput}>
+                  <div style={styles.inputlabel}>
+                    <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
+                    <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
+                  </div>
+                  <div style={styles.inputlabel}>
+                    <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
+                    <input style={styles.input} type="number" id="phone" ref="" placeholder="Para que el hotel pueda comunicarse contigo" required/>
+                  </div>
+                </div>
               </div>
-              <div style={styles.inputlabel}>
-                <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
-                <input style={styles.input} type="number" id="phone" ref="" placeholder="Para que el hotel pueda comunicarse contigo" required/>
-              </div>
-            </div>
+            )}
           </div>
-          : ''} */}
-
+           : ''}
 
           <Message>
             <TextM>
