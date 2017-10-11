@@ -50,7 +50,6 @@ class FormHotel extends React.Component {
   inputValueChange(father,input){
     let name = input.target.name
     let value= input.target.value
-    console.log(value);
     const rooms = this.state.roomsUI
     rooms[father][name]=value
     this.setState({
