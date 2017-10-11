@@ -6,8 +6,8 @@
 
 import React from 'react';
 import Slider from 'react-slick'
-import Img from './img/Slide.jpg'
-import Img2 from './img/viaje.jpg'
+import Img from './img/2.jpg'
+import Img2 from './img/3.jpg'
 // import styled from 'styled-components';
 
 
