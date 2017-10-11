@@ -48,7 +48,7 @@ class Hotels extends React.Component {
               <ColumMarginRight>
                 <PriceLabel Since={this.props.elements.rooms[0].price} Currency="MXN"/>
                 <br/><br/><br/>
-                <Button Title="Habitaciónes" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
+                <Button Title="Habitaciones" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
           </Wrapper>

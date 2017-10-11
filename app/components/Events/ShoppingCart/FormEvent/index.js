@@ -44,8 +44,10 @@ class FormEvent extends React.Component{
        })
     }else if (this.state.stopTime === 90) {
       clearInterval(this.intervalId)
-      Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-      Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
+      Object.keys(tickets).map((item,i)=>{
+        firebase.database().ref().child('temp').child(item).remove()
+        firebase.database().ref().child('tickets').child(item).set(tickets[item])
+      })
       this.setState({
         tickets: {},
         minutes: 1,
@@ -72,9 +74,6 @@ class FormEvent extends React.Component{
      section:seccion,
    })
    this.setTimer()
-
-    //  Ejecutando functions cloud de firebase
-    // fetch('https://us-central1-hotel-fa344.cloudfunctions.net/addMessage')
   }
 
   addTickets(){
