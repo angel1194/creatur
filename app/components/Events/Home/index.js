@@ -289,11 +289,11 @@ class Home extends React.Component {
   searchTicket(section,quantity){
     let aryTicket = {}
     let ticketRef = firebase.database().ref().child('tickets')
-    Object.keys(this.state.tickets).map((ticket,i)=>{
+    Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
-        if (section == this.state.tickets[ticket].section) {
+        if (section === this.state.tickets[ticket].section) {
           let ticketTemp = this.state.tickets[ticket]
-          ticketTemp['time'] = moment().format('X')
+          ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
           firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
            ticketRef.child(ticket).remove()
@@ -301,8 +301,11 @@ class Home extends React.Component {
       }
     })
     // obteniendo los tickets de la busqueda y metiendolo en un state
-    this.state.aryTicket['searchTicket']=aryTicket
-    this.setState(aryTicket)
+    // this.state.aryTicket['searchTicket']=aryTicket
+    // this.setState(aryTicket)
+    this.setState({
+      searchTicket:aryTicket
+    })
     return aryTicket
   }
 
@@ -313,9 +316,7 @@ class Home extends React.Component {
 
     let tempKey = Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
-        let timeRef = moment.unix(temp[item].time)
-        let timeRefFormat = moment(timeRef['_d']).format('DD-MM-YYYY H:mm:ss')
-        let comparation = moment(timeRefFormat).isBetween(timeRem, time, null, '[]');
+        let comparation = moment(temp[item].time).isBetween(timeRem, time, null, '[]');
         if (comparation === false) {
           firebase.database().ref().child('tickets').child(item).set(temp[item])
           firebase.database().ref().child('temp').child(item).remove()
