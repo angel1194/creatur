@@ -19,6 +19,7 @@ class ShoppingCart extends React.Component {
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
     this.setCar = this.setCar.bind(this)
+    this.removeTicket = this.removeTicket.bind(this)
   }
 
   showEvent(){
@@ -44,6 +45,12 @@ class ShoppingCart extends React.Component {
       option:option,
       section:section
     })
+  }
+
+  removeTicket(){
+    // Eliminar tickets del state y de firebase
+    let tickets = this.state.tickets
+    console.log(tickets);
   }
 
   render() {
@@ -84,6 +91,7 @@ class ShoppingCart extends React.Component {
               carObject={this.props.carObject}
               seating={this.props.seating}
               price={this.props.price}
+              removeTicket={this.removeTicket}
             />
           :
             <HotelSummary
