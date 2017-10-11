@@ -17,27 +17,28 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
 
   return [
-    {
-      path: '/',
-      name: 'homePage',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/RentCar/HomePage/reducer'),
-          import('containers/RentCar/HomePage/sagas'),
-          import('containers/RentCar/HomePage'),
-  ]);
-
-  const renderRoute = loadModule(cb);
-
-  importModules.then(([reducer, sagas, component]) => {
-    injectReducer('homePage', reducer.default);
-    injectSagas(sagas.default);
-    renderRoute(component);
-  });
-
-  importModules.catch(errorLoading);
-},
-    }, {
+//     {
+//       path: '/',
+//       name: 'homePage',
+//       getComponent(nextState, cb) {
+//         const importModules = Promise.all([
+//           import('containers/RentCar/HomePage/reducer'),
+//           import('containers/RentCar/HomePage/sagas'),
+//           import('containers/RentCar/HomePage'),
+//   ]);
+//
+//   const renderRoute = loadModule(cb);
+//
+//   importModules.then(([reducer, sagas, component]) => {
+//     injectReducer('homePage', reducer.default);
+//     injectSagas(sagas.default);
+//     renderRoute(component);
+//   });
+//
+//   importModules.catch(errorLoading);
+// },
+//     },
+{
   path: '/available',
     name: 'available',
       getComponent(nextState, cb) {
@@ -262,7 +263,7 @@ export default function createRoutes(store) {
     },
     // ruta de home para eventos
     {
-      path: '/manzanero',
+      path: '/',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/Events/Home'),
