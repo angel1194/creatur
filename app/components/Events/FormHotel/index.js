@@ -78,9 +78,6 @@ class FormHotel extends React.Component {
   this.props.setHotels(startDate, endDate, roomsUI)
  }
 
-
-
-
   render() {
     let data = Object.keys(this.state.roomsUI)
     const startDate = this.state.startDate.format('DD')

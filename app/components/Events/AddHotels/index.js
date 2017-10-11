@@ -80,7 +80,6 @@ deleteHotelAndRooms(keyHotel){
 
 
 delete(key){
-  console.log(key);
   confirmAlert({
     title: 'Confirmación',
     message: '¿Estás seguro de eliminar el hotel?',

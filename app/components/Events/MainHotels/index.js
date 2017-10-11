@@ -20,8 +20,8 @@ class MainHotels extends React.Component {
         max:3000
       },
       fadeOut: false,
-    visibility: 'visible',
-    fadeDuration:1
+      visibility: 'visible',
+      fadeDuration:1
     }
     this.setFilterValue = this.setFilterValue.bind(this)
 
@@ -96,9 +96,7 @@ class MainHotels extends React.Component {
               <Fade
                out={this.state.fadeOut}
                duration={this.state.fadeDuration}
-               style={{
-               visibility: this.state.visibility
-             }}>
+               style={{visibility: this.state.visibility}}>
               {
                 Object.keys(funcion).map((hotel,i) =>
                  <Hotels  addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={funcion[hotel]}/>

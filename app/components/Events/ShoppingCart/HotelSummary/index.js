@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
-import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
+import moment from 'moment';
+import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text,
+  SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero,
+  Rooms, RoomsUI, PriceN} from './style';
+
 
 const NewSub=styled(SubText)`
   display: flex;
@@ -39,6 +43,8 @@ const SubTextEvent = styled.label`
 
 function HotelSummary(props) {
   let tickets = props.car.tickets
+  let taken = props.elements.taken
+  let roomsUI = props.roomsUI
 
   return (
     <Container>
@@ -56,27 +62,40 @@ function HotelSummary(props) {
           <Label>{props.item[props.elements.idHotel].address}</Label>
         </ReserveInfo>
         <Info>
-          <Text>{props.elements.description}</Text>
-          <Text>Estancia de {props.count} noches</Text>
+          <Text>{props.elements.taken} {props.elements.taken >=2 ? 'Habitaciones' : 'Habitación'}:</Text>
+          <SubText>{props.elements.description}</SubText>
         </Info>
         <CheckIn>
           <div>
             <Text>Entrada:</Text>
-            <SubText>{props.checkin}</SubText>
+            <SubText>{moment(props.checkin).format('ll')}</SubText>
           </div>
           <div>
             <Text>Salida:</Text>
-            <SubText>{props.checkout}</SubText>
+            <SubText>{moment(props.checkout).format('ll')}</SubText>
           </div>
+          <Text>Estancia de {props.count} noches</Text>
         </CheckIn>
-        <DivSubTotal>
-          <RowDiv>
-            <NewSub>Por noches de hospedaje</NewSub>
-          </RowDiv>
-          <SRowDiv>
-            <SubText>MXN ${props.elements.price}</SubText>
-          </SRowDiv>
-        </DivSubTotal>
+        {Object.keys(roomsUI).map((item, i)=>
+          <DivSubTotal key={i}>
+            <RoomsUI>
+              <Rooms>Habitación {i+1}</Rooms>
+              <NewSub>
+                <div>{roomsUI[item].adult} {roomsUI[item].adult >= 2 ? ' Adultos, ' : ' Adulto, '}</div>
+                {roomsUI[item].baby >= 1 ? <div>{roomsUI[item].baby} {roomsUI[item].baby >= 2 ? ' bebes' : ' bebe'},</div> : ''}
+                {Object.keys(roomsUI[item].child).length >= 1 ? <div>{Object.keys(roomsUI[item].child).length} {Object.keys(roomsUI[item].child).length >= 2 ? ' niños' : ' niño'}</div> : ''}
+              </NewSub>
+            </RoomsUI>
+            <PriceN>
+              <NewSub>{props.count} noches</NewSub>
+              <SubText>MXN ${props.elements.price * props.count}</SubText>
+            </PriceN>
+            <PriceN>
+              <NewSub>Por noche</NewSub>
+              <SubText>MXN ${props.elements.price}</SubText>
+            </PriceN>
+          </DivSubTotal>
+        )}
         {tickets ?
           <DivSubTotal>
             <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
@@ -91,8 +110,8 @@ function HotelSummary(props) {
       </Body>
       <Footer>
         <TextTotal>Total:</TextTotal>
-        <NH3>${props.elements.price * props.count + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
         <TextTotal>MXN</TextTotal>
+        <NH3>${props.elements.price * props.count * props.elements.taken + (tickets ? props.option[props.section].price * Object.keys(tickets).length : 0)}</NH3>
       </Footer>
     </Container>
   );

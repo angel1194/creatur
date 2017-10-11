@@ -88,7 +88,7 @@ const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-`
+`;
 const ContainerItem = styled.div`
   display:flex;
   flex-direction: row;

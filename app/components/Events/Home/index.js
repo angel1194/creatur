@@ -9,7 +9,7 @@ import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
 import Header from '../Header';
-import firebase from '../../../containers/Events/Firebase'
+import firebase from '../../../containers/Events/Firebase';
 
 class Home extends React.Component {
   constructor(props){
@@ -25,6 +25,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
+      aryTicket:{searchTicket:{}},
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
@@ -56,10 +57,17 @@ class Home extends React.Component {
        idSales:snap.val()
      })
    })
-  }
+
+  let ref = firebase.database().ref().child('temp')
+  ref.on('value', data => {
+    this.setState({
+      temp:data.val()
+    })
+    this.setTemp()
+  })
+}
 
   componentDidMount(){
-
     setTransport().then(
       res=>this.setState({
         transport:res.val()
@@ -182,13 +190,16 @@ class Home extends React.Component {
          })
 
          this.setState({
-           checkin:startDate.format('DD-MM-YYYY'),
-           checkout:endDate.format('DD-MM-YYYY')
+           checkin:startDate.format('MM-DD-YYYY'),
+           checkout:endDate.format('MM-DD-YYYY'),
+           roomsUI:rooms
          })
+
+
         this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
     }
     else{
-      alert('no hay habitaciones disponibles');
+      alert('No hay habitaciones disponibles');
     }
   }
 
@@ -204,20 +215,25 @@ class Home extends React.Component {
     // }
   }
 
-  addRooms(rooms){
+  addRooms(rooms,hotels){
     this.location(<ShoppingCart idSales={this.state.idSales} priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 4)
     const state = this.state.car
     state['room'] = rooms
+    state['hotel'] = hotels
+    state['checkin'] = this.state.checkin
+    state['checkout'] = this.state.checkout
+    state['idSales'] = 'CMV-test'+this.state.idSales
 
     this.setState(state)
     this.totalAmount(rooms)
   }
 
   totalAmount(rooms){
-    let count = parseInt(this.state.checkout) - parseInt(this.state.checkin)
+    let count = this.state.totalNight
     const {car} = this.state
     let price = Number(rooms.price)
-    let total = price * count
+    let taken = Number(rooms.taken)
+    let total = (price * count) * taken
     car['total'] = total
 
     this.setState(car)
@@ -252,12 +268,22 @@ class Home extends React.Component {
         }
       }
     }
-    this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-    car['transport'] = carObject
-    // Agregando price al state car
-    let totalCar = data * transport[transports[0]].price
-    car['total'] = totalCar
-    this.setState(car)
+    if (Object.keys(carObject).length >= 1) {
+      this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+      car['transport'] = carObject
+      // Agregando price al state car
+      let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
+      car['total'] = totalCar
+      car['idSales'] = 'CMV-test'+this.state.idSales
+      this.setState(car)
+    } else {
+      alert('No hay asientos disponibles');
+    }
+    // if (data > transport[Object.keys(carObject)].taken) {
+    //   console.log('asiento dispobleb');
+    // } else {
+    //   console.log('no alcansa el asiento');
+    // }
   }
 
   searchTicket(section,quantity){
@@ -266,13 +292,36 @@ class Home extends React.Component {
     Object.keys(this.state.tickets).map((ticket,i)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section == this.state.tickets[ticket].section) {
+          let ticketTemp = this.state.tickets[ticket]
+          ticketTemp['time'] = moment().format('X')
           firebase.database().ref().child('temp').child(ticket).set(this.state.tickets[ticket])
           aryTicket[ticket]=this.state.tickets[ticket]
            ticketRef.child(ticket).remove()
         }
       }
     })
+    // obteniendo los tickets de la busqueda y metiendolo en un state
+    this.state.aryTicket['searchTicket']=aryTicket
+    this.setState(aryTicket)
     return aryTicket
+  }
+
+  setTemp(){
+    let time = moment().format('DD-MM-YYYY H:mm:ss')
+    let timeRem = moment().subtract(10,'minutes').format('DD-MM-YYYY H:mm:ss')
+    let temp = this.state.temp
+
+    let tempKey = Object.keys(temp).map((item, i)=> {
+      if (item != 'description') {
+        let timeRef = moment.unix(temp[item].time)
+        let timeRefFormat = moment(timeRef['_d']).format('DD-MM-YYYY H:mm:ss')
+        let comparation = moment(timeRefFormat).isBetween(timeRem, time, null, '[]');
+        if (comparation === false) {
+          firebase.database().ref().child('tickets').child(item).set(temp[item])
+          firebase.database().ref().child('temp').child(item).remove()
+        }
+      }
+    })
   }
 
   priceAndSections(){
@@ -289,10 +338,6 @@ class Home extends React.Component {
       ticketOptions:options
     })
   }
-
-  // function goBack() {
-  //   window.history.back();
-  // }
 
   render() {
     return (

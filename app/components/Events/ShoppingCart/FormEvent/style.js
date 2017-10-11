@@ -69,6 +69,17 @@ const style = {
     marginTop: '15px',
     outline: '0',
     borderRadius: "6px !important"
+  },
+  buttonDisabled:{
+    background: '#2b5bac',
+    padding: '8px 10px 10px 10px',
+    color: '#fff',
+    fontFamily: 'Montserrat',
+    height: '35px',
+    marginTop: '15px',
+    outline: '0',
+    borderRadius: "6px !important",
+    opacity: "0.5"
   }
 }
 
@@ -145,11 +156,6 @@ const Buy = styled.button`
   cursor: pointer;
   outline: 0;
   margin-top: 10px;
-
-  &:hover {
-    background: #87b182;
-    box-shadow: 1px 1px 2px #999;
-  }
 `;
 
 const Price = styled.p`

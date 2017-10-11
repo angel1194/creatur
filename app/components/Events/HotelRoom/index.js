@@ -32,9 +32,7 @@ class HotelRoom extends React.Component {
 
   render(){
     let element = Object.keys(this.props.elements.rooms)
-    let checkin = [this.props.night.checkin]
-    let checkout = [this.props.night.checkout]
-    let count = parseInt(checkout) - parseInt(checkin)
+    let count = this.props.night.totalNight
 
     return (
       <div>
@@ -55,7 +53,7 @@ class HotelRoom extends React.Component {
             <Title>Precio Total</Title>
             <H3>${this.props.elements.rooms[item].price * count} <Label>MXN</Label></H3>
             {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
-            <ContainerButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item])}>
+            <ContainerButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item], this.props.elements)}>
               <ButtonGreen>
                 Reservar
               <Space name='shopping-cart' />

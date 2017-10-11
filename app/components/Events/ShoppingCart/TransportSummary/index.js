@@ -58,7 +58,7 @@ function TransportSummary(props) {
             </ReserveInfo>
             <Info>
               <Text>Descripción</Text>
-              <Text>{carObject[item].taken} Asientos</Text>
+              <Text>{carObject[item].taken} {carObject[item].taken >= 2 ? 'Asientos' : 'Asiento'}</Text>
             </Info>
           </div>
         )}
