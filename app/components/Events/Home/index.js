@@ -294,7 +294,7 @@ class Home extends React.Component {
         if (section == this.state.tickets[ticket].section) {
           let ticketTemp = this.state.tickets[ticket]
           ticketTemp['time'] = moment().format('X')
-          firebase.database().ref().child('temp').child(ticket).set(this.state.tickets[ticket])
+          firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
            ticketRef.child(ticket).remove()
         }
