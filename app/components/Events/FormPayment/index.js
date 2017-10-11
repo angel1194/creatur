@@ -168,13 +168,14 @@ class FormPayment extends React.Component {
     }
     //recargar pagina al hacer el pago exitoso
     // location.reload()
-    alert('Pago Exitoso, Su ticket de compra fue enviado a su correo')
+    alert('Pago Exitoso, Los datos de compra fue enviado a su correo')
   }
 
   render(){
     return (
       <Container>
         <form  onSubmit={this.request}>
+          {/* {this.props.ubicacion === 'hotel' ?
           <div style={styles.room}>
             <div style={styles.row}>
               <Dates>Habitación 1:</Dates>
@@ -191,6 +192,8 @@ class FormPayment extends React.Component {
               </div>
             </div>
           </div>
+          : ''} */}
+
 
           <Message>
             <TextM>
@@ -237,8 +240,8 @@ class FormPayment extends React.Component {
                 {/* <label style={styles.label} htmlFor="">Año de vencimiento:</label>
                 <input style={styles.input} type="number" id="" ref="expiration_year" pattern="[0-9]{2}" title="La longitud del año de vencimiento debe ser 2 digitos de 01 a 99" required/> */}
                 {/* <label style={styles.label} htmlFor="">Año de vencimiento:</label> */}
-                <select style={styles.select} ref="expiration_year">
-                  <option>Año</option>
+                <select style={styles.select} ref="expiration_year" id="year">
+                  <option value="">Año</option>
                   <option value="17">2017</option>
                   <option value="18">2018</option>
                   <option value="19">2019</option>
@@ -268,7 +271,7 @@ class FormPayment extends React.Component {
                   <option value="03">03 - mar.</option>
                   <option value="04">04 - abr.</option>
                   <option value="05">05 - may.</option>
-                  <option value="06">06 - jun</option>
+                  <option value="06">06 - jun.</option>
                   <option value="07">07 - jul.</option>
                   <option value="08">08 - ago.</option>
                   <option value="09">09 - sep.</option>
