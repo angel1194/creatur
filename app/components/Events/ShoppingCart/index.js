@@ -48,9 +48,24 @@ class ShoppingCart extends React.Component {
   }
 
   removeTicket(){
-    // Eliminar tickets del state y de firebase
+    this.resTotalAmount()
     let tickets = this.state.tickets
-    console.log(tickets);
+    Object.keys(tickets).map((item,i)=>{
+      firebase.database().ref().child('temp').child(item).remove()
+      firebase.database().ref().child('tickets').child(item).set(tickets[item])
+      delete tickets[item]
+    })
+    this.setState(tickets)
+  }
+
+  resTotalAmount(){
+    let car =this.state.car
+    let price = this.props.price
+    let seating = this.props.seating
+
+    let total = price * seating
+    car['total'] = total
+    this.setState(car)
   }
 
   render() {

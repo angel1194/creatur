@@ -173,7 +173,6 @@ class FormPayment extends React.Component {
 
   render(){
     let roomsUI = this.props.roomsUI
-    console.log(this.props.roomsUI);
     return (
       <Container>
         <form  onSubmit={this.request}>
