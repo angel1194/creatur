@@ -4,13 +4,12 @@ import FontAwesome from 'react-fontawesome';
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background: #f2f2f2;
+  justify-content: flex-end;
   border-radius: 6px;
   height: 35px;
-  margin-bottom: 10px;
-  padding-right: 20px;
-`
+  width: 100%;
+  margin-top: 40px;
+`;
 
 const Ul = styled.ul`
   display: flex;
@@ -19,10 +18,17 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   list-style: none;
-  margin: 7px 0px 0px 5px;
-  color : #2b5bac;;
+  color : #ccc;
   font-family: Roboto;
   cursor: pointer;
+  height: 40px;
+  padding: 12px 30px 15px 30px;
+  &:hover{
+    color : #fff;
+    background: rgb(125, 180, 100);;
+    border-radius: 3px;
+
+  }
 `;
 
 const SubMenu = styled.div`

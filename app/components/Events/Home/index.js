@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container} from 'semantic-ui-react'
+import {Container} from 'semantic-ui-react';
+import {Header, Img, Line} from './style'
 import MainEvents from '../MainEvents';
 import HotelsManzanero from '../../../containers/Events/Hotels'
 import MainHotels from '../MainHotels'
@@ -8,7 +9,7 @@ import {setRooms,setHotels, setTransport, setTicket} from '../../../containers/E
 import moment from 'moment';
 import Rooms from '../Rooms';
 import ShoppingCart from '../ShoppingCart';
-import Header from '../Header';
+// import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
 
 class Home extends React.Component {
@@ -344,22 +345,26 @@ class Home extends React.Component {
     return (
       <div>
         <Container>
-          <Header location={this.location}/>
-          <Trailcrumb
-            hotels={this.state.available}
-            location={this.location}
-            nameContainer={this.state.location}
-            setHotels={this.setHotels}
-            addRooms={this.addRooms}
-            removeRooms={this.removeRooms}
-            addComparation={this.addComparation}
-            comparation={this.state.comparation}
-            stateAll={this.state.checkin}
-            stateRoom={this.state}
-            changesLocation={(e)=>this.changesLocation(e)}
-            addTransport={this.addTransport}
-          />
+          {/* <Header location={this.location}/> */}
+          <Header>
+            <Img src="https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png"/>
+            <Trailcrumb
+              hotels={this.state.available}
+              location={this.location}
+              nameContainer={this.state.location}
+              setHotels={this.setHotels}
+              addRooms={this.addRooms}
+              removeRooms={this.removeRooms}
+              addComparation={this.addComparation}
+              comparation={this.state.comparation}
+              stateAll={this.state.checkin}
+              stateRoom={this.state}
+              changesLocation={(e)=>this.changesLocation(e)}
+              addTransport={this.addTransport}
+            />
+          </Header>
         </Container>
+        <Line/>
         {this.state.container}
       </div>
     );
