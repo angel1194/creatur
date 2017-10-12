@@ -1,13 +1,14 @@
 import React from 'react';
 import {Container} from 'semantic-ui-react';
-import {Header, Img, Line} from './style'
+import {Header, Img, Line, Icon} from './style';
 import MainEvents from '../MainEvents';
-import HotelsManzanero from '../../../containers/Events/Hotels'
-import MainHotels from '../MainHotels'
-import Trailcrumb from '../Trailcrumb'
+import HotelsManzanero from '../../../containers/Events/Hotels';
+import MainHotels from '../MainHotels';
+import Trailcrumb from '../Trailcrumb';
 import {setRooms,setHotels, setTransport, setTicket} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
+import FontAwesome from 'react-fontawesome';
 import ShoppingCart from '../ShoppingCart';
 // import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
@@ -341,6 +342,13 @@ class Home extends React.Component {
     })
   }
 
+  responsivMenu(){
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("p").toggle();
+        });
+    });
+  }
   render() {
     return (
       <div>
@@ -362,6 +370,9 @@ class Home extends React.Component {
               changesLocation={(e)=>this.changesLocation(e)}
               addTransport={this.addTransport}
             />
+            <Icon>
+              <FontAwesome name="bars" onClick={()=>alert('clicl')}/>
+            </Icon>
           </Header>
         </Container>
         <Line/>

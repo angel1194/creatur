@@ -26,10 +26,10 @@ function Footer() {
               </Grid.Column>
               <Grid.Column mobile={16} tablet={16} computer={12} className="menuFooter">
                 <span className="trianguloDer"></span><Link to='/'>INICIO</Link>
-                <span className="trianguloDer"></span><Link to=''>SERVICIOS</Link>
+                {/* <span className="trianguloDer"></span><Link to=''>SERVICIOS</Link> */}
                 <span className="trianguloDer"></span><Link to=''>SOBRE NOSOTROS</Link>
-                <span className="trianguloDer"></span><Link to=''>MI RESERVA</Link>
-                <span className="trianguloDer"></span><Link to=''>TU VIAJE</Link>
+                {/* <span className="trianguloDer"></span><Link to=''>MI RESERVA</Link> */}
+                {/* <span className="trianguloDer"></span><Link to=''>TU VIAJE</Link> */}
 
               </Grid.Column>
             </Grid.Row>
