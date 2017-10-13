@@ -66,11 +66,12 @@ class ShoppingCart extends React.Component {
     let seating = this.props.seating
     let totalTransport = price * seating
     // hotel
-    let priceHotel = this.props.car.room.price
+    let priceHotel = car.room.price
     let totalNight = this.state.totalNight
     let roomsUI = Object.keys(this.state.roomsUI).length
     let totalHotel = (priceHotel * roomsUI) * totalNight
 
+    console.log(price);
     if (ubicacion === 'transport') {
       car['total'] = totalTransport
       this.setState(car)

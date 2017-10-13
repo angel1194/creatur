@@ -303,7 +303,7 @@ class Home extends React.Component {
       }
     })
     if (Object.keys(aryTicket).length < quantity) {
-      alert('No hay tickets disponibles')
+      alert('No se encontraron resultados. Intenta con otra cantidad de boleto.')
       aryTicket = {}
       this.setState({
         searchTicket:aryTicket
