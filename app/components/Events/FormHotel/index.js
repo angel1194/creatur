@@ -16,8 +16,8 @@ class FormHotel extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      startDate:moment(new Date('10-10-2017')),
-      endDate:moment(new Date('10-11-2017')),
+      startDate:moment('10-10-2017','DD-MM-YYYY'),
+      endDate:moment('11-10-2017','DD-MM-YYYY'),
       roomsUI:{
         room0:{
           adult:1,

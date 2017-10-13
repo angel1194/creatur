@@ -294,31 +294,45 @@ class Home extends React.Component {
     Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section === this.state.tickets[ticket].section) {
-          let ticketTemp = this.state.tickets[ticket]
-          ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
-          firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+          // let ticketTemp = this.state.tickets[ticket]
+          // ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
+          // firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
-           ticketRef.child(ticket).remove()
+          // ticketRef.child(ticket).remove()
         }
       }
     })
+    if (Object.keys(aryTicket).length < quantity) {
+      alert('No hay tickets disponibles')
+      aryTicket = {}
+      this.setState({
+        searchTicket:aryTicket
+      })
+      return aryTicket
+    }else {
+      Object.keys(aryTicket).map((ticket)=>{
+        let ticketTemp = this.state.tickets[ticket]
+        ticketTemp['time'] = moment().format('DD-MM-YYYY HH:mm:ss')
+        firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+        ticketRef.child(ticket).remove()
+      })
+      this.setState({
+        searchTicket:aryTicket
+      })
+      return aryTicket
+    }
     // obteniendo los tickets de la busqueda y metiendolo en un state
     // this.state.aryTicket['searchTicket']=aryTicket
     // this.setState(aryTicket)
-    this.setState({
-      searchTicket:aryTicket
-    })
-    return aryTicket
   }
 
   setTemp(){
-    let time = moment().format('DD-MM-YYYY H:mm:ss')
-    let timeRem = moment().subtract(10,'minutes').format('DD-MM-YYYY H:mm:ss')
+    let endTime= moment(new Date(),'DD-MM-YYYY HH:mm:ss')
+    let starTime = moment(new Date(),'DD-MM-YYYY HH:mm:ss').subtract(10,'m')
     let temp = this.state.temp
-
     let tempKey = Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
-        let comparation = moment(temp[item].time).isBetween(timeRem, time, null, '[]');
+        let comparation = moment(temp[item].time,'DD-MM-YYYY HH:mm:ss').isBetween(starTime, endTime, null,'[]');
         if (comparation === false) {
           firebase.database().ref().child('tickets').child(item).set(temp[item])
           firebase.database().ref().child('temp').child(item).remove()
