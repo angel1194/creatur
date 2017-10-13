@@ -173,7 +173,6 @@ class FormPayment extends React.Component {
 
   render(){
     let roomsUI = this.props.roomsUI
-    console.log(this.props.roomsUI);
     return (
       <Container>
         <form  onSubmit={this.request}>
@@ -183,16 +182,27 @@ class FormPayment extends React.Component {
               <div style={styles.room} key={i}>
                 <div style={styles.row}>
                   <Dates>Habitación {i+1}:</Dates>
-                  <div style={styles.subtitle}>{roomsUI[item].adult} Adulto</div>
+                  <div style={styles.subtitle}>
+                    {roomsUI[item].adult} Adulto,
+                    {roomsUI[item].baby} bebes,
+                    {Object.keys(roomsUI[item].child).length} niños
+                  </div>
                 </div>
                 <div style={styles.containerInput}>
                   <div style={styles.inputlabel}>
                     <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
-                    <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
+                    <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos"  required/>
                   </div>
                   <div style={styles.inputlabel}>
                     <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
-                    <input style={styles.input} type="number" id="phone" ref="" placeholder="Para que el hotel pueda comunicarse contigo" required/>
+                    <input style={styles.input}
+                      pattern="[0-9]{10}" title="Introdusca solo 10 digitos"
+                      type="tel"
+                      id="phone"
+                      ref=""
+                      placeholder="Para que el hotel pueda comunicarse contigo"
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -233,7 +243,7 @@ class FormPayment extends React.Component {
             <div style={styles.containerInput}>
               <div style={styles.inputCard}>
                 <label style={styles.label} htmlFor="">Número de tarjeta:</label>
-                <input style={styles.input} type="number" id="" ref="card_number" required/>
+                <input style={styles.input} type="number" id="" ref="card_number" pattern="[0-9]{16}" title="Introdusca solo 16 digitos" required/>
               </div>
             </div>
 
@@ -313,7 +323,7 @@ class FormPayment extends React.Component {
               </div>
               <div style={styles.inputSmall2}>
                 <label style={styles.label} htmlFor="">Código postal:</label>
-                <input style={styles.input} type="text" id="" ref="postal_code" required/>
+                <input style={styles.input} type="text" id="" ref="postal_code" pattern="[0-9]{5}" title="Introdusca solo 5 digitos" required/>
               </div>
             </div>
 

@@ -19,6 +19,7 @@ class ShoppingCart extends React.Component {
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
     this.setCar = this.setCar.bind(this)
+    this.removeTicket = this.removeTicket.bind(this)
   }
 
   showEvent(){
@@ -44,6 +45,39 @@ class ShoppingCart extends React.Component {
       option:option,
       section:section
     })
+  }
+
+  removeTicket(){
+    this.resTotalAmount()
+    let tickets = this.state.tickets
+    Object.keys(tickets).map((item,i)=>{
+      firebase.database().ref().child('temp').child(item).remove()
+      firebase.database().ref().child('tickets').child(item).set(tickets[item])
+      delete tickets[item]
+    })
+    this.setState(tickets)
+  }
+
+  resTotalAmount(){
+    let ubicacion = this.state.ubicacion
+    let car =this.state.car
+    // transport
+    let price = this.props.price
+    let seating = this.props.seating
+    let totalTransport = price * seating
+    // hotel
+    let priceHotel = car.room.price
+    let totalNight = this.state.totalNight
+    let roomsUI = Object.keys(this.state.roomsUI).length
+    let totalHotel = (priceHotel * roomsUI) * totalNight
+
+    if (ubicacion === 'transport') {
+      car['total'] = totalTransport
+      this.setState(car)
+    }else {
+      car['total'] = totalHotel
+      this.setState(car)
+    }
   }
 
   render() {
@@ -84,6 +118,7 @@ class ShoppingCart extends React.Component {
               carObject={this.props.carObject}
               seating={this.props.seating}
               price={this.props.price}
+              removeTicket={this.removeTicket}
             />
           :
             <HotelSummary
@@ -96,6 +131,7 @@ class ShoppingCart extends React.Component {
               car={car}
               option={this.state.option}
               section={this.state.section}
+              removeTicket={this.removeTicket}
             />
           }
           </FlexRow>

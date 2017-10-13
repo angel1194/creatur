@@ -1,14 +1,16 @@
 import React from 'react';
-import {Container} from 'semantic-ui-react'
+import {Container} from 'semantic-ui-react';
+import {Header, Img, Line, Icon} from './style';
 import MainEvents from '../MainEvents';
-import HotelsManzanero from '../../../containers/Events/Hotels'
-import MainHotels from '../MainHotels'
-import Trailcrumb from '../Trailcrumb'
+import HotelsManzanero from '../../../containers/Events/Hotels';
+import MainHotels from '../MainHotels';
+import Trailcrumb from '../Trailcrumb';
 import {setRooms,setHotels, setTransport, setTicket} from '../../../containers/Events/Firebase/firebase'
 import moment from 'moment';
 import Rooms from '../Rooms';
+import FontAwesome from 'react-fontawesome';
 import ShoppingCart from '../ShoppingCart';
-import Header from '../Header';
+// import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
 
 class Home extends React.Component {
@@ -274,7 +276,7 @@ class Home extends React.Component {
       // Agregando price al state car
       let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
       car['total'] = totalCar
-      car['idSales'] = 'CMV-test'+this.state.idSales
+      car['idSales'] = this.state.idSales
       this.setState(car)
     } else {
       alert('No hay asientos disponibles');
@@ -292,31 +294,45 @@ class Home extends React.Component {
     Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section === this.state.tickets[ticket].section) {
-          let ticketTemp = this.state.tickets[ticket]
-          ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
-          firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+          // let ticketTemp = this.state.tickets[ticket]
+          // ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
+          // firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
-           ticketRef.child(ticket).remove()
+          // ticketRef.child(ticket).remove()
         }
       }
     })
+    if (Object.keys(aryTicket).length < quantity) {
+      alert('No se encontraron resultados. Intenta con otra cantidad de boleto.')
+      aryTicket = {}
+      this.setState({
+        searchTicket:aryTicket
+      })
+      return aryTicket
+    }else {
+      Object.keys(aryTicket).map((ticket)=>{
+        let ticketTemp = this.state.tickets[ticket]
+        ticketTemp['time'] = moment().format('DD-MM-YYYY HH:mm:ss')
+        firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+        ticketRef.child(ticket).remove()
+      })
+      this.setState({
+        searchTicket:aryTicket
+      })
+      return aryTicket
+    }
     // obteniendo los tickets de la busqueda y metiendolo en un state
     // this.state.aryTicket['searchTicket']=aryTicket
     // this.setState(aryTicket)
-    this.setState({
-      searchTicket:aryTicket
-    })
-    return aryTicket
   }
 
   setTemp(){
-    let time = moment().format('DD-MM-YYYY H:mm:ss')
-    let timeRem = moment().subtract(10,'minutes').format('DD-MM-YYYY H:mm:ss')
+    let endTime= moment(new Date(),'DD-MM-YYYY HH:mm:ss')
+    let starTime = moment(new Date(),'DD-MM-YYYY HH:mm:ss').subtract(10,'m')
     let temp = this.state.temp
-
     let tempKey = Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
-        let comparation = moment(temp[item].time).isBetween(timeRem, time, null, '[]');
+        let comparation = moment(temp[item].time,'DD-MM-YYYY HH:mm:ss').isBetween(starTime, endTime, null,'[]');
         if (comparation === false) {
           firebase.database().ref().child('tickets').child(item).set(temp[item])
           firebase.database().ref().child('temp').child(item).remove()
@@ -340,26 +356,40 @@ class Home extends React.Component {
     })
   }
 
+  responsivMenu(){
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("p").toggle();
+        });
+    });
+  }
   render() {
     return (
       <div>
         <Container>
-          <Header location={this.location}/>
-          <Trailcrumb
-            hotels={this.state.available}
-            location={this.location}
-            nameContainer={this.state.location}
-            setHotels={this.setHotels}
-            addRooms={this.addRooms}
-            removeRooms={this.removeRooms}
-            addComparation={this.addComparation}
-            comparation={this.state.comparation}
-            stateAll={this.state.checkin}
-            stateRoom={this.state}
-            changesLocation={(e)=>this.changesLocation(e)}
-            addTransport={this.addTransport}
-          />
+          {/* <Header location={this.location}/> */}
+          <Header>
+            <Img src="https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png"/>
+            <Trailcrumb
+              hotels={this.state.available}
+              location={this.location}
+              nameContainer={this.state.location}
+              setHotels={this.setHotels}
+              addRooms={this.addRooms}
+              removeRooms={this.removeRooms}
+              addComparation={this.addComparation}
+              comparation={this.state.comparation}
+              stateAll={this.state.checkin}
+              stateRoom={this.state}
+              changesLocation={(e)=>this.changesLocation(e)}
+              addTransport={this.addTransport}
+            />
+            <Icon>
+              <FontAwesome name="bars" onClick={()=>alert('clicl')}/>
+            </Icon>
+          </Header>
         </Container>
+        <Line/>
         {this.state.container}
       </div>
     );
