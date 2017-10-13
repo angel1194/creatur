@@ -22,7 +22,7 @@ class ShoppingCart extends React.Component {
     this.removeTicket = this.removeTicket.bind(this)
   }
 
-  showEvent(){
+  showEvent(id){
     this.setState({
       showEvent: true
     })

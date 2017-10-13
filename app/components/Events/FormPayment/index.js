@@ -51,7 +51,7 @@ class FormPayment extends React.Component {
     let validateExpiry = this.validateExpiry(Month,Year)
 
     if (validateCard === false || validateExpiry === false) {
-      alert('La Validacion de tarjeta es incorrecta')
+      alert('La validación de la tarjeta es incorrecta')
     }
 
     const openpay = window.OpenPay
@@ -168,7 +168,14 @@ class FormPayment extends React.Component {
     }
     //recargar pagina al hacer el pago exitoso
     location.reload()
-    alert('Pago Exitoso, Los datos de compra fue enviado a su correo')
+    alert('Pago exitoso, la información de compra se envió a su correo electrónico')
+  }
+
+
+  validatePhone(val){
+    if (val.target.value.length > 10) {
+       return false;
+    }
   }
 
   render(){
@@ -195,9 +202,9 @@ class FormPayment extends React.Component {
                   </div>
                   <div style={styles.inputlabel}>
                     <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
-                    <input style={styles.input}
-                      pattern="[0-9]{10}" title="Introdusca solo 10 digitos"
-                      type="tel"
+                    <input onChange={(e)=>this.validatePhone(e)} style={styles.input}
+                      pattern="[0-9]{10}" title="Introduzca solo 10 digitos"
+                      type="number"
                       id="phone"
                       ref=""
                       placeholder="Para que el hotel pueda comunicarse contigo"
@@ -243,7 +250,7 @@ class FormPayment extends React.Component {
             <div style={styles.containerInput}>
               <div style={styles.inputCard}>
                 <label style={styles.label} htmlFor="">Número de tarjeta:</label>
-                <input style={styles.input} type="number" id="" ref="card_number" pattern="[0-9]{16}" title="Introdusca solo 16 digitos" required/>
+                <input style={styles.input} type="number" id="" ref="card_number" pattern="[0-9]{16}" title="Introduzca solo 16 digitos" required/>
               </div>
             </div>
 
@@ -323,7 +330,7 @@ class FormPayment extends React.Component {
               </div>
               <div style={styles.inputSmall2}>
                 <label style={styles.label} htmlFor="">Código postal:</label>
-                <input style={styles.input} type="text" id="" ref="postal_code" pattern="[0-9]{5}" title="Introdusca solo 5 digitos" required/>
+                <input style={styles.input} type="text" id="" ref="postal_code" pattern="[0-9]{5}" title="Introduzca solo 5 digitos" required/>
               </div>
             </div>
 
@@ -347,7 +354,7 @@ class FormPayment extends React.Component {
               <div style={styles.row}>
                 <div style={styles.inputlabel}>
                   <label style={styles.label} htmlFor="">Teléfono</label>
-                  <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introdusca solo 10 digitos" required/>
+                  <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introduzca solo 10 digitos" required/>
                 </div>
                 <div style={styles.inputlabel}>
                   <label style={styles.label} htmlFor="">Correo Electrónico</label>
