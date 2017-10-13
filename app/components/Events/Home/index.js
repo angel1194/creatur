@@ -276,7 +276,7 @@ class Home extends React.Component {
       // Agregando price al state car
       let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
       car['total'] = totalCar
-      car['idSales'] = 'CMV-test'+this.state.idSales
+      car['idSales'] = this.state.idSales
       this.setState(car)
     } else {
       alert('No hay asientos disponibles');
