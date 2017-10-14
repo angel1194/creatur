@@ -95,9 +95,6 @@ const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap-reverse;
-  @media only screen and (max-width: 991px) and (min-width: 220px) {
-    margin: 0px 0px 0px 10px;
-  }
 `;
 const ContainerItem = styled.div`
   display:flex;

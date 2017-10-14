@@ -57,7 +57,8 @@ const Hotel = styled(H3)`
 `;
 
 const EventManzanero = styled(H3)`
-  margin-bottom: 10px;
+  margin-bottom: -10px;
+  margin-top: 10px;
 `;
 
 const Label= styled.label`
