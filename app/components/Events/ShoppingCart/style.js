@@ -16,6 +16,9 @@ const Title = styled.p`
   font-size: 25px;
   font-weight: bold;
   font-family: Montserrat !important;
+  @media only screen and (max-width: 568px) and (min-width: 220px) {
+    font-size: 15px;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -80,14 +83,21 @@ const Cart = styled.div`
 `;
 
 const DivPay = styled.div`
-  width: 75%;
+  width: 850px;
+  @media only screen and (max-width: 1200px) and (min-width: 220px) {
+    width: 100%;
+    margin-bottom: 45px;
+  }
 `;
 
 const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  @media only screen and (max-width: 991px) and (min-width: 220px) {
+    margin: 0px 0px 0px 10px;
+  }
 `;
 const ContainerItem = styled.div`
   display:flex;
