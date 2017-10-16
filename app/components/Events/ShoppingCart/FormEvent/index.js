@@ -73,11 +73,10 @@ class FormEvent extends React.Component{
      tickets:ticket,
      section:seccion,
    })
-   if (quantity >= 1) {
-     this.setTimer()
-   }else if (Object.keys(ticket).length >= 1) {
+   if (Object.keys(ticket).length >= 1) {
      this.setTimer()
    }
+
   }
 
   addTickets(){

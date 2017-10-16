@@ -13,6 +13,8 @@ import ShoppingCart from '../ShoppingCart';
 // import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
 
+let rootRef = firebase.database().ref()
+
 class Home extends React.Component {
   constructor(props){
     super(props)
@@ -53,14 +55,14 @@ class Home extends React.Component {
      })
    )
 
-   let idSales = firebase.database().ref().child('idSales')
+   let idSales = rootRef.child('idSales')
    idSales.on('value', snap => {
      this.setState({
        idSales:snap.val()
      })
    })
 
-  let ref = firebase.database().ref().child('temp')
+  let ref = rootRef.child('temp')
   ref.on('value', data => {
     this.setState({
       temp:data.val()
@@ -76,7 +78,7 @@ class Home extends React.Component {
       })
     )
 
-    let refTicket = firebase.database().ref().child('tickets')
+    let refTicket = rootRef.child('tickets')
     refTicket.on('value', snap => {
       this.setState({
         tickets:snap.val()
@@ -302,7 +304,7 @@ class Home extends React.Component {
 
   searchTicket(section,quantity){
     let aryTicket = {}
-    let ticketRef = firebase.database().ref().child('tickets')
+    let ticketRef = rootRef.child('tickets')
     Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section === this.state.tickets[ticket].section) {
@@ -321,7 +323,7 @@ class Home extends React.Component {
       Object.keys(aryTicket).map((ticket)=>{
         let ticketTemp = this.state.tickets[ticket]
         ticketTemp['time'] = moment().format('DD-MM-YYYY HH:mm:ss')
-        firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+        rootRef.child('temp').child(ticket).set(ticketTemp)
         ticketRef.child(ticket).remove()
       })
       this.setState({
@@ -339,8 +341,8 @@ class Home extends React.Component {
       if (item != 'description') {
         let comparation = moment(temp[item].time).isBetween(starTime, endTime);
         if (comparation === false) {
-          firebase.database().ref().child('tickets').child(item).set(temp[item])
-          firebase.database().ref().child('temp').child(item).remove()
+          rootRef.child('tickets').child(item).set(temp[item])
+          rootRef.child('temp').child(item).remove()
         }
       }
     })
