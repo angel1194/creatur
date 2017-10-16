@@ -166,6 +166,7 @@ class Home extends React.Component {
             }
           })
         }
+        // Ordenando las habitaciones por precios
         availableRooms.sort((a,b)=>{
           return parseInt(a.price) - parseInt(b.price)
         })
@@ -186,8 +187,19 @@ class Home extends React.Component {
            }
          })
 
+         // Ordenando los hoteles por los precios de las habitaciones
+         let order = Object.keys(hotels).sort((a,b)=>{
+           return parseInt(hotels[a].rooms[0].price) - parseInt(hotels[b].rooms[0].price)
+         })
+
+         let orderHotels=[]
+
+         order.map(hotelKey=>{
+           orderHotels.push({[hotelKey]:hotels[hotelKey]})
+         })
+
          this.setState({
-           available:hotels,
+           available:orderHotels,
            totalNight:totalNight
          })
 
@@ -198,7 +210,7 @@ class Home extends React.Component {
          })
 
 
-        this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={hotels} location={this.location}/>, 2)
+        this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={orderHotels} location={this.location}/>, 2)
     }
     else{
       alert('No hay habitaciones disponibles');

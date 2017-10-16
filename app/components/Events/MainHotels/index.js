@@ -54,27 +54,30 @@ class MainHotels extends React.Component {
   }
 
   starFilter(){
-    let hotelsFiltered={}
-    Object.keys(this.state.hotels).filter((hotelKey,i)=>{
-      let aryRooms=[]
-      if (this.state.hotels[hotelKey].star >= this.state.star.min &&  this.state.hotels[hotelKey].star <= this.state.star.max ) {
-        Object.keys(this.state.hotels[hotelKey].rooms).map((roomKey)=>{
-          if (this.state.hotels[hotelKey].rooms[roomKey].idHotel == hotelKey) {
-            if (this.state.hotels[hotelKey].rooms[roomKey].price >= this.state.price.min && this.state.hotels[hotelKey].rooms[roomKey].price <= this.state.price.max) {
-                aryRooms.push(this.state.hotels[hotelKey].rooms[roomKey])
+
+    let hotelsFiltered=[]
+    this.state.hotels.map((hotelObject,i)=>{
+      Object.keys(hotelObject).filter((hotelKey)=>{
+        let aryRooms=[]
+        if (this.state.hotels[i][hotelKey].star >= this.state.star.min &&  this.state.hotels[i][hotelKey].star <= this.state.star.max ) {
+          Object.keys(this.state.hotels[i][hotelKey].rooms).map(roomKey=>{
+            if (this.state.hotels[i][hotelKey].rooms[roomKey].idHotel == hotelKey) {
+              if (this.state.hotels[i][hotelKey].rooms[roomKey].price >= this.state.price.min && this.state.hotels[i][hotelKey].rooms[roomKey].price <= this.state.price.max) {
+                aryRooms.push(this.state.hotels[i][hotelKey].rooms[roomKey])
+              }
             }
+          })
+          if (aryRooms.length > 0) {
+            let objectHotels={
+              [hotelKey]:this.state.hotels[i][hotelKey]
+            }
+            objectHotels[hotelKey]['rooms']=aryRooms
+            hotelsFiltered.push(objectHotels)
           }
-        })
-        if (aryRooms.length > 0) {
-          hotelsFiltered[hotelKey]=this.state.hotels[hotelKey]
-          hotelsFiltered[hotelKey]['rooms']=aryRooms
         }
-      }
+      })
     })
-
     return hotelsFiltered
-
-
   }
 
   render() {
@@ -98,9 +101,11 @@ class MainHotels extends React.Component {
                duration={this.state.fadeDuration}
                style={{visibility: this.state.visibility}}>
               {
-                Object.keys(funcion).map((hotel,i) =>
-                 <Hotels  addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={funcion[hotel]}/>
-               )
+                funcion.map((object,i)=>
+                  Object.keys(object).map((hotel)=>{
+                    return(<Hotels  addRooms={this.props.addRooms} addComparation={this.props.addComparation} key={i} elements={object[hotel]}/>)
+                  })
+                )
               }
               </Fade>
             </DivHotels>
