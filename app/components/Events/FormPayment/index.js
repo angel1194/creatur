@@ -51,7 +51,7 @@ class FormPayment extends React.Component {
     let validateExpiry = this.validateExpiry(Month,Year)
 
     if (validateCard === false || validateExpiry === false) {
-      alert('La Validacion de tarjeta es incorrecta')
+      alert('La validación de la tarjeta es incorrecta')
     }
 
     const openpay = window.OpenPay
@@ -168,33 +168,103 @@ class FormPayment extends React.Component {
     }
     //recargar pagina al hacer el pago exitoso
     location.reload()
-    alert('Pago Exitoso, Los datos de compra fue enviado a su correo')
+    alert('Pago exitoso, la información de compra se envió a su correo electrónico')
+  }
+
+
+  validatePhone(val, tel){
+    let type = tel
+    let validatePhone = document.getElementById("validate_phone")
+    let validateInput = document.querySelector("#validate_input")
+
+    let validatePhoneTel = document.getElementById("validate_phoneTel")
+    let validateInputTel = document.querySelector("#validate_inputTel")
+
+    if (val.target.value.length > 10) {
+      if (type === 'tel1') {
+        validatePhone.innerHTML = 'Introduzca solo 10 digitos';
+        validateInput.style.border = '1px solid #c0392b';
+        return false;
+      } else {
+        validatePhoneTel.innerHTML = 'Introduzca solo 10 digitos';
+        validateInputTel.style.border = '1px solid #c0392b';
+        return false;
+      }
+    }else {
+      if (type === 'tel1') {
+        validatePhone.innerHTML = '';
+        validateInput.style.border = '1px solid #eaeff3';
+      } else {
+        validatePhoneTel.innerHTML = '';
+        validateInputTel.style.border = '1px solid #eaeff3';
+      }
+    }
+  }
+
+  validateCards(val){
+    if (val.target.value.length > 16) {
+       document.getElementById("validate_cards").innerHTML = 'Introduzca solo 16 digitos';
+       document.querySelector("#validate_numberCards").style.border = '1px solid #c0392b';
+       return false;
+    }else {
+      document.getElementById("validate_cards").innerHTML = '';
+      document.querySelector("#validate_numberCards").style.border = '1px solid #eaeff3';
+      return false;
+    }
+  }
+
+  validatePostalCode(val){
+    if (val.target.value.length > 5) {
+       document.getElementById("validate_postalCode").innerHTML = 'Introduzca solo 5 digitos';
+       document.querySelector("#postalCode").style.border = '1px solid #c0392b';
+       return false;
+    }else {
+      document.getElementById("validate_postalCode").innerHTML = '';
+      document.querySelector("#postalCode").style.border = '1px solid #eaeff3';
+    }
   }
 
   render(){
-    console.log(this.props.roomsUI);
+    let roomsUI = this.props.roomsUI
     return (
       <Container>
         <form  onSubmit={this.request}>
-          {/* {this.props.ubicacion === 'hotel' ?
-          <div style={styles.room}>
-            <div style={styles.row}>
-              <Dates>Habitación 1:</Dates>
-              <div style={styles.subtitle}>2 adultos 1 niño</div>
-            </div>
-            <div style={styles.containerInput}>
-              <div style={styles.inputlabel}>
-                <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
-                <input style={styles.input} type="text" id="contacto" ref="" placeholder="Nombre(s) y Apellidos" required/>
+          {this.props.ubicacion === 'hotel' ?
+          <div>
+            {Object.keys(roomsUI).map((item, i)=>
+              <div style={styles.room} key={i}>
+                <div style={styles.row}>
+                  <Dates>Habitación {i+1}:</Dates>
+                  <div style={styles.subtitle}>
+                    {roomsUI[item].adult} Adulto,
+                    {roomsUI[item].baby} bebes,
+                    {Object.keys(roomsUI[item].child).length} niños
+                  </div>
+                </div>
+                <div style={styles.containerInput}>
+                  <div style={styles.inputlabel}>
+                    <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
+                    <input style={styles.input} type="text" id="contacto" ref="holder_name" placeholder="Nombre(s) y Apellidos"  required/>
+                  </div>
+                  <div style={styles.inputlabel}>
+                    <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
+                    <input
+                      onChange={(e, tel)=>this.validatePhone(e, 'tel1')}
+                      style={styles.input}
+                      pattern="[0-9]{10}" title="Introduzca solo 10 digitos"
+                      type="tel"
+                      id="validate_input"
+                      ref="validate_Phone"
+                      placeholder="Para que el hotel pueda comunicarse contigo"
+                      required
+                    />
+                    <p id="validate_phone" style={styles.p}></p>
+                  </div>
+                </div>
               </div>
-              <div style={styles.inputlabel}>
-                <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
-                <input style={styles.input} type="number" id="phone" ref="" placeholder="Para que el hotel pueda comunicarse contigo" required/>
-              </div>
-            </div>
+            )}
           </div>
-          : ''} */}
-
+           : ''}
 
           <Message>
             <TextM>
@@ -229,7 +299,17 @@ class FormPayment extends React.Component {
             <div style={styles.containerInput}>
               <div style={styles.inputCard}>
                 <label style={styles.label} htmlFor="">Número de tarjeta:</label>
-                <input style={styles.input} type="number" id="" ref="card_number" required/>
+                <input
+                  onChange={(e)=>this.validateCards(e)}
+                  style={styles.input}
+                  type="tel"
+                  id="validate_numberCards"
+                  ref="card_number"
+                  pattern="[0-9]{16}"
+                  title="Introduzca solo 16 digitos"
+                  required
+                />
+                <p id="validate_cards" style={styles.p}></p>
               </div>
             </div>
 
@@ -301,7 +381,7 @@ class FormPayment extends React.Component {
               </div>
               <div style={styles.inputSmall}>
                 <label style={styles.label} htmlFor="">Número:</label>
-                <input style={styles.input} type="text" id="" ref="line2"/>
+                <input style={styles.input} type="tel" id="" ref="line2"/>
               </div>
               <div style={styles.inputMedium}>
                 <label style={styles.label} htmlFor="">Referencias:</label>
@@ -309,7 +389,17 @@ class FormPayment extends React.Component {
               </div>
               <div style={styles.inputSmall2}>
                 <label style={styles.label} htmlFor="">Código postal:</label>
-                <input style={styles.input} type="text" id="" ref="postal_code" required/>
+                <input
+                  onChange={(e)=>this.validatePostalCode(e)}
+                  style={styles.input}
+                  type="tel"
+                  id="postalCode"
+                  ref="postal_code"
+                  pattern="[0-9]{5}"
+                  title="Introduzca solo 5 digitos"
+                  required
+                />
+                <p id="validate_postalCode" style={styles.p}></p>
               </div>
             </div>
 
@@ -333,7 +423,17 @@ class FormPayment extends React.Component {
               <div style={styles.row}>
                 <div style={styles.inputlabel}>
                   <label style={styles.label} htmlFor="">Teléfono</label>
-                  <input style={styles.input} type="tel" id="" ref="phone_number" pattern="[0-9]{10}" title="Introdusca solo 10 digitos" required/>
+                  <input
+                    onChange={(e, tel)=>this.validatePhone(e, 'tel2')}
+                    style={styles.input}
+                    type="tel"
+                    id="validate_inputTel"
+                    ref="phone_number"
+                    pattern="[0-9]{10}"
+                    title="Introduzca solo 10 digitos"
+                    required
+                  />
+                  <p id="validate_phoneTel" style={styles.p}></p>
                 </div>
                 <div style={styles.inputlabel}>
                   <label style={styles.label} htmlFor="">Correo Electrónico</label>

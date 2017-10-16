@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarRating from '../../../ReserHotel/StarRating';
+import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text,
   SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero,
@@ -39,6 +40,14 @@ const SubTextEvent = styled.label`
   color:#848484;
   display: flex;
   flex-direction: row;
+`;
+
+const Icon = styled(FontAwesome)`
+  color: #c0392b;
+  margin-bottom: 10px;
+  text-align: right;
+  font-size: 18px;
+  cursor: pointer;
 `;
 
 function HotelSummary(props) {
@@ -97,15 +106,24 @@ function HotelSummary(props) {
           </DivSubTotal>
         )}
         {tickets ?
-          <DivSubTotal>
-            <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
-            <RowDiv>
-              <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
-            </RowDiv>
-            <SRowDiv>
-              <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
-            </SRowDiv>
-          </DivSubTotal>
+          <div>
+            {Object.keys(tickets).length >= 1 ?
+              <DivSubTotal>
+                <RoomsUI>
+                  <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
+                </RoomsUI>
+                <PriceN>
+                  <RowDiv>
+                    <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
+                  </RowDiv>
+                  <SRowDiv>
+                    <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
+                  </SRowDiv>
+                </PriceN>
+                <Icon name="trash" onClick={()=>props.removeTicket()}/>
+              </DivSubTotal>
+            : ''}
+          </div>
         : ''}
       </Body>
       <Footer>

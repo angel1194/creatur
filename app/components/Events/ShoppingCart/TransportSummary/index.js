@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FontAwesome from 'react-fontawesome';
 import {Container, Header, Title, Line, Body, ReserveInfo, Hotel, Label, Info, Text, SubText, CheckIn, DivSubTotal, RowDiv, SRowDiv, Footer, Img, NH3, EventManzanero} from './style'
 
 const NewSub=styled(SubText)`
@@ -12,6 +13,15 @@ const DivCancel = styled(DivSubTotal)`
   border-bottom:none !important;
   margin-bottom:0px !important;
   margin-top:10px !important;
+`;
+
+const Icon = styled(FontAwesome)`
+  color: #c0392b;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  text-align: right;
+  font-size: 18px;
+  cursor: pointer;
 `;
 
 const TextTotal= styled(Text)`
@@ -79,15 +89,22 @@ function TransportSummary(props) {
           </SRowDiv>
         </DivSubTotal>
         {tickets ?
-          <DivSubTotal>
-            <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
-            <RowDiv>
-              <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
-            </RowDiv>
-            <SRowDiv>
-              <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
-            </SRowDiv>
-          </DivSubTotal>
+          <div>
+            {Object.keys(tickets).length >= 1 ?
+              <div>
+                <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
+                <DivSubTotal>
+                  <RowDiv>
+                    <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
+                  </RowDiv>
+                  <SRowDiv>
+                    <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
+                  </SRowDiv>
+                  <Icon name="trash" onClick={()=>props.removeTicket()}/>
+                </DivSubTotal>
+              </div>
+            : ''}
+          </div>
         : ''}
       </Body>
       <Footer>

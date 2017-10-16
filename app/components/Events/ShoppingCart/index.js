@@ -8,7 +8,13 @@ import FormEvent from './FormEvent';
 import firebase from '../../../containers/Events/Firebase';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import { default as Fade } from 'react-fade';
+import styled from 'styled-components';
 
+const ContainerBuy = styled(Container)`
+  @media only screen and (max-width: 991px) and (min-width: 220px) {
+    margin: 0px 10px 0px 10px;
+  }
+`;
 
 class ShoppingCart extends React.Component {
   constructor(props){
@@ -19,13 +25,10 @@ class ShoppingCart extends React.Component {
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
     this.setCar = this.setCar.bind(this)
+    this.removeTicket = this.removeTicket.bind(this)
   }
 
-  showEvent(){
-    const tickets = this.state.aryTicket.searchTicket
-    // Eliminando tickets ya buscados del temp de firebase y regresandolo a los tickets en ventas
-    // Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-    // Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
+  showEvent(id){
     this.setState({
       showEvent: true
     })
@@ -50,6 +53,39 @@ class ShoppingCart extends React.Component {
     })
   }
 
+  removeTicket(){
+    this.resTotalAmount()
+    let tickets = this.state.tickets
+    Object.keys(tickets).map((item,i)=>{
+      firebase.database().ref().child('temp').child(item).remove()
+      firebase.database().ref().child('tickets').child(item).set(tickets[item])
+      delete tickets[item]
+    })
+    this.setState(tickets)
+  }
+
+  resTotalAmount(){
+    let ubicacion = this.state.ubicacion
+    let car =this.state.car
+
+    if (ubicacion === 'transport') {
+      let price = this.props.price
+      let seating = this.props.seating
+      let totalTransport = price * seating
+
+      car['total'] = totalTransport
+      this.setState(car)
+    }else {
+      let priceHotel = car.room.price
+      let totalNight = this.state.totalNight
+      let roomsUI = Object.keys(this.state.roomsUI).length
+      let totalHotel = (priceHotel * roomsUI) * totalNight
+
+      car['total'] = totalHotel
+      this.setState(car)
+    }
+  }
+
   render() {
     let car = this.props.car
     // let cart = Object.keys(car.room)
@@ -59,7 +95,7 @@ class ShoppingCart extends React.Component {
 
     return (
       <div>
-        <Container>
+        <ContainerBuy>
           <FlexStart>
             {this.state.tickets === null ?
               <ButtonEvent onClick={()=>alert('No hay tickets disponibles')}>
@@ -78,7 +114,7 @@ class ShoppingCart extends React.Component {
           : ''}
           <FlexRow>
             <DivPay>
-              <FormPayment idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion} ubicacion={this.state.ubicacion} roomsUI={this.state.roomsUI}/>
+              <FormPayment idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion} roomsUI={this.state.roomsUI}/>
             </DivPay>
             {ubicacion === 'transport' ?
             <TransportSummary
@@ -88,6 +124,7 @@ class ShoppingCart extends React.Component {
               carObject={this.props.carObject}
               seating={this.props.seating}
               price={this.props.price}
+              removeTicket={this.removeTicket}
             />
           :
             <HotelSummary
@@ -100,10 +137,11 @@ class ShoppingCart extends React.Component {
               car={car}
               option={this.state.option}
               section={this.state.section}
+              removeTicket={this.removeTicket}
             />
           }
           </FlexRow>
-        </Container>
+        </ContainerBuy>
       </div>
     );
   }

@@ -24,6 +24,9 @@ const TextM = styled.label`
   font-size: 25px;
   font-family: Montserrat !important;
   font-weight: bold;
+  @media only screen and (max-width: 568px) and (min-width: 220px) {
+    font-size: 15px;
+  }
 `;
 
 const Dates = styled.label`
@@ -175,6 +178,22 @@ const styles ={
     flexDirection: 'column',
     display: 'flex',
     width: '20%',
+  },
+  p:{
+    color: '#c0392b',
+    fontSize: '12px',
+    fontFamily: 'Montserrat',
+    marginTop:'-6px'
+  },
+  inputOut:{
+    width: '95%',
+    boxShadow: 'inset 1px 1px 2px #ccc',
+    padding: '10px',
+    border: '1px solid #c0392b',
+    borderRadius: '6px',
+    outline: '0',
+    marginBottom: '10px',
+    color: '#777'
   },
 }
 

@@ -44,8 +44,10 @@ class FormEvent extends React.Component{
        })
     }else if (this.state.stopTime === 90) {
       clearInterval(this.intervalId)
-      Object.keys(tickets).map((item,i)=>firebase.database().ref().child('temp').child(item).remove())
-      Object.keys(tickets).map((item, i)=>firebase.database().ref().child('tickets').child(item).set(tickets[item]))
+      Object.keys(tickets).map((item,i)=>{
+        firebase.database().ref().child('temp').child(item).remove()
+        firebase.database().ref().child('tickets').child(item).set(tickets[item])
+      })
       this.setState({
         tickets: {},
         minutes: 1,
@@ -71,15 +73,17 @@ class FormEvent extends React.Component{
      tickets:ticket,
      section:seccion,
    })
-   this.setTimer()
-
-    //  Ejecutando functions cloud de firebase
-    // fetch('https://us-central1-hotel-fa344.cloudfunctions.net/addMessage')
+   if (quantity >= 1) {
+     this.setTimer()
+   }else if (Object.keys(ticket).length >= 1) {
+     this.setTimer()
+   }
   }
 
   addTickets(){
     const car = this.props.state.car
     const tickets = this.state.tickets
+    let id = this.intervalId
 
     car['tickets'] = tickets
     this.props.setCar(this.props.ticketOptions, this.state.section, tickets)
@@ -104,13 +108,13 @@ class FormEvent extends React.Component{
           <div style={style.container}>
             <label style={style.label}>CANTIDAD</label>
             <select style={style.select1} ref='quantity'>
-              <option value={0}>0</option>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
             </select>
           </div>
           <div style={style.container}>
