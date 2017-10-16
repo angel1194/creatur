@@ -7,9 +7,9 @@ const Column = styled.div`
   margin-bottom: 20px;
 
   /* Responsive */
-  @media only screen and (max-width: 799px) and (min-width: 412px){
+  @media only screen and (max-width: 500px) and (min-width: 424px){
     overflow-wrap: break-word;
-    column-count: 2;
+
   }
 `;
 
@@ -27,15 +27,21 @@ const Wrapper = styled.div`
   -moz-animation: fadein 2s;
   -webkit-animation: fadein 2s;
   /* Responsive */
-  @media only screen and (max-width: 500px) and (min-width: 412px){
+  @media only screen and (max-width: 500px) and (min-width: 424px){
    overflow-wrap: break-word;
    display: list-item;
    display: inline-table;
     margin: 0 auto;
-    width: 390px;
-    margin-left: -10px;
-
+    width: 405px;
+    margin-left: -16px;
   }
+  @media only screen and (min-width: 720px){
+     width: 740px;
+     margin-left: -23px;
+  }
+
+
+
 
   @keyframes fadein {
     from {
@@ -79,20 +85,23 @@ const Title = styled.p`
   text-overflow: ellipsis;
 
 
-  @media only screen and (max-width: 500px) and (min-width: 412px){
+  @media only screen and (max-width: 840px) and (min-width: 424px){
   font-size: 15px;
   white-space: pre-wrap;
-  text-align: center;
+  text-align: left;
   }
+
 `;
 
 const Row = styled.div`
 display: flex;
  flex-direction: row ;
  align-items: flex-start;
- @media only screen and (max-width: 500px) and (min-width: 412px){
+ @media only screen and (max-width: 500px) and (min-width: 424px){
   overflow-wrap: break-word;
  }
+
+
 `;
 
 const Img = styled.img`
@@ -102,10 +111,7 @@ const Img = styled.img`
   display:block;
   margin:auto;
 
- /* Responsive */
- @media only screen and (max-width: 500px) and (min-width: 412px){
-   display: run-in;
- }
+
 `;
 
 export { Column, Wrapper, WrapperTrans, Title, Row, Img };

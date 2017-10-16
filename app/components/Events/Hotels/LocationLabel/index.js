@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   margin: 8px 5px 0px 0px;
+
 `;
 
 function LocationLabel(props) {

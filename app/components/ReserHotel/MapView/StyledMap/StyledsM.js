@@ -11,7 +11,14 @@ const Wrapper = styled.div`
   min-width: 235px;
   margin-right: 18px;
   border-radius:6px;
+  /*  Responsive */
+  @media only screen and (max-width: 500px) and (min-width: 424px){
+    width: 405px;
 
+  }
+  @media only screen and (min-width: 720px){
+    width: 740px;
+  }
 `;
 
 const Img = styled.div`
@@ -20,6 +27,13 @@ const Img = styled.div`
   background-image:url(${IcnDefault});
   background-size:100% auto;
   border-radius: 6px;
+  /*  Responsive*/
+  @media only screen and (max-width: 500px) and (min-width: 424px){
+    width: 405px;
+  }
+  @media only screen and (min-width: 720px){
+    width: 740px;
+  }
 `;
 
 const ButtonIcon = styled.button`
@@ -33,6 +47,16 @@ const ButtonIcon = styled.button`
     display: flex;
     justify-content: center;
     border-radius: 6px 0 6px 0 !important;
+
+    /*  Responsive*/
+    @media only screen and (max-width: 500px) and (min-width: 424px){
+     position: relative;
+     left: 293px;
+    }
+    @media only screen and (min-width: 720px){
+      position: relative;
+      left: 625px;  
+    }
 
 `;
 

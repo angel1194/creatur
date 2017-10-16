@@ -16,10 +16,11 @@ const ColumMarginRight = styled(Column) `
   align-items: flex-end;
   border-left: 2px solid #eaeff3;
   /*  Responsive*/
-  @media only screen and (max-width: 500px) and (min-width: 412px){
+  @media only screen and (max-width: 500px) and (min-width: 424px){
     margin-top: -5px;
     height: 100px;
   }
+
 `;
 
 const ColumMarginTop = styled(Column) `

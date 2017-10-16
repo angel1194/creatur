@@ -12,7 +12,21 @@ const DivBorder = styled.div`
   border: 2px solid #eaeff3;
   border-radius: 6px;
   margin-top: 15px;
-  width: 240px
+  width: 240px;
+
+  /*Responsive  */
+  @media only screen and (max-width: 500px) and (min-width: 412px){
+  width: 405px;
+  position: relative;
+  bottom: 5px;
+  }
+  @media only screen and (min-width: 720px){
+  width: 730px;
+  position: relative;
+  bottom: 5px;
+  margin-left: -9px;
+  }
+
 `;
 
 function Filter(props) {
