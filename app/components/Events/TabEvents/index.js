@@ -48,7 +48,7 @@ class TabEvents extends React.Component {
    render(){
      const ubicacion= this.state.ubicacion
      return (
-       <div>
+       <div className='containerFormTab'>
          <div className='tab'>
            <div className={this.state.ubicacion === 'hotel' ? 'selected' : ''}><Link onClick={()=>{this.changeLocation('hotel')}}>{this.props.hotel}<Span className={this.props.iconHotel}></Span></Link></div>
            <div className={this.state.ubicacion === 'transport' ? 'selected' : ''}><Link onClick={()=>{this.changeLocation('transport')}}>{this.props.transport}<Span className={this.props.iconTransport}></Span></Link></div>

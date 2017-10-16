@@ -45,7 +45,7 @@ class HotelRoom extends React.Component {
           <DetailsRoom>
             <Label>Capacidad para {this.props.elements.rooms[item].occupancy} personas</Label>
             <Label>{this.props.elements.rooms[item].description}</Label>
-            <Label>Regimen: Solo Habitación</Label>
+          <Label>Regimen: Solo Habitación</Label>
           </DetailsRoom>
           <ContainerPrice>
             <Label> Por noche ${this.props.elements.rooms[item].price} MXN</Label>

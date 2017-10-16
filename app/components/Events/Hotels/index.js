@@ -8,18 +8,23 @@ import TripAdvisor from '../../ReserHotel/TripAdvisor';
 import LocationLabel from './LocationLabel';
 import PriceLabel from './PriceLabel';
 import Button from './Button';
+import RoomImg from './style';
 
 const ColumMarginRight = styled(Column) `
   margin: 10px 10px 0px 0px;
   padding: 10px 20px 12px 20px;
   align-items: flex-end;
   border-left: 2px solid #eaeff3;
+    @media only screen and (max-width: 799px) and (min-width: 412px){
+
+    }
 `;
 
 const ColumMarginTop = styled(Column) `
   margin-top: 10px;
   align-items: flex-start;
   padding-left: 10px;
+
 `;
 
 class Hotels extends React.Component {
@@ -36,7 +41,7 @@ class Hotels extends React.Component {
         <Column>
           <Wrapper>
             <Row>
-              <Img src={this.props.elements.image} Width="200px" Height="156px" />
+              <Img src={this.props.elements.image} Width="290px" Height="156px" />
               <ColumMarginTop>
                 <Title>{this.props.elements.name}</Title>
                 <StarRating key={this.props.elements.key} NumStart={Number(this.props.elements.star)}/><br/>
@@ -51,7 +56,7 @@ class Hotels extends React.Component {
                 <Button Title="Habitaciónes" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
-          </Wrapper>
+           </Wrapper>
         </Column>
       </Container>
     );

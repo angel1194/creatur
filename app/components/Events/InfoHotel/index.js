@@ -11,6 +11,7 @@ function InfoHotel(props) {
         <ScoreHotel elements={props.elements}/>
         {/* <BookingInfo/> */}
       </Row>
+
     </ContainerHotel>
   );
 }

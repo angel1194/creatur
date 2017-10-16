@@ -40,6 +40,13 @@ const ContainerPrice = styled.div`
   padding:15px 50px;
   display:flex;
   flex-direction:column;
+
+  /*  Responsive*/
+  @media only screen and (max-width: 982px) and (min-width: 412px){
+      display: grid;
+      text-align:left;
+      padding-left:15px;
+    }
 `;
 
 const ContainerButtonGreen = styled.div`
@@ -55,6 +62,11 @@ const ContainerButtonGreen = styled.div`
   padding:5px 15px;
   border-radius: 6px;
   cursor: pointer;
+  /* Responsive */
+  @media only screen and (max-width: 982px) and (min-width: 412px){
+      text-align: center;
+      width: 86%;
+    }
 `;
 
 const ButtonGreen = styled.label`
@@ -62,6 +74,11 @@ const ButtonGreen = styled.label`
   border-bottom:1px solid white;
   color:#fff;
   cursor: pointer;
+  /* Responsive  */
+  @media only screen and (max-width: 982px) and (min-width: 412px){
+      text-align: center;
+    }
+
 `;
 
 const LabelA = styled(Label) `
@@ -72,6 +89,12 @@ const Img = styled.img `
   border-radius: 6px;
   width: 250px;
   height: 156px;
+  max-width: 106%;
+  /*  responsive */
+  @media only screen and (max-width: 982px) and (min-width: 412px){
+    margin-left: -11%;
+    display: inline-block;
+    }
 `;
 
 export {ContainerRoom, RoomImg, DetailsRoom, Label, LinkA, ContainerPrice, ContainerButtonGreen, ButtonGreen, LabelA, Img};

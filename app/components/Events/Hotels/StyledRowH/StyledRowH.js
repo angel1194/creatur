@@ -5,6 +5,9 @@ const Column = styled.div`
   flex-direction: column ;
   align-items: flex-start;
   margin-bottom: 20px;
+
+
+
 `;
 
 const Wrapper = styled.div`
@@ -32,7 +35,7 @@ const Wrapper = styled.div`
 @-webkit-keyframes fadein { /* Firefox */
     from {
         opacity:0;
-    }
+    }StyledRowH
     to {
         opacity:1;
     }
@@ -50,6 +53,7 @@ const WrapperTrans = styled.div`
   border-right: 2px solid #eaeff3;
   border-bottom: 2px solid #eaeff3;
   border-radius: 0 0 6px 6px;
+
 `;
 
 const Title = styled.p`
@@ -60,19 +64,35 @@ const Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: -2px;
+
+
+  @media only screen and (max-width: 982px) and (min-width: 412px){
+  font-size: 15px;
+  white-space: pre-wrap;
+  }
 `;
 
 const Row = styled.div`
-  display: flex;
-  flex-direction: row ;
-  align-items: flex-start;
+display: flex;
+ flex-direction: row ;
+ align-items: flex-start;
+ @media only screen and (max-width: 982px) and (min-width: 412px){
+   
+ }
 `;
 
 const Img = styled.img`
   width:200px;
   height:158px;
   border-radius: 6px !important;
+  display:block;
+  margin:auto;
+
+ /* Responsive */
+ @media only screen and (max-width: 982px) and (min-width: 412px){
+   width:150px;
+   height:158px;
+ }
 `;
 
 export { Column, Wrapper, WrapperTrans, Title, Row, Img };

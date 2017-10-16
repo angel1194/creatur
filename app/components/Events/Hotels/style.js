@@ -5,3 +5,5 @@ const DivRooms = styled.div`
 `;
 
 export {DivRooms};
+
+/* editando posible borrar RoomImg, Img  */
