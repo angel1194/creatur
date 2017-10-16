@@ -6,8 +6,11 @@ const Column = styled.div`
   align-items: flex-start;
   margin-bottom: 20px;
 
-
-
+  /* Responsive */
+  @media only screen and (max-width: 799px) and (min-width: 412px){
+    overflow-wrap: break-word;
+    column-count: 2;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -23,6 +26,16 @@ const Wrapper = styled.div`
   animation: fadein 2s;
   -moz-animation: fadein 2s;
   -webkit-animation: fadein 2s;
+  /* Responsive */
+  @media only screen and (max-width: 500px) and (min-width: 412px){
+   overflow-wrap: break-word;
+   display: list-item;
+   display: inline-table;
+    margin: 0 auto;
+    width: 390px;
+    margin-left: -10px;
+
+  }
 
   @keyframes fadein {
     from {
@@ -66,9 +79,10 @@ const Title = styled.p`
   text-overflow: ellipsis;
 
 
-  @media only screen and (max-width: 982px) and (min-width: 412px){
+  @media only screen and (max-width: 500px) and (min-width: 412px){
   font-size: 15px;
   white-space: pre-wrap;
+  text-align: center;
   }
 `;
 
@@ -76,8 +90,8 @@ const Row = styled.div`
 display: flex;
  flex-direction: row ;
  align-items: flex-start;
- @media only screen and (max-width: 982px) and (min-width: 412px){
-   
+ @media only screen and (max-width: 500px) and (min-width: 412px){
+  overflow-wrap: break-word;
  }
 `;
 
@@ -89,9 +103,8 @@ const Img = styled.img`
   margin:auto;
 
  /* Responsive */
- @media only screen and (max-width: 982px) and (min-width: 412px){
-   width:150px;
-   height:158px;
+ @media only screen and (max-width: 500px) and (min-width: 412px){
+   display: run-in;
  }
 `;
 

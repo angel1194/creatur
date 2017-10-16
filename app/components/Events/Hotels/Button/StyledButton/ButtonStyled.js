@@ -15,6 +15,12 @@ const ButtonStyled = styled.button`
     background-color:#2b5bbd;
     box-shadow: 1px 1px 2px #000;
   }
+  /* Responsive*/
+  @media only screen and (max-width: 500px) and (min-width: 412px){
+    position: relative;
+    top: -95px;
+    right: -200px;
+  }
 `;
 
 const Title = styled.p`

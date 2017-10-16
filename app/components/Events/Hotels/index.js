@@ -15,9 +15,11 @@ const ColumMarginRight = styled(Column) `
   padding: 10px 20px 12px 20px;
   align-items: flex-end;
   border-left: 2px solid #eaeff3;
-    @media only screen and (max-width: 799px) and (min-width: 412px){
-
-    }
+  /*  Responsive*/
+  @media only screen and (max-width: 500px) and (min-width: 412px){
+    margin-top: -5px;
+    height: 100px;
+  }
 `;
 
 const ColumMarginTop = styled(Column) `
@@ -41,6 +43,7 @@ class Hotels extends React.Component {
         <Column>
           <Wrapper>
             <Row>
+
               <Img src={this.props.elements.image} Width="290px" Height="156px" />
               <ColumMarginTop>
                 <Title>{this.props.elements.name}</Title>
@@ -56,7 +59,7 @@ class Hotels extends React.Component {
                 <Button Title="Habitaciones" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>
-           </Wrapper>
+          </Wrapper>
         </Column>
       </Container>
     );
