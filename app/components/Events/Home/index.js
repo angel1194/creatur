@@ -294,16 +294,12 @@ class Home extends React.Component {
     Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section === this.state.tickets[ticket].section) {
-          // let ticketTemp = this.state.tickets[ticket]
-          // ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
-          // firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
-          // ticketRef.child(ticket).remove()
         }
       }
     })
     if (Object.keys(aryTicket).length < quantity) {
-      alert('No se encontraron resultados. Intenta con otra cantidad de boleto.')
+      alert('No se encontraron resultados.')
       aryTicket = {}
       this.setState({
         searchTicket:aryTicket
@@ -321,18 +317,15 @@ class Home extends React.Component {
       })
       return aryTicket
     }
-    // obteniendo los tickets de la busqueda y metiendolo en un state
-    // this.state.aryTicket['searchTicket']=aryTicket
-    // this.setState(aryTicket)
   }
 
   setTemp(){
-    let endTime= moment(new Date(),'DD-MM-YYYY HH:mm:ss')
-    let starTime = moment(new Date(),'DD-MM-YYYY HH:mm:ss').subtract(10,'m')
+    let endTime= moment().format('DD-MM-YYYY HH:mm:ss')
+    let starTime = moment().subtract(10,'m').format('DD-MM-YYYY HH:mm:ss')
     let temp = this.state.temp
     let tempKey = Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
-        let comparation = moment(temp[item].time,'DD-MM-YYYY HH:mm:ss').isBetween(starTime, endTime, null,'[]');
+        let comparation = moment(temp[item].time).isBetween(starTime, endTime);
         if (comparation === false) {
           firebase.database().ref().child('tickets').child(item).set(temp[item])
           firebase.database().ref().child('temp').child(item).remove()
@@ -356,13 +349,6 @@ class Home extends React.Component {
     })
   }
 
-  responsivMenu(){
-    $(document).ready(function(){
-        $("button").click(function(){
-            $("p").toggle();
-        });
-    });
-  }
   render() {
     return (
       <div>

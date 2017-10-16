@@ -130,6 +130,8 @@ const styles ={
     flexDirection:'row'
   },
   subtitle:{
+    display:'flex',
+    flexDirection:'row',
     color:'#848484',
     fontSize:'15px',
     marginLeft:'5px'
