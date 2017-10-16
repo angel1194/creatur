@@ -76,8 +76,7 @@ class FormPayment extends React.Component {
          "line2": houseNumber,
          "state": state,
          "country_code": countryCode
-      },
-      "contact_person":this.state.names
+      }
     }
     openpay.token.create(token, (e)=>this.onSuccess(e, token),(err)=>this.onError(err, token));
     console.log(token);
@@ -106,20 +105,22 @@ class FormPayment extends React.Component {
       body: JSON.stringify(request)
     })
     .then((response) => {
-      // Pruebas
-      request['sales'] = this.props.car
-      fetch('http://192.168.1.38:8000/email/',{
-        method: 'post',
-        headers: new Headers({'Content-Type': 'application/json'}),
-        body: JSON.stringify(request)
-      })
-      console.log(request);
       return response.json();
     })
     .then((recurso) => {
-      console.log(recurso);
-      // ejecutando funciones de firebase
-      this.setFirebase()
+      if (recurso.error_code) {
+        alert('Ha ocurrido un error, contacte con el proveedor')
+      }else {
+        request['sales'] = this.props.car
+        request['contact_person'] = this.state.names,
+        fetch('http://192.168.1.38:8000/email/',{
+          method: 'post',
+          headers: new Headers({'Content-Type': 'application/json'}),
+          body: JSON.stringify(request)
+        })
+        // ejecutando funciones de firebase
+        this.setFirebase()
+      }
     })
   }
 
@@ -168,8 +169,8 @@ class FormPayment extends React.Component {
       }
     }
     //recargar pagina al hacer el pago exitoso
-    location.reload()
     alert('Pago exitoso, la información de compra se envió a su correo electrónico')
+    // location.reload()
   }
 
 
