@@ -236,9 +236,9 @@ class FormPayment extends React.Component {
                 <div style={styles.row}>
                   <Dates>Habitación {i+1}:</Dates>
                   <div style={styles.subtitle}>
-                    {roomsUI[item].adult} Adulto,
-                    {roomsUI[item].baby} bebes,
-                    {Object.keys(roomsUI[item].child).length} niños
+                    <div>{roomsUI[item].adult} {roomsUI[item].adult >= 2 ? ' Adultos, ' : ' Adulto, '}</div>
+                    {roomsUI[item].baby >= 1 ? <div>{roomsUI[item].baby} {roomsUI[item].baby >= 2 ? ' bebes' : ' bebe'},</div> : ''}
+                    {Object.keys(roomsUI[item].child).length >= 1 ? <div>{Object.keys(roomsUI[item].child).length} {Object.keys(roomsUI[item].child).length >= 2 ? ' niños' : ' niño'}</div> : ''}
                   </div>
                 </div>
                 <div style={styles.containerInput}>
