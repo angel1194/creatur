@@ -8,7 +8,13 @@ import FormEvent from './FormEvent';
 import firebase from '../../../containers/Events/Firebase';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import { default as Fade } from 'react-fade';
+import styled from 'styled-components';
 
+const ContainerBuy = styled(Container)`
+  @media only screen and (max-width: 991px) and (min-width: 220px) {
+    margin: 0px 10px 0px 10px;
+  }
+`;
 
 class ShoppingCart extends React.Component {
   constructor(props){
@@ -22,7 +28,7 @@ class ShoppingCart extends React.Component {
     this.removeTicket = this.removeTicket.bind(this)
   }
 
-  showEvent(){
+  showEvent(id){
     this.setState({
       showEvent: true
     })
@@ -61,20 +67,20 @@ class ShoppingCart extends React.Component {
   resTotalAmount(){
     let ubicacion = this.state.ubicacion
     let car =this.state.car
-    // transport
-    let price = this.props.price
-    let seating = this.props.seating
-    let totalTransport = price * seating
-    // hotel
-    let priceHotel = car.room.price
-    let totalNight = this.state.totalNight
-    let roomsUI = Object.keys(this.state.roomsUI).length
-    let totalHotel = (priceHotel * roomsUI) * totalNight
 
     if (ubicacion === 'transport') {
+      let price = this.props.price
+      let seating = this.props.seating
+      let totalTransport = price * seating
+
       car['total'] = totalTransport
       this.setState(car)
     }else {
+      let priceHotel = car.room.price
+      let totalNight = this.state.totalNight
+      let roomsUI = Object.keys(this.state.roomsUI).length
+      let totalHotel = (priceHotel * roomsUI) * totalNight
+
       car['total'] = totalHotel
       this.setState(car)
     }
@@ -89,7 +95,7 @@ class ShoppingCart extends React.Component {
 
     return (
       <div>
-        <Container>
+        <ContainerBuy>
           <FlexStart>
             {this.state.tickets === null ?
               <ButtonEvent onClick={()=>alert('No hay tickets disponibles')}>
@@ -135,7 +141,7 @@ class ShoppingCart extends React.Component {
             />
           }
           </FlexRow>
-        </Container>
+        </ContainerBuy>
       </div>
     );
   }

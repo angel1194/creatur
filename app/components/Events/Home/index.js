@@ -13,6 +13,8 @@ import ShoppingCart from '../ShoppingCart';
 // import Header from '../Header';
 import firebase from '../../../containers/Events/Firebase';
 
+let rootRef = firebase.database().ref()
+
 class Home extends React.Component {
   constructor(props){
     super(props)
@@ -53,14 +55,14 @@ class Home extends React.Component {
      })
    )
 
-   let idSales = firebase.database().ref().child('idSales')
+   let idSales = rootRef.child('idSales')
    idSales.on('value', snap => {
      this.setState({
        idSales:snap.val()
      })
    })
 
-  let ref = firebase.database().ref().child('temp')
+  let ref = rootRef.child('temp')
   ref.on('value', data => {
     this.setState({
       temp:data.val()
@@ -76,7 +78,7 @@ class Home extends React.Component {
       })
     )
 
-    let refTicket = firebase.database().ref().child('tickets')
+    let refTicket = rootRef.child('tickets')
     refTicket.on('value', snap => {
       this.setState({
         tickets:snap.val()
@@ -283,39 +285,36 @@ class Home extends React.Component {
       }
     }
     if (Object.keys(carObject).length >= 1) {
-      this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-      car['transport'] = carObject
-      // Agregando price al state car
-      let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
-      car['total'] = totalCar
-      car['idSales'] = this.state.idSales
-      this.setState(car)
+      let used = transport[Object.keys(carObject)[0]].used
+      let seating = transport[Object.keys(carObject)[0]].seating
+      if (data > seating - used) {
+        alert('Cantidad de asientos no disponibles');
+      }else {
+        this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+        car['transport'] = carObject
+        // Agregando price al state car
+        let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
+        car['total'] = totalCar
+        car['idSales'] = this.state.idSales
+        this.setState(car)
+      }
     } else {
       alert('No hay asientos disponibles');
     }
-    // if (data > transport[Object.keys(carObject)].taken) {
-    //   console.log('asiento dispobleb');
-    // } else {
-    //   console.log('no alcansa el asiento');
-    // }
   }
 
   searchTicket(section,quantity){
     let aryTicket = {}
-    let ticketRef = firebase.database().ref().child('tickets')
+    let ticketRef = rootRef.child('tickets')
     Object.keys(this.state.tickets).map((ticket)=>{
       if (Object.keys(aryTicket).length < quantity) {
         if (section === this.state.tickets[ticket].section) {
-          // let ticketTemp = this.state.tickets[ticket]
-          // ticketTemp['time'] = moment().format('DD-MM-YYYY H:mm:ss')
-          // firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
           aryTicket[ticket]=this.state.tickets[ticket]
-          // ticketRef.child(ticket).remove()
         }
       }
     })
     if (Object.keys(aryTicket).length < quantity) {
-      alert('No se encontraron resultados. Intenta con otra cantidad de boleto.')
+      alert('No se encontraron resultados.')
       aryTicket = {}
       this.setState({
         searchTicket:aryTicket
@@ -324,8 +323,8 @@ class Home extends React.Component {
     }else {
       Object.keys(aryTicket).map((ticket)=>{
         let ticketTemp = this.state.tickets[ticket]
-        ticketTemp['time'] = moment().format('DD-MM-YYYY HH:mm:ss')
-        firebase.database().ref().child('temp').child(ticket).set(ticketTemp)
+        ticketTemp['time'] = moment().format()
+        rootRef.child('temp').child(ticket).set(ticketTemp)
         ticketRef.child(ticket).remove()
       })
       this.setState({
@@ -333,21 +332,19 @@ class Home extends React.Component {
       })
       return aryTicket
     }
-    // obteniendo los tickets de la busqueda y metiendolo en un state
-    // this.state.aryTicket['searchTicket']=aryTicket
-    // this.setState(aryTicket)
   }
 
   setTemp(){
-    let endTime= moment(new Date(),'DD-MM-YYYY HH:mm:ss')
-    let starTime = moment(new Date(),'DD-MM-YYYY HH:mm:ss').subtract(10,'m')
+    let endTime= moment().format()
+    let starTime = moment().subtract(10,'m').format()
     let temp = this.state.temp
-    let tempKey = Object.keys(temp).map((item, i)=> {
+
+    Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
-        let comparation = moment(temp[item].time,'DD-MM-YYYY HH:mm:ss').isBetween(starTime, endTime, null,'[]');
+        let comparation = moment(temp[item].time).isBetween(starTime, endTime);
         if (comparation === false) {
-          firebase.database().ref().child('tickets').child(item).set(temp[item])
-          firebase.database().ref().child('temp').child(item).remove()
+          rootRef.child('tickets').child(item).set(temp[item])
+          rootRef.child('temp').child(item).remove()
         }
       }
     })
@@ -368,13 +365,6 @@ class Home extends React.Component {
     })
   }
 
-  responsivMenu(){
-    $(document).ready(function(){
-        $("button").click(function(){
-            $("p").toggle();
-        });
-    });
-  }
   render() {
     return (
       <div>
@@ -397,7 +387,7 @@ class Home extends React.Component {
               addTransport={this.addTransport}
             />
             <Icon>
-              <FontAwesome name="bars" onClick={()=>alert('clicl')}/>
+              <FontAwesome name="bars" onClick={()=>alert('clic')}/>
             </Icon>
           </Header>
         </Container>
