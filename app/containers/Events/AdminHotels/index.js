@@ -54,7 +54,8 @@ const ContainerTable = styled.div`
   flex-direction:column;
   flex-wrap:wrap;
   padding-top: 19px;
-  `;
+`;
+
 let rootRef = firebase.database().ref()
 
 class AdminHotels extends Component{
@@ -105,6 +106,7 @@ class AdminHotels extends Component{
         tickets:snap.val()
       })
     })
+
   }
 
 

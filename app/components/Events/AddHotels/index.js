@@ -16,6 +16,7 @@ class AddHotels extends Component {
     this.submitForm = this.submitForm.bind(this)
     this.delete = this.delete.bind(this)
     this.update = this.update.bind(this)
+    // this.toRender = this.toRender.bind(this)
 }
   submitForm(event){
 
@@ -98,11 +99,86 @@ update(key,dataHotel){
   this.refs.stars.value=dataHotel.star
   this.refs.description.value=dataHotel.description
   this.refs.cancellation.value=dataHotel.cancellation
-
 }
 
-  render(){
-    return (
+toRender(){
+  let rooms;
+  if (this.props.Rooms) {
+    rooms=Object.keys(this.props.Rooms)
+  }else{
+    rooms=[]
+  }
+  if (this.props.Hotels) {
+    let hotels = Object.keys(this.props.Hotels).length ? Object.keys(this.props.Hotels) : []
+      return(
+        <div>
+        <div style={Container}>
+          <span style={Title}>Hoteles</span>
+          <form style={Form} onSubmit={this.submitForm}>
+            <input type="text" name='key' ref='id'  hidden/>
+            <label htmlFor='name'> Nombre:</label>
+            <input style={InpuT} type='text' name='name'  ref='name'   placeholder='Agregar nombre' required/>
+            <label htmlFor='address'>Dirección:</label>
+            <input style={InpuT} type='text' name='address'  ref='address' placeholder='Agregar dirección'  required/>
+            <label htmlFor='image'>Imagen:</label>
+            <input style={InpuT} type='url' name='image'  placeholder='Agregar url' ref='image' required/>
+            <label htmlFor='star'>Estrellas:</label>
+            <select style={Select} name="stars" ref='stars'>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <div className='formTransport'>
+              <label htmlFor='description'>Descripción:</label><br/>
+              <textarea style={TextArea} type ='text' ref='description' name='description'  placeholder='Agregar descripción' required/><br/>
+              <label htmlFor='cancellation'>Cancelación:</label><br/>
+              <textarea style={TextArea} name='cancellation' ref='cancellation'  placeholder='Agregar cancelación'  required/>
+              <div className='buttonAdmin'>
+                <button style={Button}>AGREGAR</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div style={ContainerTable}>
+          <TableAdmin />
+          <table>
+            {hotels.map((hotelKey,i) => {
+              //Mapeando los hoteles
+              let hotel={}
+              //Mapeando las noches
+              if (rooms.length>0) {
+                rooms.map((nights)=>{
+                  //Mapeando las habitaciones
+                  Object.keys(this.props.Rooms[nights]).map((room)=>{
+                    if(hotelKey== this.props.Rooms[nights][room].idHotel){
+                      hotel[room]=this.props.Rooms[nights][room]
+                      hotel[room]['night']=nights
+                    }
+                  })
+                })
+              }
+              return(
+                <RowAdmin
+                  key={i}
+                  Hotel={this.props.Hotels[hotelKey]}
+                  hotelKey={hotelKey}
+                  Rooms={hotel}
+                  delete={this.delete}
+                  update={this.update}
+                />
+              )
+            })
+          }
+          </table>
+        </div>
+      </div>
+    );
+  } else{
+    return(
       <div>
         <div style={Container}>
           <span style={Title}>Hoteles</span>
@@ -136,36 +212,18 @@ update(key,dataHotel){
         </div>
         <div style={ContainerTable}>
           <TableAdmin />
-          <table>
-            {Object.keys(this.props.Hotels).map((hotelKey,i) => {
-              //Mapeando los hoteles
-              let hotel={}
-              //Mapeando las noches
-              Object.keys(this.props.Rooms).map((nights)=>{
-                //Mapeando las habitaciones
-                Object.keys(this.props.Rooms[nights]).map((room)=>{
-                  if(hotelKey== this.props.Rooms[nights][room].idHotel){
-                    hotel[room]=this.props.Rooms[nights][room]
-                    hotel[room]['night']=nights
-                  }
-                })
-              })
-              return(
-                <RowAdmin
-                  key={i}
-                  Hotel={this.props.Hotels[hotelKey]}
-                  hotelKey={hotelKey}
-                  Rooms={hotel}
-                  delete={this.delete}
-                  update={this.update}
-                />
-              )
-            })
-          }
-          </table>
         </div>
       </div>
+    );
+  }
+}
 
+  render(){
+    console.log(this.props);
+    return (
+      <div>
+        {this.toRender()}
+      </div>
     );
   }
 }

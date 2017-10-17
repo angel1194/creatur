@@ -29,13 +29,15 @@ class AddTransport extends Component{
      const Price = this.refs.price.value
      const Seating = this.refs.seating.value
      const Type = this.refs.type.value
+     const Used = this.refs.used.value
 
     if(Key !=''){
       let transport ={
         image:Image,
         price:Price,
         seating:Seating,
-        type:Type
+        type:Type,
+        used:Used
       }
 
       firebase.database().ref().child('transport').child(Key).set(transport)
@@ -45,6 +47,7 @@ class AddTransport extends Component{
       this.refs.seating.value=''
       this.refs.type.value=''
       this.refs.id.value=''
+      this.refs.used.value=''
     }else{
 
       let key = moment().format('X')
@@ -87,6 +90,7 @@ update(key,dataTransport){
  this.refs.price.value=dataTransport.price
  this.refs.seating.value=dataTransport.seating
  this.refs.type.value=dataTransport.type
+ this.refs.used.value = dataTransport.used
 
 }
   render(){
@@ -96,6 +100,7 @@ update(key,dataTransport){
       <span style={Title}>Transporte</span>
       <form style={FormTicket} onSubmit={this.submitForm}>
         <input type="text" name='key' ref='id' hidden/>
+        <input ref='used' hidden />
         <label htmlFor='image'>Imagen:</label>
         <input style={InpuT} name='image' ref='image' placeholder='Agregar url' required/>
         <label htmlFor='price'>Precio:</label>

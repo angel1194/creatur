@@ -44,6 +44,7 @@ const linkStyle ={
 
 
 function NavEvent(props)  {
+  console.log('en algun punto');
   return (
       <ContainerNav>
         <Body>
