@@ -15,16 +15,18 @@ const DivBorder = styled.div`
   width: 240px;
 
   /*Responsive  */
-  @media only screen and (max-width: 500px) and (min-width: 412px){
-  width: 405px;
+  @media only screen and (max-width: 568px) and (min-width: 220px){
+  width: 400px;
   position: relative;
   bottom: 5px;
+  right: -6px;
   }
-  @media only screen and (min-width: 720px){
-  width: 730px;
-  position: relative;
-  bottom: 5px;
-  margin-left: -9px;
+
+  @media only screen and (min-width:569px) and (max-width:768px){
+    position: relative;
+    width: 300px;
+    margin-left: 42px;
+    top: -135px;
   }
 
 `;

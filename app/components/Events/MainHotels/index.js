@@ -24,7 +24,7 @@ class MainHotels extends React.Component {
       fadeDuration:1
     }
     this.setFilterValue = this.setFilterValue.bind(this)
-
+    
   }
 
 

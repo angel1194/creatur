@@ -5,42 +5,56 @@ const Column = styled.div`
   flex-direction: column ;
   align-items: flex-start;
   margin-bottom: 20px;
-
-  /* Responsive */
-  @media only screen and (max-width: 500px) and (min-width: 424px){
-    overflow-wrap: break-word;
-
+/*Responsive */
+  @media only screen and (min-width:569px) and (max-width:768px){
+    padding-left: 29px;
+    position: static;
   }
+
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between ;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 180px;
-  border: 2px solid #eaeff3;
-  border-radius: 6px;
-  animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  -webkit-animation: fadein 2s;
-  /* Responsive */
-  @media only screen and (max-width: 500px) and (min-width: 424px){
-   overflow-wrap: break-word;
-   display: list-item;
-   display: inline-table;
-    margin: 0 auto;
-    width: 405px;
-    margin-left: -16px;
-  }
-  @media only screen and (min-width: 720px){
-     width: 740px;
-     margin-left: -23px;
-  }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 180px;
+    border: 2px solid #eaeff3;
+    border-radius: 6px;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -webkit-animation: fadein 2s;
 
+  /* horizontal phone -*/
+  @media only screen and (max-width: 568px) and (min-width: 220px){
+    overflow-wrap: break-word;
+    display: list-item , inline-block ;
+    display: inline-table;
+    width: 390px;
+  }
+/*Responsive  tablet*/
+  @media only screen and (min-width:569px) and (max-width:768px){
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 180px;
+    border: 2px solid #eaeff3;
+    border-radius: 6px;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -webkit-animation: fadein 2s;
+    overflow-wrap: break-word;
+    width: 600px;
+    position: relative;
+    top: -120px;
+
+  }
 
 
   @keyframes fadein {
@@ -83,12 +97,11 @@ const Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-
-  @media only screen and (max-width: 840px) and (min-width: 424px){
-  font-size: 15px;
   white-space: pre-wrap;
-  text-align: left;
+/*Responsive */
+  @media only screen and (max-width: 568px) and (min-width: 220px){
+    white-space: pre-wrap;
+    text-align: left;
   }
 
 `;
@@ -97,9 +110,7 @@ const Row = styled.div`
 display: flex;
  flex-direction: row ;
  align-items: flex-start;
- @media only screen and (max-width: 500px) and (min-width: 424px){
-  overflow-wrap: break-word;
- }
+
 
 
 `;

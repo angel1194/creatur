@@ -10,16 +10,14 @@ const Wrapper = styled.div`
   margin: 4px;
   min-width: 235px;
   margin-right: 18px;
-  border-radius:6px;
-  /*  Responsive */
-  @media only screen and (max-width: 500px) and (min-width: 424px){
-    width: 405px;
+  /*  Responsive*/
+  @media only screen and (min-width:481px) and (max-width:768px){
+    width: 250px;
+    position: relative;
+    margin-left: 380px;
+  }
 
-  }
-  @media only screen and (min-width: 720px){
-    width: 740px;
-  }
-`;
+  `;
 
 const Img = styled.div`
   width:232px;
@@ -28,12 +26,14 @@ const Img = styled.div`
   background-size:100% auto;
   border-radius: 6px;
   /*  Responsive*/
-  @media only screen and (max-width: 500px) and (min-width: 424px){
+  @media only screen and (max-device-width: 480px){
     width: 405px;
+    display: inline-block;
   }
-  @media only screen and (min-width: 720px){
-    width: 740px;
-  }
+    @media only screen and (min-width:481px) and (max-width:768px){
+      width: 250px;
+    }
+
 `;
 
 const ButtonIcon = styled.button`
@@ -48,14 +48,10 @@ const ButtonIcon = styled.button`
     justify-content: center;
     border-radius: 6px 0 6px 0 !important;
 
-    /*  Responsive*/
-    @media only screen and (max-width: 500px) and (min-width: 424px){
+    @media only screen and (max-device-width: 480px){
      position: relative;
-     left: 293px;
-    }
-    @media only screen and (min-width: 720px){
-      position: relative;
-      left: 625px;  
+     margin-left: 175px;
+     display: inline-block;
     }
 
 `;
