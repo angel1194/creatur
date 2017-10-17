@@ -285,21 +285,22 @@ class Home extends React.Component {
       }
     }
     if (Object.keys(carObject).length >= 1) {
-      this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
-      car['transport'] = carObject
-      // Agregando price al state car
-      let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
-      car['total'] = totalCar
-      car['idSales'] = this.state.idSales
-      this.setState(car)
+      let used = transport[Object.keys(carObject)[0]].used
+      let seating = transport[Object.keys(carObject)[0]].seating
+      if (data > seating - used) {
+        alert('Cantidad de asientos no disponibles');
+      }else {
+        this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
+        car['transport'] = carObject
+        // Agregando price al state car
+        let totalCar = data * Number(transport[Object.keys(carObject)[0]].price)
+        car['total'] = totalCar
+        car['idSales'] = this.state.idSales
+        this.setState(car)
+      }
     } else {
       alert('No hay asientos disponibles');
     }
-    // if (data > transport[Object.keys(carObject)].taken) {
-    //   console.log('asiento dispobleb');
-    // } else {
-    //   console.log('no alcansa el asiento');
-    // }
   }
 
   searchTicket(section,quantity){
@@ -325,7 +326,6 @@ class Home extends React.Component {
         ticketTemp['time'] = moment().format()
         rootRef.child('temp').child(ticket).set(ticketTemp)
         ticketRef.child(ticket).remove()
-        console.log(aryTicket[ticket]);
       })
       this.setState({
         searchTicket:aryTicket
@@ -342,10 +342,6 @@ class Home extends React.Component {
     Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
         let comparation = moment(temp[item].time).isBetween(starTime, endTime);
-        console.log(comparation);
-        console.log(starTime);
-        console.log(endTime);
-        console.log(temp[item].time);
         if (comparation === false) {
           rootRef.child('tickets').child(item).set(temp[item])
           rootRef.child('temp').child(item).remove()
