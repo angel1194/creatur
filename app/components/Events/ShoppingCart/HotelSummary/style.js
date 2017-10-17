@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import H3 from '../../../ReserHotel/H3'
 
 const Container = styled.div`
-  width:23%;
+  width: 260px;
   height: auto;
   border:1px solid #eaeff3;
   margin-bottom: 30px;
+  @media only screen and (max-width: 1200px) and (min-width: 220px) {
+    width:100%;
+  }
 `;
 
 const Header=styled.div`

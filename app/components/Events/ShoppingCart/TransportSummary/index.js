@@ -18,6 +18,7 @@ const DivCancel = styled(DivSubTotal)`
 const Icon = styled(FontAwesome)`
   color: #c0392b;
   margin-bottom: 10px;
+  margin-top: -15px;
   text-align: right;
   font-size: 18px;
   cursor: pointer;
@@ -90,16 +91,18 @@ function TransportSummary(props) {
         {tickets ?
           <div>
             {Object.keys(tickets).length >= 1 ?
-              <DivSubTotal>
+              <div>
                 <EventManzanero>{Object.keys(tickets).length} Ticket Manzanero</EventManzanero>
-                <RowDiv>
-                  <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
-                </RowDiv>
-                <SRowDiv>
-                  <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
-                </SRowDiv>
-                <Icon name="trash" onClick={()=>props.removeTicket()}/>
-              </DivSubTotal>
+                <DivSubTotal>
+                  <RowDiv>
+                    <NewSub>{Object.keys(tickets).length >= 2 ? 'Asientos' : 'Asiento'}: {Object.keys(tickets).map((item, i)=><P key={i}>{tickets[item].seat + ", "}</P>)}</NewSub>
+                  </RowDiv>
+                  <SRowDiv>
+                    <SubTextEvent>MXN ${props.option[props.section].price} c/u</SubTextEvent>
+                  </SRowDiv>
+                  <Icon name="trash" onClick={()=>props.removeTicket()}/>
+                </DivSubTotal>
+              </div>
             : ''}
           </div>
         : ''}
