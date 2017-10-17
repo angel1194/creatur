@@ -43,6 +43,7 @@ class FormEvent extends React.Component{
          seconds: 59
        })
     }else if (this.state.stopTime === 90) {
+      console.log('ejecutando stopTime');
       clearInterval(this.intervalId)
       Object.keys(tickets).map((item,i)=>{
         firebase.database().ref().child('temp').child(item).remove()
