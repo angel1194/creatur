@@ -285,11 +285,6 @@ class Home extends React.Component {
       }
     }
     if (Object.keys(carObject).length >= 1) {
-      let used = transport[Object.keys(carObject)[0]].used
-      let seating = transport[Object.keys(carObject)[0]].seating
-      if (data > seating - used) {
-        alert('Cantidad de asientos no disponibles');
-      }else {
         this.location(<ShoppingCart idSales={this.state.idSales} price={transport[transports[0]].price} carObject={carObject} seating={data} ubicacion={ubicacion}  priceAndSections={this.priceAndSections} searchTicket={this.searchTicket} ticketOptions={this.state.ticketOptions} car={this.state.car} carState={this.state}/>, 5)
         car['transport'] = carObject
         // Agregando price al state car
@@ -297,7 +292,6 @@ class Home extends React.Component {
         car['total'] = totalCar
         car['idSales'] = this.state.idSales
         this.setState(car)
-      }
     } else {
       alert('No hay asientos disponibles');
     }
