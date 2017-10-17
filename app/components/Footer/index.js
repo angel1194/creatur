@@ -33,7 +33,7 @@ function Footer() {
 
               </Grid.Column>
             </Grid.Row>
-            <Divider className="dividerGreen"/>
+            
             <Grid.Row className='gridPaddingTop'>
               <Grid.Column mobile={16} tablet={8} computer={8} className='gridPaddingTop'>
                 <span className="aviso">Una empresa de</span>
