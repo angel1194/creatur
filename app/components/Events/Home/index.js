@@ -322,8 +322,8 @@ class Home extends React.Component {
     }else {
       Object.keys(aryTicket).map((ticket)=>{
         let ticketTemp = this.state.tickets[ticket]
-        ticketTemp['time'] = moment().format('DD-MM-YYYY HH:mm:s')
-        rootRef.child('temp').set(aryTicket[ticket])
+        ticketTemp['time'] = moment().format()
+        rootRef.child('temp').child(ticket).set(ticketTemp)
         ticketRef.child(ticket).remove()
         console.log(aryTicket[ticket]);
       })
@@ -335,13 +335,17 @@ class Home extends React.Component {
   }
 
   setTemp(){
-    let endTime= moment().format('DD-MM-YYYY HH:mm:ss')
-    let starTime = moment().subtract(10,'m').format('DD-MM-YYYY HH:mm:ss')
+    let endTime= moment().format()
+    let starTime = moment().subtract(10,'m').format()
     let temp = this.state.temp
 
     Object.keys(temp).map((item, i)=> {
       if (item != 'description') {
         let comparation = moment(temp[item].time).isBetween(starTime, endTime);
+        console.log(comparation);
+        console.log(starTime);
+        console.log(endTime);
+        console.log(temp[item].time);
         if (comparation === false) {
           rootRef.child('tickets').child(item).set(temp[item])
           rootRef.child('temp').child(item).remove()
