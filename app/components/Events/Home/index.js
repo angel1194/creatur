@@ -62,13 +62,7 @@ class Home extends React.Component {
      })
    })
 
-  let ref = rootRef.child('temp')
-  ref.on('value', data => {
-    this.setState({
-      temp:data.val()
-    })
-    this.setTemp()
-  })
+
 }
 
   componentDidMount(){
@@ -324,7 +318,7 @@ class Home extends React.Component {
       Object.keys(aryTicket).map((ticket)=>{
         let ticketTemp = this.state.tickets[ticket]
         ticketTemp['time'] = moment().format()
-        rootRef.child('temp').child(ticket).set(ticketTemp)
+        rootRef.child('temporal').child(ticket).set(ticketTemp)
         ticketRef.child(ticket).remove()
       })
       this.setState({
@@ -334,21 +328,7 @@ class Home extends React.Component {
     }
   }
 
-  setTemp(){
-    let endTime= moment().format()
-    let starTime = moment().subtract(10,'m').format()
-    let temp = this.state.temp
 
-    Object.keys(temp).map((item, i)=> {
-      if (item != 'description') {
-        let comparation = moment(temp[item].time).isBetween(starTime, endTime);
-        if (comparation === false) {
-          rootRef.child('tickets').child(item).set(temp[item])
-          rootRef.child('temp').child(item).remove()
-        }
-      }
-    })
-  }
 
   priceAndSections(){
     let tickets =  this.state.tickets
