@@ -43,7 +43,7 @@ class AddTicket extends Component{
         seating:Seating
       }
       firebase.database().ref().child('tickets').child(Folio).set(ticket)
-      firebase.database().ref().child('tickets').child(Key).remove()
+      // firebase.database().ref().child('tickets').child(Key).remove()
 
       this.refs.date.value=''
       this.refs.folio.value=''

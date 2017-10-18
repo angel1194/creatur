@@ -47,7 +47,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   list-style: none;
-  color : #ccc;
+  color : #8c8c8c;
   font-family: Roboto;
   cursor: pointer;
   height: 40px;

@@ -13,7 +13,7 @@ const Icon = styled(FontAwesome) `
 class FormPayment extends React.Component {
   constructor(){
     super();
-    this.state = {deviceSessionId: ''}
+    this.state = {deviceSessionId: '', names: {}}
 
     this.request = this.request.bind(this)
     this.validateCard = this.validateCard.bind(this)
@@ -105,20 +105,22 @@ class FormPayment extends React.Component {
       body: JSON.stringify(request)
     })
     .then((response) => {
-      // Pruebas
-      request['sales'] = this.props.car
-      fetch('http://192.168.1.38:8000/email/',{
-        method: 'post',
-        headers: new Headers({'Content-Type': 'application/json'}),
-        body: JSON.stringify(request)
-      })
-      console.log(request);
       return response.json();
     })
     .then((recurso) => {
-      console.log(recurso);
-      // ejecutando funciones de firebase
-      this.setFirebase()
+      if (recurso.error_code) {
+        alert('Ha ocurrido un error, contacte con el proveedor')
+      }else {
+        request['sales'] = this.props.car
+        request['contact_person'] = this.state.names,
+        fetch('http://192.168.1.38:8000/email/',{
+          method: 'post',
+          headers: new Headers({'Content-Type': 'application/json'}),
+          body: JSON.stringify(request)
+        })
+        // ejecutando funciones de firebase
+        this.setFirebase()
+      }
     })
   }
 
@@ -167,8 +169,8 @@ class FormPayment extends React.Component {
       }
     }
     //recargar pagina al hacer el pago exitoso
-    location.reload()
     alert('Pago exitoso, la información de compra se envió a su correo electrónico')
+    // location.reload()
   }
 
 
@@ -224,8 +226,20 @@ class FormPayment extends React.Component {
     }
   }
 
+  getNames(val, id, item){
+    let value = val.target.value
+    let names = this.state.names
+    names[id] = item
+    names[id][id] = value
+
+    this.setState({
+      names: names
+    })
+  }
+
   render(){
     let roomsUI = this.props.roomsUI
+
     return (
       <Container>
         <form  onSubmit={this.request}>
@@ -243,22 +257,27 @@ class FormPayment extends React.Component {
                 </div>
                 <div style={styles.containerInput}>
                   <div style={styles.inputlabel}>
-                    <label style={styles.label} htmlFor="contacto">Persona de contacto</label>
-                    <input style={styles.input} type="text" id="contacto" ref="holder_name" placeholder="Nombre(s) y Apellidos"  required/>
+                    <label style={styles.label} htmlFor={'name'+i+1}>Persona de contacto</label>
+                    <input onChange={(e)=>this.getNames(e, 'name'+i, roomsUI[item])} id={'name'+i+1} style={styles.input} type="text" id="contacto" ref="holder_name" placeholder="Nombre(s) y Apellidos"  required/>
                   </div>
                   <div style={styles.inputlabel}>
-                    <label style={styles.label} htmlFor="phone">Número de teléfono celular</label>
-                    <input
-                      onChange={(e, tel)=>this.validatePhone(e, 'tel1')}
-                      style={styles.input}
-                      pattern="[0-9]{10}" title="Introduzca solo 10 digitos"
-                      type="tel"
-                      id="validate_input"
-                      ref="validate_Phone"
-                      placeholder="Para que el hotel pueda comunicarse contigo"
-                      required
-                    />
-                    <p id="validate_phone" style={styles.p}></p>
+                    {i === 0 ?
+                      <div style={styles.inputlabel}>
+                        <label style={styles.label} htmlFor={'tel'+i+1}>Número de teléfono celular</label>
+                        <input
+                          id={'tel'+i+1}
+                          onChange={(e)=>this.validatePhone(e, 'tel1')}
+                          style={styles.input}
+                          pattern="[0-9]{10}" title="Introduzca solo 10 digitos"
+                          type="tel"
+                          id="validate_input"
+                          ref="validate_Phone"
+                          placeholder="Para que el hotel pueda comunicarse contigo"
+                          required
+                        />
+                        <p id="validate_phone" style={styles.p}></p>
+                      </div>
+                      : ''}
                   </div>
                 </div>
               </div>
@@ -424,7 +443,7 @@ class FormPayment extends React.Component {
                 <div style={styles.inputlabel}>
                   <label style={styles.label} htmlFor="">Teléfono</label>
                   <input
-                    onChange={(e, tel)=>this.validatePhone(e, 'tel2')}
+                    onChange={(e)=>this.validatePhone(e, 'tel2')}
                     style={styles.input}
                     type="tel"
                     id="validate_inputTel"

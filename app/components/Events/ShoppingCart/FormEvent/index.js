@@ -73,11 +73,10 @@ class FormEvent extends React.Component{
      tickets:ticket,
      section:seccion,
    })
-   if (quantity >= 1) {
-     this.setTimer()
-   }else if (Object.keys(ticket).length >= 1) {
+   if (Object.keys(ticket).length >= 1) {
      this.setTimer()
    }
+
   }
 
   addTickets(){
@@ -152,7 +151,7 @@ class FormEvent extends React.Component{
 
                   <Seating>
                     <P>Asientos:</P>
-                    {keyState.map((item, i)=><P key={i}>{state[item].seat + ", "}</P>)}
+                    {keyState.map((item, i)=><P key={i}>{state[item].seating + ", "}</P>)}
                   </Seating>
                   <Pay>
                     <Price>MXN ${options[this.state.section].price} c/u</Price>
