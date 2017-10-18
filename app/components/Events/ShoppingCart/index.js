@@ -57,7 +57,7 @@ class ShoppingCart extends React.Component {
     this.resTotalAmount()
     let tickets = this.state.tickets
     Object.keys(tickets).map((item,i)=>{
-      firebase.database().ref().child('temp').child(item).remove()
+      firebase.database().ref().child('temporal').child(item).remove()
       firebase.database().ref().child('tickets').child(item).set(tickets[item])
       delete tickets[item]
     })

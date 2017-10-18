@@ -61,8 +61,7 @@ class Home extends React.Component {
        idSales:snap.val()
      })
    })
-
-
+   fetch('https://us-central1-hotel-fa344.cloudfunctions.net/addMessage')
 }
 
   componentDidMount(){
