@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     display: inline-table;
     width: 390px;
   }
-/*Responsive  tablet*/
+/*Responsive  tablet
   @media only screen and (min-width:569px) and (max-width:768px){
 
     display: flex;
@@ -54,7 +54,8 @@ const Wrapper = styled.div`
     position: relative;
     top: -120px;
 
-  }
+  }*/
+
 
 
   @keyframes fadein {
@@ -98,6 +99,7 @@ const Title = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-wrap;
+
 /*Responsive */
   @media only screen and (max-width: 568px) and (min-width: 220px){
     white-space: pre-wrap;
