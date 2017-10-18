@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     display: inline-table;
     width: 390px;
   }
-/*Responsive  tablet
+/*Responsive  tablet*/
   @media only screen and (min-width:569px) and (max-width:768px){
 
     display: flex;
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
     position: relative;
     top: -120px;
 
-  }*/
+  }
 
 
 

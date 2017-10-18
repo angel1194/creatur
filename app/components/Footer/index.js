@@ -19,7 +19,7 @@ function Footer() {
               <Grid.Column mobile={16} tablet={16} computer={3}>
                 <span className="logoBlanco">Creatu</span><span className="logoVerde">Viaje</span>
                 <br/>
-                <span className='colorGreen'>2017 © Creatur</span>
+              <span className='colorGreen'>2017 © Creatur</span>
                 <h4>reservaciones@creatuviaje.com</h4>
                 <a href='http://facebook.com' target='_blank'><Icon color='green' bordered name='facebook f'></Icon></a>
                 <a href='http://twitter.com' target='_blank'><Icon color='green' bordered name='twitter'></Icon></a>
@@ -33,7 +33,7 @@ function Footer() {
 
               </Grid.Column>
             </Grid.Row>
-            
+
             <Grid.Row className='gridPaddingTop'>
               <Grid.Column mobile={16} tablet={8} computer={8} className='gridPaddingTop'>
                 <span className="aviso">Una empresa de</span>
