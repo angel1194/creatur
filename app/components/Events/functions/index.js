@@ -1,14 +1,26 @@
+const moment = require('moment');
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 exports.addMessage = functions.https.onRequest((req, res) => {
-  // Grab the text parameter.
-  const original = req.query.text;
-  // Push the new message into the Realtime Database using the Firebase Admin SDK.
-  admin.database().ref('/temp').push({count: 0, tickets:{'001':0}})
-  .then(snapshot => {
-    // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-    res.redirect(303, snapshot.ref);
-  });
+  var endTime= moment().format()
+  var starTime = moment().subtract(1,'m').format()
+
+  admin.database().ref('/temporal').once('value').then((snap) => {
+    var temp = snap.val()
+    Object.keys(temp).map((item, i)=>{
+      if (item != 'description') {
+        let comparation = moment(temp[item].time).isBetween(starTime, endTime, null, '[]');
+        console.log(comparation);
+        if (comparation === false) {
+          admin.database().ref().child('tickets').child(item).set(temp[item])
+          admin.database().ref().child('temporal').child(item).remove()
+        }
+      }else {
+        console.log('description');
+      }
+    })
+    // res.redirect(303, admin.database().ref('/temporal'));
+  })
 });
