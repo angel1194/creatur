@@ -100,7 +100,7 @@ class FormPayment extends React.Component {
         'email': token.email
       }
     }
-    fetch('http://192.168.1.38:1337/payment',{
+    fetch('http://manzanero-production.us-west-2.elasticbeanstalk.com/payment',{
       method: 'post',
       body: JSON.stringify(request)
     })
@@ -170,7 +170,7 @@ class FormPayment extends React.Component {
     }
     //recargar pagina al hacer el pago exitoso
     alert('Pago exitoso, la información de compra se envió a su correo electrónico')
-    // location.reload()
+    location.reload()
   }
 
 
