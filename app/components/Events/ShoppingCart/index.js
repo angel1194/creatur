@@ -9,6 +9,8 @@ import firebase from '../../../containers/Events/Firebase';
 import {Title, Subtitle, DivTitle, FlexEnd, FlexStart, LinkA, ContainerCart, ButtonGreen, Space, ContainerButtonGreen,DivPay, FlexRow, ContainerItem, ButtonEvent} from './style';
 import { default as Fade } from 'react-fade';
 import styled from 'styled-components';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const ContainerBuy = styled(Container)`
   @media only screen and (max-width: 991px) and (min-width: 220px) {
@@ -52,6 +54,17 @@ class ShoppingCart extends React.Component {
       section:section
     })
   }
+
+  submit = () => {
+    confirmAlert({
+      title: 'Eliminar Tickets',
+      message: '¿Estás seguro de hacer esto?',
+      childrenElement: () => <div>Confirmar para enviar</div>,
+      confirmLabel: 'Confirmar',
+      cancelLabel: 'Cancelar',
+      onConfirm: ()=>this.removeTicket()
+    })
+  };
 
   removeTicket(){
     this.resTotalAmount()
@@ -124,7 +137,7 @@ class ShoppingCart extends React.Component {
               carObject={this.props.carObject}
               seating={this.props.seating}
               price={this.props.price}
-              removeTicket={this.removeTicket}
+              removeTicket={this.submit}
             />
           :
             <HotelSummary
@@ -137,7 +150,7 @@ class ShoppingCart extends React.Component {
               car={car}
               option={this.state.option}
               section={this.state.section}
-              removeTicket={this.removeTicket}
+              removeTicket={this.submit}
             />
           }
           </FlexRow>
