@@ -334,8 +334,6 @@ class Home extends React.Component {
     }
   }
 
-
-
   priceAndSections(){
     let tickets =  this.state.tickets
     let options = {}
