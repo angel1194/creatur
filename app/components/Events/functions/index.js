@@ -6,6 +6,7 @@ admin.initializeApp(functions.config().firebase);
 exports.addMessage = functions.https.onRequest((req, res) => {
   var endTime= moment().format()
   var starTime = moment().subtract(1,'m').format()
+
   admin.database().ref('/temporal').once('value').then((snap) => {
     var temp = snap.val()
     Object.keys(temp).map((item, i)=>{
@@ -20,6 +21,6 @@ exports.addMessage = functions.https.onRequest((req, res) => {
         console.log('description');
       }
     })
-  //   res.redirect(303, admin.database().ref('/temporal'));
+    // res.redirect(303, admin.database().ref('/temporal'));
   })
 });
