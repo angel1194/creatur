@@ -5,7 +5,7 @@ admin.initializeApp(functions.config().firebase);
 
 exports.addMessage = functions.https.onRequest((req, res) => {
   var endTime= moment().format()
-  var starTime = moment().subtract(1,'m').format()
+  var starTime = moment().subtract(10,'m').format()
 
   admin.database().ref('/temporal').once('value').then((snap) => {
     var temp = snap.val()
