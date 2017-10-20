@@ -57,7 +57,7 @@ class HotelRoom extends React.Component {
             <ContainerButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item], this.props.elements)}>
               <ButtonGreen>
                 Reservar
-              <Space name='shopping-cart' />
+              {/* <Space name='shopping-cart' /> */}
               </ButtonGreen>
             </ContainerButtonGreen>
           </ContainerPrice>

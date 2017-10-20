@@ -11,6 +11,7 @@ import { default as Fade } from 'react-fade';
 import styled from 'styled-components';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import Loading from './LoadingSpin'
 
 const ContainerBuy = styled(Container)`
   @media only screen and (max-width: 991px) and (min-width: 220px) {
@@ -22,12 +23,20 @@ class ShoppingCart extends React.Component {
   constructor(props){
     super(props);
     this.state =
-    this.props.carState, {showEvent: false, option: '', section: '', fadeOut: false, visibility: 'visible', fadeDuration:1 }
+    this.props.carState,
+    {showEvent: false,
+      option: '', section: '',
+      fadeOut: false,
+      visibility: 'visible',
+      fadeDuration:1,
+      loading:false
+    }
 
     this.showEvent = this.showEvent.bind(this)
     this.setshowEvent = this.setshowEvent.bind(this)
     this.setCar = this.setCar.bind(this)
     this.removeTicket = this.removeTicket.bind(this)
+    this.loading = this.loading.bind(this)
   }
 
   showEvent(id){
@@ -99,6 +108,13 @@ class ShoppingCart extends React.Component {
     }
   }
 
+  loading(val){
+    this.setState({
+      loading:val
+    })
+    console.log(val);
+  }
+
   render() {
     let car = this.props.car
     // let cart = Object.keys(car.room)
@@ -108,6 +124,7 @@ class ShoppingCart extends React.Component {
 
     return (
       <div>
+        {this.state.loading === true ? <Loading/> : ''}
         <ContainerBuy>
           <FlexStart>
             {this.state.tickets === null ?
@@ -122,12 +139,12 @@ class ShoppingCart extends React.Component {
           </FlexStart>
           {this.state.showEvent === false ?
             <Fade out={this.state.fadeOut} duration={this.state.fadeDuration} style={{visibility: this.state.visibility}}>
-              <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/>
+              <FormEvent showEvent={this.showEvent(val)} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/>
             </Fade>
           : ''}
           <FlexRow>
             <DivPay>
-              <FormPayment idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion} roomsUI={this.state.roomsUI}/>
+              <FormPayment loading={this.loading} idSales={this.props.idSales} total={car.total} car={car} ubicacion={this.state.ubicacion} roomsUI={this.state.roomsUI}/>
             </DivPay>
             {ubicacion === 'transport' ?
             <TransportSummary

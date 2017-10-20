@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Container} from 'semantic-ui-react';
 import Hotels from '../Hotels';
 import MapView from '../../ReserHotel/MapView';
-import {Div, DivHotels} from './style';
+import {Div, DivHotels, Title, DivCheck, Check} from './style';
 import Filter from './Filter';
 import { default as Fade } from 'react-fade';
 
@@ -86,15 +86,15 @@ class MainHotels extends React.Component {
     return (
       <div>
         <Container>
+          <DivCheck>
+            <Title>Se encontraron {this.state.hotels.length} Hoteles disponibles</Title>
+            {/* <Check>Hola</Check> */}
+          </DivCheck>
           <Div>
             <div>
               <MapView/>
-
-
               <Filter setFilterValue={this.setFilterValue} star={this.state.star} price={this.state.price} />
-
             </div>
-
             <DivHotels>
               <Fade
                out={this.state.fadeOut}
