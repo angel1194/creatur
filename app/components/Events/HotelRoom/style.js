@@ -4,12 +4,13 @@ const ContainerRoom = styled.div`
   width: 100%;
   display:flex;
   flex-wrap:wrap;
+  height: 210px;
 `;
 
 const RoomImg = styled.div`
   padding:0px 15px 10px 15px;
   width:33.33%;
-  height:245px;
+  height:211px;
   border-right:2px solid #58ACFA
 `;
 
@@ -17,14 +18,14 @@ const DetailsRoom = styled.div`
   width:33.33%;
   display:flex;
   flex-direction:column;
-  height:245px;
+  height:211px;
   border-right:2px solid #58ACFA;
   padding:15px 15px 10px 40px;
 `;
 
 const Label = styled.label`
   color:#5e5e5e;
-  margin-top:5px;
+  margin: 5px 0px 0px 0px;
 `;
 
 const LinkA = styled.a`
@@ -44,9 +45,8 @@ const ContainerPrice = styled.div`
 
 const ContainerButtonGreen = styled.div`
   width: 50%;
-  margin-bottom:20px;
   background:#87b672;
-  margin-left:10px;
+  margin: 30px 0px 0px 10px;
   color:white;
   font-family:Montserrat;
   display:flex;

@@ -10,6 +10,9 @@ import PriceLabel from './PriceLabel';
 import Button from './Button';
 
 const ColumMarginRight = styled(Column) `
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
   margin: 10px 10px 0px 0px;
   padding: 10px 20px 12px 20px;
   align-items: flex-end;
@@ -47,7 +50,6 @@ class Hotels extends React.Component {
             <Row>
               <ColumMarginRight>
                 <PriceLabel Since={this.props.elements.rooms[0].price} Currency="MXN"/>
-                <br/><br/><br/>
                 <Button Title="Habitaciones" Color="Blue" addComparation={this.props.addComparation} item={this.props.elements}/>
               </ColumMarginRight>
             </Row>

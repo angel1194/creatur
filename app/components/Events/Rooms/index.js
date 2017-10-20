@@ -3,6 +3,11 @@ import {Container} from 'semantic-ui-react';
 import HeaderTable from '../../HeaderTable';
 import HotelRoom from '../HotelRoom';
 import InfoHotel from '../InfoHotel';
+import styled from 'styled-components';
+
+const ContainerRoom = styled(Container)`
+  margin-bottom: 60px;
+`
 
 class Rooms extends React.Component {
 
@@ -11,11 +16,11 @@ class Rooms extends React.Component {
     const state = this.props.stateAll
     return (
       <div>
-        <Container>
+        <ContainerRoom>
           {Object.keys(comparation).map((item , i)=><InfoHotel key={i} elements={comparation[item]}/>)}
           <HeaderTable/>
           {Object.keys(comparation).map((item, i)=><HotelRoom key={i} elements={comparation[item]} addRooms={this.props.addRooms} night={state}/>)}
-        </Container>
+        </ContainerRoom>
       </div>
     );
   }

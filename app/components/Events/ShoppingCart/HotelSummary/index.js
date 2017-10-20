@@ -77,11 +77,11 @@ function HotelSummary(props) {
         <CheckIn>
           <div>
             <Text>Entrada:</Text>
-            <SubText>{moment(props.checkin).format('ll')}</SubText>
+            <SubText>{moment(props.checkin, 'l').format('ll')}</SubText>
           </div>
           <div>
             <Text>Salida:</Text>
-            <SubText>{moment(props.checkout).format('ll')}</SubText>
+            <SubText>{moment(props.checkout, 'l').format('ll')}</SubText>
           </div>
           <Text>Estancia de {props.count} noches</Text>
         </CheckIn>
