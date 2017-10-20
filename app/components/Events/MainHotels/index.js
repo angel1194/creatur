@@ -82,6 +82,10 @@ class MainHotels extends React.Component {
 
   render() {
     let funcion = this.starFilter()
+    let room1 = this.state.hotels[0]
+    Object.keys(room1).map((item, i)=>{
+      console.log(room1[item].rooms[0].price);
+    })
 
     return (
       <div>

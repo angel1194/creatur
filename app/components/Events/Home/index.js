@@ -193,19 +193,22 @@ class Home extends React.Component {
            orderHotels.push({[hotelKey]:hotels[hotelKey]})
          })
 
-         this.setState({
-           available:orderHotels,
-           totalNight:totalNight
-         })
+         if (orderHotels.length === 0) {
+           alert('No hay habitaciones disponibles');
+         }else {
+           this.setState({
+             available:orderHotels,
+             totalNight:totalNight
+           })
 
-         this.setState({
-           checkin:startDate.format('MM-DD-YYYY'),
-           checkout:endDate.format('MM-DD-YYYY'),
-           roomsUI:rooms
-         })
+           this.setState({
+             checkin:startDate.format('MM-DD-YYYY'),
+             checkout:endDate.format('MM-DD-YYYY'),
+             roomsUI:rooms
+           })
 
-
-        this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={orderHotels} location={this.location}/>, 2)
+          this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={orderHotels} location={this.location}/>, 2)
+         }
     }
     else{
       alert('No hay habitaciones disponibles');
