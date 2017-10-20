@@ -29,11 +29,7 @@ class Home extends React.Component {
 
       },
       ubicacion:'hotel',
-      aryTicket:{searchTicket:{}},
-      useds:{
-        used:{},
-        seating:{}
-      }
+      aryTicket:{searchTicket:{}}
     }
     this.location = this.location.bind(this)
     this.setHotels = this.setHotels.bind(this)
@@ -209,7 +205,7 @@ class Home extends React.Component {
          })
 
 
-        this.location(<MainHotels  addRooms={this.addRooms} addComparation={this.addComparation} hotels={orderHotels} location={this.location}/>, 2)
+        this.location(<MainHotels addRooms={this.addRooms} addComparation={this.addComparation} hotels={orderHotels} location={this.location}/>, 2)
     }
     else{
       alert('No hay habitaciones disponibles');

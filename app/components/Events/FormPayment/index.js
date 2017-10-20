@@ -31,6 +31,7 @@ class FormPayment extends React.Component {
   request(event){
     event.preventDefault()
 
+    this.props.loading(true)
     let holderName = this.refs.holder_name.value
     let lastName = this.refs.last_name.value
     let phoneNumber = this.refs.phone_number.value
@@ -51,6 +52,7 @@ class FormPayment extends React.Component {
     let validateExpiry = this.validateExpiry(Month,Year)
 
     if (validateCard === false || validateExpiry === false) {
+      this.props.loading(false)
       alert('La validación de la tarjeta es incorrecta')
     }
 
@@ -109,6 +111,7 @@ class FormPayment extends React.Component {
     })
     .then((recurso) => {
       if (recurso.error_code) {
+        this.props.loading(false)
         alert('Ha ocurrido un error, contacte con el proveedor')
       }else {
         request['sales'] = this.props.car
@@ -119,6 +122,7 @@ class FormPayment extends React.Component {
           body: JSON.stringify(request)
         })
         // ejecutando funciones de firebase
+        this.props.loading(false)
         this.setFirebase()
       }
     })
@@ -127,7 +131,7 @@ class FormPayment extends React.Component {
   onError(err, token){
     let message = err.data.description
     let response = message.replace(message, 'Error de solicitud: '+message)
-    alert(response)
+    // alert(response)
   }
 
   validateCard(cvv2, cardNumber){

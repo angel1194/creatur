@@ -14,7 +14,7 @@ const Space = styled(FontAwesome) `
 
 const Title = styled(H3) `
   color:#424242 !important;
-  margin-top:10px;
+  margin: 10px 0px 0px 0px;
 `;
 
 const NameRoom = styled(H3) `
@@ -25,7 +25,8 @@ const NameRoom = styled(H3) `
 
 const Divider=styled.div`
   width:100%;
-  border:1px solid #58ACFA ;
+  border-top: 2px solid #58ACFA ;
+  margin-top: -35px;
 `;
 
 class HotelRoom extends React.Component {
@@ -52,11 +53,11 @@ class HotelRoom extends React.Component {
             <LabelA>{count} noches</LabelA>
             <Title>Precio Total</Title>
             <H3>${this.props.elements.rooms[item].price * count} <Label>MXN</Label></H3>
-            {/* <LinkA>Politicas de Cancelacion</LinkA> */}<br/>
+            {/* <LinkA>Politicas de Cancelacion</LinkA> */}
             <ContainerButtonGreen onClick={(e)=>this.props.addRooms(this.props.elements.rooms[item], this.props.elements)}>
               <ButtonGreen>
                 Reservar
-              <Space name='shopping-cart' />
+              {/* <Space name='shopping-cart' /> */}
               </ButtonGreen>
             </ContainerButtonGreen>
           </ContainerPrice>
