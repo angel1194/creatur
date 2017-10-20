@@ -39,7 +39,7 @@ class ShoppingCart extends React.Component {
     this.loading = this.loading.bind(this)
   }
 
-  showEvent(id){
+  showEvent(){
     this.setState({
       showEvent: true
     })
@@ -112,7 +112,6 @@ class ShoppingCart extends React.Component {
     this.setState({
       loading:val
     })
-    console.log(val);
   }
 
   render() {
@@ -139,7 +138,7 @@ class ShoppingCart extends React.Component {
           </FlexStart>
           {this.state.showEvent === false ?
             <Fade out={this.state.fadeOut} duration={this.state.fadeDuration} style={{visibility: this.state.visibility}}>
-              <FormEvent showEvent={this.showEvent(val)} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/>
+              <FormEvent showEvent={this.showEvent} setCar={this.setCar} searchTicket={this.props.searchTicket} ticketOptions={this.props.ticketOptions} state={this.state}/>
             </Fade>
           : ''}
           <FlexRow>
